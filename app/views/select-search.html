@@ -6,6 +6,15 @@ GOV.UK Prototype Kit
 
 {% block content %}
 
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Select a search option</li>
+  </ol>
+</div>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -16,7 +25,6 @@ GOV.UK Prototype Kit
       </p>
 {{releaseVersion | log }}
     </div>
-
 
   <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4">
     <div class="govuk-grid-column-two-thirds">
