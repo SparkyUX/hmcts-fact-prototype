@@ -8,13 +8,25 @@ GOV.UK Prototype Kit
 
 {% block content %}
 
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Location</li>
+  </ol>
+</div>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Search for the location of a court or tribunal</h1>
 
       <p class="govuk-body">
-        If you know the name of the court you are looking for, or part of the address then this will help you.
+        If you know the name of the court you are looking for, or part of the address, then enter this here.
       </p>
 {{releaseVersion | log }}
 
@@ -26,7 +38,7 @@ text: "Enter a court name, town or city, or postcode"
 },
 classes: "govuk-input--width-10",
 hint: {
-    text: "Must be between 6 and 8 digits long"
+    text: "For example, Courts of Justice"
   },
 id: "address-postcode",
 name: "address-postcode",
@@ -34,7 +46,8 @@ autocomplete: "postal-code"
 }) }}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Continue",
+  href: "reading"
 }) }}
 
 {{ govukInsetText({
