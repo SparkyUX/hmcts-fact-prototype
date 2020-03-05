@@ -11,37 +11,37 @@ GOV.UK Prototype Kit
 
       <h1 class="govuk-heading-xl">Choose the option that best describes what you want to find</h1>
 
-      <p class="govuk-body-l">
-
-      </p>
-{{releaseVersion | log }}
-    </div>
-
-
-  <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h2 class="govuk-heading-m"><a href="area-of-law" class="govuk-link">A service that relates to an area of law</a></h2>
-      <p>
-        You have started or are about to start a legal process and want to find the right local court, tribunal or an administration centre who will help.
-      </p>
-
-      <h2 class="govuk-heading-m"><a href="location-search" class="govuk-link">The name or address or a court or tribunal</a></h2>
-      <p>
-        You want to find contact details of a court or tribunal that you need to contact or visit. This might be because you need to attend a hearing, get an update about a case you are involved in, or serve as a juror.
-      </p>
-
+      <ul class="ctf-options-list">
+    
+        <li class="ctf-options-list-item">
+          <a class="ctf-options-list-item-link" href="area-of-law"role="button">
+            <h2 class="govuk-heading-m govuk-!-margin-2">A service that relates to an area of law</h2>
+            
+            <p class="govuk-body govuk-!-margin-2">You have started or are about to start a legal process and want to find the right local court, tribunal or an administration centre who will help.
+            </p>
+          </a>
+        </li>
+    
+        <li class="ctf-options-list-item">
+          <a class="ctf-options-list-item-link" href="location-search" role="button">
+            <h2 class="govuk-heading-m govuk-!-margin-2">The name or address of a court or tribunal</h2>
+            
+              <p class="govuk-body govuk-!-margin-2">You want to find contact details of a court or tribunal that you need to contact or visit. This might be because you need to attend a hearing, get an update about a case you are involved in, or serve as a juror.
+              </p>  
+          </a>
+        </li>
+      </ul>
       {{ govukInsetText({
         text: "If you have a letter, form or online message, that may help and if you have a letter requesting attendance that may help."
       }) }}
 
-    </div>
+
+    
+    <hr class="govuk-section-break govuk-section-break--visible">
   </div>
+</div>
 
-  <hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-
-{% from "govuk/components/details/macro.njk" import govukDetails %}
+</br>
 
 {{ govukDetails({
 summaryText: "If you are having trouble completing this form, get in touch.",
