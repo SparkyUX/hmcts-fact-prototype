@@ -41,6 +41,31 @@ GOV.UK Prototype Kit
 <p></p>
   <p class="govuk-body-s govuk-!-font-weight-bold">Court Location Code: 305 | DX: 98010 Reading 6</p>
 
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--visible">
+    <p></p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-s">Contents</h2>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Visit or contact</h2>
+    <h3 class="govuk-heading-s">Opening times</h3>
+    <p>Court Building: Monday - Friday, 9am to 5pm (except public holidays)</p>
+    <p>Telephone: Monday - Friday, 9am - 5pm (except public holidays)</p>
+
+    {{ govukInsetText({
+      text: "Court counter services are by appointment only. You will not be able to deliver an application unless you make an appointment on 01189 870 500"
+    }) }}
+
+  </div>
+</div>
 
 
 {{releaseVersion | log }}
