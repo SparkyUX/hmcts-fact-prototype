@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% block pageTitle %}
 GOV.UK Prototype Kit
 {% endblock %}
@@ -10,10 +11,10 @@ GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Search for a service that relates to an area of law</h1>
+      <h1 class="govuk-heading-xl">Search for the location of a court or tribunal</h1>
 
-      <p class="govuk-body-l">
-        This will help identify a court, tribunal, or service centre near where you live that provides the type of services you are looking for.
+      <p class="govuk-body">
+        If you know the name of the court you are looking for, or part of the address then this will help you.
       </p>
 {{releaseVersion | log }}
 
@@ -21,20 +22,26 @@ GOV.UK Prototype Kit
 
 {{ govukInput({
 label: {
-text: "Enter a postcode"
+text: "Enter a court name, town or city, or postcode"
 },
 classes: "govuk-input--width-10",
+hint: {
+    text: "Must be between 6 and 8 digits long"
+  },
 id: "address-postcode",
 name: "address-postcode",
 autocomplete: "postal-code"
 }) }}
 
-<a href="area-of-law-2" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-  Next
-  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-  </svg>
-</a>
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+{{ govukInsetText({
+  text: "Before you start, if you have a letter or email requesting attendance then that may help."
+}) }}
+
+<p>If you are a member of staff at a court or service centre, you can search here using the Court Location Code.</p>
 
 <hr class="govuk-section-break govuk-section-break--visible">
 <p></p>

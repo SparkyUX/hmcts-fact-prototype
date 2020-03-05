@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block pageTitle %}
 GOV.UK Prototype Kit
 {% endblock %}
@@ -10,11 +9,13 @@ GOV.UK Prototype Kit
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Search for a service that relates to an area of law</h1>
+      <h1 class="govuk-heading-xl">Search results for location</h1>
 
       <p class="govuk-body-l">
-        This will help identify a court, tribunal, or service centre near where you live that provides the type of services you are looking for.
-      </p>
+        Location search: Reading </p>
+
+        <p class="govuk-body-m">
+          7 results </p>  
 {{releaseVersion | log }}
 
 
