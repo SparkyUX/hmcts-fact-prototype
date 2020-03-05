@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="location-search">Location</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="location-search">Search Results</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Reading County Court and Family Court</li>
+  </ol>
+</div>
+
+<p></p>
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds-from-desktop">
+
+  <h1 class="govuk-heading-xl">Reading County and Family Court</h1>
+  <p class="govuk-body-m">
+    Types of cases heard: Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims.</p>
+    <p class="govuk-body-m" >A County Court deals with civil law cases - so disputes between two parties for example over a property,  over a contract or over a personal injury. It does not handle criminal cases. Most matters are decided by a district judge or a circuit judge. There are no juries.</p>
+<p class="govuk-body-m">A Family Court helps families avoid disputes or if they should arise to resolve those problems quickly. </p>
+
+</div>
+<div class="govuk-grid-column-one-third-from-desktop">
+  <p>govuk-grid-column-one-third-from-desktop</p>
+
+
+
+{{releaseVersion | log }}
+
+</div>
+
+{% endblock %}
