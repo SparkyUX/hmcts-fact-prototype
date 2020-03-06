@@ -5,6 +5,20 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="index">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="location-search">Location</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Search Results</li>
+  </ol>
+</div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -15,37 +29,60 @@ GOV.UK Prototype Kit
         Location search: Reading </p>
 
         <p class="govuk-body-m">
-          7 results </p>  
+          7 results </p>
+
 {{releaseVersion | log }}
 
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading County and Family Court</a></h2>
+<p>
+  Cases heard: Adoption, Bankruptcy, Children, Divorce hearings, Domestic Violence, Forced Marriage and FGM, High Court District Registry, Housing Possession, Money Claims
+</p>
 
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Magistrates' and Family Court</a></h2>
+<p>
+  Cases heard: Children, Crime, Domestic Violence, Social Security
+</p>
 
-{{ govukInput({
-label: {
-text: "Enter a postcode"
-},
-classes: "govuk-input--width-10",
-id: "address-postcode",
-name: "address-postcode",
-autocomplete: "postal-code"
-}) }}
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Crown Court</a></h2>
+<p>
+  Cases heard: Crime
+</p>
 
-<a href="area-of-law-2" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-  Next
-  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-  </svg>
-</a>
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Tribunal Hearing Centre</a></h2>
+<p>
+  Cases heard: Employment
+</p>
+
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">East Berkshire Magistrates' Court</a></h2>
+<p>
+Cases heard: Crime
+</p>
+
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">High Wycombe County Court and Family Court</a></h2>
+<p>
+  Cases heard: Housing Possession, Money Claims, Divorce, Adoption
+</p>
+
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Slough County and Family Court</a></h2>
+<p>
+  Cases heard: Bankruptcy, Children, Divorce hearings, Domestic Violence, Housing Possession, Money Claims
+</p>
 
 <hr class="govuk-section-break govuk-section-break--visible">
 <p></p>
 
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-
-{{ govukDetails({
-summaryText: "If you are having trouble completing this form, get in touch.",
-text: "Contact details here"
-}) }}
 
 
   </div>
