@@ -8,94 +8,178 @@ GOV.UK Prototype Kit
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Choose what best describes what you need</h1>
+    <h1 class="govuk-heading-xl">Choose what best describes what you need</h1>
 
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Adoption</a></h2>
-      <p>
-        Do you have a hearing or need to submit legal documents to a court about an application to adopt a child
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Bankruptcy</a></h2>
-      <p>
-        If you need to have a hearing or need to submit legal documents to a court about a bankruptcy
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Children</a></h2>
-      <p>
-        Child contact issues and disputes over maintenance
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Civil Partnership</a></h2>
-      <p>
-        Ending a civil partnership
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Crime</a></h2>
-      <p>
-        Being accused of a crime, being a witness, or you were a victim
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Divorce</a></h2>
-      <p>
-        Ending a marriage and issues around children, money, and property
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Domestic Violence</a></h2>
-      <p>
-      Violence in the home which occurs in relationship, between family members, such as adolescents to parental violence and abuse
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Employment</a></h2>
-      <p>
-        Tribunals related to workplace disputes including pay, redundancy, and discrimination
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Forced Marriage and FGM</a></h2>
-      <p>
-        Being made to marry against your will or undergo female genital mutilation against your will
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">High Court Registry</a></h2>
-      <p>
-        Find High Courts that deal with the most serious and high profile cases in criminal and civil law
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Housing Possession</a></h2>
-      <p>
-        Evictions and rental disputes
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Immigration</a></h2>
-      <p>
-        Seeking aslyum, right to live in the UK, and appealing deportation
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Money Claims</a></h2>
-      <p>
-      Small claims, consumer, negligence, and personal injury claims. You may have been directed to Find a court or tribunal through a claims form
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Probate and wills</a></h2>
-      <p>
-      Settlement and disputes over a deceased person's estate
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Social Security</a></h2>
-      <p>
-        Problems with benefits, entitlement, assessment, and decision
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Tax</a></h2>
-      <p>
-        Appealing a tax decision
-      </p>
-      <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Your nearest courts and tribunals</a></h2>
-      <p>
-        You just want a list of courts and tribunals that are nearest to where you live, or to a specific postcode
-      </p>
+    <ul class="ctf-options-list">
+  
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="area-of-law" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Adoption</h2>
+          
+          <p class="govuk-body govuk-!-margin-2">You have a hearing or need to submit legal documents to a court about an application to adopt a child</p>
+        </a>
+      </li>
+  
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Bankruptcy</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            If you need to have a hearing or need to submit legal documents to a court about a bankruptcy
+          </p>  
+        </a>
+      </li>
+  
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Children</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Child contact issues and disputes over maintenance
+          </p>  
+        </a>
+      </li>
 
-      {{ govukInsetText({
-        text: "This will help identify a court, tribunal, or service centre near to where you live that provides the type of services you are looking for."
-      }) }}
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Civil Partnership</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Ending a civil partnership
+          </p>  
+        </a>
+      </li>
 
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Crime</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Being accused of a crime, being a witness, or you were a victim
+          </p>  
+        </a>
+      </li>
 
-{% from "govuk/components/details/macro.njk" import govukDetails %}
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Divorce</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Ending a marriage and issues around children, money, and property
+          </p>  
+        </a>
+      </li>
 
-{{ govukDetails({
-summaryText: "If you are having trouble completing this form, get in touch.",
-text: "Contact details here"
-}) }}
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Domestic Violence</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Violence in the home which occurs in relationship, between family members, such as adolescents to parental violence and abuse
+          </p>  
+        </a>
+      </li>
+
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Employment</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Tribunals related to workplace disputes including pay, redundancy, and discrimination
+          </p>  
+        </a>
+      </li>
+
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Forced Marriage and FGM</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Being made to marry against your will or undergo female genital mutilation against your will
+          </p>  
+        </a>
+      </li>
+
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">High Court Registry</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Find High Courts that deal with the most serious and high profile cases in criminal and civil law
+          </p>  
+        </a>
+      </li>
+
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Housing Possession</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Evictions and rental disputes
+          </p>  
+        </a>
+      </li>
+
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Immigration</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Seeking aslyum, right to live in the UK, and appealing deportation
+          </p>  
+        </a>
+      </li>
+    
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Money Claims</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Small claims, consumer, negligence, and personal injury claims. You may have been directed to Find a court or tribunal through a claims form
+          </p>  
+        </a>
+      </li>
+    
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Probate and Wills</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Settlement and disputes over a deceased person's estate
+          </p>  
+        </a>
+      </li>
+    
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Social Security</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Problems with benefits, entitlement, assessment, and decision
+          </p>  
+        </a>
+      </li>
+    
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Tax</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            Appealing a tax decision
+          </p>  
+        </a>
+      </li>
+    
+      <li class="ctf-options-list-item">
+        <a class="ctf-options-list-item-link" href="location-search" role="button">
+          <h2 class="govuk-heading-m govuk-!-margin-2">Your nearest courts and tribunals</h2>      
+          <p class="govuk-body govuk-!-margin-2">
+            You just want a list of courts and tribunals that are nearest to where you live, or to a specific postcode
+          </p>  
+        </a>
+      </li>
+    </ul>
 
 
+    {{ govukInsetText({
+      text: "This will help identify a court, tribunal, or service centre near to where you live that provides the type of services you are looking for."
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+
+    {{ govukDetails({
+    summaryText: "If you are having trouble completing this form, get in touch.",
+    text: "Contact details here"
+    }) }}
   </div>
+</div>
 {% endblock %}
