@@ -17,12 +17,22 @@
   html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
 
-<!-- JHS added in Back Link and removed breadcrumbs -->
-
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
 {{ govukBackLink({
   text: "Back",
   href: "#"
 }) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home"
+    }
+  ]
+}) }}
+{% endif %}
 
 {% endblock %}
 
@@ -35,7 +45,7 @@
         {% if serviceName %} {{ serviceName }} {% endif %}
       </h1>
 
-      <p>This service is to help you find a court location that you need to:</p>
+      <p class="govuk-body-m">This service is to help you find a court location that you need to:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>Attend for a case hearing</li>
@@ -47,24 +57,21 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "select-search-type",
+        href: "select-search-option",
         classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
         isStartButton: true
       }) }}
 
       <h2 class="govuk-heading-m">Before you start</h2>
 
-      <p>If you have a letter, form or online message about a legal process you are involved in that may help, and if you have a letter requesting attendance at a court or tribunal that may help.</p>
-
+      <p class="govuk-body-m">If you have a letter, form or online message about a legal process you are involved in that may help, and if you have a letter requesting attendance at a court or tribunal that may help.</p>
 
 
       {{ govukInsetText({
         text: "This guide is also available in Welsh (Cymraeg)."
       }) }}
 
-      <p>You can find information on courts in England and Wales and some non-devolved tribunals in Scotland and Northern Ireland.</p>
-
-      <p>You'll be able to find the following details about the court or tribunal:</p>
+      <p class="govuk-body-m">You'll be able to find the following details about the court or tribunal:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>Address</li>
@@ -76,13 +83,9 @@
         <li>disabled access to the building</li>
       </ul>
 
-      {{ govukInsetText({
-        text: "Use a search engine if you can't find the tribunal you're looking for using this service"
-      }) }}
-
       <h2 class="govuk-heading-m">Northern Ireland and Scotland</h2>
 
-      <p>You may have to contact the:</p>
+      <p class="govuk-body-m">You may have to contact the:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li><a href="https://www.justice-ni.gov.uk/topics/courts-and-tribunals" class="govuk-link">Northern Ireland Courts and Tribunals Service</a> for courts and some tribunals in Northern Ireland</li>
@@ -91,10 +94,10 @@
 
 
 
-<h2 class="govuk-heading-m">Explore the topic</h2>
+    <h2 class="govuk-heading-m">Explore the topic</h2>
 
-<p>Court claims, debt and bankruptcy</p>
-    </div>
-
+    <p class="govuk-body-m"><a href="#">Court claims</a>, <a href="#">debt</a> and <a href="#">bankruptcy</a></p>
+  </div>
+</div>
 
 {% endblock %}
