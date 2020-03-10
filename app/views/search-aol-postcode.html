@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block pageTitle %}
+Find a court or tribunal - postcode search
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<!-- JHS added in Back Link and removed breadcrumbs -->
+
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Search for a service that relates to an area of law</h1>
+
+      <p class="govuk-body-m">
+        This will help identify a court, tribunal, or service centre near where you live that provides the type of services you are looking for.
+      </p>
+
+      {{ govukInput({
+      label: {
+      text: "Enter a postcode"
+      },
+      hint: {         
+        text: "For example, EH1 9SP"
+      },
+      classes: "govuk-input--width-10",
+      id: "address-postcode",
+      name: "address-postcode",
+
+      autocomplete: "postal-code"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue",
+        href: "select-aol"
+      }) }}
+
+
+
+<hr class="govuk-section-break govuk-section-break--visible">
+<p></p>
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{{ govukDetails({
+summaryText: "If you are having trouble completing this form, get in touch.",
+text: "Contact details here"
+}) }}
+
+
+  </div>
+{% endblock %}

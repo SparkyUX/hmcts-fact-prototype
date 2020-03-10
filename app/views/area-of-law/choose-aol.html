@@ -1,32 +1,60 @@
 {% extends "layout.html" %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 {% block pageTitle %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-GOV.UK Prototype Kit
+  Find a court or tribunal - area of law selection
 {% endblock %}
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "../index"
+    },
+    {
+      text: "Choose a search option",
+      href: "../choose-search-option"
+    },
+    {
+      text: "Search by postcode ",
+      href: "search-aol-postcode"
+    },
+    {
+      text: "Choose an area of the law"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
 
 {% block content %}
 
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="index">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="area-of-law">Enter postcode</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Select area of law</li>
-  </ol>
-</div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Choose what best describes what you need</h1>
+    <h1 class="govuk-heading-xl">
+      Choose what best describes what you need
+    </h1>
+    <p class="govuk-body-m">
+      This will help identify a court, tribunal, or service centre near to where you live that provides the type of services you are looking for.
+    </p>
 
     <ul class="ctf-options-list">
   
@@ -183,12 +211,6 @@ GOV.UK Prototype Kit
       </li>
     </ul>
 
-
-    {{ govukInsetText({
-      text: "This will help identify a court, tribunal, or service centre near to where you live that provides the type of services you are looking for."
-    }) }}
-
-    <hr class="govuk-section-break govuk-section-break--visible">
     </br>
 
     {{ govukDetails({

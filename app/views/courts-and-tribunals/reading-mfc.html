@@ -1,60 +1,42 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Reading CCFGC
+Find a court or tribunal - Reading Magistrates' Court
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<!-- JHS added in Back Link and removed breadcrumbs -->
+
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+
 {% endblock %}
 
 {% block content %}
-<!-- JHS 060320 change breadcrumbs to nunjucks 
 
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="index">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="location-search">Location</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="location-search">Search Results</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Reading County Court and Family Court</li>
-  </ol>
-</div>
--->
-
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "index"
-    },
-    {
-      text: "Choose a search option",
-      href: "select-search"
-    },
-    {
-      text: "Location search",
-      href: "location-search"
-    },
-    {
-      text: "Reading County and Family Court"
-    }
-  ]
-}) }}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Reading County and Family Court</h1>
+    <h1 class="govuk-heading-xl">Reading Magistrates&#39; and Family Court</h1>
     <p class="govuk-body-m">
-      Types of cases heard: Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims.
+      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Children, Crime, Domestic violence, Social Security
     </p>
     <p class="govuk-body-m" >
-      A County Court deals with civil law cases - so disputes between two parties for example over a property,  over a contract or over a personal injury. It does not handle criminal cases. Most matters are decided by a district judge or a circuit judge. There are no juries.
+      A Magistrates’ Court deals with less serious criminal offences such as minor theft, criminal damage, public disorder and motoring offences. There is no jury and often no judge but instead the case is heard by a panel of three trained up members of the local community that are called magistrates. Or a case can be heard by a district judge.
+    </p>
+    <p class="govuk-body-m">
+      It also hears preliminary hearings for more serious criminal offences.
     </p>
     <p class="govuk-body-m">
       A Family Court helps families avoid disputes or if they should arise to resolve those problems quickly. 
@@ -82,10 +64,11 @@ Reading CCFGC
     Opening times
   </h3>
   <p class="govuk-body-m">
-    Court Building: Monday - Friday, 9am to 5pm (except public holidays)
-  </p>
-  <p class="govuk-body-m">
-    Telephone: Monday - Friday, 9am - 5pm (except public holidays)
+    Court Building: Monday to Friday, 9am to 5pm (except public holidays)
+  </br>
+    Telephones: Monday to Thursday 9am to 5pm, 9am - 4:30pm Friday
+  </br>
+    Counter Services: Monday to Thursday 9am to 5pm, 9am - 4:30pm Friday
   </p>
 
   {{ govukInsetText({
@@ -94,7 +77,7 @@ Reading CCFGC
 
   <h3 class="govuk-heading-s">Address</h3>
   <p class="govuk-body-m">
-    You can visit and write to us at the following address:</br>Hearing Centre</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
+    You can visit and write to us at the following address:</br>Reading Magistrates</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
   </p>
 
   <h3 class="govuk-heading-s">Telephone</h3>
