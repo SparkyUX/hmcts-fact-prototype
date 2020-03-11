@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% block pageTitle %}
-Find a court or tribunal - postcode search
+Search for contact details - Find a court or tribunal - GOV.UK
 {% endblock %}
-
 {% block beforeContent %}
 
   {{ govukPhaseBanner({
@@ -31,7 +33,7 @@ Find a court or tribunal - postcode search
       href: "../choose-search-option"
     },
     {
-      text: "Search for locations near you"
+      text: "Search for contact details"
     }
   ]
 }) }}
@@ -40,33 +42,42 @@ Find a court or tribunal - postcode search
 {% endblock %}
 {% block content %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Search for a court, tribunal or service centre near you</h1>
+    <h1 class="govuk-heading-xl">Search for the contact details for a court or tribunal</h1>
 
     <p class="govuk-body-m">
-      This will help identify a court or tribunal or service centre near where you live that provides the type of services you are looking for.
+      If you are looking for a specific court and  know what the court is called or part of the address then this will help you.
     </p>
+
 
     {{ govukInput({
     label: {
-    text: "Enter a postcode"
-    },
-    hint: {         
-      text: "For example, EH1 9SP"
+    text: "Enter a court name, town or city, or postcode"
     },
     classes: "govuk-input--width-10",
-    id: "aol-postcode",
-    name: "aol-postcode",
+    hint: {
+        text: "For example, Courts of Justice"
+      },
+    id: "address-postcode",
+    name: "address-postcode",
     autocomplete: "postal-code"
     }) }}
 
-
     {{ govukButton({
       text: "Continue",
-      href: "/area-of-law/choose-aol"
+      href: "reading"
     }) }}
+
+    {{ govukInsetText({
+      text: "Before you start, if you have a letter or email requesting attendance then that may help."
+    }) }}
+
+    <p class="govuk-body-m">
+      If you are a member of staff at a court or service centre, you can search here using the Court Location Code.
+    </p>
 
     {{ govukDetails({
     summaryText: "If you are having trouble completing this form, get in touch.",
