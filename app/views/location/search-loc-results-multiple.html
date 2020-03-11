@@ -1,89 +1,121 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-GOV.UK Prototype Kit
+Search results - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+  {% else %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "index"
+      },
+      {
+        text: "Choose a search option",
+        href: "../choose-search-option"
+      },
+      {
+        text: "Search for locations",
+        href: "search-location"
+      },
+      {
+        text: "Search results for location"
+      }
+    ]
+  }) }}
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="index">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="select-search">Select a search option</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="location-search">Location</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Search Results</li>
-  </ol>
-</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Search results for location</h1>
 
-      <h1 class="govuk-heading-xl">Search results for location</h1>
+    <p class="govuk-body-m">
+      7 results
+    </p>
 
-      <p class="govuk-body-l">
-        Location search: Reading </p>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-ccfc" class="govuk-link" name="Reading County Court and Family Court">
+      Reading County Court and Family Court
+    </a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Adoption, Bankruptcy, Children, Crime, Divorce, Domestic Violence, Employment, Forced Marrige and FGM, High Court District Registry, Housing Possession, Money Claims, Social Security
+    </p>
 
-        <p class="govuk-body-m">
-          7 results </p>
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-thc" class="govuk-link" name="Reading Magistrates' and Family Court">
+      Reading Magistrates' and Family Court
+    </a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Children, Crime, Divorce, Domestic Violence, Social Security
+    </p>
 
-{{releaseVersion | log }}
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-cc" class="govuk-link">
+      Reading Crown Court
+    </a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Crime
+    </p>
 
-<h2 class="govuk-heading-m"><a href="CCFC" class="govuk-link">Reading County Court and Family Court</a></h2>
-<p>
-  Cases heard: Adoption, Bankruptcy, Children, Divorce hearings, Domestic Violence, Forced Marriage and FGM, High Court District Registry, Housing Possession, Money Claims
-</p>
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-thc" class="govuk-link" name="Reading Tribunal Hearing Centre">
+      Reading Tribunal Hearing Centre
+    </a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Employment
+    </p>
 
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Magistrates' and Family Court</a></h2>
-<p>
-  Cases heard: Children, Crime, Domestic Violence, Social Security
-</p>
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-thc" class="govuk-link">
+      East Berskshire Magistrates' Court
+    </a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Crime
+    </p>
 
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Crown Court</a></h2>
-<p>
-  Cases heard: Crime
-</p>
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="#" class="govuk-link">
+      High Wycombe County Court and Family Court</a></h2>
+    <p class="govuk-body-m">
+      Cases heard: Housing Possession, Money Claims, Divorce, Adoption
+    </p>
 
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Reading Tribunal Hearing Centre</a></h2>
-<p>
-  Cases heard: Employment
-</p>
-
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">East Berkshire Magistrates' Court</a></h2>
-<p>
-Cases heard: Crime
-</p>
-
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">High Wycombe County Court and Family Court</a></h2>
-<p>
-  Cases heard: Housing Possession, Money Claims, Divorce, Adoption
-</p>
-
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-<h2 class="govuk-heading-m"><a href="#" class="govuk-link">Slough County and Family Court</a></h2>
-<p>
-  Cases heard: Bankruptcy, Children, Divorce hearings, Domestic Violence, Housing Possession, Money Claims
-</p>
-
-<hr class="govuk-section-break govuk-section-break--visible">
-<p></p>
-
-
+    <hr class="govuk-section-break govuk-section-break--visible">
+    </br>
+    <h2 class="govuk-heading-m"><a href="#" class="govuk-link">
+      Slough County and Family Court
+    </a></h2>
+    <p>
+      Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
+    </p>
+    <hr class="govuk-section-break govuk-section-break--visible">
 
   </div>
+
+ </div>
 {% endblock %}
