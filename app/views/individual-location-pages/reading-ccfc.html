@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Reading CCFGC
+Reading County Court and Family Court - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +32,7 @@ Reading CCFGC
       href: "#"
     },
     {
-      text: "Reading County and Family Court"
+      text: "Reading County Court and Family Court"
     }
   ]
 }) }}
@@ -46,9 +46,9 @@ Reading CCFGC
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Reading County and Family Court</h1>
+    <h1 class="govuk-heading-xl">Reading County Court and Family Court</h1>
     <p class="govuk-body-m">
-      Types of cases heard: Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims.
+      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims
     </p>
     <p class="govuk-body-m" >
       A County Court deals with civil law cases - so disputes between two parties for example over a property,  over a contract or over a personal injury. It does not handle criminal cases. Most matters are decided by a district judge or a circuit judge. There are no juries.
@@ -61,7 +61,7 @@ Reading CCFGC
 
   <div class="govuk-grid-column-one-third">
 
-    <img src="/public/images/reading-county.jpeg" alt="Front view of Reading County Court and Family Court">
+    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
     <p class="govuk-body-s">Reading County and Family Court</p>  
   </div>
 
@@ -91,20 +91,29 @@ Reading CCFGC
 
   <h3 class="govuk-heading-s">Address</h3>
   <p class="govuk-body-m">
-    You can visit and write to us at the following address:</br>Hearing Centre</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
+    You can visit and write to us at the following address:</br>Hearing Centre</br>160 - 163 Friar Street</br>Reading</br>RG1 1HE
   </p>
 
-  <h3 class="govuk-heading-s">Telephone</h3>
-  <p class="govuk-body-m">Enquiries: 01189 870 500</p>
+<p class="govuk-link"><a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Maps and directions</a></p> 
 
-  <h3 class="govuk-heading-s">General email</h3>
+  <h3 class="govuk-heading-s">
+    Telephone
+  </h3>
+  <p class="govuk-body-m">
+    Enquiries: 01189 870 500
+  </p>
+
+  <h3 class="govuk-heading-s">
+    General emails
+  </h3>
   <p class="govuk-body-m">
     Enquires: enquiries.reading.countycourt@justice.gov.uk
   </p>
   <p class="govuk-body-m">
     Listings: hearings.reading.countycourt@justice.gov.uk
   </p>
-  <h3 class="govuk-heading-s">Service email</h3>
+  <h3 class="govuk-heading-s">
+    Service emails</h3>
   <p class="govuk-body-m">
     Court of protection: courtofprotection.reading.countycourts@justice.gov.uk
   </p>
@@ -245,47 +254,50 @@ Reading CCFGC
 
 {% endset -%}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-{{ govukTabs({
-  items: [
-    {
-      label: "Visit or contact us",
-      id: "visit-or-contact-us",
-      panel: {
-        html: visitOrContactUsHtml
-      }
-    },
-    {
-      label: "Facilities",
-      id: "facilities",
-      panel: {
-        html: facilitiesHtml
-      }
-    },
-    {
-      label: "Useful links",
-      id: "useful-links",
-      panel: {
-        html: usefulLinksHtml
-      }
-    },
-    {
-      label: "Online services",
-      id: "online-services",
-      panel: {
-        html: onlineServicesHtml
-      }
-    },
-    {
-      label: "Information for staff",
-      id: "information-for-staff",
-      panel: {
-        html: informationForStaffHtml
-      }
-    }
-  ]
-}) }}
-
+    {{ govukTabs({
+      items: [
+        {
+          label: "Visit or contact us",
+          id: "visit-or-contact-us",
+          panel: {
+            html: visitOrContactUsHtml
+          }
+        },
+        {
+          label: "Facilities",
+          id: "facilities",
+          panel: {
+            html: facilitiesHtml
+          }
+        },
+        {
+          label: "Useful links",
+          id: "useful-links",
+          panel: {
+            html: usefulLinksHtml
+          }
+        },
+        {
+          label: "Online services",
+          id: "online-services",
+          panel: {
+            html: onlineServicesHtml
+          }
+        },
+        {
+          label: "Information for staff",
+          id: "information-for-staff",
+          panel: {
+            html: informationForStaffHtml
+          }
+        }
+      ]
+    }) }}
+  </div>
 </div>
+
 
 {% endblock %}

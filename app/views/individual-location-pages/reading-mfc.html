@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Find a court or tribunal - Reading Magistrates' Court
+Reading Magistrates' Court and Family Court - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,11 +14,29 @@ Find a court or tribunal - Reading Magistrates' Court
 }) }}
 
 <!-- JHS added in Back Link and removed breadcrumbs -->
-
+{% if backLinkRequired %}
 {{ govukBackLink({
   text: "Back",
   href: "#"
 }) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Previous page",
+      href: "#"
+    },
+    {
+      text: "Reading Magistrates' Court and Family Court"
+    }
+  ]
+}) }}
+{% endif %}
 
 {% endblock %}
 
@@ -28,14 +46,14 @@ Find a court or tribunal - Reading Magistrates' Court
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Reading Magistrates&#39; and Family Court</h1>
+    <h1 class="govuk-heading-xl">Reading Magistrates' Court and Family Court</h1>
     <p class="govuk-body-m">
-      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Children, Crime, Domestic violence, Social Security
+      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Children, Crime, Domestic violence, Social security
     </p>
     <p class="govuk-body-m" >
       A Magistrates’ Court deals with less serious criminal offences such as minor theft, criminal damage, public disorder and motoring offences. There is no jury and often no judge but instead the case is heard by a panel of three trained up members of the local community that are called magistrates. Or a case can be heard by a district judge.
     </p>
-    <p class="govuk-body-m">
+    <p class="govuk-body-m" >
       It also hears preliminary hearings for more serious criminal offences.
     </p>
     <p class="govuk-body-m">
@@ -46,8 +64,8 @@ Find a court or tribunal - Reading Magistrates' Court
 
   <div class="govuk-grid-column-one-third">
 
-    <img src="/public/images/reading-county.jpeg" alt="Front view of Reading County Court and Family Court">
-    <p class="govuk-body-s">Reading County and Family Court</p>  
+    <img src="/public/images/reading-mfc.jpg" alt="Front view of Reading Magistrates' Court and Family Court">
+    <p class="govuk-body-s">Reading Magistrates' Court and Family Court</p>  
   </div>
 
 </div>
@@ -64,11 +82,10 @@ Find a court or tribunal - Reading Magistrates' Court
     Opening times
   </h3>
   <p class="govuk-body-m">
-    Court Building: Monday to Friday, 9am to 5pm (except public holidays)
-  </br>
-    Telephones: Monday to Thursday 9am to 5pm, 9am - 4:30pm Friday
-  </br>
-    Counter Services: Monday to Thursday 9am to 5pm, 9am - 4:30pm Friday
+    Court Building: Monday - Friday, 9am to 5pm (except public holidays)
+  </p>
+  <p class="govuk-body-m">
+    Telephone: Monday - Friday, 9am - 5pm (except public holidays)
   </p>
 
   {{ govukInsetText({
@@ -77,28 +94,43 @@ Find a court or tribunal - Reading Magistrates' Court
 
   <h3 class="govuk-heading-s">Address</h3>
   <p class="govuk-body-m">
-    You can visit and write to us at the following address:</br>Reading Magistrates</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
+    You can visit and write to us at the following address:</br>Reading Magistrates' and Family Court</br>Castle Street</br>Reading</br>RG1 7TQ
   </p>
 
-  <h3 class="govuk-heading-s">Telephone</h3>
-  <p class="govuk-body-m">Enquiries: 01189 870 500</p>
+<p class="govuk-link"><a href="https://maps.google.com/maps?q=51.4533423491703,-0.975741765753178">Maps and directions</a></p> 
 
-  <h3 class="govuk-heading-s">General email</h3>
+  <h3 class="govuk-heading-s">
+    Telephone
+  </h3>
   <p class="govuk-body-m">
-    Enquires: enquiries.reading.countycourt@justice.gov.uk
+    Enquiries: 01189 870 500
   </p>
+
+  <h3 class="govuk-heading-s">
+    Email
+  </h3>
+
   <p class="govuk-body-m">
-    Listings: hearings.reading.countycourt@justice.gov.uk
+    Enquires: <a href="mailto:TV-BerkshireMCEng@justice.gov.uk">TV-BerkshireMCEng@justice.gov.uk</a>
+  </p>  
+  <h3 class="govuk-heading-s">
+    Pay a court fine</h3>
+  <p class="govuk-body-m">
+    Fine queries: 01868 853290
+  </br>
+    Pay a fine: 0300 7909901
+  </br>
+    You can also <a href="#">Pay a court fine</a> online  
   </p>
-  <h3 class="govuk-heading-s">Service email</h3>
+  <h3 class="govuk-heading-s">
+    Social Security and support
+  </h3>
   <p class="govuk-body-m">
-    Court of protection: courtofprotection.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Bailiffs: baliffs.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Family queries: family.reading.countycourts@justice.gov.uk
+    Enquiries
+  </br>
+    Social Security and Support: 0300123 1142
+  </br>
+    You can also get online <a href="#">Social Security and Child Support</a>
   </p>
 
 
@@ -165,7 +197,7 @@ Find a court or tribunal - Reading Magistrates' Court
       ],
       [
         {
-          text: "Video hearings"
+          text: "Video Conferencing"
         },
         {
           html: "<p>Court/hearing room video conferencing facilities are available (by prior arrangement).</p><p>Virtual visits may be accommodated by prior arrangement. Client consultation is only available for hearings due to take place at Reading, during the course of the hearing.</p>"
@@ -223,55 +255,56 @@ Find a court or tribunal - Reading Magistrates' Court
   <h2 class="govuk-heading-l">Information for staff</h2>
   
   <p class="govuk-body-m govuk-!-font-weight-bold">
-    Court Location Code:<span class="govuk-body-m"> 305</span>
+    Court Location Code:<span class="govuk-body-m"> 1076</span>
   </p>
   <p class="govuk-body-m govuk-!-font-weight-bold">
-    DX:<span class="govuk-body-m"> 98010 Reading 6</span>
+    DX:<span class="govuk-body-m"> 151160 Reading 24</span>
   </p>
 
 {% endset -%}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-
-{{ govukTabs({
-  items: [
-    {
-      label: "Visit or contact us",
-      id: "visit-or-contact-us",
-      panel: {
-        html: visitOrContactUsHtml
-      }
-    },
-    {
-      label: "Facilities",
-      id: "facilities",
-      panel: {
-        html: facilitiesHtml
-      }
-    },
-    {
-      label: "Useful links",
-      id: "useful-links",
-      panel: {
-        html: usefulLinksHtml
-      }
-    },
-    {
-      label: "Online services",
-      id: "online-services",
-      panel: {
-        html: onlineServicesHtml
-      }
-    },
-    {
-      label: "Information for staff",
-      id: "information-for-staff",
-      panel: {
-        html: informationForStaffHtml
-      }
-    }
-  ]
-}) }}
-
+    {{ govukTabs({
+      items: [
+        {
+          label: "Visit or contact us",
+          id: "visit-or-contact-us",
+          panel: {
+            html: visitOrContactUsHtml
+          }
+        },
+        {
+          label: "Facilities",
+          id: "facilities",
+          panel: {
+            html: facilitiesHtml
+          }
+        },
+        {
+          label: "Useful links",
+          id: "useful-links",
+          panel: {
+            html: usefulLinksHtml
+          }
+        },
+        {
+          label: "Online services",
+          id: "online-services",
+          panel: {
+            html: onlineServicesHtml
+          }
+        },
+        {
+          label: "Information for staff",
+          id: "information-for-staff",
+          panel: {
+            html: informationForStaffHtml
+          }
+        }
+      ]
+    }) }}
+  </div>
 </div>
 
 {% endblock %}

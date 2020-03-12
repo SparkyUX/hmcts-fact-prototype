@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Reading CCFGC
+Reading Tribunal hearing Centre - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,11 +14,29 @@ Reading CCFGC
 }) }}
 
 <!-- JHS added in Back Link and removed breadcrumbs -->
-
+{% if backLinkRequired %}
 {{ govukBackLink({
   text: "Back",
   href: "#"
 }) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Previous page",
+      href: "#"
+    },
+    {
+      text: "Reading Tribunal Hearing Centre"
+    }
+  ]
+}) }}
+{% endif %}
 
 {% endblock %}
 
@@ -28,75 +46,105 @@ Reading CCFGC
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Reading County and Family Court</h1>
+    <h1 class="govuk-heading-xl">Reading Tribunal Hearing Centre</h1>
     <p class="govuk-body-m">
-      Types of cases heard: Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims.
+      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Employment
     </p>
     <p class="govuk-body-m" >
-      A County Court deals with civil law cases - so disputes between two parties for example over a property,  over a contract or over a personal injury. It does not handle criminal cases. Most matters are decided by a district judge or a circuit judge. There are no juries.
+      An tribunal is responsible for hearing claims from people who think someone such as an employer or potential employer has treated them unlawfully.
     </p>
-    <p class="govuk-body-m">
-      A Family Court helps families avoid disputes or if they should arise to resolve those problems quickly. 
+    <p class="govuk-body-m" >
+      Examples of unlawful treatment claims that we may hear include:
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          unfair dismissal
+        </li>
+        <li>
+          discrimination
+        </li>
+        <li>
+          unfair deductions from pay
+        </li>
+      </ul>
     </p>
-
   </div>
-
   <div class="govuk-grid-column-one-third">
 
-    <img src="/public/images/reading-county.jpeg" alt="Front view of Reading County Court and Family Court">
-    <p class="govuk-body-s">Reading County and Family Court</p>  
+    <img src="/public/images/reading-thc.jpg" alt="Front view of Reading Tribunal Hearing Centre">
+    <p class="govuk-body-s">Reading Tribunal Hearing Centre</p>  
   </div>
 
 </div>
-
 <!-- Tabs for content -->
 
 
 {% set visitOrContactUsHtml %}
 
-  <h2 class="govuk-heading-l">
-    Visit or contact us
-  </h2>
-  <h3 class="govuk-heading-s">
-    Opening times
-  </h3>
-  <p class="govuk-body-m">
-    Court Building: Monday - Friday, 9am to 5pm (except public holidays)
-  </p>
-  <p class="govuk-body-m">
-    Telephone: Monday - Friday, 9am - 5pm (except public holidays)
-  </p>
+<h2 class="govuk-heading-l">
+  Visit or contact us
+</h2>
+<h3 class="govuk-heading-s">
+  Opening times
+</h3>
+<p class="govuk-body-m">
+  Court Building: 9am to 5pm, on sitting days only
+</p>
 
-  {{ govukInsetText({
-    text: "Court counter services are by appointment only. You will not be able to deliver an application unless you make an appointment on 01189 870 500"
-  }) }}
+<p class="govuk-body-m">
+  Telephones: 9am to 5pm, on sitting days only
+</p>
 
-  <h3 class="govuk-heading-s">Address</h3>
-  <p class="govuk-body-m">
-    You can visit and write to us at the following address:</br>Hearing Centre</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
-  </p>
+<h3 class="govuk-heading-s">
+  Address to visit
+</h3>
+<p class="govuk-body-m">
+  You can visit us at the following address:</br>2nd Floor</br>30-31 Friar Street</br>Reading</br>RG1 1DX
+</p>
 
-  <h3 class="govuk-heading-s">Telephone</h3>
-  <p class="govuk-body-m">Enquiries: 01189 870 500</p>
+<p class="govuk-body-m">
+  The entrance is on Merchants Place
+</p>
 
-  <h3 class="govuk-heading-s">General email</h3>
-  <p class="govuk-body-m">
-    Enquires: enquiries.reading.countycourt@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Listings: hearings.reading.countycourt@justice.gov.uk
-  </p>
-  <h3 class="govuk-heading-s">Service email</h3>
-  <p class="govuk-body-m">
-    Court of protection: courtofprotection.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Bailiffs: baliffs.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Family queries: family.reading.countycourts@justice.gov.uk
-  </p>
+<p class="govuk-link"><a href="https://maps.google.com/maps?q=51.457050, -0.9732981">
+  Maps and directions</a>
+</p> 
 
+<h3 class="govuk-heading-s">
+Address to write or send documents
+</h3>
+
+<p class="govuk-body-m">
+  You can write to us at the following address. This is the regional administration centre for the area and where all of our case are managed from.
+</p>
+<p class="govuk-body-m">
+  Watford Employment Tribunal
+</br>
+  Radius House
+</br>
+  51 Clarendon Road
+</br>
+  Watford
+</br>
+  WD17 1HP
+</p>
+
+<h3 class="govuk-heading-s">
+  Telephone
+</h3>
+<p class="govuk-body-m">
+  Enquiries: 01923 281750
+</p>
+
+<h3 class="govuk-heading-s">
+  Email
+</h3>
+
+<p class="govuk-body-m">
+  Enquires: <a href="mailto:Watfordet@justice.gov.uk">Watfordet@justice.gov.uk</a>
+</p> 
+<p class="govuk-body-m">
+  We aim to respond within 2 working days
+</p>
 
 {% endset -%}
 
@@ -113,18 +161,10 @@ Reading CCFGC
     rows: [
       [
         {
-          text: "Parking"
-        },
-        {
-          text: "No parking facilities on site. The court is in the town centre near the train and bus stations. There is city centre parking within walking distance"
-        }
-      ],
-      [
-        {
           text: "Access"
         },
         {
-          text: "This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access in to court rooms and hearing rooms."
+          text: "This building is accessible and has toilet facilities for people with disabilities."
         }
       ],
       [
@@ -137,34 +177,18 @@ Reading CCFGC
       ],
       [
         {
-          text: "Hearing loop"
-        },
-        {
-          text: "The building has hearing enhancement facilities available by prior arrangement.  Please contact the Court office by telephone or email if necessary."
-        }
-      ],
-      [
-        {
           text: "Meeting rooms"
         },
         {
-          text: "There are 10 rooms available at this court."
+          text: "Private interview rooms are available"
         }
       ],
       [
         {
-          text: "Children"
+          text: "Refreshments"
         },
         {
-          html: "<p>This Court has a childrens room facility.</p><p>Baby changing facilities are available in the disabled toilets on the fourth floor</p>"
-        }
-      ],
-      [
-        {
-          text: "Video hearings"
-        },
-        {
-          html: "<p>Court/hearing room video conferencing facilities are available (by prior arrangement).</p><p>Virtual visits may be accommodated by prior arrangement. Client consultation is only available for hearings due to take place at Reading, during the course of the hearing.</p>"
+          text: "Refreshments are available"
         }
       ]
     ]
@@ -217,57 +241,56 @@ Reading CCFGC
 
 {% set informationForStaffHtml %}
   <h2 class="govuk-heading-l">Information for staff</h2>
-  
+
   <p class="govuk-body-m govuk-!-font-weight-bold">
-    Court Location Code:<span class="govuk-body-m"> 305</span>
-  </p>
-  <p class="govuk-body-m govuk-!-font-weight-bold">
-    DX:<span class="govuk-body-m"> 98010 Reading 6</span>
+    DX:<span class="govuk-body-m"> 155650 Watford 3</span>
   </p>
 
 {% endset -%}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-{{ govukTabs({
-  items: [
-    {
-      label: "Visit or contact us",
-      id: "visit-or-contact-us",
-      panel: {
-        html: visitOrContactUsHtml
-      }
-    },
-    {
-      label: "Facilities",
-      id: "facilities",
-      panel: {
-        html: facilitiesHtml
-      }
-    },
-    {
-      label: "Useful links",
-      id: "useful-links",
-      panel: {
-        html: usefulLinksHtml
-      }
-    },
-    {
-      label: "Online services",
-      id: "online-services",
-      panel: {
-        html: onlineServicesHtml
-      }
-    },
-    {
-      label: "Information for staff",
-      id: "information-for-staff",
-      panel: {
-        html: informationForStaffHtml
-      }
-    }
-  ]
-}) }}
-
+    {{ govukTabs({
+      items: [
+        {
+          label: "Visit or contact us",
+          id: "visit-or-contact-us",
+          panel: {
+            html: visitOrContactUsHtml
+          }
+        },
+        {
+          label: "Facilities",
+          id: "facilities",
+          panel: {
+            html: facilitiesHtml
+          }
+        },
+        {
+          label: "Useful links",
+          id: "useful-links",
+          panel: {
+            html: usefulLinksHtml
+          }
+        },
+        {
+          label: "Online services",
+          id: "online-services",
+          panel: {
+            html: onlineServicesHtml
+          }
+        },
+        {
+          label: "Information for staff",
+          id: "information-for-staff",
+          panel: {
+            html: informationForStaffHtml
+          }
+        }
+      ]
+    }) }}
+  </div>
 </div>
 
 {% endblock %}
