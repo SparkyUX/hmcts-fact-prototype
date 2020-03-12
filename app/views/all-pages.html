@@ -3,11 +3,6 @@
   All pages in the Prototype - Find a court or tribunal - GOV.UK
 {% endblock %}
 
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
-{% endblock %}
-
 {% block beforeContent %}
 
   {{ govukPhaseBanner({
@@ -21,34 +16,63 @@
 
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        All the pages in the prototype
-      </h1>
+    <h1 class="govuk-heading-xl">
+      All the pages in the prototype
+    </h1>
 
-      <p class="govuk-body-m">
-        This service is designed to help our customers and staff find the information they need about a court or tribunal
-      </p>
-      <p class="govuk-body-m">
-        Use the links below to go to a specific page or start the journey with this big green button</a>
-      </p>
+    <p class="govuk-body-m">
+      This service is designed to help our customers and staff find the information they need about a court or tribunal
+    </p>
+    <p class="govuk-body-m">
+      Use the links below to go to a specific page or start the journey with this big green button</a>
+    </p>
 
-      {{ govukButton({
-        text: "Start now",
-        href: "index",
-        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
-        isStartButton: true
-      }) }}
+    {{ govukButton({
+      text: "Start now",
+      href: "index",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+      isStartButton: true
+    }) }}
 
-      </p>
-      <ul class="govuk-list">
-        <li>The index page - <a class="govuk-link" href="index">Start Page</a></li>
-        <li>Choose the option that best describes what you want to find <a class="govuk-link" href="index">choose-search-option</a></li>
-        <li>Search for a court, tribunal or service centre near you <a class="govuk-link" href="index">search-aol-postcode</a></li>
-      </ul>
+    </p>
 
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="index">Start Page</a></li>
+      <li><a class="govuk-link" href="choose-search-option">Choose the option that best describes what you want to find</a></li>
+
+      <li>Area of law searching</li>
+        <ul style="list-style-type:none;">
+          <li><a class="govuk-link" href="area-of-law/search-aol-postcode">Search for a court, tribunal or service centre near you</a></li>
+          <li><a class="govuk-link" href="area-of-law/choose-aol">Choose what best describes what you need</a></li>
+          <ul style="list-style-type:none;">
+            <li><a class="govuk-link" href="area-of-law/search-aol-results-multiple">Search results for area of law</a> multiple results</li>
+            <li><a class="govuk-link" href="area-of-law/search-aol-results-single">Search results for area of law</a> single result</li>
+            <li><a class="govuk-link" href="area-of-law/search-aol-results-multiple-ccmcc">Search results for area of law</a> multiple results CCMCC</li>
+            <li><a class="govuk-link" href="area-of-law/search-aol-results-multiple-div-centre">Search results for area of law</a> multiple results Divorce Centre</li>
+          </ul>
+        </ul>
+      <li>Location searching</li>
+        <ul style="list-style-type:none;">
+          <li><a class="govuk-link" href="location/search-location">Search for the contact details for a court or tribunal</a></li>
+          <ul style="list-style-type:none;">
+            <li><a class="govuk-link" href="location/search-loc-results-multiple">Search results for location</a> multiple results</li>
+            <li><a class="govuk-link" href="location/search-loc-results-single">Search results for location</a> single results</li>
+          </ul>
+        </ul>
+      <li>Individual location pages</li>
+        <ul style="list-style-type:none;">
+          <li><a class="govuk-link" href="individual-location-pages/bury-st-edmunds-regional-divorce-centre">Bury St Edmunds Regional Divorce Centre</a></li>
+          <li><a class="govuk-link" href="individual-location-pages/salford-ccmcc">County Court Money Claims Centre</a></li>
+          <li><a class="govuk-link" href="individual-location-pages/reading-cc">Reading Crown Court</a></li>
+          <li><a class="govuk-link" href="individual-location-pages/reading-ccfc">Reading County Court and Family Court</a></li>
+          <li><a class="govuk-link" href="individual-location-pages/reading-mfc">Reading Magistrates' Court and Family Court</a></li>
+          <li><a class="govuk-link" href="individual-location-pages/reading-mfc-notice">Reading Magistrates' Court and Family Court</a> with notice displayed</li>
+          <li><a class="govuk-link" href="individual-location-pages/reading-thc">Reading Tribunal Hearing Centre</a></li>
+        </ul>
+    </ul>
   </div>
 </div>
 
