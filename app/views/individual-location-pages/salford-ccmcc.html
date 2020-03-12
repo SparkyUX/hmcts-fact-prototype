@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Reading CCFGC
+County Court Money Claims Centre - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,11 +14,29 @@ Reading CCFGC
 }) }}
 
 <!-- JHS added in Back Link and removed breadcrumbs -->
-
+{% if backLinkRequired %}
 {{ govukBackLink({
   text: "Back",
   href: "#"
 }) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "index"
+    },
+    {
+      text: "Previous page",
+      href: "#"
+    },
+    {
+      text: "County Court Money Claims Centre"
+    }
+  ]
+}) }}
+{% endif %}
 
 {% endblock %}
 
@@ -28,25 +46,17 @@ Reading CCFGC
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Reading County and Family Court</h1>
+    <h1 class="govuk-heading-xl">County Court Money Claims Centre</h1>
     <p class="govuk-body-m">
-      Types of cases heard: Adoption, Bankruptsy, Children, Divorce hearings, Domestic violence, Forced Marriage and FGM, High Court District Registry, Housing possession, Money claims.
+      <span class="govuk-!-font-weight-bold">Types of cases heard:</span> Money Claims
     </p>
     <p class="govuk-body-m" >
-      A County Court deals with civil law cases - so disputes between two parties for example over a property,  over a contract or over a personal injury. It does not handle criminal cases. Most matters are decided by a district judge or a circuit judge. There are no juries.
+      County Court Money Claims Centre (CCMCC) is a central small claims court that has been set up to manage and process all money claims up to £10,000 and the fast track service will cover cases between £10,000 and £25,000.
     </p>
     <p class="govuk-body-m">
-      A Family Court helps families avoid disputes or if they should arise to resolve those problems quickly. 
+      The CCMCC is a national service. Enquires can be made by phone or email. Claims can be made on <a href="#">online</a> or in <a href="#">writing</a>. Your local court is no longer able to accept claims forms.
     </p>
-
   </div>
-
-  <div class="govuk-grid-column-one-third">
-
-    <img src="/public/images/reading-county.jpeg" alt="Front view of Reading County Court and Family Court">
-    <p class="govuk-body-s">Reading County and Family Court</p>  
-  </div>
-
 </div>
 
 <!-- Tabs for content -->
@@ -55,144 +65,74 @@ Reading CCFGC
 {% set visitOrContactUsHtml %}
 
   <h2 class="govuk-heading-l">
-    Visit or contact us
+    Contact us
   </h2>
+
   <h3 class="govuk-heading-s">
     Opening times
   </h3>
   <p class="govuk-body-m">
-    Court Building: Monday - Friday, 9am to 5pm (except public holidays)
-  </p>
-  <p class="govuk-body-m">
-    Telephone: Monday - Friday, 9am - 5pm (except public holidays)
+    Telephone Enquiries: Monday to Friday, 8.30am - 5pm
   </p>
 
-  {{ govukInsetText({
-    text: "Court counter services are by appointment only. You will not be able to deliver an application unless you make an appointment on 01189 870 500"
-  }) }}
-
-  <h3 class="govuk-heading-s">Address</h3>
+  <h3 class="govuk-heading-s">
+    Telephone
+  </h3>
   <p class="govuk-body-m">
-    You can visit and write to us at the following address:</br>Hearing Centre</br>160 - 163</br>Friar Street</br>Reading</br>RG1 1HE
+    Enquiries: 0300 123 1372
   </p>
 
-  <h3 class="govuk-heading-s">Telephone</h3>
-  <p class="govuk-body-m">Enquiries: 01189 870 500</p>
-
-  <h3 class="govuk-heading-s">General email</h3>
+  <h3 class="govuk-heading-s">
+    Email
+  </h3>
   <p class="govuk-body-m">
-    Enquires: enquiries.reading.countycourt@justice.gov.uk
+    Enquires: ccmcccustomerenquiries@justice.gov.uk
   </p>
   <p class="govuk-body-m">
-    Listings: hearings.reading.countycourt@justice.gov.uk
-  </p>
-  <h3 class="govuk-heading-s">Service email</h3>
-  <p class="govuk-body-m">
-    Court of protection: courtofprotection.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Bailiffs: baliffs.reading.countycourts@justice.gov.uk
-  </p>
-  <p class="govuk-body-m">
-    Family queries: family.reading.countycourts@justice.gov.uk
+    Filing and records: ccmcce-filing@justice.gov.uk
   </p>
 
-
-{% endset -%}
-
-{% set facilitiesHtml %}
-  <h2 class="govuk-heading-l">
-    Facilities
-  </h2>
+  <h3 class="govuk-heading-s">
+    Help claiming online
+  </h3>
   <p class="govuk-body-m">
-    If you have a disability and need help coming to a hearing, please contact the court or tribunal to make sure the facilities meet your specific needs or to discuss a reasonable adjustment you need.
-  </p>
-
-  {{ govukTable({
-  firstCellIsHeader: true,
-    rows: [
-      [
-        {
-          text: "Parking"
-        },
-        {
-          text: "No parking facilities on site. The court is in the town centre near the train and bus stations. There is city centre parking within walking distance"
-        }
-      ],
-      [
-        {
-          text: "Access"
-        },
-        {
-          text: "This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access in to court rooms and hearing rooms."
-        }
-      ],
-      [
-        {
-          text: "Assistance dogs"
-        },
-        {
-          text: "Assistance dogs are welcome"
-        }
-      ],
-      [
-        {
-          text: "Hearing loop"
-        },
-        {
-          text: "The building has hearing enhancement facilities available by prior arrangement.  Please contact the Court office by telephone or email if necessary."
-        }
-      ],
-      [
-        {
-          text: "Meeting rooms"
-        },
-        {
-          text: "There are 10 rooms available at this court."
-        }
-      ],
-      [
-        {
-          text: "Children"
-        },
-        {
-          html: "<p>This Court has a childrens room facility.</p><p>Baby changing facilities are available in the disabled toilets on the fourth floor</p>"
-        }
-      ],
-      [
-        {
-          text: "Video hearings"
-        },
-        {
-          html: "<p>Court/hearing room video conferencing facilities are available (by prior arrangement).</p><p>Virtual visits may be accommodated by prior arrangement. Client consultation is only available for hearings due to take place at Reading, during the course of the hearing.</p>"
-        }
-      ]
-    ]
-  }) }}
-
-
-{% endset -%}
-
-{% set usefulLinksHtml %}
-  <h2 class="govuk-heading-l">Useful links</h2>
-  <p class=govuk-body-m> 
-    If you have a disability and need help coming to a hearing, please contact the court or tribunal to make sure the facilities meet your specific needs or to discuss a reasonable adjustment you need.
+    There are two online claim services. The phone number to use depends on which service you need help with.
   </p>
   <p class="govuk-body-m">
-    Lorem ipsum dolor sit amet, <a href="#">security when entering the building</a> consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+    Money Claim Online (MCOL) for fixed sum under £100,000: ccbc@justice.gov.uk
+  </br>
+    Telephone: 0300 123 1057
   </p>
   <p class="govuk-body-m">
-    Proin gravida dolor sit amet lacus accumsan et <a href="#">coming to a court or tribunal.</a>
+    Money Claims for claims under £10,000: moneyclaims@justice.gov.uk
+  </br>
+    Telephone: 0300 123 7050
+  </p>
+
+  <h3 class="govuk-heading-s">
+    Claim by post
+  </h3>
+  <p class="govuk-body-m">
+    Send it with a cheque for your <a href="#">claim fee to the County Court Money Claims Centre.</a>
   </p>
   <p class="govuk-body-m">
-    <a href="#">Find a form</a> viverra justo commodo.
+    County Court Money Claims Centre
+  </br>
+    PO Box 527
+  </br>
+    Salford
+  </br>
+    Greater Manchester
+  </br>
+    M5 0BY
   </p>
+  <h3 class="govuk-heading-s">
+    Processing time
+  </h3>
   <p class="govuk-body-m">
-    Proin sodales pulvinar sic tempor. <a href="#">make a complaint</a> Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+    For details of our processing or reply times please see <a href="#">https://www.gov.uk/guidance/hmcts-civil-business-centres-performance-information</a>.
   </p>
-  <p class="govuk-body-m">
-    Nam fermentum, <a href="#">equality and diversity</a> divnulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.
-  </p>
+
 {% endset -%}
 
 {% set onlineServicesHtml %}
@@ -219,55 +159,44 @@ Reading CCFGC
   <h2 class="govuk-heading-l">Information for staff</h2>
   
   <p class="govuk-body-m govuk-!-font-weight-bold">
-    Court Location Code:<span class="govuk-body-m"> 305</span>
+    Court Location Code:<span class="govuk-body-m"> 1076</span>
   </p>
   <p class="govuk-body-m govuk-!-font-weight-bold">
-    DX:<span class="govuk-body-m"> 98010 Reading 6</span>
+    DX:<span class="govuk-body-m"> 703634 Salford 5</span>
   </p>
 
 {% endset -%}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-{{ govukTabs({
-  items: [
-    {
-      label: "Visit or contact us",
-      id: "visit-or-contact-us",
-      panel: {
-        html: visitOrContactUsHtml
-      }
-    },
-    {
-      label: "Facilities",
-      id: "facilities",
-      panel: {
-        html: facilitiesHtml
-      }
-    },
-    {
-      label: "Useful links",
-      id: "useful-links",
-      panel: {
-        html: usefulLinksHtml
-      }
-    },
-    {
-      label: "Online services",
-      id: "online-services",
-      panel: {
-        html: onlineServicesHtml
-      }
-    },
-    {
-      label: "Information for staff",
-      id: "information-for-staff",
-      panel: {
-        html: informationForStaffHtml
-      }
-    }
-  ]
-}) }}
-
+    {{ govukTabs({
+      items: [
+        {
+          label: "Visit or contact us",
+          id: "visit-or-contact-us",
+          panel: {
+            html: visitOrContactUsHtml
+          }
+        },
+        {
+          label: "Online services",
+          id: "online-services",
+          panel: {
+            html: onlineServicesHtml
+          }
+        },
+        {
+          label: "Information for staff",
+          id: "information-for-staff",
+          panel: {
+            html: informationForStaffHtml
+          }
+        }
+      ]
+    }) }}
+  </div>
 </div>
+
 
 {% endblock %}

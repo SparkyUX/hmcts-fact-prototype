@@ -31,3 +31,8 @@ $govuk-assets-path: '/govuk/assets/';
 .ctf-options-list-item a.ctf-options-list-item-link:active:before{right:24px}
 
 .ctf-options-list-item a.ctf-options-list-item-link:hover{background-color:#dbdad9}.modal-dialog{display:none}.modal-dialog--no-js-persistent{display:inline-block}
+
+.notices {
+	padding: 10px;
+	background-color: govuk-colour("light-grey");
+}
