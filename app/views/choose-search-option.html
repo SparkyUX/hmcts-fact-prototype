@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-Choose the option that best describes what you want to find - Find a court or tribunal - GOV.UK{% endblock %}
+Choose what you want to search for - Find a court or tribunal - GOV.UK{% endblock %}
 
 {% block beforeContent %}
 
@@ -39,7 +39,7 @@ Choose the option that best describes what you want to find - Find a court or tr
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Choose the option that best describes what you want to find</h1>
+      <h1 class="govuk-heading-xl">Choose what you want to search for</h1>
 
 
       <ul class="ctf-options-list">
@@ -66,13 +66,13 @@ Choose the option that best describes what you want to find - Find a court or tr
       </ul>
 
       {{ govukInsetText({
-        text: "If you have a letter, form or online message, that may help and if you have a letter requesting attendance that may help."
+        text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
       }) }}
 
 
       {{ govukDetails({
-      summaryText: "If you are having trouble completing this form, get in touch",
-      text: "Contact details here"
+        summaryText: "If you need help with this tool",
+        html: "<p>Telephone: 0300 1234 567</br>Email: help@gov.uk</p>"
       }) }}
     
   </div>

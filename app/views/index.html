@@ -45,27 +45,20 @@
         {% if serviceName %} {{ serviceName }} {% endif %}
       </h1>
 
-      <p class="govuk-body-m">This service is to help you find a court location that you need to:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>Attend for a case hearing</li>
-        <li>Send or hand in documents</li>
-        <li>Attend as a Juror or a witness</li>
-      </ul>
-
-<!-- JHS change button to nunjucks version -->
+      <p class="govuk-body-m">You can use this service to find contact details, opening times and the area of law of the court or tribunal covers you must visit for a hearing or to drop off some documents.</p>
 
       {{ govukButton({
-        text: "Start now",
+        text: "Search now",
         href: "choose-search-option",
         classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
         isStartButton: true
       }) }}
 
-      <h2 class="govuk-heading-m">Before you start</h2>
+      <h2 class="govuk-heading-m">Before you search</h2>
 
-      <p class="govuk-body-m">If you have a letter, form or online message about a legal process you are involved in that may help, and if you have a letter requesting attendance at a court or tribunal that may help.</p>
-
+      <p class="govuk-body-m">
+        Check your HMCTS letter or correspondence for contact details of the court or tribunal.
+      </p>
 
       {{ govukInsetText({
         text: "This guide is also available in Welsh (Cymraeg)."

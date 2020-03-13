@@ -52,27 +52,30 @@ Search for contact details - Find a court or tribunal - GOV.UK
       If you are looking for a specific court and  know what the court is called or part of the address then this will help you.
     </p>
 
-
-    {{ govukInput({
-    label: {
-    text: "Enter a court name, town or city, or postcode"
-    },
-    classes: "govuk-input--width-10",
-    hint: {
-        text: "For example, Courts of Justice"
+    <div class="background-box">
+      {{ govukInput({
+      label: {
+      text: "Enter a court name, town or city, or postcode"
       },
-    id: "address-postcode",
-    name: "address-postcode",
-    autocomplete: "postal-code"
-    }) }}
+      classes: "govuk-input--width-10",
+      hint: {
+          text: "For example, Courts of Justice"
+        },
+      id: "address-postcode",
+      name: "address-postcode",
+      autocomplete: "postal-code"
+      }) }}
 
-    {{ govukButton({
-      text: "Continue",
-      href: "search-loc-results-multiple"
-    }) }}
+      {{ govukButton({
+        text: "Continue",
+        href: "search-loc-results-multiple"
+      }) }}
+    </div>
 
+    </br>
+    
     {{ govukInsetText({
-      text: "Before you start, if you have a letter or email requesting attendance then that may help."
+      text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
     }) }}
 
     <p class="govuk-body-m">
