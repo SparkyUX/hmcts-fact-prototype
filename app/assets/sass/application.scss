@@ -36,3 +36,11 @@ $govuk-assets-path: '/govuk/assets/';
 	padding: 10px;
 	background-color: govuk-colour("light-grey");
 }
+
+.govuk-phase-banner__text {
+  width: 100%;
+
+  .ctf-language {
+    float: right;
+  }
+}

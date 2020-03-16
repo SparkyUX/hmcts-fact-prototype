@@ -6,33 +6,6 @@
 {% block header %}
   <!-- Blank header with no service name for the start page -->
   {{ govukHeader() }}
-{% endblock %}
-
-{% block beforeContent %}
-
-  {{ govukPhaseBanner({
-  tag: {
-    text: "alpha"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-
-<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
-{% if backLinkRequired %}
-{{ govukBackLink({
-  text: "Back",
-  href: "#"
-}) }}
-{% else %}
-
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home"
-    }
-  ]
-}) }}
-{% endif %}
 
 {% endblock %}
 
@@ -45,7 +18,9 @@
         {% if serviceName %} {{ serviceName }} {% endif %}
       </h1>
 
-      <p class="govuk-body-m">You can use this service to find contact details, opening times and the area of law of the court or tribunal covers you must visit for a hearing or to drop off some documents.</p>
+      <p class="govuk-body-m">
+        You can use this service to find contact details, opening times and the area of law of the court or tribunal covers you must visit for a hearing or to drop off some documents.
+      </p>
 
       {{ govukButton({
         text: "Search now",
