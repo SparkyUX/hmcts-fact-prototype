@@ -45,48 +45,49 @@ Search for contact details - Find a court or tribunal - GOV.UK
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <form action="/search-for-location" method="post" novalidate>  
 
-    <h1 class="govuk-heading-xl">Search for the contact details for a court or tribunal</h1>
+      <h1 class="govuk-heading-xl">Search for the contact details for a court or tribunal</h1>
 
-    <p class="govuk-body-m">
-      If you are looking for a specific court and  know what the court is called or part of the address then this will help you.
-    </p>
+      <p class="govuk-body-m">
+        If you are looking for a specific court and  know what the court is called or part of the address then this will help you.
+      </p>
 
-    <div class="background-box">
-      {{ govukInput({
-      label: {
-      text: "Enter a court name, town or city, or postcode"
-      },
-      classes: "govuk-input--width-10",
-      hint: {
-          text: "For example, Courts of Justice"
+      <div class="background-box">
+        {{ govukInput({
+        label: {
+        text: "Enter a court name, town or city, or postcode"
         },
-      id: "address-postcode",
-      name: "address-postcode",
-      autocomplete: "postal-code"
+        classes: "govuk-input--width-30",
+        hint: {
+            text: "For example, Courts of Justice"
+          },
+        id: "address-postcode",
+        name: "location-search-value",
+        autocomplete: "postal-code"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </div>
+
+      </br>
+      
+      {{ govukInsetText({
+        text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
       }) }}
 
-      {{ govukButton({
-        text: "Continue",
-        href: "search-loc-results-multiple"
-      }) }}
-    </div>
+      <p class="govuk-body-m">
+        If you are a member of staff at a court or service centre, you can search here using the Court Location Code too.
+      </p>
 
-    </br>
-    
-    {{ govukInsetText({
-      text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
-    }) }}
+        {{ govukDetails({
+          summaryText: "If you need help with this tool",
+          html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
+        }) }}
 
-    <p class="govuk-body-m">
-      If you are a member of staff at a court or service centre, you can search here using the Court Location Code.
-    </p>
-
-    {{ govukDetails({
-    summaryText: "If you are having trouble completing this form, get in touch.",
-    text: "Contact details here"
-    }) }}
-
+    </form>
   </div>
 </div>
 {% endblock %}

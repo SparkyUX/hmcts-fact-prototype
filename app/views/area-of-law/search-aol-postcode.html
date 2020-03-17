@@ -42,37 +42,34 @@ Search for a court, tribunal or service centre near you - Find a court or tribun
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <form action="choose-aol" method="post" novalidate>  
 
-    <h1 class="govuk-heading-xl">Search for a court, tribunal or service centre near you</h1>
+      <h1 class="govuk-heading-xl">Search for a court, tribunal or service centre near you</h1>
 
-    <p class="govuk-body-m">
-      This will help identify a court or tribunal or service centre near where you live that provides the type of services you are looking for.
-    </p>
-    <div class="background-box">
-      {{ govukInput({
-      label: {
-      text: "Enter a postcode"
-      },
-      hint: {         
-        text: "For example, EH1 9SP"
-      },
-      classes: "govuk-input--width-10",
-      id: "aol-postcode-id",
-      name: "aol-postcode",
-      autocomplete: "postal-code"
-      }) }}
+      <p class="govuk-body-m">
+        This will help identify a court or tribunal or service centre near where you live that provides the type of services you are looking for.
+      </p>
+      <div class="background-box">      
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-postcode">
+            Enter a postcode
+          </label>
+          <span id="waste-hint" class="govuk-hint">
+            For example, EH1 9SPs
+          </span>
+          <input class="govuk-input govuk-input--width-10" id="address-postcode" name="aol-postcode" type="text" autocomplete="postal-code">
+        </div>
 
-      {{ govukButton({
-        text: "Continue",
-        href: "/area-of-law/choose-aol"
-      }) }}
-    </div>
-    </br>
-      {{ govukDetails({
-        summaryText: "If you need help with this tool",
-        html: "<p>Telephone: 0300 1234 567</br>Email: help@gov.uk</p>"
-      }) }}
-
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </div>
+      </br>
+        {{ govukDetails({
+          summaryText: "If you need help with this tool",
+          html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
+        }) }}
+    </form>
   </div>
 </div>
 {% endblock %}
