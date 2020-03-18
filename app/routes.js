@@ -94,7 +94,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtName = 'High Wycombe County Court and Family Court'
           break
         case 'eastBerks':
-          displayCourtName = 'East Berskshire Magistrates Court'
+          displayCourtName = "East Berkshire Magistrates' Court"
           break
        case 'slough':
           displayCourtName = 'Slough County and Family Court'
@@ -102,23 +102,38 @@ router.get('/individual-location-pages/generic', function(req, res) {
         case 'watford':
           displayCourtName = 'Watford Tribunal Hearing Centre'
           break
+        case 'watfordCcfc':
+          displayCourtName = 'Watford County Court and Family Court'
+          break          
         case 'centralLonET':
           displayCourtName = 'Central London Employment Tribunal'
           break
         case 'croydon':
           displayCourtName = 'Croydon Employment Tribunal'
           break
+        case 'croydonCcfc':
+          displayCourtName = 'Croydon County Court and Family Court'
+          break
         case 'eastLonTHC':
           displayCourtName = 'East London Tribunal Hearing Centre'
           break
+        case 'eastLonCcfc':
+          displayCourtName = 'East London County Court and Family Court'
+          break
         case 'westHantsMC':
-          displayCourtName = 'West Hampshire Magistrates Court'
+          displayCourtName = "West Hampshire Magistrates' Court"
+          break
+        case 'westHantsCcfc':
+          displayCourtName = 'West Hampshire County Court and Family Court'
           break
         case 'southampton':
           displayCourtName = 'Southampton Combined Court Centre'
           break
         case 'cambridge':
-          displayCourtName = 'Cambridge Magistrates Court'
+          displayCourtName = "Cambridge Magistrates' Court"
+          break
+        case 'cambridgeCcfc':
+          displayCourtName = 'Cambridge County Court and Family Court'
           break
         case 'bristol':
           displayCourtName = 'Bristol Civil and Family Justice Centre'
