@@ -10,62 +10,96 @@ router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
   var areaOfLaw = req.query.aol
 
     switch (areaOfLaw) {
-        case 'adoption':
-          displayAoL = 'Adoption'
-          break
-        case 'bankruptcy':
-          displayAoL = 'Bankruptcy'
-          break
-       case 'children':
-          displayAoL = 'Children'
-          break
-        case 'civilPartnership':
-          displayAoL = 'Civil Partnership'
-          break
-        case 'crime':
-          displayAoL = 'Crime'
-          break
-        case 'divorce':
-          displayAoL = 'Divorce'
-          break
-        case 'domesticViolence':
-          displayAoL = 'Domestic Violence'
-          break
-        case 'employment':
-          displayAoL = 'Employment'
-          break
-        case 'forcedMarriageFGM':
-          displayAoL = 'Forced Marriage and FGM'
-          break
-         case 'highCourtRegistry':
-          displayAoL = 'High Court Registry'
-          break
-         case 'housingPossession':
-          displayAoL = 'Housing Possession'
-          break
-         case 'immigration':
-          displayAoL = 'Immigration'
-          break
-         case 'moneyClaims':
-          displayAoL = 'Money Claims'
-          break
-         case 'probate':
-          displayAoL = 'Probate and Wills'
-          break
-         case 'sscs':
-          displayAoL = 'Social Security'
-          break
-         case 'tax':
-          displayAoL = 'Tax'
-          break
-        default:
-          displayAoL = ' '
-          break
+      case 'adoption':
+        displayAoL = 'Adoption'
+        break
+      case 'bankruptcy':
+        displayAoL = 'Bankruptcy'
+        break
+     case 'children':
+        displayAoL = 'Children'
+        break
+      case 'crime':
+        displayAoL = 'Crime'
+        break
+      case 'domesticAbuse':
+        displayAoL = 'Domestic Abuse'
+        break
+      case 'forcedMarriageFGM':
+        displayAoL = 'Forced Marriage and FGM'
+        break
+       case 'highCourtRegistry':
+        displayAoL = 'High Court Registry'
+        break
+       case 'housingPossession':
+        displayAoL = 'Housing Possession'
+        break
+       case 'immigration':
+        displayAoL = 'Immigration'
+        break
+       case 'probate':
+        displayAoL = 'Probate and Wills'
+        break
+       case 'sscs':
+        displayAoL = 'Social Security'
+        break
+       case 'tax':
+        displayAoL = 'Tax'
+        break
+      default:
+        displayAoL = ' '
+        break
 
     }
     req.app.locals.displayAoL = displayAoL
     req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
     res.render('area-of-law/search-aol-results-multiple')
+
+})
+
+
+router.get('/area-of-law/search-aol-results-multiple-div-centre', function(req, res) {
+  var areaOfLaw = req.query.aol
+  if (areaOfLaw == 'divorce') {
+    displayAoL = 'Divorce'
+  }
+  else if (areaOfLaw == 'civilPartnership') { 
+      displayAoL = 'Civil Partnership'
+  }
+  else {
+        displayAoL = ' '
+  }
+  req.app.locals.displayAoL = displayAoL
+  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  res.render('area-of-law/search-aol-results-multiple-div-centre')
+
+})
+
+router.get('/area-of-law/search-aol-results-multiple-ET', function(req, res) {
+  var areaOfLaw = req.query.aol
+  if (areaOfLaw == 'employment') {
+    displayAoL = 'Employment'
+  }
+  else {
+        displayAoL = ' '
+  }
+  req.app.locals.displayAoL = displayAoL
+  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  res.render('area-of-law/search-aol-results-multiple-ET')
+
+})
+
+router.get('/area-of-law/search-aol-results-single-ccmcc', function(req, res) {
+  var areaOfLaw = req.query.aol
+  if (areaOfLaw == 'moneyClaims') {
+      displayAoL = 'Money Claims'
+  }
+  else {
+        displayAoL = ' '
+  }
+  req.app.locals.displayAoL = displayAoL
+  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  res.render('area-of-law/search-aol-results-single-ccmcc')
 
 })
 
