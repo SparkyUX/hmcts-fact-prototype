@@ -5,6 +5,108 @@ const app = express()
 
 // Add your routes here - above the module.exports line
 
+router.post('/search-route', function (req, res) {
+
+  let searchRoute = req.session.data['what-do-you-want-to-do']
+ 
+  if (searchRoute == 'find-a-court') {
+    res.redirect('/location/search-location')
+  }
+  else 
+  {
+    res.redirect('/area-of-law/start-or-continue-service')
+   }
+})
+
+router.post('/start-or-continue', function (req, res) {
+
+  let startOrContinue = req.session.data['start-or-continue-service']
+ 
+  if (startOrContinue == 'start-a-service') {
+    req.app.locals.serviceStartOrContinue = "start"
+    res.redirect('/area-of-law/choose-aol')
+  }
+  else 
+  {
+    req.app.locals.serviceStartOrContinue = "start"
+    res.redirect('/area-of-law/choose-aol')
+
+   }
+})
+
+router.post('/choose-service', function (req, res) {
+
+  let serviceType = req.session.data['choose-aol']
+
+  switch (serviceType) {
+    case 'adoption':
+      displayAoL = 'Adoption'
+      break
+    case 'bankruptcy':
+      displayAoL = 'Bankruptcy'
+      break
+    case 'children':
+      displayAoL = 'Children'
+      break
+    case 'civil-partnership':
+      displayAoL = 'Civil partnership'
+      break
+    case 'crime':
+      displayAoL = 'Crime'
+      break
+    case 'divorce':
+      displayAoL = 'Divorce'
+      break
+    case 'domestic-abuse':
+      displayAoL = 'Domestic abuse'
+      break
+    case 'employment':
+      displayAoL = 'Employment'
+      break
+    case 'forced-marriage-fgm':
+      displayAoL = 'Forced marriage and FGM'
+      break
+    case 'high-court-registry':
+      displayAoL = 'High Court registry'
+      break
+    case 'housing-possession':
+      displayAoL = 'Housing possession'
+      break
+    case 'immigration-asylum':
+      displayAoL = 'Immigration and asylum'
+      break
+    case 'money-claims':
+      displayAoL = 'Money claims'
+      break
+    case 'probate':
+      displayAoL = 'Probate'
+      break
+    case 'social-security':
+      displayAoL = 'Social security'
+      break
+    case 'tax':
+      displayAoL = 'Tax'
+      break
+    case 'other':
+      displayAoL = ''
+      break 
+    default:
+      displayAoL = ' '
+      break
+
+  }  
+
+  req.app.locals.displayAoL = displayAoL
+
+  if (req.app.locals.serviceStartOrContinue == 'start') {
+    res.redirect('/area-of-law/start-service')
+  }
+  else
+  {
+    res.redirect('/area-of-law/search-aol-postcode')
+  }
+
+})
 
 router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
   var areaOfLaw = req.query.aol

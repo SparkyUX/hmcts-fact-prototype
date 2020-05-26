@@ -42,12 +42,12 @@ Search for a court, tribunal or service centre near you - Find a court or tribun
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="choose-aol" method="post" novalidate>  
+    <form action="" method="post" novalidate>  
 
-      <h1 class="govuk-heading-xl">Search for a court, tribunal or service centre near you</h1>
+      <h1 class="govuk-heading-xl">Enter your postcode</h1>
 
       <p class="govuk-body-m">
-        We need your postcode to find the right court or tribunal or service centre near you      </p>
+        We need your postcode to find the right court or tribunal near you to deal with your enquiry about {{displayAoL}}</p>
       <div class="background-box">      
         <div class="govuk-form-group">
           <label class="govuk-label" for="address-postcode">
@@ -63,11 +63,13 @@ Search for a court, tribunal or service centre near you - Find a court or tribun
           text: "Continue"
         }) }}
       </div>
+      <!--
       </br>
         {{ govukDetails({
           summaryText: "If you need help with this tool",
           html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
         }) }}
+      -->
     </form>
   </div>
 </div>

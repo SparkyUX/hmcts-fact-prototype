@@ -47,177 +47,205 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/" method="post" novalidate>  
+    <form action="/choose-service" method="post" novalidate>  
 
-      <h1 class="govuk-heading-xl">
-        What area of law is your application or court hearing about?
-      </h1>
-      <p class="govuk-body-m">
-        Select an area of law of the court, tribunal or service centre you may need to go to or send your legal documents to.
-      </p>
-
-      <ul class="ctf-options-list">
-    
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=adoption" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Adoption</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              For hearings or to contact a service centre to support your child adoption application.
-            </p>
-          </a>
-        </li>
-    
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=bankruptcy" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Bankruptcy</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              If you need to have a hearing or need to submit legal documents to a court about a bankruptcy
-            </p>  
-          </a>
-        </li>
-    
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=children" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Children</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Child contact issues and disputes over maintenance
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple-div-centre?aol=civilPartnership" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Civil Partnership</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Ending a civil partnership
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=crime" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Crime</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Being accused of a crime, being a witness, or you were a victim
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple-div-centre?aol=divorce" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Divorce</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              End a marriage or get a legal separation or help with money, property and children during a divorce.
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=domesticAbuse" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Domestic Abuse</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Abuse in the home which occurs in relationships, between family members, such as adolescents to parental violence
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple-ET?aol=employment" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Employment</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Tribunals about workplace disputes including pay, redundancy and discrimination.
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=forcedMarriageFGM" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Forced Marriage and Female Genital Mutilation (FGM)</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Being made to marry against your will or undergo female genital mutilation against your will
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=highCourtRegistry" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">High Court Registry</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Find High Courts that deal with the most serious and high profile cases in criminal and civil law
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-single?aol=housing" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Housing Possession</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Evictions and rental disputes
-            </p>  
-          </a>
-        </li>
-
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=immigration" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Immigration</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Seeking aslyum, right to live in the UK, and appealing deportation
-            </p>  
-          </a>
-        </li>
+      {{ govukRadios({
+        idPrefix: "choose-aol",
+        name: "choose-aol",
+        fieldset: {
+          legend: {
+            text: "What is your application or hearing about?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select the option that describes the type of case you are involved in."
+        },
+        items: [
+          {
+            value: "adoption",
+            text: "Adoption",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "For hearings or to contact a service centre to support your child adoption application."
+            }
+          },
+          {
+            value: "bankruptcy",
+            text: "Bankruptcy",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "If you need to have a hearing or need to submit legal documents to a court about a bankruptcy"
+            }
+          },
+          {
+            value: "children",
+            text: "Children",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Child contact issues and disputes over maintenance"
+            }
+          },
+          {
+            value: "civil-partnership",
+            text: "Civil partnership",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Ending a civil partnership"
+            }
+          },
+          {
+            value: "crime",
+            text: "Crime",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Being accused of a crime, being a witness, or you were a victim"
+            }
+          },
+          {
+            value: "divorce",
+            text: "Divorce",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "End a marriage or get a legal separation or help with money, property and children during a divorce."
+            }
+          },
+          {
+            value: "domestic-abuse",
+            text: "Domestic abuse",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Abuse in the home which occurs in relationships, between family members, such as adolescents to parental violence"
+            }
+          },
+          {
+            value: "employment",
+            text: "Employment",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Tribunals about workplace disputes including pay, redundancy and discrimination."
+            }
+          },
+          {
+            value: "forced-marriage-fgm",
+            text: "Forced marriage and Female Genital Mutilation (FGM)",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Being made to marry against your will or undergo female genital mutilation against your will."
+            }
+          },
+          {
+            value: "high-court-registry",
+            text: "High Court registry",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Find High Courts that deal with the most serious and high profile cases in criminal and civil law"
+            }
+          },
+          {
+            value: "housing-possession",
+            text: "Housing possession",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Evictions and rental disputes"
+            }
+          },
+          {
+            value: "immigration-asylum",
+            text: "Immigration and asylum",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Seeking aslyum, right to live in the UK, and appealing deportation"
+            }
+          },
+          {
+            value: "money-claims",
+            text: "Money claims",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Small claims, consumer, negligence, and personal injury claims. You may have been directed to Find a court or tribunal through a claims form"
+            }
+          },
+          {
+            value: "probate",
+            text: "Probate",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Settlement and disputes over a deceased person's estate"
+            }
+          },
+          {
+            value: "social-security",
+            text: "Social security",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Problems with benefits, entitlement, assessment, and decision"
+            }
+          },
+          {
+            value: "tax",
+            text: "Tax",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Appealing a tax decision"
+            }
+          },
+          {
+            value: "other",
+            text: "Other",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "If you are unable to find what you are looking for"
+            }
+          }
+        ]
+      }) }}
       
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-single-ccmcc?aol=moneyClaims" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Money Claims</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Small claims, consumer, negligence, and personal injury claims. You may have been directed to Find a court or tribunal through a claims form
-            </p>  
-          </a>
-        </li>
-      
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=probate" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Probate and Wills</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Settlement and disputes over a deceased person's estate
-            </p>  
-          </a>
-        </li>
-      
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=sscs" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Social Security</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Problems with benefits, entitlement, assessment, and decision
-            </p>  
-          </a>
-        </li>
-      
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="search-aol-results-multiple?aol=tax" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Tax</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              Appealing a tax decision
-            </p>  
-          </a>
-        </li>
-      
-        <li class="ctf-options-list-item">
-          <a class="ctf-options-list-item-link" href="../location/search-location" role="button">
-            <h2 class="govuk-heading-m govuk-!-margin-2">Other</h2>      
-            <p class="govuk-body govuk-!-margin-2">
-              If you are unable to find what you are looking for you can search by location
-            </p>  
-          </a>
-        </li>
-      </ul>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
-      </br>
-
+<!--
       {{ govukDetails({
         summaryText: "If you need help with this tool",
         html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
       }) }}
+-->
 
     </form>
   </div>

@@ -26,7 +26,11 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
       href: "index"
     },
     {
-      text: "What do you want to do?"
+      text: "What do you want to do?",
+      href: "../what-do-you-want-to-do"
+    },
+    {
+      text: "Do you want to start or continue a service?"
     }
   ]
 }) }}
@@ -38,13 +42,13 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/search-route" method="post" novalidate>  
+    <form action="/start-or-continue" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "what-do-you-want-to-do",
-        name: "what-do-you-want-to-do",
+        idPrefix: "start-or-continue-service",
+        name: "start-or-continue-service",
         fieldset: {
           legend: {
-            text: "What do you want to do?",
+            text: "Do you want to start a service?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -54,20 +58,20 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
             label: {
               classes: "govuk-label--s"
             },
-            value: "find-a-court",
-            text: "Find information about a court or tribunal",
+            value: "start-a-service",
+            text: "Yes, I want to start a service",
             hint: {
-              text: "e.g. You want to find something out e.g. address, contact details or facilities"
+              text: "e.g. You have decided to bring a case to a court or tribunal and you want to find how to do this"
             }
           },
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "find-which-court",
-            text: "Find which court or tribunal will help with my service journey",
+            value: "continue-a-service",
+            text: "No, I want to find which court or tribunal will help me to continue my service",
             hint: {
-              text: "e.g. You want to identify which court or tribunal can help you with your case"
+              text: "e.g. You may want to find out where to send your documents or where your nearest court is for a hearing"
             }
           }
         ]
