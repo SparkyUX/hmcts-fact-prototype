@@ -42,46 +42,47 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/how-to-start-service" method="post" novalidate>  
+    <form action="/send-visit-other" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "how-start-service",
-        name: "how-start-service",
+        idPrefix: "what-info-want",
+        name: "what-info-want",
         fieldset: {
           legend: {
-            text: "How would you like to make your {{displayAoL}} application?",
+            text: "What information do you want to find?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
+
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "apply-online",
-            text: "Apply online",
+            value: "find-nearest",
+            text: "I want to find the nearest court to me for a hearing",
             hint: {
-              text: "You will be redirected to the service page to apply online"
+              text: "e.g. You know you need to have a hearing but you need to contact a venue to arrange it"
             }
           },
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "apply-on-paper",
-            text: "Apply on paper",
+            value: "send-docs",
+            text: "I want to send documents",
             hint: {
-              text: "You will be redirected to the page to download the paper form"
+              text: "e.g. You have evidence for a hearing that needs to be sent to a court"
             }
           },
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "more-info",
-            text: "I need more information",
+            value: "not-listed",
+            text: "It's not listed here",
             hint: {
-              text: "If you want to contact someone about your application you can use the search facility to find your nearest court that hears {{displayAoL}} cases"
+              text: "For any other reason not shown above"
             }
           }
         ]

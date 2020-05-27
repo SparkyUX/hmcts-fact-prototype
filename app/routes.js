@@ -28,7 +28,7 @@ router.post('/start-or-continue', function (req, res) {
   }
   else 
   {
-    req.app.locals.serviceStartOrContinue = "start"
+    req.app.locals.serviceStartOrContinue = "continue"
     res.redirect('/area-of-law/choose-aol')
 
    }
@@ -91,21 +91,151 @@ router.post('/choose-service', function (req, res) {
       displayAoL = ''
       break 
     default:
-      displayAoL = ' '
+      displayAoL = ''
       break
 
   }  
 
   req.app.locals.displayAoL = displayAoL
+  console.log('define req.app.locals.displayAoL ' + req.app.locals.displayAoL)
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
     res.redirect('/area-of-law/start-service')
   }
   else
   {
-    res.redirect('/area-of-law/search-aol-postcode')
+    res.redirect('/area-of-law/what-info-do-you-want')
   }
 
+})
+
+router.post('/how-to-start-service', function (req, res) {
+
+  let howStartService = req.session.data['how-start-service']
+  let redirectPage = ""
+  console.log('req.app.locals.displayAoL ' + req.app.locals.displayAoL)
+ 
+  if (howStartService == 'apply-online') {
+
+    switch (req.app.locals.displayAoL) {
+
+      case 'Adoption':
+        redirectPage = 'Adoption'
+        break
+      case 'Bankruptcy':
+        redirectPage = 'Bankruptcy'
+        break
+      case 'Children':
+        redirectPage = 'Children'
+        break
+      case 'Civil Partnership':
+        redirectPage = 'Civil partnership'
+        break
+      case 'Crime':
+        redirectPage = 'Crime'
+        break
+      case 'Divorce':
+        redirectPage = 'Divorce'
+        break
+      case 'Domestic Abuse':
+        redirectPage = 'Domestic abuse'
+        break
+      case 'Employment':
+        redirectPage = 'Employment'
+        break
+      case 'Forced marriage and FGM':
+        redirectPage = 'Forced marriage and FGM'
+        break
+      case 'High Court registry':
+        redirectPage = 'High Court registry'
+        break
+      case 'HousingPossession':
+        redirectPage = 'Housing possession'
+        break
+      case 'Immigration and Asylum':
+        redirectPage = 'Immigration and asylum'
+        break
+      case 'Money Claims':
+        redirectPage = 'Money claims'
+        break
+      case 'Probate':
+        redirectPage = 'Probate'
+        break
+      case 'Social security':
+        redirectPage = 'Social security'
+        break
+      case 'Tax':
+        redirectPage = 'Tax'
+        break
+      default:
+        redirectPage = ''
+        break
+    }
+  }
+
+  else if (howStartService == 'apply-on-paper') {
+    switch (req.app.locals.displayAoL) {
+
+     case 'Adoption':
+        redirectPage = 'Adoption'
+        break
+      case 'Bankruptcy':
+        redirectPage = 'Bankruptcy'
+        break
+      case 'Children':
+        redirectPage = 'Children'
+        break
+      case 'Civil Partnership':
+        redirectPage = 'Civil partnership'
+        break
+      case 'Crime':
+        redirectPage = 'Crime'
+        break
+      case 'Divorce':
+        redirectPage = 'Divorce'
+        break
+      case 'Domestic Abuse':
+        redirectPage = 'Domestic abuse'
+        break
+      case 'Employment':
+        redirectPage = 'Employment'
+        break
+      case 'Forced marriage and FGM':
+        redirectPage = 'Forced marriage and FGM'
+        break
+      case 'High Court registry':
+        redirectPage = 'High Court registry'
+        break
+      case 'HousingPossession':
+        redirectPage = 'Housing possession'
+        break
+      case 'Immigration and Asylum':
+        redirectPage = 'Immigration and asylum'
+        break
+      case 'Money Claims':
+        redirectPage = 'Money claims'
+        break
+      case 'Probate':
+        redirectPage = 'Probate'
+        break
+      case 'Social security':
+        redirectPage = 'Social security'
+        break
+      case 'Tax':
+        redirectPage = 'Tax'
+        break
+      default:
+        redirectPage = ''
+        break
+   }
+  }
+  else if (howStartService == 'more-info') {
+    redirectPage = '/area-of-law/search-aol-postcode'
+  }
+  
+  console.log('redirectPage ' + redirectPage)
+  console.log('howStartService ' + howStartService)
+  res.redirect(redirectPage)
 })
 
 router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
@@ -149,7 +279,7 @@ router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
         displayAoL = 'Tax'
         break
       default:
-        displayAoL = ' '
+        displayAoL = ''
         break
 
     }
@@ -159,6 +289,19 @@ router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
 
 })
 
+router.post('/send-visit-other', function (req, res) {
+
+  let whatInfoWant = req.session.data['what-info-want']
+ 
+  if (whatInfoWant == 'send-docs') {
+    // TO:DO determined by AoL will be owning court or CTSC or regional centre
+    res.redirect('')
+  }
+  else {
+        res.redirect('/area-of-law/search-aol-postcode')
+  }
+
+})
 
 router.get('/area-of-law/search-aol-results-multiple-div-centre', function(req, res) {
   var areaOfLaw = req.query.aol
