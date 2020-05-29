@@ -1,3 +1,5 @@
+
+<!-- 1.0 Organic search -->
 {% extends "layout.html" %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -18,7 +20,7 @@ Search for contact details - Find a court or tribunal - GOV.UK
 {% if backLinkRequired %}
 {{ govukBackLink({
   text: "Back",
-  href: "#"
+  href: "../what-do-you-want-to-do"
 }) }}
 {% else %}
 
@@ -47,7 +49,7 @@ Search for contact details - Find a court or tribunal - GOV.UK
   <div class="govuk-grid-column-two-thirds">
     <form action="/search-for-location" method="post" novalidate>  
 
-      <h1 class="govuk-heading-xl">Search for the contact details for a court or tribunal</h1>
+      <h1 class="govuk-heading-l">What is the name, postcode or city of the tribunal or court?</h1>
 
       <p class="govuk-body-m">
         If you are looking for a specific court and know what the court is called or part of the address then this will help you.
@@ -62,9 +64,8 @@ Search for contact details - Find a court or tribunal - GOV.UK
         hint: {
             text: "For example, Courts of Justice"
           },
-        id: "address-postcode",
-        name: "location-search-value",
-        autocomplete: "postal-code"
+        id: "location-search-value",
+        name: "location-search-value"
         }) }}
 
         {{ govukButton({

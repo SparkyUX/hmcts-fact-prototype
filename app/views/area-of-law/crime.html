@@ -1,0 +1,121 @@
+<!-- 2.xd Crime -->
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Choose an area of law - crime - Find a court or tribunal - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link ctf-language">Cymraeg</a>'
+  }) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "../index"
+    },
+    {
+      text: "Choose a search option",
+      href: "../choose-search-option"
+    },
+    {
+      text: "Search for locations near you",
+      href: "search-aol-postcode"
+    },
+    {
+      text: "What is your application or hearing about?"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/choose-crime" method="post" novalidate>  
+
+      {{ govukRadios({
+        idPrefix: "choose-crime",
+        name: "choose-crime",
+        fieldset: {
+          legend: {
+            text: "What type of crime is your application or hearing about?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "giving-evidence",
+            text: "Giving evidence as a victim or witness",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Making child arrangements if you divorce or separate."
+            }
+          },
+          {
+            value: "appeal",
+            text: "Appealing a criminal sentence or verdict",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Support for your child adoption application."
+            }
+          },
+          {
+            value: "domestic-abuse",
+            text: "Domestic abuse",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Support for an injunction if you've been the victim of domestic abuse."
+            }
+          },
+          {
+            value: "fgm",
+            text: "Female Genital Mutilation (FGM)",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Support for legal protection for victims of female genital mutilation."
+            }
+          }
+        ]
+      }) }}
+      
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+<!--
+      {{ govukDetails({
+        summaryText: "If you need help with this tool",
+        html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
+      }) }}
+-->
+
+    </form>
+  </div>
+</div>
+{% endblock %}

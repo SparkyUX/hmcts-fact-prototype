@@ -1,3 +1,4 @@
+<!-- 2.0 Do you want to start or continue a service -->
 {% extends "layout.html" %}
 {% block pageTitle %}
 What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
@@ -48,31 +49,26 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         name: "start-or-continue-service",
         fieldset: {
           legend: {
-            text: "Do you want to start a service?",
+            text: "Have you started an application and are bringing a case to a court or tribunal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
-          {
-            label: {
-              classes: "govuk-label--s"
-            },
-            value: "start-a-service",
-            text: "Yes, I want to start a service",
-            hint: {
-              text: "e.g. You have decided to bring a case to a court or tribunal and you want to find how to do this"
-            }
-          },
+
           {
             label: {
               classes: "govuk-label--s"
             },
             value: "continue-a-service",
-            text: "No, I want to find which court or tribunal will help me to continue my service",
-            hint: {
-              text: "e.g. You may want to find out where to send your documents or where your nearest court is for a hearing"
-            }
+            text: "Yes"
+          },
+          {
+            label: {
+              classes: "govuk-label--s"
+            },
+            value: "start-a-service",
+            text: "No"
           }
         ]
       }) }}

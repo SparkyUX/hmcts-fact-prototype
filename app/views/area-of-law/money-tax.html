@@ -1,0 +1,151 @@
+<!-- 2.xa Money and tax -->
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Choose an area of law - Find a court or tribunal - GOV.UK
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link ctf-language">Cymraeg</a>'
+  }) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "../index"
+    },
+    {
+      text: "Choose a search option",
+      href: "../choose-search-option"
+    },
+    {
+      text: "Search for locations near you",
+      href: "search-aol-postcode"
+    },
+    {
+      text: "What is your application or hearing about?"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/choose-money-tax" method="post" novalidate>  
+
+      {{ govukRadios({
+        idPrefix: "choose-money-tax",
+        name: "choose-money-tax",
+        fieldset: {
+          legend: {
+            text: "What area of money and tax is your application or hearing about?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "money-claims",
+            text: "Money claims",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Claims for when you are owed money or responding to money claims against you."
+            }
+          },
+          {
+            value: "probate",
+            text: "Probate",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Settlement and disputes over a deceased person's property, money and possessions."
+            }
+          },          
+          {
+            value: "housing-possession",
+            text: "Housing possession",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Tenant evictions and rental disputes."
+            }
+          },
+          {
+            value: "bankruptcy",
+            text: "Bankruptcy",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Opposing a bankruptcy petition, support for a person at risk of violence order, canceling a bankruptcy."
+            }
+          },
+          {
+            value: "benefits",
+            text: "Benefits",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Appeal entitlement to benefits such as Personal Independence Payment (PIP), Employment and Support Allowance (ESA) or Universal Credit."
+            }
+          },
+          {
+            value: "employment",
+            text: "Claims against employers",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Employment disputes related to pay, unfair dismissal and discrimination."
+            }
+          },
+          {
+            value: "tax",
+            text: "Tax",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Appealing a tax decision."
+            }
+          }
+        ]
+      }) }}
+      
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+<!--
+      {{ govukDetails({
+        summaryText: "If you need help with this tool",
+        html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
+      }) }}
+-->
+
+    </form>
+  </div>
+</div>
+{% endblock %}

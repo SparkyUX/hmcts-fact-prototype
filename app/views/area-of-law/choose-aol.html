@@ -1,6 +1,7 @@
+<!-- 2.1 / 2.2 What is the service -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Choose and area of law - Find a court or tribunal - GOV.UK
+  Choose an area of law - Find a court or tribunal - GOV.UK
 {% endblock %}
 {% block beforeContent %}
 
@@ -34,7 +35,7 @@
       href: "search-aol-postcode"
     },
     {
-      text: "Choose an area of the law"
+      text: "What is your application or hearing about?"
     }
   ]
 }) }}
@@ -64,53 +65,43 @@
         },
         items: [
           {
-            value: "adoption",
-            text: "Adoption",
+            value: "money-tax",
+            text: "Money and tax",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "For hearings or to contact a service centre to support your child adoption application."
+              text: "Money claims, rent disputes, bankruptcy, job disputes related to pay, appealing a tax or benefits decision"
             }
           },
           {
-            value: "bankruptcy",
-            text: "Bankruptcy",
+            value: "deaths-marriage-civil-partnership",
+            text: "Deaths, marriages and civil partnerships",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "If you need to have a hearing or need to submit legal documents to a court about a bankruptcy"
+              text: "Probate disputes, divorce, ending a civil partnership, being made to marry against your will"
             }
           },
           {
-            value: "children",
-            text: "Children",
+            value: "childcare-parenting",
+            text: "Childcare and parenting",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Child contact issues and disputes over maintenance"
+              text: "Making an adoption legal or arrangements for looking after your children if you separate from your partner"
             }
           },
           {
-            value: "civil-partnership",
-            text: "Civil partnership",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Ending a civil partnership"
-            }
-          },
-          {
-            value: "crime",
+            value: "Crime",
             text: "Crime",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Being accused of a crime, being a witness, or you were a victim"
+              text: "Being a witness, victim or accused of a crime, domestic abuse, female genital mutilation"
             }
           },
           {
@@ -154,26 +145,6 @@
             }
           },
           {
-            value: "high-court-registry",
-            text: "High Court registry",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Find High Courts that deal with the most serious and high profile cases in criminal and civil law"
-            }
-          },
-          {
-            value: "housing-possession",
-            text: "Housing possession",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Evictions and rental disputes"
-            }
-          },
-          {
             value: "immigration-asylum",
             text: "Immigration and asylum",
             label: {
@@ -184,53 +155,20 @@
             }
           },
           {
-            value: "money-claims",
-            text: "Money claims",
+            value: "high-court",
+            text: "High Courts",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Small claims, consumer, negligence, and personal injury claims. You may have been directed to Find a court or tribunal through a claims form"
-            }
-          },
-          {
-            value: "probate",
-            text: "Probate",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Settlement and disputes over a deceased person's estate"
-            }
-          },
-          {
-            value: "social-security",
-            text: "Social security",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Problems with benefits, entitlement, assessment, and decision"
-            }
-          },
-          {
-            value: "tax",
-            text: "Tax",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Appealing a tax decision"
+              text: "Courts that deal with the most serious and high profile cases in criminal and civil law"
             }
           },
           {
             value: "other",
-            text: "Other",
+            text: "I can't find what I'm looking for",
             label: {
               classes: "govuk-label--s"
-            },
-            hint: {
-              text: "If you are unable to find what you are looking for"
             }
           }
         ]
