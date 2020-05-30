@@ -5,6 +5,8 @@ const app = express()
 
 // Add your routes here - above the module.exports line
 
+// 0.1 what do you want to know about the CorT?
+
 router.post('/search-route', function (req, res) {
 
   let searchRoute = req.session.data['what-do-you-want-to-do']
@@ -18,86 +20,73 @@ router.post('/search-route', function (req, res) {
    }
 })
 
+// 2.0 start or continue a service journey
+
 router.post('/start-or-continue', function (req, res) {
 
   let startOrContinue = req.session.data['start-or-continue-service']
  
   if (startOrContinue == 'start-a-service') {
     req.app.locals.serviceStartOrContinue = "start"
-    res.redirect('/area-of-law/choose-aol')
   }
   else 
   {
     req.app.locals.serviceStartOrContinue = "continue"
-    res.redirect('/area-of-law/choose-aol')
+  } 
 
-   }
+  res.redirect('/area-of-law/service-category')
+
 })
 
-router.post('/choose-service', function (req, res) {
+// 2.1, 2.2 Choose category
 
-  let serviceType = req.session.data['choose-aol']
+router.post('/choose-service-category', function (req, res) {
 
-  switch (serviceType) {
-    case 'adoption':
-      displayAoL = 'Adoption'
+  let serviceCategory = req.session.data['choose-service-category']
+  let pageServiceCategory = ""
+
+  switch (serviceCategory) {
+    case 'money-tax':
+//      displayCategory = 'Money and tax'
+      pageServiceCategory = 'money-tax'
       break
-    case 'bankruptcy':
-      displayAoL = 'Bankruptcy'
-      break
-    case 'children':
-      displayAoL = 'Children'
-      break
-    case 'civil-partnership':
-      displayAoL = 'Civil partnership'
+    case 'deaths-marriages-civil-partnerships':
+//      displayCategory = 'Deaths, marriages and civil partnerships'
+      pageServiceCategory = 'deaths-marriages-civil-partnerships'
+    break
+    case 'childcare-parenting':
+//      displayCategory = 'Childcare and parenting'
+      pageServiceCategory = 'childcare-parenting'
       break
     case 'crime':
-      displayAoL = 'Crime'
+//      displayCategory = 'Crime'
+      pageServiceCategory = 'crime'
       break
-    case 'divorce':
-      displayAoL = 'Divorce'
+    case 'high-courts':
+//      displayCategory = 'High Courts'
+      pageServiceCategory = ''
       break
-    case 'domestic-abuse':
-      displayAoL = 'Domestic abuse'
-      break
-    case 'employment':
-      displayAoL = 'Employment'
-      break
-    case 'forced-marriage-fgm':
-      displayAoL = 'Forced marriage and FGM'
-      break
-    case 'high-court-registry':
-      displayAoL = 'High Court registry'
-      break
-    case 'housing-possession':
-      displayAoL = 'Housing possession'
-      break
-    case 'immigration-asylum':
-      displayAoL = 'Immigration and asylum'
-      break
-    case 'money-claims':
-      displayAoL = 'Money claims'
-      break
-    case 'probate':
-      displayAoL = 'Probate'
-      break
-    case 'social-security':
-      displayAoL = 'Social security'
-      break
-    case 'tax':
-      displayAoL = 'Tax'
-      break
-    case 'other':
-      displayAoL = ''
-      break 
     default:
-      displayAoL = ''
+//      displayCategory = ''      
+      pageServiceCategory = 'unknown-service'
       break
 
-  }  
+  }
 
-  req.app.locals.displayAoL = displayAoL
-  console.log('define req.app.locals.displayAoL ' + req.app.locals.displayAoL)
+//  req.app.locals.displayAoL = displayAoL
+
+  res.redirect('/area-of-law/' + pageServiceCategory)
+
+
+})
+
+// 2.x.a secpnd level 
+router.post('/choose-area', function (req, res) {
+
+  let serviceArea = req.session.data['choose-service-area'] 
+
+  req.app.locals.displayArea = serviceArea
+  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
     res.redirect('/area-of-law/start-service')
@@ -122,11 +111,14 @@ router.post('/how-to-start-service', function (req, res) {
       case 'Adoption':
         redirectPage = 'Adoption'
         break
+      case 'Appealing a criminal sentence or verdict':
+        redirectPage = 'Bankruptcy'
+        break
       case 'Bankruptcy':
         redirectPage = 'Bankruptcy'
         break
-      case 'Children':
-        redirectPage = 'Children'
+      case 'Child arrangements':
+        redirectPage = 'Child arrangements'
         break
       case 'Civil Partnership':
         redirectPage = 'Civil partnership'
@@ -143,13 +135,19 @@ router.post('/how-to-start-service', function (req, res) {
       case 'Employment':
         redirectPage = 'Employment'
         break
-      case 'Forced marriage and FGM':
+      case 'Female Genital Mutilation':
         redirectPage = 'Forced marriage and FGM'
+        break
+      case 'Forced marriage':
+        redirectPage = 'Forced marriage and FGM'
+        break
+      case 'Giving evidence':
+        redirectPage = 'High Court registry'
         break
       case 'High Court registry':
         redirectPage = 'High Court registry'
         break
-      case 'HousingPossession':
+      case 'Housing possession':
         redirectPage = 'Housing possession'
         break
       case 'Immigration and Asylum':
@@ -161,7 +159,7 @@ router.post('/how-to-start-service', function (req, res) {
       case 'Probate':
         redirectPage = 'Probate'
         break
-      case 'Social security':
+      case 'Benefits':
         redirectPage = 'Social security'
         break
       case 'Tax':

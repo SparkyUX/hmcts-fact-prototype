@@ -48,41 +48,41 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-crime" method="post" novalidate>  
+    <form action="/choose-area" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "choose-crime",
-        name: "choose-crime",
+        idPrefix: "choose-service-area",
+        name: "choose-service-area",
         fieldset: {
           legend: {
-            text: "What type of crime is your application or hearing about?",
+            text: "What area of crime is your application or hearing about?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "giving-evidence",
+            value: "Giving evidence",
             text: "Giving evidence as a victim or witness",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Making child arrangements if you divorce or separate."
+              text: "Finding the court where you are giving evidence."
             }
           },
           {
-            value: "appeal",
+            value: "Appealing",
             text: "Appealing a criminal sentence or verdict",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Support for your child adoption application."
+              text: "Finding a court for your hearing."
             }
           },
           {
-            value: "domestic-abuse",
+            value: "Domestic Abuse",
             text: "Domestic abuse",
             label: {
               classes: "govuk-label--s"
@@ -92,7 +92,7 @@
             }
           },
           {
-            value: "fgm",
+            value: "Female Genital Mutilation",
             text: "Female Genital Mutilation (FGM)",
             label: {
               classes: "govuk-label--s"

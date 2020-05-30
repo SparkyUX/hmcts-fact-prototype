@@ -48,11 +48,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-money-tax" method="post" novalidate>  
+    <form action="/choose-area" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "choose-money-tax",
-        name: "choose-money-tax",
+        idPrefix: "choose-service-area",
+        name: "choose-service-area",
         fieldset: {
           legend: {
             text: "What area of money and tax is your application or hearing about?",
@@ -62,7 +62,7 @@
         },
         items: [
           {
-            value: "money-claims",
+            value: "Money claims",
             text: "Money claims",
             label: {
               classes: "govuk-label--s"
@@ -72,7 +72,7 @@
             }
           },
           {
-            value: "probate",
+            value: "Probate",
             text: "Probate",
             label: {
               classes: "govuk-label--s"
@@ -82,7 +82,7 @@
             }
           },          
           {
-            value: "housing-possession",
+            value: "Housing possession",
             text: "Housing possession",
             label: {
               classes: "govuk-label--s"
@@ -92,7 +92,7 @@
             }
           },
           {
-            value: "bankruptcy",
+            value: "Bankruptcy",
             text: "Bankruptcy",
             label: {
               classes: "govuk-label--s"
@@ -102,17 +102,17 @@
             }
           },
           {
-            value: "benefits",
+            value: "Benefits",
             text: "Benefits",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Appeal entitlement to benefits such as Personal Independence Payment (PIP), Employment and Support Allowance (ESA) or Universal Credit."
+              text: "Appealing entitlement to benefits such as Personal Independence Payment (PIP), Employment and Support Allowance (ESA) or Universal Credit."
             }
           },
           {
-            value: "employment",
+            value: "Employment",
             text: "Claims against employers",
             label: {
               classes: "govuk-label--s"
@@ -122,7 +122,7 @@
             }
           },
           {
-            value: "tax",
+            value: "Tax",
             text: "Tax",
             label: {
               classes: "govuk-label--s"

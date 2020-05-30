@@ -48,11 +48,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-death-marriage-civil-partnership" method="post" novalidate>  
+    <form action="/choose-area" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "death-marriage-civil-partnership",
-        name: "death-marriage-civil-partnership",
+        idPrefix: "choose-service-area",
+        name: "choose-service-area",
         fieldset: {
           legend: {
             text: "What area of deaths, marriages or civil partnerships is your application or hearing about?",
@@ -62,7 +62,7 @@
         },
         items: [
           {
-            value: "probate",
+            value: "Probate",
             text: "Probate",
             label: {
               classes: "govuk-label--s"
@@ -72,7 +72,7 @@
             }
           },
           {
-            value: "divorce",
+            value: "Divorce",
             text: "Divorce",
             label: {
               classes: "govuk-label--s"
@@ -82,7 +82,7 @@
             }
           },
           {
-            value: "civil-partnership",
+            value: "Civil partnershi",
             text: "Civil partnership",
             label: {
               classes: "govuk-label--s"
@@ -92,7 +92,7 @@
             }
           },
           {
-            value: "domestic-abuse",
+            value: "Domestic abuse",
             text: "Domestic abuse",
             label: {
               classes: "govuk-label--s"
@@ -102,7 +102,7 @@
             }
           },
           {
-            value: "forced-marriage",
+            value: "orced marriage",
             text: "Forced marriage",
             label: {
               classes: "govuk-label--s"

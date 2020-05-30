@@ -1,7 +1,7 @@
 <!-- 2.1.2 / 2.2.2 Postcode search -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-Search for a court, tribunal or service centre near you - Find a court or tribunal - GOV.UK
+What is your postcode? - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -45,16 +45,13 @@ Search for a court, tribunal or service centre near you - Find a court or tribun
   <div class="govuk-grid-column-two-thirds">
     <form action="" method="post" novalidate>  
 
-      <h1 class="govuk-heading-xl">Enter your postcode</h1>
+      <h1 class="govuk-heading-xl">What is your postcode?</h1>
 
-      <p class="govuk-body-m">
-        We need your postcode to find the right court or tribunal near you to deal with your enquiry about {{displayAoL}}</p>
-      <div class="background-box">      
         <div class="govuk-form-group">
           <label class="govuk-label" for="address-postcode">
             Enter a postcode
           </label>
-          <span id="waste-hint" class="govuk-hint">
+          <span id="postcode-hint" class="govuk-hint">
             For example, EH1 9SP
           </span>
           <input class="govuk-input govuk-input--width-10" id="address-postcode" name="aol-postcode" type="text" autocomplete="postal-code">
@@ -63,7 +60,6 @@ Search for a court, tribunal or service centre near you - Find a court or tribun
         {{ govukButton({
           text: "Continue"
         }) }}
-      </div>
       <!--
       </br>
         {{ govukDetails({

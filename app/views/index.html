@@ -19,13 +19,20 @@
         {% if serviceName %} {{ serviceName }} {% endif %}
       </h1>
 
-      <p class="govuk-body-m">
-        You can use this service to find contact details and opening times if you need to visit for a hearing or to drop off some documents. You can also search by an area of law if you need to find a service centre for your region.
-      </p>
+      <p class="govuk-body-m">Use this service to find court or tribunal</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>address</li>
+        <li>contact details</li>
+        <li>opening times</li>
+        <li>building information e.g. disabled access or parking</li>
+
+      </ul>
 
       {{ govukButton({
-        text: "Search now",
-        href: "what-do-you-want-to-know",
+        text: "Start now",
+        href: "what-about-ct-trib",
         classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
         isStartButton: true
       }) }}
@@ -33,35 +40,27 @@
       <h2 class="govuk-heading-m">Before you search</h2>
 
       <p class="govuk-body-m">
-        Check your HMCTS letter or correspondence for contact details of the court or tribunal.
+       Check your HM Courts and Tribunal Services (HMCTS) letter or correspondence for contact details of the court or tribunal.
       </p>
 
-      <p class="govuk-body-m">You'll be able to find the following details about the court or tribunal:</p>
+      <p class="govuk-body">The online service is also available in <a class="govuk-link" href="#">Welsh (Cymraeg)</a>.</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>address</li>
-        <li>contact details</li>
-        <li>opening times</li>
-        <li>appointment only information</li>
-        <li>how to get to a court or tribunal</li>
-        <li>the areas of law it covers</li>
-        <li>disabled access to the building</li>
+
+      <h2 class="govuk-heading-m">Northern Ireland</h2>
+      <p class="govuk-body-m">We do not have court information for Northern Ireland.</p>
+
+      <p class="govuk-body-m">Contact the <a href="https://www.justice-ni.gov.uk/topics/courts-and-tribunals" class="govuk-link">Northern Ireland Courts and Tribunals</a> for help.</p>
+
+      <h2 class="govuk-heading-m">Scotland</h2>
+      <p class="govuk-body-m">We only have court information for:</p>
+      <ul>
+        <li class="govuk-body-m"><a href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-immigration-and-asylum" class="govuk-link">Immigration appeals</a></li>
+        <li class="govuk-body-m"><a href="https://www.gov.uk/appeal-benefit-decision"class="govuk-link">Benefit appeals</a></li>
+        <li class="govuk-body-m"><a href="https://www.gov.uk/courts-tribunals/employment-tribunal" class="govuk-link">Employment claims appeals</a></li>
       </ul>
 
-      <h2 class="govuk-heading-m">Northern Ireland and Scotland</h2>
+<p class="govuk-body-m">Contact the <a href="https://www.scotcourts.gov.uk/the-courts/the-tribunals" class="govuk-link">Scottish Courts and Tribunals</a> for other services.</p>
 
-      <p class="govuk-body-m">You may have to contact the:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="https://www.justice-ni.gov.uk/topics/courts-and-tribunals" class="govuk-link">Northern Ireland Courts and Tribunals Service</a> for courts and some tribunals in Northern Ireland</li>
-        <li>Scottish Courts website for courts and some tribunals in Scotland</li>
-    </ul>
-
-
-
-    <h2 class="govuk-heading-m">Explore the topic</h2>
-
-    <p class="govuk-body-m"><a href="#">Court claims</a>, <a href="#">debt</a> and <a href="#">bankruptcy</a></p>
   </div>
 </div>
 

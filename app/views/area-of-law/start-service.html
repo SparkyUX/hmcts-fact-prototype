@@ -1,7 +1,7 @@
-<!-- 0.0 Start Page -->
+<!-- 2.1.1 online in-person or post -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
+How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
 
 {% block beforeContent %}
 
@@ -49,7 +49,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         name: "how-start-service",
         fieldset: {
           legend: {
-            text: "How would you like to make your {{displayAoL}} application?",
+            text: "Do you want to apply for {{displayArea}} online, in-person or by post?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -60,9 +60,9 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
               classes: "govuk-label--s"
             },
             value: "apply-online",
-            text: "Apply online",
+            text: "Online",
             hint: {
-              text: "You will be redirected to the service page to apply online"
+              text: "Start the {{displayArea}} application online"
             }
           },
           {
@@ -72,18 +72,15 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
             value: "apply-on-paper",
             text: "Apply on paper",
             hint: {
-              text: "You will be redirected to the page to download the paper form"
+              text: "Download the {{displayArea}} paper form"
             }
           },
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "more-info",
-            text: "I need more information",
-            hint: {
-              text: "If you want to contact someone about your application you can use the search facility to find your nearest court that hears {{displayAoL}} cases"
-            }
+            value: "in-person",
+            text: "In-person"
           }
         ]
       }) }}

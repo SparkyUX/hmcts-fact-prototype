@@ -48,11 +48,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-childcare-parenting" method="post" novalidate>  
+    <form action="/choose-area" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "choose-money-tax",
-        name: "choose-money-tax",
+        idPrefix: "choose-service-area",
+        name: "choose-service-area",
         fieldset: {
           legend: {
             text: "What area of childcare and parenting is your application or hearing about?",
@@ -62,7 +62,7 @@
         },
         items: [
           {
-            value: "child-arrangements",
+            value: "Child Arrangements",
             text: "Arrangements for childcare if you separate from your partner",
             label: {
               classes: "govuk-label--s"
@@ -72,7 +72,7 @@
             }
           },
           {
-            value: "adoption",
+            value: "Adoption",
             text: "Adoption",
             label: {
               classes: "govuk-label--s"
@@ -82,7 +82,7 @@
             }
           },
           {
-            value: "domestic-abuse",
+            value: "Domestic Abuse",
             text: "Domestic abuse",
             label: {
               classes: "govuk-label--s"
@@ -92,7 +92,7 @@
             }
           },
           {
-            value: "fgm",
+            value: "Female Genital Mutilation",
             text: "Female Genital Mutilation (FGM)",
             label: {
               classes: "govuk-label--s"

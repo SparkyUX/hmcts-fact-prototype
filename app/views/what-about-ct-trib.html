@@ -1,4 +1,4 @@
-<!-- 2.2.1 Visit / Send / Other -->
+<!-- 0.1 What do you want to know -->
 {% extends "layout.html" %}
 {% block pageTitle %}
 What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
@@ -27,11 +27,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
       href: "index"
     },
     {
-      text: "What do you want to do?",
-      href: "../what-do-you-want-to-do"
-    },
-    {
-      text: "Do you want to start or continue a service?"
+      text: "What do you want to do?"
     }
   ]
 }) }}
@@ -43,47 +39,36 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/send-visit-other" method="post" novalidate>  
+    <form action="/search-route" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "what-info-want",
-        name: "what-info-want",
+        idPrefix: "what-do-you-want-to-do",
+        name: "what-do-you-want-to-do",
         fieldset: {
           legend: {
-            text: "What information do you want to find?",
+            text: "What do you want to know about the court or tribunal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
-
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "find-nearest",
-            text: "I want to find the nearest court to me for a hearing",
+            value: "find-a-court",
+            text: "Find information about a court or tribunal",
             hint: {
-              text: "e.g. You know you need to have a hearing but you need to contact a venue to arrange it"
+              text: "e.g. You want to find an address, contact details or available facilities"
             }
           },
           {
             label: {
               classes: "govuk-label--s"
             },
-            value: "send-docs",
-            text: "I want to send documents",
+            value: "find-which-court",
+            text: "Find a court or tribunal to help me with my problem",
             hint: {
-              text: "e.g. You have evidence for a hearing that needs to be sent to a court"
-            }
-          },
-          {
-            label: {
-              classes: "govuk-label--s"
-            },
-            value: "not-listed",
-            text: "It's not listed here",
-            hint: {
-              text: "For any other reason not shown above"
+              text: "e.g. You want to identify which court or tribunal can help you with your case"
             }
           }
         ]

@@ -1,4 +1,3 @@
-
 <!-- 1.0 Organic search -->
 {% extends "layout.html" %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -49,13 +48,9 @@ Search for contact details - Find a court or tribunal - GOV.UK
   <div class="govuk-grid-column-two-thirds">
     <form action="/search-for-location" method="post" novalidate>  
 
-      <h1 class="govuk-heading-l">What is the name, postcode or city of the tribunal or court?</h1>
+      <h1 class="govuk-heading-l">What is the name, postcode or city of the court or tribunal?</h1>
 
-      <p class="govuk-body-m">
-        If you are looking for a specific court and know what the court is called or part of the address then this will help you.
-      </p>
 
-      <div class="background-box">
         {{ govukInput({
         label: {
         text: "Enter a court name, town or city, or postcode"
@@ -71,16 +66,14 @@ Search for contact details - Find a court or tribunal - GOV.UK
         {{ govukButton({
           text: "Continue"
         }) }}
-      </div>
+
 
       </br>
       
-      {{ govukInsetText({
-        text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
-      }) }}
+      <p class="govuk-body-m">Check your HM Courts and Tribunals Service (HMCTS) correspondence for contact details of the court or tribunal.</p>
 
       <p class="govuk-body-m">
-        If you are a member of staff at a court or service centre, you can search here using the Court Location Code too.
+        If you work for HMCTS, you can search using the Court Location Code.
       </p>
 <!--
         {{ govukDetails({

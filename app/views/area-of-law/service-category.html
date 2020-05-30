@@ -1,4 +1,4 @@
-<!-- 2.1 / 2.2 What is the service -->
+<!-- 2.1 / 2.2 Service selection top level -->
 {% extends "layout.html" %}
 {% block pageTitle %}
   Choose an area of law - Find a court or tribunal - GOV.UK
@@ -48,20 +48,17 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-service" method="post" novalidate>  
+    <form action="/choose-service-category" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "choose-aol",
-        name: "choose-aol",
+        idPrefix: "choose-service-category",
+        name: "choose-service-category",
         fieldset: {
           legend: {
             text: "What is your application or hearing about?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
-        },
-        hint: {
-          text: "Select the option that describes the type of case you are involved in."
         },
         items: [
           {
@@ -75,7 +72,7 @@
             }
           },
           {
-            value: "deaths-marriage-civil-partnership",
+            value: "deaths-marriages-civil-partnerships",
             text: "Deaths, marriages and civil partnerships",
             label: {
               classes: "govuk-label--s"
@@ -95,7 +92,7 @@
             }
           },
           {
-            value: "Crime",
+            value: "crime",
             text: "Crime",
             label: {
               classes: "govuk-label--s"
@@ -105,57 +102,7 @@
             }
           },
           {
-            value: "divorce",
-            text: "Divorce",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "End a marriage or get a legal separation or help with money, property and children during a divorce."
-            }
-          },
-          {
-            value: "domestic-abuse",
-            text: "Domestic abuse",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Abuse in the home which occurs in relationships, between family members, such as adolescents to parental violence"
-            }
-          },
-          {
-            value: "employment",
-            text: "Employment",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Tribunals about workplace disputes including pay, redundancy and discrimination."
-            }
-          },
-          {
-            value: "forced-marriage-fgm",
-            text: "Forced marriage and Female Genital Mutilation (FGM)",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Being made to marry against your will or undergo female genital mutilation against your will."
-            }
-          },
-          {
-            value: "immigration-asylum",
-            text: "Immigration and asylum",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Seeking aslyum, right to live in the UK, and appealing deportation"
-            }
-          },
-          {
-            value: "high-court",
+            value: "high-courts",
             text: "High Courts",
             label: {
               classes: "govuk-label--s"
