@@ -9,14 +9,14 @@ const app = express()
 
 router.post('/search-route', function (req, res) {
 
-  let searchRoute = req.session.data['what-do-you-want-to-do']
+  let searchRoute = req.session.data['what-do-you-want-to-know']
  
   if (searchRoute == 'find-a-court') {
-    res.redirect('/location/search-location')
+    res.redirect('/location/location-search')
   }
-  else 
+  else
   {
-    res.redirect('/area-of-law/start-or-continue-service')
+    res.redirect('/service/service-start-or-continue')
    }
 })
 
@@ -28,13 +28,15 @@ router.post('/start-or-continue', function (req, res) {
  
   if (startOrContinue == 'start-a-service') {
     req.app.locals.serviceStartOrContinue = "start"
+    req.app.locals.continueService = false
   }
   else 
   {
     req.app.locals.serviceStartOrContinue = "continue"
+    req.app.locals.continueService = true
   } 
 
-  res.redirect('/area-of-law/service-category')
+  res.redirect('/service/service-category')
 
 })
 
@@ -48,26 +50,27 @@ router.post('/choose-service-category', function (req, res) {
   switch (serviceCategory) {
     case 'money-tax':
 //      displayCategory = 'Money and tax'
-      pageServiceCategory = 'money-tax'
+      pageServiceCategory = 'service-area-money-tax'
       break
     case 'deaths-marriages-civil-partnerships':
 //      displayCategory = 'Deaths, marriages and civil partnerships'
-      pageServiceCategory = 'deaths-marriages-civil-partnerships'
+      pageServiceCategory = 'service-area-deaths-marriages-civil-partnerships'
     break
     case 'childcare-parenting':
 //      displayCategory = 'Childcare and parenting'
-      pageServiceCategory = 'childcare-parenting'
+      pageServiceCategory = 'service-area-childcare-parenting'
       break
     case 'crime':
 //      displayCategory = 'Crime'
-      pageServiceCategory = 'crime'
+      pageServiceCategory = 'service-area-crime'
       break
     case 'high-courts':
 //      displayCategory = 'High Courts'
       pageServiceCategory = ''
       break
     default:
-//      displayCategory = ''      
+//      displayCategory = ''     
+// TO:DO check his  
       pageServiceCategory = 'unknown-service'
       break
 
@@ -75,7 +78,7 @@ router.post('/choose-service-category', function (req, res) {
 
 //  req.app.locals.displayAoL = displayAoL
 
-  res.redirect('/area-of-law/' + pageServiceCategory)
+  res.redirect('/service/' + pageServiceCategory)
 
 
 })
@@ -90,11 +93,11 @@ router.post('/choose-area', function (req, res) {
   console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
-    res.redirect('/area-of-law/start-service')
+    res.redirect('/service/service-start')
   }
   else
   {
-    res.redirect('/area-of-law/what-about-your-case')
+    res.redirect('/service/service-continue')
   }
 
 })
@@ -240,7 +243,7 @@ router.post('/how-to-start-service', function (req, res) {
    }
   }
   else if (howStartService == 'in-person') {
-    redirectPage = '/area-of-law/search-aol-postcode'
+    redirectPage = '/service/search-aol-postcode'
   }
   
   console.log('redirectPage ' + redirectPage)
@@ -248,7 +251,7 @@ router.post('/how-to-start-service', function (req, res) {
   res.redirect(redirectPage)
 })
 
-router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
+router.get('/service/search-aol-results-multiple', function(req, res) {
   var areaOfLaw = req.query.aol
 
     switch (areaOfLaw) {
@@ -295,7 +298,7 @@ router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
     }
     req.app.locals.displayAoL = displayAoL
     req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
-    res.render('area-of-law/search-aol-results-multiple')
+    res.render('service/search-aol-results-multiple')
 
 })
 
@@ -308,12 +311,12 @@ router.post('/visit-send-other', function (req, res) {
     res.redirect('../exit')
   }
   else {
-        res.redirect('/area-of-law/search-aol-postcode')
+        res.redirect('/service/search-aol-postcode')
   }
 
 })
 
-router.get('/area-of-law/search-aol-results-multiple-div-centre', function(req, res) {
+router.get('/service/search-aol-results-multiple-div-centre', function(req, res) {
   var areaOfLaw = req.query.aol
   if (areaOfLaw == 'divorce') {
     displayAoL = 'Divorce'
@@ -326,11 +329,11 @@ router.get('/area-of-law/search-aol-results-multiple-div-centre', function(req, 
   }
   req.app.locals.displayAoL = displayAoL
   req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
-  res.render('area-of-law/search-aol-results-multiple-div-centre')
+  res.render('service/search-aol-results-multiple-div-centre')
 
 })
 
-router.get('/area-of-law/search-aol-results-multiple-ET', function(req, res) {
+router.get('/service/search-aol-results-multiple-ET', function(req, res) {
   var areaOfLaw = req.query.aol
   if (areaOfLaw == 'employment') {
     displayAoL = 'Employment'
@@ -340,11 +343,11 @@ router.get('/area-of-law/search-aol-results-multiple-ET', function(req, res) {
   }
   req.app.locals.displayAoL = displayAoL
   req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
-  res.render('area-of-law/search-aol-results-multiple-ET')
+  res.render('service/search-aol-results-multiple-ET')
 
 })
 
-router.get('/area-of-law/search-aol-results-single-ccmcc', function(req, res) {
+router.get('/service/search-aol-results-single-ccmcc', function(req, res) {
   var areaOfLaw = req.query.aol
   if (areaOfLaw == 'moneyClaims') {
       displayAoL = 'Money Claims'
@@ -354,7 +357,7 @@ router.get('/area-of-law/search-aol-results-single-ccmcc', function(req, res) {
   }
   req.app.locals.displayAoL = displayAoL
   req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
-  res.render('area-of-law/search-aol-results-single-ccmcc')
+  res.render('service/search-aol-results-single-ccmcc')
 
 })
 

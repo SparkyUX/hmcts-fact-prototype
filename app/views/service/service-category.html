@@ -43,19 +43,24 @@
 
 {% endblock %}
 
-
+{% if continueService %}
+  {% set pageHeader = "What is your application or hearing about" %}
+{% else %}
+  {% set pageHeader = "What do you want to know more about?" %}
+{% endif %}
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/choose-service-category" method="post" novalidate>  
 
+
       {{ govukRadios({
         idPrefix: "choose-service-category",
         name: "choose-service-category",
         fieldset: {
           legend: {
-            text: "What is your application or hearing about?",
+            text: pageHeader,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -124,6 +129,7 @@
       {{ govukButton({
         text: "Continue"
       }) }}
+
 
 <!--
       {{ govukDetails({

@@ -43,6 +43,11 @@
 
 {% endblock %}
 
+{% if continueService %}
+  {% set pageHeader = "What area of money or tax is your application or hearing about?" %}
+{% else %}
+  {% set pageHeader = "What area of money or tax do you need to find more about?" %}
+{% endif %}
 
 {% block content %}
 
@@ -55,7 +60,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: "What area of money and tax is your application or hearing about?",
+            text: pageHeader,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -90,6 +95,16 @@
             hint: {
               text: "Tenant evictions and rental disputes."
             }
+          },         
+          {
+            value: "Emergency illegal eviction",
+            text: "Emergency illegal eviction",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Illegally evicted and you're homeless or at risk of violence."
+            }
           },
           {
             value: "Bankruptcy",
@@ -112,13 +127,13 @@
             }
           },
           {
-            value: "Employment",
+            value: "Claims against employers",
             text: "Claims against employers",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Employment disputes related to pay, unfair dismissal and discrimination."
+              text: "Appealing a decision about employment disputes related to pay, unfair dismissal and discrimination."
             }
           },
           {

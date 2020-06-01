@@ -43,6 +43,12 @@
 
 {% endblock %}
 
+{% if continueService %}
+  {% set pageHeader = "What area of crime is your application or hearing about?
+" %}
+{% else %}
+  {% set pageHeader = "What area of crime do you need to find more about?" %}
+{% endif %}
 
 {% block content %}
 
@@ -55,7 +61,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: "What area of crime is your application or hearing about?",
+            text: pageHeader,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
