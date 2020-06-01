@@ -80,7 +80,8 @@ router.post('/choose-service-category', function (req, res) {
 
 })
 
-// 2.x.a secpnd level 
+// 2.x.a second level service area
+
 router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
@@ -93,10 +94,12 @@ router.post('/choose-area', function (req, res) {
   }
   else
   {
-    res.redirect('/area-of-law/what-info-do-you-want')
+    res.redirect('/area-of-law/what-about-your-case')
   }
 
 })
+
+// 2.1.1 How to start service online / paper /in-person
 
 router.post('/how-to-start-service', function (req, res) {
 
@@ -173,15 +176,17 @@ router.post('/how-to-start-service', function (req, res) {
 
   else if (howStartService == 'apply-on-paper') {
     switch (req.app.locals.displayAoL) {
-
-     case 'Adoption':
+      case 'Adoption':
         redirectPage = 'Adoption'
+        break
+      case 'Appealing a criminal sentence or verdict':
+        redirectPage = 'Bankruptcy'
         break
       case 'Bankruptcy':
         redirectPage = 'Bankruptcy'
         break
-      case 'Children':
-        redirectPage = 'Children'
+      case 'Child arrangements':
+        redirectPage = 'Child arrangements'
         break
       case 'Civil Partnership':
         redirectPage = 'Civil partnership'
@@ -198,13 +203,19 @@ router.post('/how-to-start-service', function (req, res) {
       case 'Employment':
         redirectPage = 'Employment'
         break
-      case 'Forced marriage and FGM':
+      case 'Female Genital Mutilation':
         redirectPage = 'Forced marriage and FGM'
+        break
+      case 'Forced marriage':
+        redirectPage = 'Forced marriage and FGM'
+        break
+      case 'Giving evidence':
+        redirectPage = 'High Court registry'
         break
       case 'High Court registry':
         redirectPage = 'High Court registry'
         break
-      case 'HousingPossession':
+      case 'Housing possession':
         redirectPage = 'Housing possession'
         break
       case 'Immigration and Asylum':
@@ -216,7 +227,7 @@ router.post('/how-to-start-service', function (req, res) {
       case 'Probate':
         redirectPage = 'Probate'
         break
-      case 'Social security':
+      case 'Benefits':
         redirectPage = 'Social security'
         break
       case 'Tax':
@@ -225,9 +236,10 @@ router.post('/how-to-start-service', function (req, res) {
       default:
         redirectPage = ''
         break
+   
    }
   }
-  else if (howStartService == 'more-info') {
+  else if (howStartService == 'in-person') {
     redirectPage = '/area-of-law/search-aol-postcode'
   }
   
@@ -287,13 +299,13 @@ router.get('/area-of-law/search-aol-results-multiple', function(req, res) {
 
 })
 
-router.post('/send-visit-other', function (req, res) {
+router.post('/visit-send-other', function (req, res) {
 
   let whatInfoWant = req.session.data['what-info-want']
  
-  if (whatInfoWant == 'send-docs') {
+  if (whatInfoWant == 'other') {
     // TO:DO determined by AoL will be owning court or CTSC or regional centre
-    res.redirect('')
+    res.redirect('../exit')
   }
   else {
         res.redirect('/area-of-law/search-aol-postcode')
