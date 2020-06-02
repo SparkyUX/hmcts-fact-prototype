@@ -9,7 +9,7 @@
   tag: {
     text: "alpha"
   },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link ctf-language">Cymraeg</a>'
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
   }) }}
 
 <!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
@@ -44,8 +44,7 @@
 {% endblock %}
 
 {% if continueService %}
-  {% set pageHeader = "What area of crime is your application or hearing about?
-" %}
+  {% set pageHeader = "What area of crime is your application or hearing about?" %}
 {% else %}
   {% set pageHeader = "What area of crime do you need to find more about?" %}
 {% endif %}

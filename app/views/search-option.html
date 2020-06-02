@@ -9,7 +9,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
   tag: {
     text: "alpha"
   },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link ctf-language">Cymraeg</a>'
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
   }) }}
 
 <!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
@@ -41,8 +41,8 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
   <div class="govuk-grid-column-two-thirds">
     <form action="/search-route" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "what-do-you-want-to-do",
-        name: "what-do-you-want-to-do",
+        idPrefix: "what-do-you-want-to-know",
+        name: "what-do-you-want-to-know",
         fieldset: {
           legend: {
             text: "What do you want to know about the court or tribunal?",

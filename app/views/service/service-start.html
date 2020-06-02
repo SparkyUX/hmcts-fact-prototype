@@ -9,7 +9,7 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
   tag: {
     text: "alpha"
   },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link ctf-language">Cymraeg</a>'
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
   }) }}
 
 <!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
@@ -49,7 +49,7 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
         name: "how-start-service",
         fieldset: {
           legend: {
-            text: "Do you want to apply for {{displayArea}} online, in-person or by post?",
+            text: "Do you want to apply for {{displayServiceArea}} online, in-person or by post?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -62,7 +62,7 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
             value: "apply-online",
             text: "Online",
             hint: {
-              text: "Start the {{displayArea}} application online"
+              text: "Start the {{displayServiceArea}} application online"
             }
           },
           {
@@ -72,7 +72,7 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
             value: "apply-on-paper",
             text: "Apply on paper",
             hint: {
-              text: "Download the {{displayArea}} paper form"
+              text: "Download the {{displayServiceArea}} paper form"
             }
           },
           {

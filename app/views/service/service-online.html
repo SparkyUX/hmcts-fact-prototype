@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Online service - Find a court or tribunal - GOV.UK
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Your journey is complete",
+        html: "Thank you for taking the time to use this service"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

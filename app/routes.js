@@ -88,21 +88,24 @@ router.post('/choose-service-category', function (req, res) {
 router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
+  let serviceAreaQuery = ""
+  serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
+  console.log('serviceAreaQuery ' + serviceAreaQuery)
 
-  req.app.locals.displayArea = serviceArea
-  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
+  req.app.locals.displayServiceArea = serviceArea
+  console.log('define req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
-    res.redirect('/service/service-start')
+    res.redirect('/service/service-start?service=' + serviceAreaQuery)
   }
   else
   {
-    res.redirect('/service/service-continue')
+    res.redirect('/service/service-continue?service=' + serviceAreaQuery)
   }
 
 })
 
-// 2.1.1 How to start service online / paper /in-person
+// 2.1.1 How to start service online / paper / in-person
 
 router.post('/how-to-start-service', function (req, res) {
 
@@ -115,141 +118,177 @@ router.post('/how-to-start-service', function (req, res) {
     switch (req.app.locals.displayAoL) {
 
       case 'Adoption':
-        redirectPage = 'Adoption'
+        redirectPage = 'service-online'
         break
       case 'Appealing a criminal sentence or verdict':
-        redirectPage = 'Bankruptcy'
+        redirectPage = 'service-online'
         break
       case 'Bankruptcy':
-        redirectPage = 'Bankruptcy'
+        redirectPage = 'service-online'
         break
       case 'Child arrangements':
-        redirectPage = 'Child arrangements'
+        redirectPage = 'service-online'
         break
       case 'Civil Partnership':
-        redirectPage = 'Civil partnership'
+        redirectPage = 'service-online'
         break
       case 'Crime':
-        redirectPage = 'Crime'
+        redirectPage = 'service-online'
         break
       case 'Divorce':
-        redirectPage = 'Divorce'
+        redirectPage = 'service-online'
         break
       case 'Domestic Abuse':
-        redirectPage = 'Domestic abuse'
+        redirectPage = 'service-online'
         break
       case 'Employment':
-        redirectPage = 'Employment'
+        redirectPage = 'service-online'
         break
       case 'Female Genital Mutilation':
-        redirectPage = 'Forced marriage and FGM'
+        redirectPage = 'service-online'
         break
       case 'Forced marriage':
-        redirectPage = 'Forced marriage and FGM'
+        redirectPage = 'service-online'
         break
       case 'Giving evidence':
-        redirectPage = 'High Court registry'
+        redirectPage = 'service-online'
         break
       case 'High Court registry':
-        redirectPage = 'High Court registry'
+        redirectPage = 'service-online'
         break
       case 'Housing possession':
-        redirectPage = 'Housing possession'
+        redirectPage = 'service-online'
         break
       case 'Immigration and Asylum':
-        redirectPage = 'Immigration and asylum'
+        redirectPage = 'service-online'
         break
       case 'Money Claims':
-        redirectPage = 'Money claims'
+        redirectPage = 'online-money-claims'
         break
       case 'Probate':
-        redirectPage = 'Probate'
+        redirectPage = 'service-online'
         break
       case 'Benefits':
-        redirectPage = 'Social security'
+        redirectPage = 'service-online'
         break
       case 'Tax':
-        redirectPage = 'Tax'
+        redirectPage = 'service-online'
         break
       default:
-        redirectPage = ''
+        redirectPage = 'service-online'
         break
     }
   }
 
   else if (howStartService == 'apply-on-paper') {
     switch (req.app.locals.displayAoL) {
-      case 'Adoption':
-        redirectPage = 'Adoption'
+       case 'Adoption':
+        redirectPage = 'service-paper'
         break
       case 'Appealing a criminal sentence or verdict':
-        redirectPage = 'Bankruptcy'
+        redirectPage = 'service-paper'
         break
       case 'Bankruptcy':
-        redirectPage = 'Bankruptcy'
+        redirectPage = 'service-paper'
         break
       case 'Child arrangements':
-        redirectPage = 'Child arrangements'
+        redirectPage = 'service-paper'
         break
       case 'Civil Partnership':
-        redirectPage = 'Civil partnership'
+        redirectPage = 'service-paper'
         break
       case 'Crime':
-        redirectPage = 'Crime'
+        redirectPage = 'service-paper'
         break
       case 'Divorce':
-        redirectPage = 'Divorce'
+        redirectPage = 'service-paper'
         break
       case 'Domestic Abuse':
-        redirectPage = 'Domestic abuse'
+        redirectPage = 'service-paper'
         break
       case 'Employment':
-        redirectPage = 'Employment'
+        redirectPage = 'service-paper'
         break
       case 'Female Genital Mutilation':
-        redirectPage = 'Forced marriage and FGM'
+        redirectPage = 'service-paper'
         break
       case 'Forced marriage':
-        redirectPage = 'Forced marriage and FGM'
+        redirectPage = 'service-paper'
         break
       case 'Giving evidence':
-        redirectPage = 'High Court registry'
+        redirectPage = 'service-paper'
         break
       case 'High Court registry':
-        redirectPage = 'High Court registry'
+        redirectPage = 'service-paper'
         break
       case 'Housing possession':
-        redirectPage = 'Housing possession'
+        redirectPage = 'service-paper'
         break
       case 'Immigration and Asylum':
-        redirectPage = 'Immigration and asylum'
+        redirectPage = 'service-paper'
         break
       case 'Money Claims':
         redirectPage = 'Money claims'
         break
       case 'Probate':
-        redirectPage = 'Probate'
+        redirectPage = 'service-paper'
         break
       case 'Benefits':
-        redirectPage = 'Social security'
+        redirectPage = 'service-paper'
         break
       case 'Tax':
-        redirectPage = 'Tax'
+        redirectPage = 'service-paper'
         break
       default:
-        redirectPage = ''
+        redirectPage = 'service-paper'
         break
    
    }
   }
   else if (howStartService == 'in-person') {
-    redirectPage = '/service/search-aol-postcode'
+    redirectPage = '/service/service-search-postcode'
   }
   
   console.log('redirectPage ' + redirectPage)
   console.log('howStartService ' + howStartService)
-  res.redirect(redirectPage)
+  res.redirect('/service/' + redirectPage)
 })
+
+// 2.2.1 Continue service
+
+router.post('/visit-send-other', function (req, res) {
+
+  let whatInfoWant = req.session.data['what-info-want']
+  console.log('req.query.service ' + req.query['service'])
+  console.log()
+ 
+  if (whatInfoWant == 'other') {
+    // TO:DO determined by AoL will be owning court or CTSC or regional centre
+    res.redirect('../exit')
+  }
+  else {
+        res.redirect('/service/service-search-postcode?service=' + req.query.service)
+  }
+
+})
+
+// 2.2.2 service postcode search
+
+router.post('/service-postcode', function (req, res) {
+
+  let locationSearchValue = req.session.data['service-search-value'].toLowerCase();
+  req.app.locals.locationSearch = locationSearchValue
+
+  if ( locationSearchValue.includes("rg10") ) {
+     res.redirect('/service/service-search-results-single-CCMCC')
+  }
+  else 
+  {
+    res.redirect('/service/service-search-results-multiple')
+
+   }
+})
+
 
 router.get('/service/search-aol-results-multiple', function(req, res) {
   var areaOfLaw = req.query.aol
@@ -297,24 +336,12 @@ router.get('/service/search-aol-results-multiple', function(req, res) {
 
     }
     req.app.locals.displayAoL = displayAoL
-    req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+    req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
     res.render('service/search-aol-results-multiple')
 
 })
 
-router.post('/visit-send-other', function (req, res) {
 
-  let whatInfoWant = req.session.data['what-info-want']
- 
-  if (whatInfoWant == 'other') {
-    // TO:DO determined by AoL will be owning court or CTSC or regional centre
-    res.redirect('../exit')
-  }
-  else {
-        res.redirect('/service/search-aol-postcode')
-  }
-
-})
 
 router.get('/service/search-aol-results-multiple-div-centre', function(req, res) {
   var areaOfLaw = req.query.aol
@@ -328,7 +355,7 @@ router.get('/service/search-aol-results-multiple-div-centre', function(req, res)
         displayAoL = ' '
   }
   req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
   res.render('service/search-aol-results-multiple-div-centre')
 
 })
@@ -342,7 +369,7 @@ router.get('/service/search-aol-results-multiple-ET', function(req, res) {
         displayAoL = ' '
   }
   req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
   res.render('service/search-aol-results-multiple-ET')
 
 })
@@ -356,7 +383,7 @@ router.get('/service/search-aol-results-single-ccmcc', function(req, res) {
         displayAoL = ' '
   }
   req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['aol-postcode'].toUpperCase(); 
+  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
   res.render('service/search-aol-results-single-ccmcc')
 
 })

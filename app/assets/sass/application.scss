@@ -18,19 +18,19 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-.ctf-options-list-item{margin-bottom:10px;background-color:#dee0e2;background-color:#f3f2f1;padding:0;position:relative;;list-style-type:none}
+.fact-options-list-item{margin-bottom:10px;background-color:#dee0e2;background-color:#f3f2f1;padding:0;position:relative;;list-style-type:none}
 
-.ctf-options-list-item a.ctf-options-list-item-link{display:block;text-decoration:none;color:#0b0c0c;padding:13px 60px 10px 25px;border:1px solid transparent;box-shadow:0 2px 0 #929191}
+.fact-options-list-item a.fact-options-list-item-link{display:block;text-decoration:none;color:#0b0c0c;padding:13px 60px 10px 25px;border:1px solid transparent;box-shadow:0 2px 0 #929191}
 
-.ctf-options-list-item a.ctf-options-list-item-link:before{position:absolute;top:0;bottom:0;right:26px;margin:auto;width:12px;height:12px;content:'';border:#0b0c0c 4px;border-style:solid solid none none;-sand-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
+.fact-options-list-item a.fact-options-list-item-link:before{position:absolute;top:0;bottom:0;right:26px;margin:auto;width:12px;height:12px;content:'';border:#0b0c0c 4px;border-style:solid solid none none;-sand-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
 
-.ctf-options-list-item a.ctf-options-list-item-link:focus:not(:active):not(:hover){border-color:#fd0;color:#0b0c0c;background-color:#fd0;-webkit-box-shadow:0 4px 0 #0b0c0c;box-shadow:0 4px 0 #0b0c0c}
+.fact-options-list-item a.fact-options-list-item-link:focus:not(:active):not(:hover){border-color:#fd0;color:#0b0c0c;background-color:#fd0;-webkit-box-shadow:0 4px 0 #0b0c0c;box-shadow:0 4px 0 #0b0c0c}
 
-.ctf-options-list-item a.ctf-options-list-item-link:focus{border-color:#fd0;outline:3px solid transparent;-webkit-box-shadow:inset 0 0 0 1px #fd0;box-shadow:inset 0 0 0 1px #fd0}
+.fact-options-list-item a.fact-options-list-item-link:focus{border-color:#fd0;outline:3px solid transparent;-webkit-box-shadow:inset 0 0 0 1px #fd0;box-shadow:inset 0 0 0 1px #fd0}
 
-.ctf-options-list-item a.ctf-options-list-item-link:active:before{right:24px}
+.fact-options-list-item a.fact-options-list-item-link:active:before{right:24px}
 
-.ctf-options-list-item a.ctf-options-list-item-link:hover{background-color:#dbdad9}.modal-dialog{display:none}.modal-dialog--no-js-persistent{display:inline-block}
+.fact-options-list-item a.fact-options-list-item-link:hover{background-color:#dbdad9}.modal-dialog{display:none}.modal-dialog--no-js-persistent{display:inline-block}
 
 .background-box {
 	padding: 10px;
@@ -40,7 +40,7 @@ $govuk-assets-path: '/govuk/assets/';
 .govuk-phase-banner__text {
   width: 100%;
 
-  .ctf-language {
+  .fact-language {
     float: right;
   }
 }
