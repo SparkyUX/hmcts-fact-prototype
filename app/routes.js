@@ -394,18 +394,25 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationSearch = req.session.data['location-search-value']
 
   let searchCourt = locationSearchValue.trim()
+  req.app.locals.locationReading = ''
+  req.app.locals.locationSlough = ''
+  req.app.locals.locationWycombe = ''
+
  
   switch(searchCourt) {
     case 'reading county court and family court' :
+      req.app.locals.locationReading = 'readingccfc'
       res.redirect('/location/location-search-results-single?courtName=readingccfc')
     break
     case 'slough county court and family court' :
+      req.app.locals.locationSlough = 'slough'
       res.redirect('/location/location-search-results-single?courtName=slough')
     break
     case 'high wycombe county court and family court' :
+      req.app.locals.locationWycombe = 'wycombe'
       res.redirect('/location/location-search-results-single?courtName=wycombe')
     break
-    default
+    default :
       res.redirect('/location/location-search-results-multiple')
     break
 
