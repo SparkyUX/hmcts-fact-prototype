@@ -397,7 +397,8 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationReading = ''
   req.app.locals.locationSlough = ''
   req.app.locals.locationWycombe = ''
- 
+   req.app.locals.locationWatford = ''
+
   switch(searchCourt) {
     case 'reading county court and family court' :
       req.app.locals.locationReading = 'readingccfc'
@@ -412,7 +413,7 @@ router.post('/search-for-location', function (req, res) {
       res.redirect('/location/location-search-results-single?courtName=wycombe')
     break
         case 'watford county court and family court' :
-      req.app.locals.locationWycombe = 'watford'
+      req.app.locals.locationWatford = 'watford'
       res.redirect('/location/location-search-results-single?courtName=watford')
     break
     default :
@@ -453,7 +454,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtAddressVisitPostcode = 'HP11 1LR'
 
           displayCourtAddressWriteBuilding ='Administration Centre'
-          displayCourtAddressWriteStreet1 ='REading Count Court'
+          displayCourtAddressWriteStreet1 ='Reading Count Court'
           displayCourtAddressWriteStreet2 ='160-163 Friar Street'
           displayCourtAddressWriteTown = 'Reading'
           displayCourtAddressWritePostcode = 'RG1 1HE'
