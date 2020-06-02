@@ -57,16 +57,38 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       Address
     </h3>
 
+    <p class="govuk-body-l">
+      Visit us:
+    </p>
     <p class="govuk-body-m">
-      Visit or contact us:
-    </br>Hearing Centre
-    </br>160-163 High Street
-    </br>Reading
-    </br>RG1 1HE
+    {{displayCourtAddressVisitBuilding}}
+    </br>{{displayCourtAddressVisitStreet1}}
+    {% if displayCourtAddressVisitStreet2 %}
+      </br>{{displayCourtAddressVisitStreet2}}
+    {% endif %}
+  
+    </br>{{displayCourtAddressVisitTown}}
+    </br>{{displayCourtAddressVisitPostcode}}
+
+    {% if displayCourtAddressWriteBuilding %}
+    <p class="govuk-body-l">
+      Write to us:
+    </p>
+    <p class="govuk-body-m">
+
+      {{displayCourtAddressVisitBuilding}}
+      </br>{{displayCourtAddressVisitStreet1}}
+        {% if displayCourtAddressVisitStreet2 %}
+          </br>{{displayCourtAddressVisitStreet2}}
+        {% endif %}
+    
+      </br>{{displayCourtAddressVisitTown}}
+      </br>{{displayCourtAddressVisitPostcode}}
+    {% endif %}
+
     </p>
     <p class="govuk-link"><a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
     </p>
-
     <p class="govuk-link"><a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
     </p>
 
@@ -110,14 +132,14 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       Emails
     </h3>
     <p class="govuk-body-m">
-      Check when your hearing will take place: <a href="mailto:hearings.reading.countycourt@justice.gov.uk">hearings.reading.countycourt@justice.gov.uk</a>
+      Check when your hearing will take place: <a href="mailto:hearings.courtname.countycourt@justice.gov.uk">hearings.courtname.countycourt@justice.gov.uk</a>
     </p>
 
     <h2 class="govuk-heading-l">
       Building facilities
     </h2>
     <p class="govuk-body-m">
-      If you have a disability and need help coming to a hearing, please contact [EMAIL] or [Phone number].
+      If you have a disability and need help coming to a hearing, please contact <a href="mailto:enquiries.courtname@justice.gov.uk">enquiries.courtname@justice.gov.uk</a> or 01234 567 890.
     </p>
 
     {{ govukTable({
@@ -151,7 +173,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
             text: "Hearing loop"
           },
           {
-            html: "<p>The building has hearing enhancement facilities available by prior arrangement.  Please contact the <a href='mailto:enquiries.reading.countycourt@justice.gov.uk'>Court office.</a></p>"
+            html: "<p>The building has hearing enhancement facilities available by prior arrangement.  Please contact the <a href='mailto:enquiries.courtname.countycourt@justice.gov.uk'>Court office.</a></p>"
           }
         ],
         [

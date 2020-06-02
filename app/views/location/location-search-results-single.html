@@ -47,21 +47,14 @@ Search results for location - Find a Court or Tribunal - GOV.UK
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Court or Tribunal search results
+      <h2 class="govuk-heading-m">We found 1 court or tribunal matching your search for</h2>
+      <h2 class="govuk-heading-m">"{{locationSearch}}"</h2>
 
-    <h1 class="govuk-heading-xl">Search results for location</h1>
 
-    <p class="govuk-body-m">
-      Location search: {{locationSearch}}
-    </p>
-
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-cc" class="govuk-link">
-      Reading Crown Court
-    </a></h2>
-    <p class="govuk-body-m">
-      Cases heard: Crime
-    </p>
-
-    <hr class="govuk-section-break govuk-section-break--visible">
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link">
+        Reading County Court and Family Court
+      </a></h2>
 
   </div>
 
