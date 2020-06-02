@@ -92,8 +92,8 @@ router.post('/choose-area', function (req, res) {
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
   console.log('serviceAreaQuery ' + serviceAreaQuery)
 
-  req.app.locals.displayServiceArea = serviceArea
-  console.log('define req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
+  req.app.locals.displayArea = serviceArea
+  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
     res.redirect('/service/service-start?service=' + serviceAreaQuery)
@@ -228,7 +228,7 @@ router.post('/how-to-start-service', function (req, res) {
         redirectPage = 'service-paper'
         break
       case 'Money Claims':
-        redirectPage = 'Money claims'
+        redirectPage = 'form-n1-money-claim'
         break
       case 'Probate':
         redirectPage = 'service-paper'
@@ -276,11 +276,11 @@ router.post('/visit-send-other', function (req, res) {
 
 router.post('/service-postcode', function (req, res) {
 
-  let locationSearchValue = req.session.data['service-search-value'].toLowerCase();
-  req.app.locals.locationSearch = locationSearchValue
+  let serviceSearchPostcode = req.session.data['service-search-value'].toLowerCase();
+  req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-  if ( locationSearchValue.includes("rg10") ) {
-     res.redirect('/service/service-search-results-single-CCMCC')
+  if ( serviceSearchPostcode.includes("rg10") ) {
+     res.redirect('/service/service-search-results-single-ccmc')
   }
   else 
   {
@@ -394,11 +394,11 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationSearch = locationSearchValue
 
   if ( locationSearchValue.includes("crown")) {
-  	 res.redirect('/location/search-loc-results-single')
+  	 res.redirect('/location/location-search-results-single')
   }
   else 
   {
-    res.redirect('/location/search-loc-results-multiple')
+    res.redirect('/location/location-search-results-multiple')
 
    }
 })

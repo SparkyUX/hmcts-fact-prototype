@@ -58,7 +58,7 @@ var useAutoStoreData = process.env.USE_AUTO_STORE_DATA || config.useAutoStoreDat
 var useCookieSessionStore = process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 var useHttps = process.env.USE_HTTPS || config.useHttps
 
-//JHS add config variables for CTF
+//JHS add config variables for FACT
 app.locals.backLinkRequired = process.env.BACKLINK_REQUIRED
 
 useHttps = useHttps.toLowerCase()
