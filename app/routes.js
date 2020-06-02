@@ -397,7 +397,6 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationReading = ''
   req.app.locals.locationSlough = ''
   req.app.locals.locationWycombe = ''
-
  
   switch(searchCourt) {
     case 'reading county court and family court' :
@@ -411,6 +410,10 @@ router.post('/search-for-location', function (req, res) {
     case 'high wycombe county court and family court' :
       req.app.locals.locationWycombe = 'wycombe'
       res.redirect('/location/location-search-results-single?courtName=wycombe')
+    break
+        case 'watford county court and family court' :
+      req.app.locals.locationWycombe = 'watford'
+      res.redirect('/location/location-search-results-single?courtName=watford')
     break
     default :
       res.redirect('/location/location-search-results-multiple')
@@ -480,18 +483,18 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtAddressVisitPostcode = 'PP1 1BM'
 
           displayCourtAddressWriteBuilding ='Administration Centre'
-          displayCourtAddressWriteStreet1 ='REading Count Court'
+          displayCourtAddressWriteStreet1 ='Reading Count Court'
           displayCourtAddressWriteStreet2 ='160-163 Friar Street'
           displayCourtAddressWriteTown = 'Reading'
           displayCourtAddressWritePostcode = 'RG1 1HE'
         break
         case 'watford':
-          displayCourtName = 'Watford Tribunal Hearing Centre'
-          displayCourtAddressVisitBuilding ='Hearing Centre'
-          displayCourtAddressVisitStreet1 ='160-163 High Street'
+          displayCourtName = 'Watford County Court and Family Court'
+          displayCourtAddressVisitBuilding ='Radius Hoiuse'
+          displayCourtAddressVisitStreet1 ='51 Clarendon Road'
           displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Trumpton'
-          displayCourtAddressVisitPostcode = 'PP1 1BM'
+          displayCourtAddressVisitTown = 'Watford'
+          displayCourtAddressVisitPostcode = 'WD17 1HP'
           
           displayCourtAddressWriteBuilding =''
           displayCourtAddressWriteStreet1 =''
