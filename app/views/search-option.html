@@ -52,24 +52,20 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         },
         items: [
           {
-            label: {
-              classes: "govuk-label--s"
-            },
+
             value: "find-a-court",
-            text: "Find information about a court or tribunal",
-            hint: {
-              text: "e.g. You want to find an address, contact details or available facilities"
-            }
+            text: "Find an address, contact or facility details of a court or tribunal"
+
           },
           {
-            label: {
-              classes: "govuk-label--s"
-            },
+     
             value: "find-which-court",
-            text: "Find a court or tribunal to help me with my problem",
-            hint: {
-              text: "e.g. You want to identify which court or tribunal can help you with your case"
-            }
+            text: "Find a court or tribunal to help me with my application or hearing"
+          },
+          {
+ 
+            value: "find-where-pay-fine",
+            text: "Find a court or tribunal where I can pay a fine"
           }
         ]
       }) }}
@@ -77,6 +73,11 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
       {{ govukButton({
         text: "Continue"
       }) }}
+
+      <!-- hints
+            hint: {
+              text: "e.g. You want to find an address, contact details or available facilities"
+      -->
 <!--
       {{ govukInsetText({
         text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."

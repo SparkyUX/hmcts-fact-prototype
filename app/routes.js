@@ -10,14 +10,21 @@ const app = express()
 router.post('/search-route', function (req, res) {
 
   let searchRoute = req.session.data['what-do-you-want-to-know']
- 
-  if (searchRoute == 'find-a-court') {
-    res.redirect('/location/location-search')
+
+  switch (searchRoute) {
+    case 'find-a-court' :
+      res.redirect('/location/location-search')
+    break
+    case 'find-which-court':
+      res.redirect('/service/service-start-or-continue')
+    break
+    case 'find-where-pay-fine':
+      res.redirect('/service/service-search-postcode')
+    default :
+      res.redirect('/service/service-start-or-continue')
+    break
   }
-  else
-  {
-    res.redirect('/service/service-start-or-continue')
-   }
+ 
 })
 
 // 2.0 start or continue a service journey
@@ -397,7 +404,13 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationReading = ''
   req.app.locals.locationSlough = ''
   req.app.locals.locationWycombe = ''
-   req.app.locals.locationWatford = ''
+  req.app.locals.locationWatford = ''
+  req.app.locals.locationCCMCC = ''
+
+  if (searchCourt.toLowerCase().includes('money','claims','salford','m5 oby')) {
+    req.app.locals.locationCCMCC = 'ccmcc'
+    res.redirect('/location/location-search-results-single?courtName=ccmcc')
+  }
 
   switch(searchCourt) {
     case 'reading county court and family court' :
@@ -502,6 +515,20 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtAddressWriteStreet2 =''
           displayCourtAddressWriteTown = ''
           displayCourtAddressWritePostcode = ''
+        break
+        case 'ccmcc':
+          displayCourtName = 'County Court Money Claims Centre (CCMCC)'
+          displayCourtAddressVisitBuilding =''
+          displayCourtAddressVisitStreet1 =''
+          displayCourtAddressVisitStreet2 =''
+          displayCourtAddressVisitTown = ''
+          displayCourtAddressVisitPostcode = ''
+          
+          displayCourtAddressWriteBuilding ='County Court Money Claims'
+          displayCourtAddressWriteStreet1 ='PO Box 527'
+          displayCourtAddressWriteStreet2 =''
+          displayCourtAddressWriteTown = 'Salford'
+          displayCourtAddressWritePostcode = 'M5 0BY'
         break
         case 'watfordCcfc':
           displayCourtName = 'Watford County Court and Family Court'

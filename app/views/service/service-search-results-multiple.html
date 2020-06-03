@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Search results for area of law - Find a Court or Tribunal - GOV.UK
+Search results for location - Find a Court or Tribunal - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,38 +12,34 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
   },
   html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
   }) }}
+
 <!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
 {% if backLinkRequired %}
-	{{ govukBackLink({
-	  text: "Back",
-	  href: "#"
-	}) }}
-	{% else %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+  {% else %}
 
-	{{ govukBreadcrumbs({
-	  items: [
-	    {
-	      text: "Home",
-	      href: "../index"
-	    },
-	    {
-	      text: "Choose a search option",
-	      href: "../choose-search-option"
-	    },
-	    {
-	      text: "Search for locations near you",
-	      href: "search-aol-postcode"
-	    },
-			{
-	      text: "Choose an area of law",
-	     href: "choose-aol"
-
-	    },
-	    {
-	      text: "Search results for area of law"
-	    }
-	  ]
-	}) }}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "../index"
+      },
+      {
+        text: "Choose a search option",
+        href: "../choose-search-option"
+      },
+      {
+        text: "Search for locations",
+        href: "search-location"
+      },
+      {
+        text: "Search results for location"
+      }
+    ]
+  }) }}
 {% endif %}
 
 {% endblock %}
@@ -51,106 +47,37 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+  	<h1 class="govuk-heading-l">Court or Tribunal search results</h1>
+  		<h2 class="govuk-heading-m">We found 5 courts or tribunals matching your search for</h2>
+  		<h2 class="govuk-heading-m">{{serviceSearchPostcode}}</h2>
 
-    <h1 class="govuk-heading-xl">Search results for area of law</h1>
 
-		<p class="govuk-body-m">
-			Area of Law: {{displayAoL}}
-		</p>
-		<p class="govuk-body-m">
-			The 10 nearest courts or tribunals to {{aolPostcode}}
-		</p>
-		
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/reading-ccfc" class="govuk-link">
-			Reading County Court and Family Court
-		</a></h2>
-		<p class="govuk-body-m">
-			Cases heard: Adoption, Bankruptcy, Children, Divorce, Domestic violence, Forced marrige and FGM, High Court District Registry, Housing possession, Money claims
-		</p>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link" name="Reading County Court and Family Court">
+      Reading County Court and Family Court
+    </a></h2>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=wycombe" class="govuk-link">
-			High Wycombe County Court and Family Court</a></h2>
-		<p class="govuk-body-m">
-		  Cases heard: Housing Possession, Money Claims, Divorce, Adoption
-		</p>
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=slough" class="govuk-link" name="Reading Magistrates' and Family Court">
+      Slough County Court and Family Court
+    </a></h2>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=slough" class="govuk-link">
-			Slough County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
+    </br>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=wycombe" class="govuk-link">
+      High Wycombe County Court and Family Court
+    </a></h2>
+    </br>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=watfordCcfc" class="govuk-link">
-			Watford County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=eastBerks" class="govuk-link">
+      East Berkshire Magistrates' Court
+    </a></h2>
+    </br>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=croydonCcfc" class="govuk-link">
-			Croydon County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=watford" class="govuk-link">
+      Watford County Court and Family Court
+    </a></h2>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-				</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=eastLonCcfc" class="govuk-link">
-			East London County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
 
-		<hr class="govuk-section-break govuk-section-break--visible">
-				</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=westHantsCcfc" class="govuk-link">
-			West Hampshire County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
-
-		<hr class="govuk-section-break govuk-section-break--visible">
-				</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=southampton" class="govuk-link">
-			Southampton Combined Court Centre
-		</a></h2>
-		<p>
-			Cases heard: Bankruptcy, Children, Crime, Domestic Violence, Employment, High Court District Registry, Housing Possession, Money claims, Social Security
-		</p>
-
-		<hr class="govuk-section-break govuk-section-break--visible">
-				</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=cambridgeCcfc" class="govuk-link">
-			Cambridge County Court and Family Court
-		</a></h2>
-		<p>
-		  Cases heard: Bankruptcy, Children, Divorce, Domestic Violence, Housing Possession, Money Claims
-		</p>
-
-		<hr class="govuk-section-break govuk-section-break--visible">
-				</br>
-		<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=bristol" class="govuk-link">
-			BristolCivil and Family Justice Centre
-		</a></h2>
-		<p>
-			Cases heard: Adoption, Bankruptcy, Children, Crime, Domestic Violence, Employment, Forced Marrige and FGM, High Court District Registry, Housing Possession, Money claims, Social Security
-		</p>
-
-		<hr class="govuk-section-break govuk-section-break--visible">
-
-	</div>
+  </div>
 
  </div>
 {% endblock %}

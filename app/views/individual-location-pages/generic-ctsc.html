@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Individual court or tribunal page - Find a court or tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+
+<!-- JHS added in Back Link and removed breadcrumbs -->
+{% if backLinkRequired %}
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "../index"
+    },
+    {
+      text: "Previous page",
+      href: "#"
+    },
+    {
+      text: "Court or Tribunal"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{displayCourtName}}
+    </h1>
+
+    <h2 class="govuk-heading-l">
+      Visit or contact us
+    </h2>
+
+    <h3 class="govuk-heading-s">
+      Address
+    </h3>
+
+
+    <p class="govuk-body-l">
+      Write to us:
+    </p>
+    <p class="govuk-body-m">
+
+      {{displayCourtAddressWriteBuilding}}
+      </br>{{displayCourtAddressWriteStreet1}}
+        {% if displayCourtAddressWriteStreet2 %}
+          </br>{{displayCourtAddressWriteStreet2}}
+        {% endif %}
+    
+      </br>{{displayCourtAddressWriteTown}}
+      </br>{{displayCourtAddressWritePostcode}}
+
+    </p>
+
+  </div>
+  
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h3 class="govuk-heading-s">
+      Telephone and fax
+    </h3>
+    <p class="govuk-body-m">
+      Telephone: 01234 567 8910
+    </p>
+    <p class="govuk-body-m">
+      Monday - Friday, 9am to 5pm
+    </p>
+    <p class="govuk-link"><a href="https://www.gov.uk/call-charges">Find out about call charges</a>
+    </p>
+
+    <p class="govuk-body-m">
+      Fax: 01987 654 321
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Emails
+    </h3>
+    <p class="govuk-body-m">
+      Enquiries: <a href="mailto:ccmcc@justice.gov.uk">ccmcc@justice.gov.uk</a>
+    </p>
+
+  </div>
+   <div class="govuk-grid-column-one-third">
+    
+     <h3 class="govuk-heading-s">
+      Cases heard at this venue
+    </h3>
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="#">Money claims</a>
+      </li>
+    </ul>
+
+    <p class="govuk-body-m govuk-!-font-weight-bold">
+      DX:<span class="govuk-body-m"> 98010 Reading 6</span>
+    </p> 
+  </div>
+  
+</div>
+
+
+
+{% endblock %}
