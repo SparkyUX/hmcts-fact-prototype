@@ -113,11 +113,20 @@ router.post('/choose-area', function (req, res) {
 
 // 2.1.1 How to start service online / paper / in-person
 
+router.get('/how-to-start-service', function(req, res) {
+  req.app.locals.displayServiceArea = req.query.serviceArea
+    console.log('req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
+
+  res.render('service/service-start')
+
+})
+
 router.post('/how-to-start-service', function (req, res) {
+  let serviceArea = ""
+  serviceArea = req.session.data['choose-service-area'] 
 
   let howStartService = req.session.data['how-start-service']
   let redirectPage = ""
-  console.log('req.app.locals.displayAoL ' + req.app.locals.displayAoL)
  
   if (howStartService == 'apply-online') {
 
@@ -253,7 +262,7 @@ router.post('/how-to-start-service', function (req, res) {
   }
   else if (howStartService == 'in-person') {
     //TODO add serviceArea
-    redirectPage = '/service-search-postcode?serviceArea='
+    redirectPage = '/service-search-postcode?serviceArea=' + serviceArea
   }
   
   console.log('redirectPage ' + redirectPage)

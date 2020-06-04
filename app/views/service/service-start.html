@@ -49,36 +49,28 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
         name: "how-start-service",
         fieldset: {
           legend: {
-            text: "Do you want to apply for {{displayServiceArea}} online, in-person or by post?",
+            text: "Do you want to apply for the [service] online, by post or in-person?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            label: {
-              classes: "govuk-label--s"
-            },
             value: "apply-online",
             text: "Online",
             hint: {
-              text: "Start the {{displayServiceArea}} application online"
+              text: "Start the [service] application online"
             }
           },
           {
-            label: {
-              classes: "govuk-label--s"
-            },
             value: "apply-on-paper",
             text: "Apply on paper",
             hint: {
-              text: "Download the {{displayServiceArea}} paper form"
+              text: "Download the [service] paper form"
             }
           },
           {
-            label: {
-              classes: "govuk-label--s"
-            },
+
             value: "in-person",
             text: "In-person"
           }
@@ -88,6 +80,12 @@ How do you want to apply? - Find a court or tribunal - GOV.UK{% endblock %}
       {{ govukButton({
         text: "Continue"
       }) }}
+</br>
+<p>
+{{DisplayServiceArea}}
+<!-- {{ data['choose-service-area'] }} -->
+</p>
+
 <!--
       {{ govukInsetText({
         text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
