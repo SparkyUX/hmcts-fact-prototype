@@ -1,7 +1,7 @@
-<!-- 0.1 Do you have a name or address -->
+<!-- 2.0a Make a payment -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
+Do you need to pay a fine or court fees? - Find a court or tribunal - GOV.UK{% endblock %}
 
 {% block beforeContent %}
 
@@ -39,13 +39,13 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/search-route" method="post" novalidate>  
+    <form action="/make-a-payment" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "know-location",
-        name: "know-location",
+        idPrefix: "make-a-payment",
+        name: "make-a-payment",
         fieldset: {
           legend: {
-            text: "Do you have the name or address of the court or tribunal?",
+            text: "Do you need to pay a fine or court fees?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -53,8 +53,14 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         items: [
           {
 
-            value: "yes",
-            text: "Yes"
+            value: "yes-pay-fine",
+            text: "Yes, I am paying a fine"
+
+          }, 
+          {
+
+            value: "yes-pay-court-fees",
+            text: "Yes, I am paying court fees"
 
           },
           {
@@ -69,20 +75,6 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         text: "Continue"
       }) }}
 
-      <!-- hints
-            hint: {
-              text: "e.g. You want to find an address, contact details or available facilities"
-      -->
-<!--
-      {{ govukInsetText({
-        text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
-      }) }}
-
-      {{ govukDetails({
-        summaryText: "If you need more help",
-        html: "<p>Telephone: 0300 1234 567</br>Email: help@gov.uk</p>"
-      }) }}
--->
     </form>  
   </div>
 </div>

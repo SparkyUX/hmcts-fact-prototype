@@ -9,25 +9,98 @@ const app = express()
 
 router.post('/search-route', function (req, res) {
 
-  let searchRoute = req.session.data['what-do-you-want-to-know']
-
-  switch (searchRoute) {
-    case 'find-a-court' :
+  let knowLocation = req.session.data['know-location']
+    
+    if (knowLocation == 'yes') {
       res.redirect('/location/location-search')
-    break
-    case 'find-which-court':
-      res.redirect('/service/service-start-or-continue')
-    break
-    case 'find-where-pay-fine':
-      res.redirect('/service/service-search-postcode')
-    default :
-      res.redirect('/service/service-start-or-continue')
-    break
-  }
+    }
+    else
+    {
+      res.redirect('/service/service-payment') 
+    }
  
 })
+// 2.0a make a payment
 
+
+router.post('/make-a-payment', function (req, res) {
+
+  let makePayment = req.session.data['make-a-payment']
+ 
+  if (makePayment == 'yes-pay-fine') {
+//    req.app.locals.serviceStartOrContinue = "continue"
+//    req.app.locals.continueService = true
+
+    res.redirect('/service/service-search-postcode?search=magistrates')
+
+  }
+  else if (makePayment == 'yes-pay-court-fees')
+  {
+//    req.app.locals.serviceStartOrContinue = "continue"
+//    req.app.locals.continueService = true
+
+    res.redirect('/service/service-search-postcode?search=all')
+  }
+  else
+  {
+    res.redirect('/service/service-send-documents')
+
+  }
+
+})
+
+// 2.0b need to send a document
+
+router.post('/send-docs', function (req, res) {
+
+  let sendDocuments = req.session.data['send-documents']
+ 
+  if (sendDocuments == 'yes') {
+    
+    req.app.locals.serviceStartOrContinue = "continue"
+    req.app.locals.continueService = true
+
+    res.redirect('/service/service-category?service-stage=continue')
+  }
+  else
+  {
+
+    res.redirect('/service/service-update')
+
+
+  }
+
+})
+
+// 2.0c need an update
+
+router.post('/need-update', function (req, res) {
+
+  let updateNeeded = req.session.data['update-needed']
+ 
+  if (updateNeeded == 'yes') {
+    
+    req.app.locals.serviceStartOrContinue = "continue"
+    req.app.locals.continueService = true
+
+    res.redirect('/service/service-category?service-stage=continue')
+  }
+  else
+  {
+    req.app.locals.serviceStartOrContinue = "start"
+    req.app.locals.continueService = false
+
+    res.redirect('/service/service-category?service-stage=start')
+
+
+  }
+
+})
+
+
+/*
 // 2.0 start or continue a service journey
+
 
 router.post('/start-or-continue', function (req, res) {
 
@@ -46,6 +119,7 @@ router.post('/start-or-continue', function (req, res) {
   res.redirect('/service/service-category')
 
 })
+*/
 
 // 2.1, 2.2 Choose category
 
@@ -115,7 +189,8 @@ router.post('/choose-area', function (req, res) {
 
 router.get('/how-to-start-service', function(req, res) {
   req.app.locals.displayServiceArea = req.query.serviceArea
-    console.log('req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
+  console.log('req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
+  console.log('req.query.serviceArea ' + req.query.serviceArea )
 
   res.render('service/service-start')
 

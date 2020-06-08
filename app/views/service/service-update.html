@@ -1,7 +1,7 @@
-<!-- 0.1 Do you have a name or address -->
+<!-- 2.0c need an update -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
+Do you need an update? - Find a court or tribunal - GOV.UK{% endblock %}
 
 {% block beforeContent %}
 
@@ -39,13 +39,13 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/search-route" method="post" novalidate>  
+    <form action="/need-update" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "know-location",
-        name: "know-location",
+        idPrefix: "update-needed",
+        name: "update-needed",
         fieldset: {
           legend: {
-            text: "Do you have the name or address of the court or tribunal?",
+            text: "Do you need an update from a court or tribunal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -69,20 +69,6 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         text: "Continue"
       }) }}
 
-      <!-- hints
-            hint: {
-              text: "e.g. You want to find an address, contact details or available facilities"
-      -->
-<!--
-      {{ govukInsetText({
-        text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
-      }) }}
-
-      {{ govukDetails({
-        summaryText: "If you need more help",
-        html: "<p>Telephone: 0300 1234 567</br>Email: help@gov.uk</p>"
-      }) }}
--->
     </form>  
   </div>
 </div>
