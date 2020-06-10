@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const url = require('url')
 const app = express()
+const courtDetails =require('./locations.json')
 
 // Add your routes here - above the module.exports line
 
@@ -15,111 +16,14 @@ router.post('/search-route', function (req, res) {
       res.redirect('/location/location-search')
     }
     else
-    {
-      res.redirect('/service/service-payment') 
+    {    
+      req.app.locals.serviceStartOrContinue = "continue"
+      req.app.locals.continueService = true
+      res.redirect('/service/service-category') 
     }
  
 })
-// 2.0a make a payment
 
-
-router.post('/make-a-payment', function (req, res) {
-
-  let makePayment = req.session.data['make-a-payment']
- 
-  if (makePayment == 'yes-pay-fine') {
-//    req.app.locals.serviceStartOrContinue = "continue"
-//    req.app.locals.continueService = true
-
-    res.redirect('/service/service-search-postcode?search=magistrates')
-
-  }
-  else if (makePayment == 'yes-pay-court-fees')
-  {
-//    req.app.locals.serviceStartOrContinue = "continue"
-//    req.app.locals.continueService = true
-
-    res.redirect('/service/service-search-postcode?search=all')
-  }
-  else
-  {
-    res.redirect('/service/service-send-documents')
-
-  }
-
-})
-
-// 2.0b need to send a document
-
-router.post('/send-docs', function (req, res) {
-
-  let sendDocuments = req.session.data['send-documents']
- 
-  if (sendDocuments == 'yes') {
-    
-    req.app.locals.serviceStartOrContinue = "continue"
-    req.app.locals.continueService = true
-
-    res.redirect('/service/service-category?service-stage=continue')
-  }
-  else
-  {
-
-    res.redirect('/service/service-update')
-
-
-  }
-
-})
-
-// 2.0c need an update
-
-router.post('/need-update', function (req, res) {
-
-  let updateNeeded = req.session.data['update-needed']
- 
-  if (updateNeeded == 'yes') {
-    
-    req.app.locals.serviceStartOrContinue = "continue"
-    req.app.locals.continueService = true
-
-    res.redirect('/service/service-category?service-stage=continue')
-  }
-  else
-  {
-    req.app.locals.serviceStartOrContinue = "start"
-    req.app.locals.continueService = false
-
-    res.redirect('/service/service-category?service-stage=start')
-
-
-  }
-
-})
-
-
-/*
-// 2.0 start or continue a service journey
-
-
-router.post('/start-or-continue', function (req, res) {
-
-  let startOrContinue = req.session.data['start-or-continue-service']
- 
-  if (startOrContinue == 'start-a-service') {
-    req.app.locals.serviceStartOrContinue = "start"
-    req.app.locals.continueService = false
-  }
-  else 
-  {
-    req.app.locals.serviceStartOrContinue = "continue"
-    req.app.locals.continueService = true
-  } 
-
-  res.redirect('/service/service-category')
-
-})
-*/
 
 // 2.1, 2.2 Choose category
 
@@ -129,36 +33,27 @@ router.post('/choose-service-category', function (req, res) {
   let pageServiceCategory = ""
 
   switch (serviceCategory) {
-    case 'money-tax':
-//      displayCategory = 'Money and tax'
-      pageServiceCategory = 'service-area-money-tax'
+    case 'money':
+      pageServiceCategory = 'service-area-money'
       break
     case 'deaths-marriages-civil-partnerships':
-//      displayCategory = 'Deaths, marriages and civil partnerships'
       pageServiceCategory = 'service-area-deaths-marriages-civil-partnerships'
     break
     case 'childcare-parenting':
-//      displayCategory = 'Childcare and parenting'
       pageServiceCategory = 'service-area-childcare-parenting'
       break
-    case 'crime':
-//      displayCategory = 'Crime'
-      pageServiceCategory = 'service-area-crime'
-      break
     case 'high-courts':
-//      displayCategory = 'High Courts'
-      pageServiceCategory = ''
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+
+      pageServiceCategory = 'service-search-postcode?serviceArea=highcourts'
       break
     default:
-//      displayCategory = ''     
       pageServiceCategory = 'unknown-service'
       break
 
   }
 
-//  req.app.locals.displayAoL = displayAoL
-
-// TODO add high court branch here
   res.redirect('/service/' + pageServiceCategory)
 
 
@@ -174,191 +69,44 @@ router.post('/choose-area', function (req, res) {
 
   req.app.locals.displayArea = serviceArea
   console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
+  console.log('serviceAreaQuery ' + serviceAreaQuery)
+
+  switch (serviceAreaQuery) {
+    case 'childarrangements':
+      req.app.locals.childService = true
+      console.log('childService ' + req.app.locals.childService)
+
+      break
+    case 'probate':
+      req.app.locals.serviceCentre = true
+      console.log('serviceCentre ' + req.app.locals.serviceCentre)
+      break
+    case 'divorce':
+      req.app.locals.serviceCentre = true
+      console.log('serviceCentre ' + req.app.locals.serviceCentre)
+      break    
+    case 'civilPartnership':
+      req.app.locals.serviceCentre = true
+      console.log('serviceCentre ' + req.app.locals.serviceCentre)
+      break
+    case 'moneyclaims':
+      req.app.locals.serviceCentre = true
+      console.log('serviceCentre ' + req.app.locals.serviceCentre)
+      break
+    default:
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+
+      break
+  }
+
 
   if (req.app.locals.serviceStartOrContinue == 'start') {
     res.redirect('/service/service-start?serviceArea=' + serviceAreaQuery)
   }
   else
   {
-    res.redirect('/service/service-continue?serviceArea=' + serviceAreaQuery)
-  }
-
-})
-
-// 2.1.1 How to start service online / paper / in-person
-
-router.get('/how-to-start-service', function(req, res) {
-  req.app.locals.displayServiceArea = req.query.serviceArea
-  console.log('req.app.locals.displayServiceArea ' + req.app.locals.displayServiceArea)
-  console.log('req.query.serviceArea ' + req.query.serviceArea )
-
-  res.render('service/service-start')
-
-})
-
-router.post('/how-to-start-service', function (req, res) {
-  let serviceArea = ""
-  serviceArea = req.session.data['choose-service-area'] 
-
-  let howStartService = req.session.data['how-start-service']
-  let redirectPage = ""
- 
-  if (howStartService == 'apply-online') {
-
-    switch (req.app.locals.displayAoL) {
-
-      case 'Adoption':
-        redirectPage = 'service-online'
-        break
-      case 'Appealing a criminal sentence or verdict':
-        redirectPage = 'service-online'
-        break
-      case 'Bankruptcy':
-        redirectPage = 'service-online'
-        break
-      case 'Child arrangements':
-        redirectPage = 'service-online'
-        break
-      case 'Civil Partnership':
-        redirectPage = 'service-online'
-        break
-      case 'Crime':
-        redirectPage = 'service-online'
-        break
-      case 'Divorce':
-        redirectPage = 'service-online'
-        break
-      case 'Domestic Abuse':
-        redirectPage = 'service-online'
-        break
-      case 'Employment':
-        redirectPage = 'service-online'
-        break
-      case 'Female Genital Mutilation':
-        redirectPage = 'service-online'
-        break
-      case 'Forced marriage':
-        redirectPage = 'service-online'
-        break
-      case 'Giving evidence':
-        redirectPage = 'service-online'
-        break
-      case 'High Court registry':
-        redirectPage = 'service-online'
-        break
-      case 'Housing possession':
-        redirectPage = 'service-online'
-        break
-      case 'Immigration and Asylum':
-        redirectPage = 'service-online'
-        break
-      case 'Money Claims':
-        redirectPage = 'online-money-claims'
-        break
-      case 'Probate':
-        redirectPage = 'service-online'
-        break
-      case 'Benefits':
-        redirectPage = 'service-online'
-        break
-      case 'Tax':
-        redirectPage = 'service-online'
-        break
-      default:
-        redirectPage = 'service-online'
-        break
-    }
-  }
-
-  else if (howStartService == 'apply-on-paper') {
-    switch (req.app.locals.displayAoL) {
-       case 'Adoption':
-        redirectPage = 'service-paper'
-        break
-      case 'Appealing a criminal sentence or verdict':
-        redirectPage = 'service-paper'
-        break
-      case 'Bankruptcy':
-        redirectPage = 'service-paper'
-        break
-      case 'Child arrangements':
-        redirectPage = 'service-paper'
-        break
-      case 'Civil Partnership':
-        redirectPage = 'service-paper'
-        break
-      case 'Crime':
-        redirectPage = 'service-paper'
-        break
-      case 'Divorce':
-        redirectPage = 'service-paper'
-        break
-      case 'Domestic Abuse':
-        redirectPage = 'service-paper'
-        break
-      case 'Employment':
-        redirectPage = 'service-paper'
-        break
-      case 'Female Genital Mutilation':
-        redirectPage = 'service-paper'
-        break
-      case 'Forced marriage':
-        redirectPage = 'service-paper'
-        break
-      case 'Giving evidence':
-        redirectPage = 'service-paper'
-        break
-      case 'High Court registry':
-        redirectPage = 'service-paper'
-        break
-      case 'Housing possession':
-        redirectPage = 'service-paper'
-        break
-      case 'Immigration and Asylum':
-        redirectPage = 'service-paper'
-        break
-      case 'Money Claims':
-        redirectPage = 'form-n1-money-claim'
-        break
-      case 'Probate':
-        redirectPage = 'service-paper'
-        break
-      case 'Benefits':
-        redirectPage = 'service-paper'
-        break
-      case 'Tax':
-        redirectPage = 'service-paper'
-        break
-      default:
-        redirectPage = 'service-paper'
-        break
-   
-   }
-  }
-  else if (howStartService == 'in-person') {
-    //TODO add serviceArea
-    redirectPage = '/service-search-postcode?serviceArea=' + serviceArea
-  }
-  
-  console.log('redirectPage ' + redirectPage)
-  console.log('howStartService ' + howStartService)
-  res.redirect('/service/' + redirectPage)
-})
-
-// 2.2.1 Continue service
-
-router.post('/continue-service', function (req, res) {
-
-  let whatInfoWant = req.session.data['what-info-want']
-  console.log('req.query.serviceArea ' + req.query.serviceArea)
-  console.log('req.param.serviceArea ' + req.param.serviceArea)
- 
-  if (whatInfoWant == 'other') {
-    // TODO determined by AoL will be owning court or CTSC or regional centre
-    res.redirect('../exit')
-  }
-  else {
-        res.redirect('/service/service-search-postcode?serviceArea=' + req.param.serviceArea)
+    res.redirect('/service/service-search-postcode?serviceArea=' + serviceAreaQuery)
   }
 
 })
@@ -371,67 +119,14 @@ router.post('/service-postcode', function (req, res) {
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
   if ( serviceSearchPostcode.toLowerCase().includes("rg10") ) {
-     res.redirect('/service/service-search-results-single-ccmcc')
+    res.redirect('/service/service-search-results-multiple')
   }
   else 
   {
-    res.redirect('/service/service-search-results-multiple')
+     res.redirect('/service/service-search-results-single')
 
    }
 })
-
-
-router.get('/service/search-aol-results-multiple', function(req, res) {
-  var areaOfLaw = req.query.aol
-
-    switch (areaOfLaw) {
-      case 'adoption':
-        displayAoL = 'Adoption'
-        break
-      case 'bankruptcy':
-        displayAoL = 'Bankruptcy'
-        break
-     case 'children':
-        displayAoL = 'Children'
-        break
-      case 'crime':
-        displayAoL = 'Crime'
-        break
-      case 'domesticAbuse':
-        displayAoL = 'Domestic Abuse'
-        break
-      case 'forcedMarriageFGM':
-        displayAoL = 'Forced Marriage and FGM'
-        break
-       case 'highCourtRegistry':
-        displayAoL = 'High Court Registry'
-        break
-       case 'housingPossession':
-        displayAoL = 'Housing Possession'
-        break
-       case 'immigration':
-        displayAoL = 'Immigration'
-        break
-       case 'probate':
-        displayAoL = 'Probate and Wills'
-        break
-       case 'sscs':
-        displayAoL = 'Social Security'
-        break
-       case 'tax':
-        displayAoL = 'Tax'
-        break
-      default:
-        displayAoL = ''
-        break
-
-    }
-    req.app.locals.displayAoL = displayAoL
-    req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
-    res.render('service/search-aol-results-multiple')
-
-})
-
 
 
 router.get('/service/search-aol-results-multiple-div-centre', function(req, res) {
@@ -525,7 +220,28 @@ router.post('/search-for-location', function (req, res) {
 router.get('/individual-location-pages/generic', function(req, res) {
   var courtName = req.query.courtName
   console.log('courtName query string ' + courtName)
+      console.log('json file court ' + JSON.stringify(courtDetails.courts[0]))   
 
+  for (let i=0; i < courtDetails.courts.length; i++) {
+    if (courtName == courtDetails.courts[i].courtCode) {
+      console.log('json file court ' + courtDetails.courts[i])      
+      req.app.locals.displayCourtName = courtDetails.courts[i].name
+      req.app.locals.displayCourtAddressVisitBuilding = courtDetails.courts[i].visitAddressBuilding
+      req.app.locals.displayCourtAddressVisitStreet1 =  courtDetails.courts[i].visitAddressStreet1
+      req.app.locals.displayCourtAddressVisitStreet2 =  courtDetails.courts[i].visitAddressStreet2
+      req.app.locals.displayCourtAddressVisitTown =     courtDetails.courts[i].visitAddressTown
+      req.app.locals.displayCourtAddressVisitPostcode = courtDetails.courts[i].visitAddressPostcode
+
+      req.app.locals.displayCourtAddressWriteBuilding = courtDetails.courts[i].writeAddressBuilding
+      req.app.locals.displayCourtAddressWriteStreet1 =  courtDetails.courts[i].writeAddressStreet1
+      req.app.locals.displayCourtAddressWriteStreet2 =  courtDetails.courts[i].writeAddressStreet2
+      req.app.locals.displayCourtAddressWriteTown =     courtDetails.courts[i].writeAddressTown
+      req.app.locals.displayCourtAddressWritePostcode = courtDetails.courts[i].writeAddressPostcode
+
+    }
+  }
+
+/*
     switch (courtName) {
         case 'readingccfc':
           displayCourtName = 'Reading County Court and Family Court'
@@ -563,8 +279,8 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtAddressVisitBuilding ='Hearing Centre'
           displayCourtAddressVisitStreet1 ='160-163 High Street'
           displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Trumpton'
-          displayCourtAddressVisitPostcode = 'PP1 1BM'
+          displayCourtAddressVisitTown = 'Slough'
+          displayCourtAddressVisitPostcode = 'SL1 1BM'
 
           displayCourtAddressWriteBuilding =''
           displayCourtAddressWriteStreet1 =''
@@ -577,7 +293,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           displayCourtAddressVisitBuilding ='Hearing Centre'
           displayCourtAddressVisitStreet1 ='160-163 High Street'
           displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Trumpton'
+          displayCourtAddressVisitTown = 'Slough'
           displayCourtAddressVisitPostcode = 'PP1 1BM'
 
           displayCourtAddressWriteBuilding ='Administration Centre'
@@ -658,6 +374,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
         break
 
     }
+  
     req.app.locals.displayCourtName = displayCourtName
     req.app.locals.displayCourtAddressVisitBuilding = displayCourtAddressVisitBuilding
     req.app.locals.displayCourtAddressVisitStreet1 = displayCourtAddressVisitStreet1
@@ -670,7 +387,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
     req.app.locals.displayCourtAddressWriteStreet2 = displayCourtAddressWriteStreet2
     req.app.locals.displayCourtAddressWriteTown = displayCourtAddressWriteTown
     req.app.locals.displayCourtAddressWritePostcode = displayCourtAddressWritePostcode
-
+*/
     res.render('individual-location-pages/generic')
 
 })

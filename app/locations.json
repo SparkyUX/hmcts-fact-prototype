@@ -1,0 +1,48 @@
+{"courts":[
+	{
+		"courtCode": "readingccfc",
+		"name": "Reading County Court and Family Court",
+		"visitAddressBuilding": "address line one",
+		"visitAddressStreet1": "address line two",
+		"visitAddressStreet2": "address line two",
+		"visitAddressTown": "address line two",
+		"visitAddressPostcode": "address line two",
+		"writeAddressBuilding": "address line one",
+		"writeAddressStreet1": "address line two",
+		"writeAddressStreet2": "address line two",
+		"writeAddressTown": "address line two",
+		"writeAddressPostcode": "address line two"
+
+	},
+	{		
+		"courtCode": "002",
+		"name": "High Wycombe County Court and Family Court",
+		"visitAddress-building": "address line one",
+		"visitAddressStreet1": "address line two",
+		"visitAddressStreet2": "address line two",
+		"visitAddressTown": "address line two",
+		"visitAddressPostcode": "address line two",
+		"writeAddress-building": "address line one",
+		"writeAddressStreet1": "address line two",
+		"writeAddressStreet2": "address line two",
+		"writeAddressTown": "address line two",
+		"writeAddressPostcode": "address line two"
+
+	},
+	{
+		"courtCode": "003",
+		"name": "Watford County Court and Family Court",
+		"visitAddress-building": "address line one",
+		"visitAddressStreet1": "address line two",
+		"visitAddressStreet2": "address line two",
+		"visitAddressTown": "address line two",
+		"visitAddressPostcode": "address line two",
+		"writeAddress-building": "address line one",
+		"writeAddressStreet1": "address line two",
+		"writeAddressStreet2": "address line two",
+		"writeAddressTown": "address line two",
+		"writeAddressPostcode": "address line two"
+
+	}
+]
+}

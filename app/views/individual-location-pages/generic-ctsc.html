@@ -49,7 +49,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       {{displayCourtName}}
     </h1>
 
-    <h2 class="govuk-heading-l">
+    <h2 class="govuk-heading-m">
       Visit or contact us
     </h2>
 
@@ -57,7 +57,20 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       Address
     </h3>
 
+    <p class="govuk-body-l">
+      Visit us:
+    </p>
+    <p class="govuk-body-m">
+    {{displayCourtAddressVisitBuilding}}
+    </br>{{displayCourtAddressVisitStreet1}}
+    {% if displayCourtAddressVisitStreet2 %}
+      </br>{{displayCourtAddressVisitStreet2}}
+    {% endif %}
+  
+    </br>{{displayCourtAddressVisitTown}}
+    </br>{{displayCourtAddressVisitPostcode}}
 
+    {% if displayCourtAddressWriteBuilding %}
     <p class="govuk-body-l">
       Write to us:
     </p>
@@ -71,6 +84,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     
       </br>{{displayCourtAddressWriteTown}}
       </br>{{displayCourtAddressWritePostcode}}
+    {% endif %}
 
     </p>
 
@@ -86,7 +100,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       Telephone: 01234 567 8910
     </p>
     <p class="govuk-body-m">
-      Monday - Friday, 9am to 5pm
+      Monday - Friday, 9am to 5pm (except public holidays)
     </p>
     <p class="govuk-link"><a href="https://www.gov.uk/call-charges">Find out about call charges</a>
     </p>
@@ -114,6 +128,9 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </li>
     </ul>
 
+    <p class="govuk-body-m govuk-!-font-weight-bold">
+      Court Location Code:<span class="govuk-body-m"> 305</span>
+    </p>
     <p class="govuk-body-m govuk-!-font-weight-bold">
       DX:<span class="govuk-body-m"> 98010 Reading 6</span>
     </p> 

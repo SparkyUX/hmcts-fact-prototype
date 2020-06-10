@@ -43,8 +43,14 @@
 
 {% endblock %}
 
+{% if continueService %}
+  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
+{% else %}
+  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
+{% endif %}
 
 {% block content %}
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -55,7 +61,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: "What area of childcare and parenting is your application or hearing about?",
+            text: pageHeading,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -63,12 +69,22 @@
         items: [
           {
             value: "Child Arrangements",
-            text: "Arrangements for childcare if you separate from your partner",
+            text: "Childcare arrangements if you separate from your partner",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
               text: "Making child arrangements if you divorce or separate."
+            }
+          },
+          {
+            value: "Emergency custody hearings",
+            text: "Emergency custody hearings",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "A child is in immediate danger of harm or of being removed from the country."
             }
           },
           {

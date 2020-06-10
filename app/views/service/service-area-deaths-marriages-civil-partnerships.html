@@ -44,9 +44,9 @@
 {% endblock %}
 
 {% if continueService %}
-  {% set pageHeader = "What area of deaths, marriages or civil partnerships is your application or hearing about?" %}
+  {% set pageHeading = "What kind of help do you need with Deaths, marriages or civil partnerships?" %}
 {% else %}
-  {% set pageHeader = "What area of deaths, marriages or civil partnerships do you need to find more about?" %}
+  {% set pageHeading = "What area of deaths, marriages or civil partnerships do you need to find more about?" %}
 {% endif %}
 
 {% block content %}
@@ -60,7 +60,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: pageHeader,
+            text: pageHeading,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

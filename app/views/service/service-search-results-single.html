@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Search results for area of law - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+	{{ govukBackLink({
+	  text: "Back",
+	  href: "#"
+	}) }}
+	{% else %}
+
+	{{ govukBreadcrumbs({
+	  items: [
+	    {
+	      text: "Home",
+	      href: "../index"
+	    },
+	    {
+	      text: "Choose a search option",
+	      href: "../choose-search-option"
+	    },
+	    {
+	      text: "Search for locations near you",
+	      href: "search-aol-postcode"
+	    },
+			{
+	      text: "Choose an area of law",
+	     href: "choose-aol"
+
+	    },
+	    {
+	      text: "Search results for area of law"
+	    }
+	  ]
+	}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  	<h1 class="govuk-heading-l">Court or Tribunal search results</h1>
+  	<p class="govuk-body-m">We found 1 court or tribunal matching your search for</p>
+  	<p class="govuk-body-m">{{serviceSearchPostcode}}</p>
+
+<!--			<p class="govuk-body-m">
+				If you have previously started a claim online or by filling in a paper form then you need to contact
+			</p>
+
+			<h2 class="govuk-heading-m"><a href="../individual-location-pages/salford-ccmcc" class="govuk-link">
+				County Court Money Claims Centre (CCMCC)
+			</a></h2>
+			<p class="govuk-body-m">
+			  The CCMCC manages all money claims applications
+			</p>
+		</div>
+		</br>
+		<hr class="govuk-section-break govuk-section-break--visible">
+		<hr class="govuk-section-break govuk-section-break--visible">
+		</br>
+
+
+		<p class="govuk-body-m">
+			The nearest County Court for your hearing is:
+		</p>
+		</br>
+-->		
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link" name="Reading County Court and Family Court">
+      Reading County Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">5.7 miles</p></h2>
+    </br>
+<!--		<hr class="govuk-section-break govuk-section-break--visible">
+		</br>
+		<p class="govuk-body-m">
+		If another court is dealing with your application then you may wish to search by <a href="../location/search-location">location</a> to find it.
+	</p>
+-->
+	</div>
+
+ </div>
+{% endblock %}

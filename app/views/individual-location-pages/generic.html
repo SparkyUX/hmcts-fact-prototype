@@ -57,7 +57,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       Address
     </h3>
 
-    <p class="govuk-body-l">
+    <p class="govuk-body-m">
       Visit us:
     </p>
     <p class="govuk-body-m">
@@ -69,27 +69,29 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
   
     </br>{{displayCourtAddressVisitTown}}
     </br>{{displayCourtAddressVisitPostcode}}
+  
+    <p class="govuk-link">
+      <a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
+    </p>
+    <p class="govuk-link">
+      <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
+    </p>
 
     {% if displayCourtAddressWriteBuilding %}
-    <p class="govuk-body-l">
-      Write to us:
-    </p>
-    <p class="govuk-body-m">
+      <p class="govuk-body-m">
+        Write to us:
+      </p>
+      <p class="govuk-body-m">
 
-      {{displayCourtAddressWriteBuilding}}
-      </br>{{displayCourtAddressWriteStreet1}}
-        {% if displayCourtAddressWriteStreet2 %}
-          </br>{{displayCourtAddressWriteStreet2}}
-        {% endif %}
-    
-      </br>{{displayCourtAddressWriteTown}}
-      </br>{{displayCourtAddressWritePostcode}}
-    {% endif %}
-
-    </p>
-    <p class="govuk-link"><a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
-    </p>
-    <p class="govuk-link"><a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
+        {{displayCourtAddressWriteBuilding}}
+        </br>{{displayCourtAddressWriteStreet1}}
+          {% if displayCourtAddressWriteStreet2 %}
+            </br>{{displayCourtAddressWriteStreet2}}
+          {% endif %}
+      
+        </br>{{displayCourtAddressWriteTown}}
+        </br>{{displayCourtAddressWritePostcode}}
+      {% endif %}
     </p>
 
   </div>

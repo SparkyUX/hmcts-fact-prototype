@@ -39,16 +39,35 @@ What is your postcode? - Find a court or tribunal - GOV.UK
 {% endif %}
 
 {% endblock %}
+
 {% block content %}
+
+{% if childService %}
+  {% set pageHeading = "What is the postcode where the child or children live?" %}
+{% else %}
+  {% set pageHeading = "What is your postcode?" %}
+{% endif %}
+
+{% if childService %}
+  {% set headingHint = "We will use the postcode of your child or children’s home to show you the closest court or tribunal to them?" %}
+{% elseif serviceCentre%}
+  {% set headingHint = "We will use your postcode to show you the court service centre that covers your region." %}
+{% else %}
+  {%set headingHint = "We will use your postcode to show you the closest court or tribunal to you or that covers your region." %}
+{% endif %}
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/service-postcode" method="post" novalidate>  
-      <h1 class="govuk-heading-l">What is your postcode?</h1>
+      <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+        <span id="more-detail-hint" class="govuk-hint">
+          {{headingHint}}
+        </span>
 
         {{ govukInput({
         label: {
-        text: "Enter your postcode?"
+        text: "Enter your postcode"
         },
         classes: "govuk-input--width-10",
         hint: {

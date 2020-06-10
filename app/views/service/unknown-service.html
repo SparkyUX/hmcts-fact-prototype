@@ -1,0 +1,40 @@
+<!-- 2.3a Failsafe page -->
+{% set mainClasses = "govuk-main-wrapper--l" %}
+{% extends "layout.html" %}
+{% block pageTitle %}
+Unknown service - Find a court or tribunal - GOV.UK
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Sorry, we couldn't help you</h1>
+      <p class="govuk-body">
+        If you have a letter, email or text from HM Courts and Tribunals Service (HMCTS), a court or a tribunal check it for contact details of the court or tribunal.
+    	</p>
+    	<h2 class="govuk-heading-m">
+    		Find the court or tribunal by name, address, town or city</h2>
+      <p class="govuk-body">
+  			<a href="/location/location-search">Search for the court by name, address, town or city</a>.
+  		</p>
+  		<h2 class="govuk-heading-m">
+				Court and tribunal fees
+			</h2>
+      <p class="govuk-body">
+				<a href="https://www.gov.uk/court-fees-what-they-are">See how much you pay for your claim or case</a>.
+			</p>
+			<h2 class="govuk-heading-m">
+				Find court and tribunal paper forms
+			</h2>
+			<p class="govuk-body">
+				Find <a href="https://www.gov.uk/government/collections/court-and-tribunal-forms">court and tribunal forms</a>, including divorce, probate, deed poll, money claim, help with fees and social security tribunal forms.
+			</p>
+			<h2 class="govuk-heading-m">
+				Specialist courts or tribunals
+			</h2>
+			<p class="govuk-body">
+				<a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about#our-courts">List of criminal, civil and family courts and tribunals in England and Wales</a>.
+			</p>
+
+    </div>
+  </div>
+{% endblock %}

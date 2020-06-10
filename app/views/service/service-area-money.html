@@ -44,9 +44,9 @@
 {% endblock %}
 
 {% if continueService %}
-  {% set pageHeader = "What area of money or tax is your application or hearing about?" %}
+  {% set pageHeading = "What kind of help do you need with Money?" %}
 {% else %}
-  {% set pageHeader = "What area of money or tax do you need to find more about?" %}
+  {% set pageHeading = "What area of money or tax do you need to find more about?" %}
 {% endif %}
 
 {% block content %}
@@ -60,7 +60,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: pageHeader,
+            text: pageHeading,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -117,16 +117,6 @@
             }
           },
           {
-            value: "Benefits",
-            text: "Benefits",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Appealing entitlement to benefits such as Personal Independence Payment (PIP), Employment and Support Allowance (ESA) or Universal Credit."
-            }
-          },
-          {
             value: "Claims against employers",
             text: "Claims against employers",
             label: {
@@ -134,16 +124,6 @@
             },
             hint: {
               text: "Appealing a decision about employment disputes related to pay, unfair dismissal and discrimination."
-            }
-          },
-          {
-            value: "Tax",
-            text: "Tax",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Appealing a tax decision."
             }
           }
         ]
