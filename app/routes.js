@@ -19,13 +19,40 @@ router.post('/search-route', function (req, res) {
     }
     else
     {    
-      req.app.locals.serviceStartOrContinue = "continue"
       req.app.locals.continueService = true
-      res.redirect('/service/service-category') 
+      res.redirect('/service/service-choose-action') 
     }
  
 })
 
+// 2.0 Choose action
+
+
+router.post('/choose-action', function (req, res) {
+
+  let chooseAction = req.session.data['choose-action']
+    switch (chooseAction) {
+      case 'other':
+        res.redirect('../exit')
+      break
+      case 'send-docs':
+        req.app.locals.serviceActionType = "start"
+        req.app.locals.continueService = false
+        res.redirect('/service/service-category?action=start')
+        break
+      case 'case-update':
+        req.app.locals.serviceActionType = "continueUpdate"
+        req.app.locals.continueService = true
+        res.redirect('/service/service-category?action=continueupdate')
+      break
+      case 'find-nearest':
+        req.app.locals.serviceActionType = "continueFindHearingCentre"
+        req.app.locals.continueService = true
+        res.redirect('/service/service-category?action=continuehearingcentre')
+      break
+    }   
+
+})
 
 // 2.1, 2.2 Choose category
 
@@ -48,7 +75,7 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.childService = false
       req.app.locals.serviceCentre = false
 
-      pageServiceCategory = 'service-search-postcode?serviceArea=highcourts'
+      pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
       break
     default:
       pageServiceCategory = 'unknown-service'
@@ -67,10 +94,18 @@ router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
-  console.log('serviceAreaQuery ' + serviceAreaQuery)
+  req.app.locals.serviceCentreProbate = false
+  req.app.locals.serviceCentreDivorce = false
+  req.app.locals.serviceCentreCivilPartnership = false
+  req.app.locals.serviceCentreMoneyClaims = false
+  req.app.locals.childService = false
+  req.app.locals.serviceCentre = false
 
-  req.app.locals.displayArea = serviceArea
-  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
+
+
+
+//  req.app.locals.displayArea = serviceArea
+//  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
   console.log('serviceAreaQuery ' + serviceAreaQuery)
 
   switch (serviceAreaQuery) {
@@ -81,39 +116,48 @@ router.post('/choose-area', function (req, res) {
       break
     case 'probate':
       req.app.locals.serviceCentre = true
+      req.app.locals.serviceCentreProbate = true
       console.log('serviceCentre ' + req.app.locals.serviceCentre)
       break
     case 'divorce':
       req.app.locals.serviceCentre = true
+      req.app.locals.serviceCentreDivorce = true
       console.log('serviceCentre ' + req.app.locals.serviceCentre)
       break    
     case 'civilPartnership':
       req.app.locals.serviceCentre = true
+      req.app.locals.serviceCentreCivilPartnership = true
       console.log('serviceCentre ' + req.app.locals.serviceCentre)
       break
     case 'moneyclaims':
       req.app.locals.serviceCentre = true
+      req.app.locals.serviceCentreMoneyClaims = true
       console.log('serviceCentre ' + req.app.locals.serviceCentre)
       break
-    default:
-      req.app.locals.childService = false
-      req.app.locals.serviceCentre = false
 
+  }
+  if (req.app.locals.serviceCentre == true) {
+    req.app.locals.serviceCentreSearch = serviceArea
+    switch (true) {  
+      case serviceAreaQuery == 'probate':
+            res.redirect('/service/service-search-results-service-centre?servicearea=probate')
       break
+      case serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre':
+        res.redirect('/service/service-search-postcodeservicearea=' + serviceAreaQuery)
+      break
+      case serviceAreaQuery == 'moneyclaims':
+        res.redirect('/service/service-search-results-service-centre?servicearea=' + serviceAreaQuery)
+      break
+      default:
+      res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+      break
+    }
   }
-
-
-  if (req.app.locals.serviceStartOrContinue == 'start') {
-    res.redirect('/service/service-start?serviceArea=' + serviceAreaQuery)
-  }
-  else
-  {
-    res.redirect('/service/service-search-postcode?serviceArea=' + serviceAreaQuery)
-  }
+  res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
 
 })
 
-// 2.2.2 service postcode search
+// 2.1.2 service postcode search
 
 router.post('/service-postcode', function (req, res) {
 
@@ -306,6 +350,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
 
         }
+      }
       // contacts phone
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
         if (courtDetails.courts[i].contacts[j].description = "Enquiries") {
@@ -315,6 +360,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
 
         }
+      }
       // contacts email
       for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
         if (courtDetails.courts[i].emails[j].description = "Enquiries") {
@@ -347,155 +393,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
       }
     }
   }
-}
-
-/*
-    switch (courtName) {
-        case 'readingccfc':
-          displayCourtName = 'Reading County Court and Family Court'
-          displayCourtAddressVisitBuilding ='Hearing Centre'
-          displayCourtAddressVisitStreet1 ='160-163 Friar Street'
-          displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Reading'
-          displayCourtAddressVisitPostcode = 'RG1 1HE'
-
-          displayCourtAddressWriteBuilding =''
-          displayCourtAddressWriteStreet1 =''
-          displayCourtAddressWriteStreet2 =''
-          displayCourtAddressWriteTown = ''
-          displayCourtAddressWritePostcode = ''
-
-        break
-          case 'wycombe':
-          displayCourtName = 'High Wycombe County Court and Family Court'
-          displayCourtAddressVisitBuilding ='The Law Courts'
-          displayCourtAddressVisitStreet1 ='Ground Floor'
-          displayCourtAddressVisitStreet2 ='Easton Street'
-          displayCourtAddressVisitTown = 'High Wycombe'
-          displayCourtAddressVisitPostcode = 'HP11 1LR'
-
-          displayCourtAddressWriteBuilding ='Administration Centre'
-          displayCourtAddressWriteStreet1 ='Reading Count Court'
-          displayCourtAddressWriteStreet2 ='160-163 Friar Street'
-          displayCourtAddressWriteTown = 'Reading'
-          displayCourtAddressWritePostcode = 'RG1 1HE'
-
-
-        break
-        case 'eastBerks':
-          displayCourtName = "East Berkshire Magistrates' Court"
-          displayCourtAddressVisitBuilding ='Hearing Centre'
-          displayCourtAddressVisitStreet1 ='160-163 High Street'
-          displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Slough'
-          displayCourtAddressVisitPostcode = 'SL1 1BM'
-
-          displayCourtAddressWriteBuilding =''
-          displayCourtAddressWriteStreet1 =''
-          displayCourtAddressWriteStreet2 =''
-          displayCourtAddressWriteTown = ''
-          displayCourtAddressWritePostcode = ''
-        break
-        case 'slough':
-          displayCourtName = 'Slough County and Family Court'
-          displayCourtAddressVisitBuilding ='Hearing Centre'
-          displayCourtAddressVisitStreet1 ='160-163 High Street'
-          displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Slough'
-          displayCourtAddressVisitPostcode = 'PP1 1BM'
-
-          displayCourtAddressWriteBuilding ='Administration Centre'
-          displayCourtAddressWriteStreet1 ='Reading Count Court'
-          displayCourtAddressWriteStreet2 ='160-163 Friar Street'
-          displayCourtAddressWriteTown = 'Reading'
-          displayCourtAddressWritePostcode = 'RG1 1HE'
-        break
-        case 'watford':
-          displayCourtName = 'Watford County Court and Family Court'
-          displayCourtAddressVisitBuilding ='Radius Hoiuse'
-          displayCourtAddressVisitStreet1 ='51 Clarendon Road'
-          displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = 'Watford'
-          displayCourtAddressVisitPostcode = 'WD17 1HP'
-          
-          displayCourtAddressWriteBuilding =''
-          displayCourtAddressWriteStreet1 =''
-          displayCourtAddressWriteStreet2 =''
-          displayCourtAddressWriteTown = ''
-          displayCourtAddressWritePostcode = ''
-        break
-        case 'ccmcc':
-          displayCourtName = 'County Court Money Claims Centre (CCMCC)'
-          displayCourtAddressVisitBuilding =''
-          displayCourtAddressVisitStreet1 =''
-          displayCourtAddressVisitStreet2 =''
-          displayCourtAddressVisitTown = ''
-          displayCourtAddressVisitPostcode = ''
-          
-          displayCourtAddressWriteBuilding ='County Court Money Claims'
-          displayCourtAddressWriteStreet1 ='PO Box 527'
-          displayCourtAddressWriteStreet2 =''
-          displayCourtAddressWriteTown = 'Salford'
-          displayCourtAddressWritePostcode = 'M5 0BY'
-        break
-        case 'watfordCcfc':
-          displayCourtName = 'Watford County Court and Family Court'
-        break          
-        case 'centralLonET':
-          displayCourtName = 'Central London Employment Tribunal'
-        break
-        case 'croydon':
-          displayCourtName = 'Croydon Employment Tribunal'
-        break
-        case 'croydonCcfc':
-          displayCourtName = 'Croydon County Court and Family Court'
-        break
-        case 'eastLonTHC':
-          displayCourtName = 'East London Tribunal Hearing Centre'
-        break
-        case 'eastLonCcfc':
-          displayCourtName = 'East London County Court and Family Court'
-        break
-        case 'westHantsMC':
-          displayCourtName = "West Hampshire Magistrates' Court"
-        break
-        case 'westHantsCcfc':
-          displayCourtName = 'West Hampshire County Court and Family Court'
-        break
-        case 'southampton':
-          displayCourtName = 'Southampton Combined Court Centre'
-        break
-        case 'cambridge':
-          displayCourtName = "Cambridge Magistrates' Court"
-        break
-        case 'cambridgeCcfc':
-          displayCourtName = 'Cambridge County Court and Family Court'
-        break
-        case 'bristol':
-          displayCourtName = 'Bristol Civil and Family Justice Centre'
-        break
-        case 'ashford':
-          displayCourtName = 'Ashford Tribunal Hearing Centre'
-        break
-         default:
-          displayCourtName = 'Central London County Court '
-        break
-
-    }
-  
-    req.app.locals.displayCourtName = displayCourtName
-    req.app.locals.displayCourtAddressVisitBuilding = displayCourtAddressVisitBuilding
-    req.app.locals.displayCourtAddressVisitStreet1 = displayCourtAddressVisitStreet1
-    req.app.locals.displayCourtAddressVisitStreet2 = displayCourtAddressVisitStreet2
-    req.app.locals.displayCourtAddressVisitTown = displayCourtAddressVisitTown
-    req.app.locals.displayCourtAddressVisitPostcode = displayCourtAddressVisitPostcode
-
-    req.app.locals.displayCourtAddressWriteBuilding = displayCourtAddressWriteBuilding
-    req.app.locals.displayCourtAddressWriteStreet1 = displayCourtAddressWriteStreet1
-    req.app.locals.displayCourtAddressWriteStreet2 = displayCourtAddressWriteStreet2
-    req.app.locals.displayCourtAddressWriteTown = displayCourtAddressWriteTown
-    req.app.locals.displayCourtAddressWritePostcode = displayCourtAddressWritePostcode
-*/
     res.render('individual-location-pages/generic')
 
 })

@@ -1,4 +1,4 @@
-<!-- 2.2.1 Visit / Send / Other -->
+<!-- 2.0 choose action -->
 {% extends "layout.html" %}
 {% block pageTitle %}
 What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
@@ -43,10 +43,10 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/continue-service" method="post" novalidate>  
+    <form action="/choose-action" method="post" novalidate>  
       {{ govukRadios({
-        idPrefix: "what-info-want",
-        name: "what-info-want",
+        idPrefix: "choose-action",
+        name: "choose-action",
         fieldset: {
           legend: {
             text: "What do you want to know about your case?",
@@ -57,16 +57,16 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         items: [
 
           {
-            value: "find-nearest",
-            text: "Find the court or tribunal for my hearing "
-          },
-          {
-            value: "progress-chase",
+            value: "case-update",
             text: "Get an update on your application"
           },
           {
+            value: "find-nearest",
+            text: "Find the nearest court for my hearing "
+          },
+          {
             value: "send-docs",
-            text: "Send documents to a court or tribunal managing my case"
+            text: "Send documents to a court or tribunal"
           },
           {
             value: "other",

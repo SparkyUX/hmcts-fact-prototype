@@ -51,36 +51,34 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  	<h1 class="govuk-heading-l">Court or Tribunal search results</h1>
-  		<h2 class="govuk-heading-m">We found 1 court or tribunal matching your search for</h2>
-  		<h2 class="govuk-heading-m">{{serviceSearchPostcode}}</h2>
+  	<h1 class="govuk-heading-l">Search results</h1>
+  	<p class="govuk-body-m">We found 1 service centre matching your search for</p>
+    <p class="govuk-body-m">{{serviceCentreSearch}}</p>
 
-<!--			<p class="govuk-body-m">
-				If you have previously started a claim online or by filling in a paper form then you need to contact
-			</p>
-
-			<h2 class="govuk-heading-m"><a href="../individual-location-pages/salford-ccmcc" class="govuk-link">
-				County Court Money Claims Centre (CCMCC)
-			</a></h2>
-			<p class="govuk-body-m">
-			  The CCMCC manages all money claims applications
-			</p>
-		</div>
-		</br>
-		<hr class="govuk-section-break govuk-section-break--visible">
-		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-
-
-		<p class="govuk-body-m">
-			The nearest County Court for your hearing is:
-		</p>
-		</br>
--->		
-		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link" name="Reading County Court and Family Court">
-			Reading County Court and Family Court
+	
+	{%if serviceCentreProbate %}
+		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=probate" class="govuk-link" name="probate">
+			Probate service centre
 		</a></h2>
-		<p style="float: right" class="govuk-body-m">5.7 miles</p>
+		{% endif %}
+
+		{%if serviceCentreMoneyClaims %}
+		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=moneyclaims" class="govuk-link" name="probate">
+			Salford County Court Money Claims Centre (CCMCC)
+		</a></h2>
+		{% endif %}
+
+		{%if serviceCentreDivorce %}
+		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
+			Bury St Edmunds Regional Divorce Centre
+		</a></h2>
+		{% endif %}
+		
+		{% if serviceCentreCivilPartnership%}
+		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
+			Bury St Edmunds Regional Divorce Centre
+		</a></h2>
+		{% endif %}
 
 <!--		<hr class="govuk-section-break govuk-section-break--visible">
 		</br>

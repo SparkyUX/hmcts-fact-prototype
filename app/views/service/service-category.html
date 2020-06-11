@@ -43,13 +43,14 @@
 
 {% endblock %}
 
-{% if continueService %}
-  {% set pageHeader = "What do you need to contact a court or tribunal about?" %}
-{% else %}
-  {% set pageHeader = "What do you want to know more about?" %}
-{% endif %}
+
 {% block content %}
 
+{% if continueService %}
+  {% set pageHeading = "What do you need to contact a court or tribunal about?" %}
+{% else %}
+  {% set pageHeading = "What do you want to know more about?" %}
+{% endif %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/choose-service-category" method="post" novalidate>  
@@ -60,7 +61,7 @@
         name: "choose-service-category",
         fieldset: {
           legend: {
-            text: pageHeader,
+            text: pageHeading,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
