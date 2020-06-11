@@ -94,6 +94,7 @@ router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
+
   req.app.locals.serviceCentreProbate = false
   req.app.locals.serviceCentreDivorce = false
   req.app.locals.serviceCentreCivilPartnership = false
@@ -101,11 +102,6 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.childService = false
   req.app.locals.serviceCentre = false
 
-
-
-
-//  req.app.locals.displayArea = serviceArea
-//  console.log('define req.app.locals.displayArea ' + req.app.locals.displayArea)
   console.log('serviceAreaQuery ' + serviceAreaQuery)
 
   switch (serviceAreaQuery) {
@@ -138,23 +134,11 @@ router.post('/choose-area', function (req, res) {
   }
   if (req.app.locals.serviceCentre == true) {
     req.app.locals.serviceCentreSearch = serviceArea
-    switch (true) {  
-      case serviceAreaQuery == 'probate':
-            res.redirect('/service/service-search-results-service-centre?servicearea=probate')
-      break
-      case serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre':
-        res.redirect('/service/service-search-postcodeservicearea=' + serviceAreaQuery)
-      break
-      case serviceAreaQuery == 'moneyclaims':
-        res.redirect('/service/service-search-results-service-centre?servicearea=' + serviceAreaQuery)
-      break
-      default:
-      res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
-      break
+    if (serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre') {
+        res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
     }
+    res.redirect('/service/service-search-results-service-centre?servicearea=' + serviceAreaQuery)
   }
-  res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
-
 })
 
 // 2.1.2 service postcode search
