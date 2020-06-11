@@ -46,30 +46,50 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      {{displayCourtName}}
+      {{courtName}}
     </h1>
 
-    <h2 class="govuk-heading-l">
-      Visit or contact us
-    </h2>
+    {% if courtVisitWriteAddress %}
 
-    <h3 class="govuk-heading-s">
-      Address
-    </h3>
+      <h2 class="govuk-heading-m">
+        Visit or contact us:
+      </h2>
 
-    <p class="govuk-body-m">
-      Visit us:
-    </p>
-    <p class="govuk-body-m">
-    {{displayCourtAddressVisitBuilding}}
-    </br>{{displayCourtAddressVisitStreet1}}
-    {% if displayCourtAddressVisitStreet2 %}
-      </br>{{displayCourtAddressVisitStreet2}}
+      <p class="govuk-body-m">
+
+        </br> {{courtVisitAddress1}}
+        {% if courtVisitAddress2 %}
+          </br> {{courtVisitAddress2}}
+        {% endif %}
+        {% if courtVisitAddress3 %}
+          </br> {{courtVisitAddress3}}
+        {% endif %}
+        </br> {{courtVisitTown}}
+        </br> {{courtVisitPostcode}}
+        </br>
+
+      </p>
     {% endif %}
-  
-    </br>{{displayCourtAddressVisitTown}}
-    </br>{{displayCourtAddressVisitPostcode}}
-  
+
+    {% if courtSeparateAddress %}
+      <h2 class="govuk-heading-m">
+        Visit us:
+      </h2>
+
+      <p class="govuk-body-m">
+
+        </br> {{courtVisitAddress1}}
+        {% if courtVisitAddress2 %}
+          </br> {{courtVisitAddress2}}
+        {% endif %}
+        {% if courtVisitAddress3 %}
+          </br> {{courtVisitAddress3}}
+        {% endif %}
+        </br> {{courtVisitTown}}
+        </br> {{courtVisitPostcode}}
+
+      </p>
+    {% endif %}
     <p class="govuk-link">
       <a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
     </p>
@@ -77,22 +97,64 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
     </p>
 
-    {% if displayCourtAddressWriteBuilding %}
-      <p class="govuk-body-m">
+    {% if courtSeparateAddress %}
+      <h2 class="govuk-heading-m">
         Write to us:
-      </p>
+      </h2>
+
       <p class="govuk-body-m">
 
-        {{displayCourtAddressWriteBuilding}}
-        </br>{{displayCourtAddressWriteStreet1}}
-          {% if displayCourtAddressWriteStreet2 %}
-            </br>{{displayCourtAddressWriteStreet2}}
-          {% endif %}
-      
-        </br>{{displayCourtAddressWriteTown}}
-        </br>{{displayCourtAddressWritePostcode}}
-      {% endif %}
-    </p>
+        </br> {{courtWriteAddress1}}
+        {% if courtWriteAddress2 %}
+          </br> {{courtWriteAddress2}}
+        {% endif %}
+        {% if courtWriteAddress3 %}
+          </br> {{courtWriteAddress3}}
+        {% endif %}
+        </br> {{courtWriteTown}}
+        </br> {{courtWritePostcode}}
+
+      </p>
+    {% endif %}
+
+    {% if courtUrgentInfo %}
+
+      {{ govukWarningText({
+        text: courtUrgentInfo,
+        iconFallbackText: "Warning"
+      }) }}
+
+    {% endif %}
+
+    {% if courtAdditionalInfo %}
+
+      <h2 class="govuk-heading-m">
+        Additional Information
+      </h2>
+
+      <p class="govuk-body-m">
+        {{courtAdditionalInfo}}
+      </p>
+
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Opening times
+    </h2>
+
+    {% if courtOpenBuilding %}
+      <p class="govuk-body-m">
+        courtOpenBuilding
+      </p>
+    {% endif %}
+    {% if courtOpenCounter %}
+      <p class="govuk-body-m">
+        courtOpenCounter
+      </p>
+    {% endif %}
+
+
+
 
   </div>
   
@@ -103,6 +165,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
   </div>
 
   <div class="govuk-grid-column-two-thirds">
+
 
     <h3 class="govuk-heading-s">
       Opening times

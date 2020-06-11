@@ -2,17 +2,39 @@
 	{
 		"courtCode": "readingccfc",
 		"name": "Reading County Court and Family Court",
-		"visitAddressBuilding": "address line one",
-		"visitAddressStreet1": "address line two",
-		"visitAddressStreet2": "address line two",
-		"visitAddressTown": "address line two",
-		"visitAddressPostcode": "address line two",
-		"writeAddressBuilding": "address line one",
-		"writeAddressStreet1": "address line two",
-		"writeAddressStreet2": "address line two",
-		"writeAddressTown": "address line two",
-		"writeAddressPostcode": "address line two"
-
+		"info": "additional info",
+		"urgent": "urgent",
+		"lat": 51.4565754432438, 
+		"lon": -0.971178806163207, 
+		"crown_location_code": null, 
+		"county_location_code": 305, 
+		"magistrates_location_code": null, 
+		"areas_of_law": ["Adoption", "Bankruptcy", "Children", "Divorce", "Domestic violence", "Forced marriage and FGM", "High Court District Registry", "Housing possession", "Money claims"], 
+		"types": ["Family Court", "County Court"], 
+		"emails": [
+			{"address": "bailiffs.reading.countycourt@justice.gov.uk", "description": "Bailiffs", "explanation": null}, 
+			{"address": "family.reading.countycourt@justice.gov.uk", "description": "Family queries", "explanation": null}, 
+			{"address": "hearings.reading.countycourt@justice.gov.uk", "description": "Listing", "explanation": null}, 
+			{"address": "enquiries.reading.countycourt@justice.gov.uk", "description": "Enquiries", "explanation": null}, 
+			{"address": "courtofprotection.reading.countycourt@justice.gov.uk", "description": "County Court", "explanation": "Court of Protection"}], 
+		"contacts": [
+			{"number": "0118 987 0500", "description": "Enquiries", "explanation": "from 10am to 2pm, only."}, 
+			{"number": "0870 324 0329", "description": "Fax", "explanation": ""}, 
+			{"number": "98010 Reading 6", "description": "DX", "explanation": ""}], 
+		"opening_times": [
+			{"description": "Court counter open", "hours": "By prior appointment only for urgent Civil and Family Applications"}, 
+			{"description": "Court building open", "hours": "Monday to Friday 9am to 5pm"}],
+		"facilities": [
+			{"description": "<p>Ten interview rooms are available at this court.</p>", "name": "Interview room"}, 
+			{"description": "<p>This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access in to court rooms and hearing rooms.</p>\r\n<p>&nbsp;</p>", "name": "Disabled access"}, 
+			{"description": "<p>The building has hearing enhancement facilities available by prior arrangement.&nbsp; Please contact the Court office by telephone or email if necessary.</p>", "name": "Loop Hearing"}, 
+			{"description": "<p>No parking facilities are available. The court is in the town centre near the train and bus stations.</p>", "name": "No parking"}, 
+			{"description": "<p>Baby changing facilities are available in the disabled toilets on the fourth floor</p>\r\n<p>&nbsp;</p>", "name": "Baby changing facility"}, 
+			{"description": "<p>Assistance dogs are welcome.</p>", "name": "Assistance dogs"}, 
+			{"description": "<p>Court/hearing room video conferencing facilities are available (by prior arrangement).</p>\r\n<p>Virtual visits may be accommodated by prior arrangement. Client consultation is only available for hearings due to take place at Reading, during the course of the hearing.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>", "name": "Video facilities"}, 
+			{"description": "<p>This Court has a childrens room facility.</p>", "name": "Children's waiting room"}], 
+		"addresses": [
+			{"type": "Visit us or write to us", "address1": "Hearing Centre", "address2" : "160-163 Friar Street", "town": "Reading", "postcode": "RG1 1HE"}		]
 	},
 	{		
 		"courtCode": "002",

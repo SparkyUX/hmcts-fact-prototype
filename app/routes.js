@@ -6,7 +6,9 @@ const courtDetails =require('./locations.json')
 
 // Add your routes here - above the module.exports line
 
+
 // 0.1 what do you want to know about the CorT?
+
 
 router.post('/search-route', function (req, res) {
 
@@ -218,28 +220,134 @@ router.post('/search-for-location', function (req, res) {
 
 
 router.get('/individual-location-pages/generic', function(req, res) {
-  var courtName = req.query.courtName
-  console.log('courtName query string ' + courtName)
-      console.log('json file court ' + JSON.stringify(courtDetails.courts[0]))   
+  var courtShortName = req.query.courtName
+  console.log('courtName query string ' + courtShortName)
+//    initialise display va;ues  
+  req.app.locals.courtAddress1 = ""
+  req.app.locals.courtAddress2 = "" 
+  req.app.locals.courtAddress3 = ""
+  req.app.locals.courtTown = ""
+  req.app.locals.courtPostcode = ""
+  req.app.locals.courtAddressVisit = ""
+  req.app.locals.courtAddressWrite = ""
+  req.app.locals.courtVisitWriteAddress = false
+  req.app.locals.courtSeparateAddress = false
+  req.app.locals.courtAdditionalInfo = ""
+  req.app.locals.courtUrgentInfo = ""
+  req.app.locals.courtOpenBuilding = ""
+  req.app.locals.courtOpenCounter = ""
+
+
 
   for (let i=0; i < courtDetails.courts.length; i++) {
-    if (courtName == courtDetails.courts[i].courtCode) {
-      console.log('json file court ' + courtDetails.courts[i])      
-      req.app.locals.displayCourtName = courtDetails.courts[i].name
-      req.app.locals.displayCourtAddressVisitBuilding = courtDetails.courts[i].visitAddressBuilding
-      req.app.locals.displayCourtAddressVisitStreet1 =  courtDetails.courts[i].visitAddressStreet1
-      req.app.locals.displayCourtAddressVisitStreet2 =  courtDetails.courts[i].visitAddressStreet2
-      req.app.locals.displayCourtAddressVisitTown =     courtDetails.courts[i].visitAddressTown
-      req.app.locals.displayCourtAddressVisitPostcode = courtDetails.courts[i].visitAddressPostcode
+    if (courtShortName == courtDetails.courts[i].courtCode) {
 
-      req.app.locals.displayCourtAddressWriteBuilding = courtDetails.courts[i].writeAddressBuilding
-      req.app.locals.displayCourtAddressWriteStreet1 =  courtDetails.courts[i].writeAddressStreet1
-      req.app.locals.displayCourtAddressWriteStreet2 =  courtDetails.courts[i].writeAddressStreet2
-      req.app.locals.displayCourtAddressWriteTown =     courtDetails.courts[i].writeAddressTown
-      req.app.locals.displayCourtAddressWritePostcode = courtDetails.courts[i].writeAddressPostcode
+      // name and address
+      req.app.locals.courtName = courtDetails.courts[i].name
+      for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
+        console.log('type ' + courtDetails.courts[i].addresses[j].type)
 
+        if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" ) {
+
+          req.app.locals.courtVisitWriteAddress = true
+          
+          req.app.locals.courtVisitAddress1 = courtDetails.courts[i].addresses[j].address1 
+
+          if (courtDetails.courts[i].addresses[j].address2) {
+            req.app.locals.courtVisitAddress2 = courtDetails.courts[i].addresses[j].address2  
+          }
+          if (courtDetails.courts[i].addresses[j].address3) {
+            req.app.locals.courtVisitAddress3 = courtDetails.courts[i].addresses[j].address3 
+          }
+          req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+          req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+        }
+
+        if (courtDetails.courts[i].addresses[j].type == "Visiting" ) {
+          req.app.locals.courtSeparateAddress = true
+
+          req.app.locals.courtVisitAddress1 = courtDetails.courts[i].addresses[j].address1 
+
+          if (courtDetails.courts[i].addresses[j].address2) {
+            req.app.locals.courtVisitAddress2 = courtDetails.courts[i].addresses[j].address2  
+          }
+          if (courtDetails.courts[i].addresses[j].address3) {
+            req.app.locals.courtVisitAddress3 = courtDetails.courts[i].addresses[j].address3 
+          }
+          req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+          req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+
+        }
+        if (courtDetails.courts[i].addresses[j].type == "Postal" ) {
+          req.app.locals.courtWriteAddress1 = courtDetails.courts[i].addresses[j].address1 
+
+          if (courtDetails.courts[i].addresses[j].address2) {
+            req.app.locals.courtWriteAddress2 = courtDetails.courts[i].addresses[j].address2  
+          }
+          if (courtDetails.courts[i].addresses[j].address3) {
+            req.app.locals.courtWriteAddress3 = courtDetails.courts[i].addresses[j].address3 
+          }
+          req.app.locals.courtWriteTown = courtDetails.courts[i].addresses[j].town 
+          req.app.locals.courtWritePostcode = courtDetails.courts[i].addresses[j].postcode
+
+        }
+      }
+      // text fields
+      req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
+      req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
+
+      
+      // opening times
+      for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
+        if (courtDetails.courts[i].opening_times[j].description = "Court building open") {
+          req.app.locals.courtOpenBuilding = courtDetails.courts[i].opening_times[j].hours
+        }
+        if (courtDetails.courts[i].opening_times[j].description = "Court counter open") {
+          req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
+
+        }
+      // contacts phone
+      for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
+        if (courtDetails.courts[i].contacts[j].description = "Enquiries") {
+          req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description = "DX") {
+          req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
+
+        }
+      // contacts email
+      for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
+        if (courtDetails.courts[i].emails[j].description = "Enquiries") {
+          req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description = "Listing") {
+          req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description = "Bailiffs") {
+          req.app.locals.courtEmailBaillifs = courtDetails.courts[i].emails[j].address
+        }        
+        if (courtDetails.courts[i].emails[j].description = "Family querie") {
+          req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
+        }
+      }
+      // facilities
+      for (let j=0; j < courtDetails.courts[i].facilities.length; j++) {
+        if (courtDetails.courts[i].facilities[j].description = "Enquiries") {
+          req.app.locals.courtEmailEnquiries = courtDetails.courts[i].facilities[j].description
+        }
+        if (courtDetails.courts[i].facilities[j].description = "Listing") {
+          req.app.locals.courtEmailListing = courtDetails.courts[i].facilities[j].description
+        }
+        if (courtDetails.courts[i].facilities[j].description = "Bailiffs") {
+          req.app.locals.courtEmailBaillifs = courtDetails.courts[i].facilities[j].description
+        }        
+        if (courtDetails.courts[i].facilities[j].description = "Family querie") {
+          req.app.locals.courtEmailFamily = courtDetails.courts[i].facilities[j].description
+        }
+      }
     }
   }
+}
 
 /*
     switch (courtName) {
