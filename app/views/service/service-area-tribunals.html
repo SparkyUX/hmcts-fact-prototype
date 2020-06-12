@@ -1,4 +1,4 @@
-<!-- 2.1 / 2.2 Service selection top level -->
+<!-- 2.xa Money and tax -->
 {% extends "layout.html" %}
 {% block pageTitle %}
   Choose an area of law - Find a court or tribunal - GOV.UK
@@ -43,22 +43,21 @@
 
 {% endblock %}
 
+{% if continueService %}
+  {% set pageHeading = "What kind of help do you need with Money?" %}
+{% else %}
+  {% set pageHeading = "What area of money or tax do you need to find more about?" %}
+{% endif %}
 
 {% block content %}
 
-{% if continueService %}
-  {% set pageHeading = "What do you need to contact a court or tribunal about?" %}
-{% else %}
-  {% set pageHeading = "What do you want to know more about?" %}
-{% endif %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/choose-service-category" method="post" novalidate>  
-
+    <form action="/choose-area" method="post" novalidate>  
 
       {{ govukRadios({
-        idPrefix: "choose-service-category",
-        name: "choose-service-category",
+        idPrefix: "choose-service-area",
+        name: "choose-service-area",
         fieldset: {
           legend: {
             text: pageHeading,
@@ -68,63 +67,63 @@
         },
         items: [
           {
-            value: "money",
-            text: "Money",
+            value: "Money claims",
+            text: "Money claims",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Money claims, rent or mortgage disputes, bankruptcy, job disputes related to pay."
+              text: "Claims for when you are owed money or responding to money claims against you."
             }
           },
           {
-            value: "deaths-marriages-civil-partnerships",
-            text: "Deaths, marriages and civil partnerships",
+            value: "Probate",
+            text: "Probate",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Probate disputes, divorce, ending a civil partnership, being made to marry against your will"
+              text: "Settlement and disputes over a deceased person's property, money and possessions."
             }
-          },
+          },          
           {
-            value: "childcare-parenting",
-            text: "Childcare and parenting",
+            value: "Housing possession",
+            text: "Housing possession",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Making an adoption legal or arrangements for looking after your children if you separate from your partner"
+              text: "Tenant evictions and rental disputes."
             }
-          },
+          },         
           {
-            value: "tribunals",
-            text: "Tribunals",
+            value: "Emergency illegal eviction",
+            text: "Emergency illegal eviction",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Settling disputes or making an appeal against a decision"
+              text: "Illegally evicted and you're homeless or at risk of violence."
             }
           },
           {
-            value: "high-courts",
-            text: "High Courts",
+            value: "Bankruptcy",
+            text: "Bankruptcy",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Courts that deal with the most serious and high profile cases in criminal and civil law"
+              text: "Opposing a bankruptcy petition, support for a person at risk of violence order, canceling a bankruptcy."
             }
           },
           {
-            divider: "or"
-          },
-          {
-            value: "other",
-            text: "I can't find what I'm looking for",
+            value: "Claims against employers",
+            text: "Claims against employers",
             label: {
               classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Appealing a decision about employment disputes related to pay, unfair dismissal and discrimination."
             }
           }
         ]
@@ -133,7 +132,6 @@
       {{ govukButton({
         text: "Continue"
       }) }}
-
 
 <!--
       {{ govukDetails({
