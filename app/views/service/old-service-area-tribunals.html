@@ -1,4 +1,4 @@
-<!-- 2.xa Money and tax -->
+<!-- 2.xa Tribunals -->
 {% extends "layout.html" %}
 {% block pageTitle %}
   Choose an area of law - Find a court or tribunal - GOV.UK
@@ -44,9 +44,9 @@
 {% endblock %}
 
 {% if continueService %}
-  {% set pageHeading = "What kind of help do you need with Money?" %}
+  {% set pageHeading = "What kind of help do you need with Tribunals?" %}
 {% else %}
-  {% set pageHeading = "What area of money or tax do you need to find more about?" %}
+  {% set pageHeading = "What area of Tribunals do you need to find more about?" %}
 {% endif %}
 
 {% block content %}
@@ -67,33 +67,33 @@
         },
         items: [
           {
-            value: "Money claims",
-            text: "Money claims",
+            value: "SSCS",
+            text: "Social Security and Child Support",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Claims for when you are owed money or responding to money claims against you."
+              text: ""
             }
           },
           {
-            value: "Probate",
-            text: "Probate",
+            value: "Employment",
+            text: "Claims against employers",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Settlement and disputes over a deceased person's property, money and possessions."
+              text: "Employment disputes related to pay, unfair dismissal and discrimination."
             }
           },          
           {
-            value: "Housing possession",
-            text: "Housing possession",
+            value: "Tax",
+            text: "Tax",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Tenant evictions and rental disputes."
+              text: "Appealing a tax decision."
             }
           },         
           {

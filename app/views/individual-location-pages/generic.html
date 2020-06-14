@@ -55,6 +55,11 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Visit or contact us:
       </h2>
 
+
+      <h2 class="govuk-heading-m">
+        Address
+      </h2>
+      
       <p class="govuk-body-m">
 
         </br> {{courtVisitAddress1}}
@@ -116,7 +121,15 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       </p>
     {% endif %}
+  </div>
 
+  <div class="govuk-grid-column-one-third">
+
+    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
+    <p class="govuk-body-s">{{CourtName}}</p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
     {% if courtUrgentInfo %}
 
       {{ govukWarningText({
@@ -138,176 +151,290 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% endif %}
 
+
     <h2 class="govuk-heading-m">
       Opening times
     </h2>
 
-    {% if courtOpenBuilding %}
-      <p class="govuk-body-m">
-        courtOpenBuilding
-      </p>
-    {% endif %}
-    {% if courtOpenCounter %}
-      <p class="govuk-body-m">
-        courtOpenCounter
-      </p>
-    {% endif %}
-
-
-
-
-  </div>
-  
-  <div class="govuk-grid-column-one-third">
-
-    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
-    <p class="govuk-body-s">{{displayCourtName}}</p>
-  </div>
-
-  <div class="govuk-grid-column-two-thirds">
-
-
-    <h3 class="govuk-heading-s">
-      Opening times
-    </h3>
     <p class="govuk-body-m">
-      Court Building: Monday to Friday, 9am to 5pm
+      Court building Monday to Friday, 9am to 5pm
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Urgent in-person application
+    </h2>
+    <p class="govuk-body-m">
+      Make an appointment if someone’s personal safety, business or assets are at risk only.
     </p>
     <p class="govuk-body-m">
-      Court counter: By prior appointment only for urgent Civil and Family Applications
+     Telephone: {{courtContactsEnquiries}}
+    </br>
+      Email: {{courtEmailEnquiries}}
+    </br>
+      Monday to Friday, 10am to 2pm (except public holidays)
+    </br>
+    <a href="https://www.gov.uk/call-charges">
+      Find out about call charges
+    </a>
     </p>
 
-    <h3 class="govuk-heading-s">
-      Telephone and fax
-    </h3>
+    <h2 id="court-office" class="govuk-heading-m">
+      General enquiries
+    </h2>
     <p class="govuk-body-m">
-      Telephone: 01234 567 8910
-    </p>
-    <p class="govuk-body-m">
-      Monday - Friday, 10am to 2pm (except public holidays)
-    </p>
-    <p class="govuk-link"><a href="https://www.gov.uk/call-charges">Find out about call charges</a>
+     Telephone: {{courtContactsEnquiries}}
+    </br>
+      Email: {{courtEmailEnquiries}}
+    </br>
+      Monday to Friday, 10am to 2pm (except public holidays)
+    </br>
+    <a href="https://www.gov.uk/call-charges">
+      Find out about call charges
+    </a>
     </p>
 
+    <h2 class="govuk-heading-m">
+      Pay court fees
+    </h2>
     <p class="govuk-body-m">
-      Fax: 01987 654 321
+      Make an appointment to pay your court fees in person.
+    </br>
+      Telephone: {{courtContactsEnquiries}}
+    </br>
+      Email: {{courtEmailEnquiries}}
+    </br>
+      Monday to Friday, 10am to 2pm (except public holidays)
+    </br>
+    <a href="https://www.gov.uk/call-charges">
+      Find out about call charges
+    </a>
+    </p>
+    <p class="govuk-body-m">
+      Find out more about <a href="https://www.gov.uk/court-fees-what-they-are/">court fees</a>.
     </p>
 
-    <h3 class="govuk-heading-s">
-      Emails
-    </h3>
+    <h2 class="govuk-heading-m">
+      Check when your hearing will take place
+    </h2>
     <p class="govuk-body-m">
-      Check when your hearing will take place: <a href="mailto:hearings.courtname.countycourt@justice.gov.uk">hearings.courtname.countycourt@justice.gov.uk</a>
+      <a href="mailto:">{{courtEmailListing}}</a>
     </p>
 
-    <h2 class="govuk-heading-l">
+    <h2 class="govuk-heading-m">
+      Help with marriage or childcare
+    </h2>
+    <p class="govuk-body-m">
+      <a href="mailto:">{{courtEmailFamily}}</a>
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Help with debt collection
+    </h2>
+    <p class="govuk-body-m">
+      <a href="mailto:">{{courtEmailBaillifs}}</a>
+    </p>  
+
+    <h2 class="govuk-heading-m">
+      Protection for those who don’t have the legal capacity to make their own decisions (Court of Protection)
+    </h2>
+    <p class="govuk-body-m">
+      Email: <a href="mailto:">{{courtEmail}}</a>
+    </p>
+    
+    <h2 class="govuk-heading-m">
       Building facilities
     </h2>
     <p class="govuk-body-m">
-      If you have a disability and need help coming to a hearing, please contact <a href="mailto:enquiries.courtname@justice.gov.uk">enquiries.courtname@justice.gov.uk</a> or 01234 567 890.
+      If you have a disability and need help coming to a hearing, please contact [EMAIL] or [Phone number].
     </p>
 
-    {{ govukTable({
-      rows: [
-        [
-          {
-            text: "Parking"
-          },
-          {
-            text: "No parking facilities are available. The court is in the town centre near the train and bus stations. There is city centre parking within walking distance"
-          }
-        ],
-        [
-          {
-            text: "Disabled access"
-          },
-          {
-            text: "This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access in to court rooms and hearing rooms."
-          }
-        ],
-        [
-          {
-            text: "Assistance dogs"
-          },
-          {
-            text: "Assistance dogs are welcome"
-          }
-        ],
-        [
-          {
-            text: "Hearing loop"
-          },
-          {
-            html: "<p>The building has hearing enhancement facilities available by prior arrangement.  Please contact the <a href='mailto:enquiries.courtname.countycourt@justice.gov.uk'>Court office.</a></p>"
-          }
-        ],
-        [
-          {
-            text: "Children"
-          },
-          {
-            html: "<p>This Court has a childrens room facility.</p><p>Baby changing facilities are available in the disabled toilets on the fourth floor</p>"
-          }
-        ],
-        [
-          {
-            text: "Translators or Interpreters"
-          },
-          {
-            html: "<p><a href='https://www.gov.uk/get-interpreter-at-court-or-tribunal'>Get an interpreter at a court or tribunal</a></p>"
-          }
-        ]
-      ]
-    }) }}
+    <h3 class="govuk-heading-s">
+      Parking
+    </h3>
+    <p class="govuk-body-m">
+      No parking facilities are available. The court is in the town centre near the train and bus stations.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Disabled access
+    </h3>
+    <p class="govuk-body-m">
+      This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access into courtrooms and hearing rooms.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Assistance dogs
+    </h3>
+    <p class="govuk-body-m">
+      Assistance dogs are welcome.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Disabled toilet
+    </h3>
+    <p class="govuk-body-m">
+      The disabled toilet is located on the fourth floor.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Hearing loop
+    </h3>
+    <p class="govuk-body-m">
+      The building has hearing enhancement facilities available by prior arrangement with the <a href="#court-office">Court office</a>.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Food and drink
+    </h3>
+    <p class="govuk-body-m">
+      Food and drink are available. Cafe opening times: Monday to Friday, 9am to 2pm.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Children
+    </h3>
+    <p class="govuk-body-m">
+      Baby changing facilities are available in the disabled toilets on the fourth floor.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Prayer or Quiet room
+    </h3>
+    <p class="govuk-body-m">
+      There is a prayer or quiet room available on the first floor.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      Translators or Interpreters
+    </h3>
+    <p class="govuk-body-m">
+      Get an interpreter at a court or tribunal.
+    </p>
+
   </div>
-   <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-third">
     
-     <h3 class="govuk-heading-s">
-      Cases heard at this venue
+    <h3 class="govuk-heading-s">
+      This court handles:
     </h3>
     <ul class="govuk-list">
+
+      {% if adoptionServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">Adoption</a>
+        <a class="govuk-link" href="https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order">Adoption</a>
       </li>
+      {% endif%}
+
+      {% if bankruptcyServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">Bankruptcy</a>
+        <a class="govuk-link" href="https://www.gov.uk/bankruptcy">Bankruptcy</a>
       </li>
+      {% endif%}
+
+      {% if childArrangementsServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">Children</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="#">Divorce hearings</a>
-      </li>
-      <li>
-        <a class="govuk-link" href="#">Domestic violence</a>
+        <a class="govuk-link" href="https://www.gov.uk/looking-after-children-divorce">Childcare arrangements if you separate from your partner</a>
       </li>      
+      {% endif%}
+
+      {% if civilPartnershipServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">Forced marriage and FGM</a>
+        <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">Civil partnership</a>
+      </li>   
+      {% endif%}
+
+      {% if divorceServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/divorce">Divorce</a>
       </li>
+      {% endif%}
+
+      {% if crimeServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">High Court District Registry</a>
+        <span class="govuk-body-m">
+          Crime
+        </span>
+      </li>
+      {% endif%}
+
+      {% if domesticAbuseServiceAtCourt %}
+      <li> 
+        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Domestic abuse</a>
+      </li>
+      {% endif%}
+
+      {% if employmentServiceAtCourt %}
+      <li> 
+        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Claims against employers</a>
+      </li>
+      {% endif%}
+
+      {% if FGMServiceAtCourt %}
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/government/collections/female-genital-mutilation">Female Genital Mutilation</a>
+      </li>
+      {% endif%}
+
+      {% if forcedMarriageServiceAtCourt %}
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/apply-forced-marriage-protection-order">Forced marriage</a>
+      </li>
+      {% endif%}
+
+      {% if highCourtServiceAtCourt %}
+      <li>      
+        <span class="govuk-body-m">
+          High Court
+        </span>
+      </li>
+      {% endif%} 
+
+      {% if housingPossessionServiceAtCourt %}     
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/evicting-tenants">Housing possession</a>
       </li>       
+      {% endif%}
+
+      {% if moneyClaimsServiceAtCourt %}
       <li>
-        <a class="govuk-link" href="#">Housing possession</a>
+        <a class="govuk-link" href="https://www.gov.uk/make-money-claim">Money claims</a>
       </li>
-      <li>
-        <a class="govuk-link" href="#">Housing possession</a>
-      </li>      
-      <li>
-        <a class="govuk-link" href="#">Money claims</a>
-      </li>
+      {% endif%}
+
     </ul>
-
-    <p class="govuk-body-m govuk-!-font-weight-bold">
-      Court Location Code:<span class="govuk-body-m"> 305</span>
-    </p>
-    <p class="govuk-body-m govuk-!-font-weight-bold">
-      DX:<span class="govuk-body-m"> 98010 Reading 6</span>
-    </p> 
   </div>
-  
+
+    <h3 class="govuk-heading-s">
+      Court codes for legal professionals
+    </h3>
+
+    {%if courtCodeCounty %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
+      </p>
+    {% endif %}
+    
+    {%if courtCodeCrown %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
+      </p>
+    {% endif %}
+
+    {%if courtCodeMagistrates %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
+      </p>
+    {% endif %}
+
+    {% if courtDXNumber %}
+
+    <p class="govuk-body-m govuk-!-font-weight-bold">
+      DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
+    </p> 
+    {% endif %}
+
+
+
 </div>
-
-
 
 {% endblock %}

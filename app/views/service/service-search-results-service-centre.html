@@ -52,32 +52,33 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
   	<h1 class="govuk-heading-l">Search results</h1>
-  	<p class="govuk-body-m">We found 1 service centre matching your search for</p>
-    <p class="govuk-body-m">{{serviceCentreSearch}}</p>
+  	<p class="govuk-body-m">We found 1 service centre matching your search for '{{serviceCentreSearch}}'</p>
 
 	
-	{%if serviceCentreProbate %}
-		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=probate" class="govuk-link" name="probate">
-			Probate service centre
-		</a></h2>
+		{%if probateService %}
+			<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=probate" class="govuk-link" name="probate">
+				Probate service centre
+			</a></h2>
 		{% endif %}
 
-		{%if serviceCentreMoneyClaims %}
-		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=moneyclaims" class="govuk-link" name="probate">
-			Salford County Court Money Claims Centre (CCMCC)
-		</a></h2>
+		{%if moneyClaimsService %}
+			<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=moneyclaims" class="govuk-link" name="probate">
+				Salford County Court Money Claims Centre (CCMCC)
+			</a></h2>
 		{% endif %}
 
-		{%if serviceCentreDivorce %}
-		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
-			Bury St Edmunds Regional Divorce Centre
-		</a></h2>
+		{%if divorceService %}
+			<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
+				Bury St Edmunds Regional Divorce Centre
+			</a></h2>
+			<p class="govuk-body-m">This location services the south-east</p>
 		{% endif %}
-		
-		{% if serviceCentreCivilPartnership%}
-		<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
-			Bury St Edmunds Regional Divorce Centre
-		</a></h2>
+
+		{% if civilPartnershipService%}
+			<h2 class="govuk-heading-m" style="float: left"><a href="../individual-location-pages/generic-service-centre?courtname=divorce" class="govuk-link">
+				Bury St Edmunds Regional Divorce Centre
+			</a></h2>
+			<p class="govuk-body-m">This location services the south-east</p>
 		{% endif %}
 
 <!--		<hr class="govuk-section-break govuk-section-break--visible">

@@ -49,7 +49,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
         name: "choose-action",
         fieldset: {
           legend: {
-            text: "What do you want to know about your case?",
+            text: "What do you want to do?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -66,7 +66,10 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
           },
           {
             value: "send-docs",
-            text: "Send documents to a court or tribunal"
+            text: "Where to send documents"
+          },
+          {
+            divider: "or"
           },
           {
             value: "other",
