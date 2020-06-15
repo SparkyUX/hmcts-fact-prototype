@@ -1079,12 +1079,12 @@
 			"types": ["Family Court"],
 			"emails": [{
 				"address": "divorceunitbse@justice.gov.uk",
-				"description": "Divorce",
+				"description": "Enquiries",
 				"explanation": null
 			}],
 			"contacts": [{
 				"number": "0300 303 0642",
-				"description": "Divorce",
+				"description": "Enquiries",
 				"explanation": ""
 			}, {
 				"number": "97640 Bury St Edmunds 3",
@@ -1098,7 +1098,7 @@
 			"facilities": [],
 			"addresses": [{
 				"type": "Postal",
-				"address": "2nd Floor\r\nTriton House\r\nSt Andrews Street North",
+				"address": "2nd Floor!Triton House!St Andrews Street North",
 				"town": "Bury St Edmunds",
 				"postcode": "IP33 1TR"
 			}],

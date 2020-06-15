@@ -25,6 +25,50 @@ router.post('/search-route', function (req, res) {
  
 })
 
+// 1.0 Search
+
+router.post('/search-for-location', function (req, res) {
+
+  let locationSearchValue = req.session.data['location-search-value'].toLowerCase();
+  req.app.locals.locationSearch = req.session.data['location-search-value']
+
+  let searchCourt = locationSearchValue.trim()
+  req.app.locals.locationReading = ''
+  req.app.locals.locationSlough = ''
+  req.app.locals.locationWycombe = ''
+  req.app.locals.locationWatford = ''
+  req.app.locals.locationCCMCC = ''
+
+  if (searchCourt.toLowerCase().includes('money','claims','salford','m5 oby')) {
+    req.app.locals.locationCCMCC = 'ccmcc'
+    res.redirect('/location/location-search-results-single?courtName=ccmcc')
+  }
+
+  switch(searchCourt) {
+    case 'reading county court and family court' :
+      req.app.locals.locationReading = 'readingccfc'
+      res.redirect('/location/location-search-results-single?courtName=readingccfc')
+    break
+    case 'slough county court and family court' :
+      req.app.locals.locationSlough = 'slough'
+      res.redirect('/location/location-search-results-single?courtName=slough')
+    break
+    case 'high wycombe county court and family court' :
+      req.app.locals.locationWycombe = 'wycombe'
+      res.redirect('/location/location-search-results-single?courtName=wycombe')
+    break
+        case 'watford county court and family court' :
+      req.app.locals.locationWatford = 'watford'
+      res.redirect('/location/location-search-results-single?courtName=watford')
+    break
+    default :
+      res.redirect('/location/location-search-results-multiple')
+    break
+
+  }
+
+})
+
 // 2.0 Choose action
 
 
@@ -102,7 +146,7 @@ router.post('/choose-service-category', function (req, res) {
 
 })
 
-// 2.1.a second level service area
+// 2.1.a choose service area
 
 router.post('/choose-area', function (req, res) {
 
@@ -217,11 +261,11 @@ router.post('/choose-area', function (req, res) {
   if (req.app.locals.serviceCentre == true) {
     req.app.locals.serviceCentreSearch = serviceArea
     if ((serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
-      || serviceAreaQuery == "divorce" || serviceAreaQuery == "civilpartnership" ) {
+      || req.app.locals.divorceService || req.app.locals.civilPartnershipService ) {
         res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
     }
     else {
-      res.redirect('/service/service-search-results-service-centre?servicearea=' + serviceAreaQuery)
+      res.redirect('/service/service-search-results-ctsc?servicearea=' + serviceAreaQuery)
     }
   }
   res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
@@ -232,78 +276,27 @@ router.post('/choose-area', function (req, res) {
 
 
 router.post('/service-postcode', function (req, res) {
-  console.log('req.app.locals.adoptionService ' + req.app.locals.adoptionService )
-  console.log('req.app.locals.bankruptcyService ' + req.app.locals.bankruptcyService )
-  console.log('req.app.locals.childArrangementsService ' + req.app.locals.childArrangementsService )
-  console.log('req.app.locals.civilPartnershipService ' + req.app.locals.civilPartnershipService )   
-  console.log('req.app.locals.divorceService ' + req.app.locals.divorceService )
-  console.log('req.app.locals.domesticAbuseService ' + req.app.locals.domesticAbuseService )
-  console.log('req.app.locals.employmentService ' + req.app.locals.employmentService )
-  console.log('req.app.locals.forcedMarriageService ' + req.app.locals.forcedMarriageService )
-  console.log('req.app.locals.FGMService ' + req.app.locals.FGMService )
-  console.log('req.app.locals.housingPossessionService ' + req.app.locals.housingPossessionService )
-  console.log('req.app.locals.moneyClaimsService ' + req.app.locals.moneyClaimsService )
-  console.log('req.app.locals.probateService ' + req.app.locals.probateService )
-  console.log('req.app.locals.benefitsService ' + req.app.locals.benefitsService )
 
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
   if (req.app.locals.serviceCentre == true) {     
-    res.redirect('/service/service-search-results-single-ctsc')
+    res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
 
-    res.redirect('/service/service-search-results-multiple')
+    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
 
 })
 
-router.post('/search-for-location', function (req, res) {
+// 1.2b , 2.1.4b individual CTSC
 
-  let locationSearchValue = req.session.data['location-search-value'].toLowerCase();
-  req.app.locals.locationSearch = req.session.data['location-search-value']
 
-  let searchCourt = locationSearchValue.trim()
-  req.app.locals.locationReading = ''
-  req.app.locals.locationSlough = ''
-  req.app.locals.locationWycombe = ''
-  req.app.locals.locationWatford = ''
-  req.app.locals.locationCCMCC = ''
-
-  if (searchCourt.toLowerCase().includes('money','claims','salford','m5 oby')) {
-    req.app.locals.locationCCMCC = 'ccmcc'
-    res.redirect('/location/location-search-results-single?courtName=ccmcc')
-  }
-
-  switch(searchCourt) {
-    case 'reading county court and family court' :
-      req.app.locals.locationReading = 'readingccfc'
-      res.redirect('/location/location-search-results-single?courtName=readingccfc')
-    break
-    case 'slough county court and family court' :
-      req.app.locals.locationSlough = 'slough'
-      res.redirect('/location/location-search-results-single?courtName=slough')
-    break
-    case 'high wycombe county court and family court' :
-      req.app.locals.locationWycombe = 'wycombe'
-      res.redirect('/location/location-search-results-single?courtName=wycombe')
-    break
-        case 'watford county court and family court' :
-      req.app.locals.locationWatford = 'watford'
-      res.redirect('/location/location-search-results-single?courtName=watford')
-    break
-    default :
-      res.redirect('/location/location-search-results-multiple')
-    break
-
-  }
-
-})
-
+// 1.2a , 2.1.4a individual court CTRT
 
 router.get('/individual-location-pages/generic', function(req, res) {
-  var courtShortName = req.query.courtName
+  let courtShortName = req.query.courtName
   console.log('courtName query string ' + courtShortName)
-//    initialise display va;ues  
+//  initialise display values  
   req.app.locals.courtAddress1 = ""
   req.app.locals.courtAddress2 = "" 
   req.app.locals.courtAddress3 = ""
@@ -317,6 +310,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""
   req.app.locals.courtOpenCounter = ""
+// initialise flags
   req.app.locals.moneyClaimsServiceAtCourt = false
   req.app.locals.probateServiceAtCourt = false
   req.app.locals.housingPossessionServiceAtCourt = false
@@ -334,23 +328,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.highCourtServiceAtCourt = false
   req.app.locals.crimeServiceAtCourt = false
 
-  console.log('req.app.locals.adoptionServiceAtCourt ' + req.app.locals.adoptionServiceAtCourt )
-  console.log('req.app.locals.bankruptcyServiceAtCourt ' + req.app.locals.bankruptcyServiceAtCourt )
-  console.log('req.app.locals.childArrangementsServiceAtCourt ' + req.app.locals.childArrangementsServiceAtCourt )
-  console.log('req.app.locals.civilPartnershipServiceAtCourt ' + req.app.locals.civilPartnershipServiceAtCourt )   
-  console.log('req.app.locals.divorceServiceAtCourt ' + req.app.locals.divorceServiceAtCourt )
-  console.log('req.app.locals.domesticAbuseServiceAtCourt ' + req.app.locals.domesticAbuseServiceAtCourt )
-  console.log('req.app.locals.employmentServiceAtCourt ' + req.app.locals.employmentServiceAtCourt )
-  console.log('req.app.locals.forcedMarriageServiceAtCourt ' + req.app.locals.forcedMarriageServiceAtCourt )
-  console.log('req.app.locals.FGMServiceAtCourt ' + req.app.locals.FGMServiceAtCourt )
-  console.log('req.app.locals.housingPossessionServiceAtCourt ' + req.app.locals.housingPossessionServiceAtCourt )
-  console.log('req.app.locals.moneyClaimsServiceAtCourt ' + req.app.locals.moneyClaimsServiceAtCourt )
-  console.log('req.app.locals.probateServiceAtCourt ' + req.app.locals.probateServiceAtCourt )
-  console.log('req.app.locals.benefitsServiceAtCourt ' + req.app.locals.benefitsServiceAtCourt )
-
   
-  console.log('courtDetails.courts.length ' + courtDetails.courts.length)
-
   for (let i=0; i < courtDetails.courts.length; i++) {
     if (courtShortName == courtDetails.courts[i].court_code) {
 
@@ -365,37 +343,39 @@ router.get('/individual-location-pages/generic', function(req, res) {
       for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
 
         let addressSplit = courtDetails.courts[i].addresses[j].address.split('!')
+        if (!req.app.locals.serviceCentre) {
 
-        if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" ) {
-          req.app.locals.courtVisitWriteAddress = true
-          
-          req.app.locals.courtVisitAddress1 = addressSplit[0]
+          if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" ) {
+            req.app.locals.courtVisitWriteAddress = true
+            
+            req.app.locals.courtVisitAddress1 = addressSplit[0]
 
-          if (addressSplit[1]) {
-            req.app.locals.courtVisitAddress2 = addressSplit[1]
-          }
-          if (addressSplit[2]) {
-            req.app.locals.courtVisitAddress3 = addressSplit[2]
-          }
+            if (addressSplit[1]) {
+              req.app.locals.courtVisitAddress2 = addressSplit[1]
+            }
+            if (addressSplit[2]) {
+              req.app.locals.courtVisitAddress3 = addressSplit[2]
+            }
 
-          req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
-          req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
-        }
-
-        if (courtDetails.courts[i].addresses[j].type == "Visiting" ) {
-          req.app.locals.courtSeparateAddress = true
-          req.app.locals.courtVisitAddress1 = addressSplit[0]
-
-          if (addressSplit[1]) {
-            req.app.locals.courtVisitAddress2 = addressSplit[1]
-          }
-          if (addressSplit[2]) {
-            req.app.locals.courtVisitAddress3 = addressSplit[2]
+            req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+            req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
           }
 
-          req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
-          req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+          if (courtDetails.courts[i].addresses[j].type == "Visiting") {
+            req.app.locals.courtSeparateAddress = true
+            req.app.locals.courtVisitAddress1 = addressSplit[0]
 
+            if (addressSplit[1]) {
+              req.app.locals.courtVisitAddress2 = addressSplit[1]
+            }
+            if (addressSplit[2]) {
+              req.app.locals.courtVisitAddress3 = addressSplit[2]
+            }
+
+            req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+            req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+
+          }
         }
         if (courtDetails.courts[i].addresses[j].type == "Postal" ) {
           req.app.locals.courtWriteAddress1 = addressSplit[0]
@@ -410,7 +390,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtWritePostcode = courtDetails.courts[i].addresses[j].postcode
 
         }
-      } // addresses
+      }
       // text fields
       req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
       req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
@@ -533,20 +513,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
       } // for area of law
     } // if court 
   } // for loop
-  console.log('req.app.locals.adoptionServiceAtCourt ' + req.app.locals.adoptionServiceAtCourt )
-  console.log('req.app.locals.bankruptcyServiceAtCourt ' + req.app.locals.bankruptcyServiceAtCourt )
-  console.log('req.app.locals.childArrangementsServiceAtCourt ' + req.app.locals.childArrangementsServiceAtCourt )
-  console.log('req.app.locals.civilPartnershipServiceAtCourt ' + req.app.locals.civilPartnershipServiceAtCourt )   
-  console.log('req.app.locals.divorceServiceAtCourt ' + req.app.locals.divorceServiceAtCourt )
-  console.log('req.app.locals.domesticAbuseServiceAtCourt ' + req.app.locals.domesticAbuseServiceAtCourt )
-  console.log('req.app.locals.employmentServiceAtCourt ' + req.app.locals.employmentServiceAtCourt )
-  console.log('req.app.locals.forcedMarriageServiceAtCourt ' + req.app.locals.forcedMarriageServiceAtCourt )
-  console.log('req.app.locals.FGMServiceAtCourt ' + req.app.locals.FGMServiceAtCourt )
-  console.log('req.app.locals.housingPossessionServiceAtCourt ' + req.app.locals.housingPossessionServiceAtCourt )
-  console.log('req.app.locals.moneyClaimsServiceAtCourt ' + req.app.locals.moneyClaimsServiceAtCourt )
-  console.log('req.app.locals.probateServiceAtCourt ' + req.app.locals.probateServiceAtCourt )
-  console.log('req.app.locals.benefitsServiceAtCourt ' + req.app.locals.benefitsServiceAtCourt )
-  console.log('req.app.locals.crimeServiceAtCourt ' + req.app.locals.crimeServiceAtCourt )
 
   res.render('individual-location-pages/generic')
 

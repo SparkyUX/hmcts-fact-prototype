@@ -41,6 +41,11 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block content %}
+{% if (moneyClaimsService) or (probateService) %}
+  {% set catchmentArea = "England and Wales" %}
+{% else %}
+  {% set catchmentArea = "the south-east" %}
+{% endif %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -48,6 +53,33 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <h1 class="govuk-heading-xl">
       {{courtName}}
     </h1>
+
+    {% if serviceCentre %}
+      <p class="govuk-body-m">
+        This location services the {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
+      </p>
+      <h2 class="govuk-heading-m">
+        Help claiming by post or online
+        
+      </h2>
+      <h2 class="govuk-heading-m">
+        Address
+      </h2>
+      <p class="govuk-body-m">
+
+        </br> {{courtWriteAddress1}}
+        {% if courtWriteAddress2 %}
+          </br> {{courtWriteAddress2}}
+        {% endif %}
+        {% if courtWriteAddress3 %}
+          </br> {{courtWriteAddress3}}
+        {% endif %}
+        </br> {{courtWriteTown}}
+        </br> {{courtWritePostcode}}
+
+      </p>
+
+    {% endif %}
 
     {% if courtVisitWriteAddress %}
 
@@ -95,12 +127,15 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       </p>
     {% endif %}
+
+    {% if not serviceCentre %}
     <p class="govuk-link">
       <a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
     </p>
     <p class="govuk-link">
       <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
     </p>
+    {% endif %}
 
     {% if courtSeparateAddress %}
       <h2 class="govuk-heading-m">
@@ -143,6 +178,44 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% endif %}
 
+    {% if serviceCentre %}
+
+    <h2 class="govuk-heading-m">
+      Telephone and fax
+    </h2>
+    <p class="govuk-body-m">
+     Telephone: {{courtContactsEnquiries}}
+    </br>
+      Monday to Friday, 8:30am to 5pm
+    </p>
+    <p class="govuk-body-m">
+      Welsh language: 0300 303 5174
+      Monday to Friday, 9am to 5pm
+    </p>
+    <p class="govuk-body-m">
+      Fax: 01264 347985
+    </p>
+    <p class="govuk-body-m">
+    <a href="https://www.gov.uk/call-charges">
+      Find out about call charges
+    </a>
+    </p>
+    <p class="govuk-body-m">
+    <a href="https://www.gov.uk/call-charges">
+      Processing or reply times
+    </a>
+    </p>    
+
+    <h2 class="govuk-heading-m">
+      Email
+    </h2>
+    <p class="govuk-body-m">
+      Send us your documents: {{courtEmailEnquiries}}
+      <br />
+        Get an update with your application: ccmcccustomerenquiries@justice.gov.uk
+Processing or reply times
+
+    {% else %}
 
     <h2 class="govuk-heading-m">
       Opening times
@@ -302,7 +375,8 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <p class="govuk-body-m">
       Get an interpreter at a court or tribunal.
     </p>
-    
+    {% endif %}
+
     <h3 class="govuk-heading-s">
       Court codes for legal professionals
     </h3>
