@@ -33,40 +33,41 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationSearch = req.session.data['location-search-value']
 
   let searchCourt = locationSearchValue.trim()
-  req.app.locals.locationReading = ''
-  req.app.locals.locationSlough = ''
-  req.app.locals.locationWycombe = ''
-  req.app.locals.locationWatford = ''
-  req.app.locals.locationCCMCC = ''
+  req.app.locals.locationCCMCC = false
+  req.app.locals.locationProbate = false
+  req.app.locals.locationWycombe = false
+  req.app.locals.locationReading = false
+  req.app.locals.locationWatford = false
+  req.app.locals.locationSlough = false
+  console.log('searchCourt ' + searchCourt.toLowerCase())
 
-  if (searchCourt.toLowerCase().includes('money','claims','salford','m5 oby')) {
-    req.app.locals.locationCCMCC = 'ccmcc'
+  if (searchCourt.toLowerCase().includes('money')) {
+    req.app.locals.locationCCMCC = true
     res.redirect('/location/location-search-results-single?courtName=ccmcc')
   }
-
-  switch(searchCourt) {
-    case 'reading county court and family court' :
-      req.app.locals.locationReading = 'readingccfc'
-      res.redirect('/location/location-search-results-single?courtName=readingccfc')
-    break
-    case 'slough county court and family court' :
-      req.app.locals.locationSlough = 'slough'
-      res.redirect('/location/location-search-results-single?courtName=slough')
-    break
-    case 'high wycombe county court and family court' :
-      req.app.locals.locationWycombe = 'wycombe'
-      res.redirect('/location/location-search-results-single?courtName=wycombe')
-    break
-        case 'watford county court and family court' :
-      req.app.locals.locationWatford = 'watford'
-      res.redirect('/location/location-search-results-single?courtName=watford')
-    break
-    default :
-      res.redirect('/location/location-search-results-multiple')
-    break
-
+  else if (searchCourt.toLowerCase().includes('probate')) {
+    req.app.locals.locationProbate = true
+    res.redirect('/location/location-search-results-single?courtName=probatesc')
   }
-
+  else if (searchCourt.toLowerCase().includes('wycombe')) {
+    req.app.locals.locationWycombe = true
+    res.redirect('/location/location-search-results-single?courtName=wycombeccfc')
+  }
+  else if (searchCourt.toLowerCase().includes('reading')) {
+    req.app.locals.locationReading = true
+    res.redirect('/location/location-search-results-single?courtName=readingccfc')
+  }
+  else if (searchCourt.toLowerCase().includes('watford')) {
+    req.app.locals.locationWatford = true
+    res.redirect('/location/location-search-results-single?courtName=watfordccfc')
+  }
+  else if (searchCourt.toLowerCase().includes('slough')) {
+    req.app.locals.locationSlough = true
+    res.redirect('/location/location-search-results-single?courtName=sloughccfc')
+  }
+  else {
+  res.redirect('/location/location-search-results-multiple')
+  }
 })
 
 // 2.0 Choose action
