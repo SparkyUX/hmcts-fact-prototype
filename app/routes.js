@@ -71,9 +71,23 @@ router.post('/choose-service-category', function (req, res) {
     case 'childcare-parenting':
       pageServiceCategory = 'service-area-childcare-parenting'
       break
+
+    case 'immigration-asylum':
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+      req.app.locals.imigrationService = true
+      req.app.locals.serviceArea = "Immigration and asylum"
+
+
+      pageServiceCategory = 'service-search-postcode?servicearea=immigration'
+      break
+
     case 'high-courts':
       req.app.locals.childService = false
       req.app.locals.serviceCentre = false
+      req.app.locals.highCourtService = true
+      req.app.locals.serviceArea = "High Courts"
+
 
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
       break
@@ -105,7 +119,7 @@ router.post('/choose-area', function (req, res) {
   
   req.app.locals.moneyClaimsService = false
   req.app.locals.probateService = false
-  req.app.locals.housingPossessionService = true
+  req.app.locals.housingPossessionService = false
   req.app.locals.bankruptcyService = false
   req.app.locals.benefitsService = false
   req.app.locals.employmentService = false
@@ -116,13 +130,64 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.forcedMarriageService = false
   req.app.locals.childService = false
   req.app.locals.childArrangementsService = false
-  req.app.locals.adoptiionService = false
+  req.app.locals.adoptionService = false
   req.app.locals.FGMService = false
 
 
   console.log('serviceAreaQuery ' + serviceAreaQuery)
 
   switch (serviceAreaQuery) {
+
+    case 'adoption':
+      req.app.locals.adoptionService = true
+      req.app.locals.courtCount = 3
+      break
+
+    case 'bankruptcy':
+      req.app.locals.bankruptcyService = true
+      req.app.locals.courtCount = 2
+      break
+
+    case 'childarrangements':
+      req.app.locals.childService = true
+      req.app.locals.childArrangementsService = true
+      req.app.locals.courtCount = 7
+      break
+
+    case 'civilpartnership':
+      req.app.locals.civilPartnershipService = true
+      req.app.locals.courtCount = 1
+      break    
+
+    case 'divorce':
+      req.app.locals.serviceCentre = true
+      req.app.locals.divorceService = true
+      break
+
+    case 'domesticabuse':
+      req.app.locals.domesticAbuseService = true
+      req.app.locals.courtCount = 7
+      break
+
+    case 'claimsagainstemployers':
+      req.app.locals.employmentService = true
+      req.app.locals.courtCount = 1
+      break
+
+    case 'forcedmarriage':
+      req.app.locals.forcedMarriageService = true
+      req.app.locals.courtCount = 1
+      break
+
+    case 'femalegenitalmutilation':
+      req.app.locals.FGMService = true
+      req.app.locals.courtCount = 1
+      break
+
+    case 'housingpossession':
+      req.app.locals.housingPossessionService = true
+      req.app.locals.courtCount = 4
+      break
 
     case 'moneyclaims':
       req.app.locals.serviceCentre = true
@@ -134,56 +199,19 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.probateService = true
       break
 
-    case 'housingpossession':
-      req.app.locals.housingPossessionService = true
-      break
-
-    case 'bankruptcy':
-      req.app.locals.bankruptcyService = true
-      break
-
     case 'benefits':
       req.app.locals.benefitsService = true
-      break
-
-    case 'claimsagainstemployers':
-      req.app.locals.employmentService = true
+      req.app.locals.courtCount = 1
       break
 
     case 'tax':
       req.app.locals.taxService = true
+      req.app.locals.courtCount = 0
       break
 
-    case 'divorce':
-      req.app.locals.serviceCentre = true
-      req.app.locals.divorceService = true
-      break
-    
-    case 'civilpartnership':
-      req.app.locals.serviceCentre = true
-      req.app.locals.civilPartnershipService = true
-      break    
-
-    case 'domesticabuse':
-      req.app.locals.domesticAbuseService = true
-      break
-
-    case 'forcedmarriage':
-      req.app.locals.forcedMarriageService = true
-      break
-
-    case 'childarrangements':
-      req.app.locals.childService = true
-      req.app.locals.childArrangementsService = true
-      break
-
-    case 'adoption':
-      req.app.locals.adoptiionService = true
-      break
-
-    case 'femalegenitalmutilation':
-      req.app.locals.FGMService = true
-      break
+    default:
+      req.app.locals.crimeService = true
+      req.app.locals.courtCount = 0
 
   }
   if (req.app.locals.serviceCentre == true) {
@@ -204,80 +232,28 @@ router.post('/choose-area', function (req, res) {
 
 
 router.post('/service-postcode', function (req, res) {
+  console.log('req.app.locals.adoptionService ' + req.app.locals.adoptionService )
+  console.log('req.app.locals.bankruptcyService ' + req.app.locals.bankruptcyService )
+  console.log('req.app.locals.childArrangementsService ' + req.app.locals.childArrangementsService )
+  console.log('req.app.locals.civilPartnershipService ' + req.app.locals.civilPartnershipService )   
+  console.log('req.app.locals.divorceService ' + req.app.locals.divorceService )
+  console.log('req.app.locals.domesticAbuseService ' + req.app.locals.domesticAbuseService )
+  console.log('req.app.locals.employmentService ' + req.app.locals.employmentService )
+  console.log('req.app.locals.forcedMarriageService ' + req.app.locals.forcedMarriageService )
+  console.log('req.app.locals.FGMService ' + req.app.locals.FGMService )
+  console.log('req.app.locals.housingPossessionService ' + req.app.locals.housingPossessionService )
+  console.log('req.app.locals.moneyClaimsService ' + req.app.locals.moneyClaimsService )
+  console.log('req.app.locals.probateService ' + req.app.locals.probateService )
+  console.log('req.app.locals.benefitsService ' + req.app.locals.benefitsService )
 
-  let serviceSearchPostcode = req.session.data['service-search-value'].toUpperCase();
+  let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-  if ( serviceSearchPostcode.toLowerCase().includes("rg10") ) {
+  if (req.app.locals.serviceCentre == true) {     
+    res.redirect('/service/service-search-results-single-ctsc')
+  }
+
     res.redirect('/service/service-search-results-multiple')
-  }
-  else 
-  {
-     res.redirect('/service/service-search-results-single')
-
-   }
-})
-
-
-router.get('/service/service-search-results-multiple', function(req, res) {
-  var serviceArea = req.query.serviceArea
-  if (areaOfLaw == 'divorce') {
-    displayAoL = 'Divorce'
-  }
-  else if (areaOfLaw == 'civilPartnership') { 
-      displayAoL = 'Civil Partnership'
-  }
-  else {
-        displayAoL = ' '
-  }
-  req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
-  res.render('service/search-aol-results-multiple-div-centre')
-
-})
-
-router.get('/service/search-aol-results-multiple-div-centre', function(req, res) {
-  var areaOfLaw = req.query.aol
-  if (areaOfLaw == 'divorce') {
-    displayAoL = 'Divorce'
-  }
-  else if (areaOfLaw == 'civilPartnership') { 
-      displayAoL = 'Civil Partnership'
-  }
-  else {
-        displayAoL = ' '
-  }
-  req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
-  res.render('service/search-aol-results-multiple-div-centre')
-
-})
-
-router.get('/service/search-aol-results-multiple-ET', function(req, res) {
-  var areaOfLaw = req.query.aol
-  if (areaOfLaw == 'employment') {
-    displayAoL = 'Employment'
-  }
-  else {
-        displayAoL = ' '
-  }
-  req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
-  res.render('service/search-aol-results-multiple-ET')
-
-})
-
-router.get('/service/search-aol-results-single-ccmcc', function(req, res) {
-  var areaOfLaw = req.query.aol
-  if (areaOfLaw == 'moneyClaims') {
-      displayAoL = 'Money Claims'
-  }
-  else {
-        displayAoL = ' '
-  }
-  req.app.locals.displayAoL = displayAoL
-  req.app.locals.aolPostcode = req.session.data['service-postcode'].toUpperCase(); 
-  res.render('service/search-aol-results-single-ccmcc')
 
 })
 
@@ -341,6 +317,37 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""
   req.app.locals.courtOpenCounter = ""
+  req.app.locals.moneyClaimsServiceAtCourt = false
+  req.app.locals.probateServiceAtCourt = false
+  req.app.locals.housingPossessionServiceAtCourt = false
+  req.app.locals.bankruptcyServiceAtCourt = false
+  req.app.locals.benefitsServiceAtCourt = false
+  req.app.locals.employmentServiceAtCourt = false
+  req.app.locals.taxServiceAtCourt = false
+  req.app.locals.divorceServiceAtCourt = false
+  req.app.locals.civilPartnershipServiceAtCourt = false
+  req.app.locals.domesticAbuseServiceAtCourt = false
+  req.app.locals.forcedMarriageServiceAtCourt = false
+  req.app.locals.childArrangementsServiceAtCourt = false
+  req.app.locals.adoptionServiceAtCourt = false
+  req.app.locals.FGMServiceAtCourt = false
+  req.app.locals.highCourtServiceAtCourt = false
+  req.app.locals.crimeServiceAtCourt = false
+
+  console.log('req.app.locals.adoptionServiceAtCourt ' + req.app.locals.adoptionServiceAtCourt )
+  console.log('req.app.locals.bankruptcyServiceAtCourt ' + req.app.locals.bankruptcyServiceAtCourt )
+  console.log('req.app.locals.childArrangementsServiceAtCourt ' + req.app.locals.childArrangementsServiceAtCourt )
+  console.log('req.app.locals.civilPartnershipServiceAtCourt ' + req.app.locals.civilPartnershipServiceAtCourt )   
+  console.log('req.app.locals.divorceServiceAtCourt ' + req.app.locals.divorceServiceAtCourt )
+  console.log('req.app.locals.domesticAbuseServiceAtCourt ' + req.app.locals.domesticAbuseServiceAtCourt )
+  console.log('req.app.locals.employmentServiceAtCourt ' + req.app.locals.employmentServiceAtCourt )
+  console.log('req.app.locals.forcedMarriageServiceAtCourt ' + req.app.locals.forcedMarriageServiceAtCourt )
+  console.log('req.app.locals.FGMServiceAtCourt ' + req.app.locals.FGMServiceAtCourt )
+  console.log('req.app.locals.housingPossessionServiceAtCourt ' + req.app.locals.housingPossessionServiceAtCourt )
+  console.log('req.app.locals.moneyClaimsServiceAtCourt ' + req.app.locals.moneyClaimsServiceAtCourt )
+  console.log('req.app.locals.probateServiceAtCourt ' + req.app.locals.probateServiceAtCourt )
+  console.log('req.app.locals.benefitsServiceAtCourt ' + req.app.locals.benefitsServiceAtCourt )
+
   
   console.log('courtDetails.courts.length ' + courtDetails.courts.length)
 
@@ -355,14 +362,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
       req.app.locals.courtCodeMagistrates = courtDetails.courts[i].magistrates_location_code
 
       // addresses
-        console.log('courtDetails.courts[i].addresses.length ' + courtDetails.courts[i].addresses.length)
-
       for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
-        console.log('type ' + courtDetails.courts[i].addresses[j].type)
-        console.log('address ' + courtDetails.courts[i].addresses[j].address)
 
         let addressSplit = courtDetails.courts[i].addresses[j].address.split('!')
-        console.log('addressSplit ' + addressSplit[0] + ' ' + addressSplit[1] + addressSplit[2])
 
         if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" ) {
           req.app.locals.courtVisitWriteAddress = true
@@ -408,124 +410,144 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtWritePostcode = courtDetails.courts[i].addresses[j].postcode
 
         }
-        // text fields
-        req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
-        req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
+      } // addresses
+      // text fields
+      req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
+      req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
 
+      
+      // opening times
+
+      for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
+        if (courtDetails.courts[i].opening_times[j].description = "Court building open") {
+          req.app.locals.courtOpenBuilding = courtDetails.courts[i].opening_times[j].hours
+        }
+        if (courtDetails.courts[i].opening_times[j].description = "Court counter open") {
+          req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
+
+        }
+      } // opening times
+
+      // contacts phone
+
+      for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
+        if (courtDetails.courts[i].contacts[j].description = "Enquiries") {
+          req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description = "DX") {
+          req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
+
+        }
+      } // contacts
+      //  email
+
+      for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
+        if (courtDetails.courts[i].emails[j].description = "Enquiries") {
+          req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description = "Listing") {
+          req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description = "Bailiffs") {
+          req.app.locals.courtEmailBaillifs = courtDetails.courts[i].emails[j].address
+        }        
+        if (courtDetails.courts[i].emails[j].description = "Family queries") {
+          req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description = "Court of Protection") {
+          req.app.locals.courtEmailCoP = courtDetails.courts[i].emails[j].address
+        }   
+      } // emails
+
+      //service areas to display in sidebar
+      
+      for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
+        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
+        let serviceAreasByCourt = courtDetails.courts[i].areas_of_law[j]
         
-        // opening times
 
-        console.log('courtDetails.courts[i].opening_times.length ' + courtDetails.courts[i].opening_times.length)
-
-        for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
-          if (courtDetails.courts[i].opening_times[j].description = "Court building open") {
-            req.app.locals.courtOpenBuilding = courtDetails.courts[i].opening_times[j].hours
+          if (serviceAreasByCourt == 'Money claims') {
+            req.app.locals.moneyClaimsServiceAtCourt = true
           }
-          if (courtDetails.courts[i].opening_times[j].description = "Court counter open") {
-            req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
 
+          if (serviceAreasByCourt == 'Probate') {
+            req.app.locals.probateServiceAtCourt = true
           }
-        } 
 
-        // contacts phone
-
-        console.log('courtDetails.courts[i].contacts.length ' + courtDetails.courts[i].contacts.length)
-
-        for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
-          if (courtDetails.courts[i].contacts[j].description = "Enquiries") {
-            req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
+          if (serviceAreasByCourt == 'Housing possession') {
+            req.app.locals.housingPossessionServiceAtCourt = true
           }
-          if (courtDetails.courts[i].contacts[j].description = "DX") {
-            req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
 
+          if (serviceAreasByCourt == 'Bankruptcy') {
+            req.app.locals.bankruptcyServiceAtCourt = true
           }
-        }
-        // contacts email
 
-        console.log('courtDetails.courts[i].emails.length ' + courtDetails.courts[i].emails.length)
-
-        for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
-          if (courtDetails.courts[i].emails[j].description = "Enquiries") {
-            req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
+          if (serviceAreasByCourt == 'Social Security') {
+            req.app.locals.benefitsServiceAtCourt = true
           }
-          if (courtDetails.courts[i].emails[j].description = "Listing") {
-            req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
+
+          if (serviceAreasByCourt == 'Immigration') {
+            req.app.locals.immigrationServiceAtCourt = true
           }
-          if (courtDetails.courts[i].emails[j].description = "Bailiffs") {
-            req.app.locals.courtEmailBaillifs = courtDetails.courts[i].emails[j].address
-          }        
-          if (courtDetails.courts[i].emails[j].description = "Family queries") {
-            req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
+
+          if (serviceAreasByCourt == 'Employment') {
+            req.app.locals.employmentServiceAtCourt = true
           }
-          if (courtDetails.courts[i].emails[j].description = "Court of Protection") {
-            req.app.locals.courtEmailCoP = courtDetails.courts[i].emails[j].address
-          }   
-        }
-        //service areas to display in sidebar
 
-        
-        console.log('courtDetails.courts[i].areas_of_law.length ' + courtDetails.courts[i].areas_of_law.length)        
-
-        for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-            
-          switch (courtDetails.courts[i].areas_of_law[j]) {
-
-            case 'Money claims':
-              req.app.locals.moneyClaimsServiceAtCourt = "Money claims"
-
-            case 'Probate':
-              req.app.locals.probateServiceAtCourt = "Probate"
-
-            case 'Housing possession':
-              req.app.locals.housingPossessionServiceAtCourt = "Housing possession"
-
-            case 'Bankruptcy':
-              req.app.locals.bankruptcyServiceAtCourt = 'Bankruptcy'
-
-            case 'Social Security':
-              req.app.locals.benefitsServiceAtCourt = "Benefits"
-
-            case 'Immigration':
-              req.app.locals.benefitsServiceAtCourt = "Benefits"
-
-            case 'Employment':
-              req.app.locals.employmentServiceAtCourt = "Claims against employers"
-
-            case 'Tax':
-              req.app.locals.taxServiceAtCourt = "Tax"
-
-            case 'Divorce':
-              req.app.locals.divorceServiceAtCourt = "Divorce"
-            
-            case 'Civil Partnership':
-              req.app.locals.civilPartnershipServiceAtCourt = "Civil partnership"
-
-            case 'Domestic violence':
-              req.app.locals.domesticAbuseServiceAtCourt = "Domestic Abuse"
-
-            case 'Forced marriage and FGM':
-              req.app.locals.forcedMarriageServiceAtCourt = "Forced marriage"
-
-            case 'Children':
-              req.app.locals.childArrangementsServiceAtCourt = 'Child Arrangements'
-
-            case 'Adoption':
-              req.app.locals.adoptionServiceAtCourt = "Adoption"
-
-            case 'FGM':
-              req.app.locals.FGMServiceAtCourt = "Female Genital Mutilation"
-
-            case 'High Court':
-              req.app.locals.highCourtServiceAtCourt = "High Court"
-            
-            default :
-              req.app.locals.crimeServiceAtCourt = "Crime"
-
+          if (serviceAreasByCourt == 'Tax') {
+            req.app.locals.taxServiceAtCourt = true
           }
-        }
-      }
-    }
-  }
+
+          if (serviceAreasByCourt == 'Divorce') {
+            req.app.locals.divorceServiceAtCourt = true
+          }
+          
+          if (serviceAreasByCourt == 'Civil Partnership') {
+            req.app.locals.civilPartnershipServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'Domestic violence') {
+            req.app.locals.domesticAbuseServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'Forced marriage and FGM') {
+            req.app.locals.forcedMarriageServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'Children') {
+            req.app.locals.childArrangementsServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'Adoption') {
+            req.app.locals.adoptionServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'FGM') {
+            req.app.locals.FGMServiceAtCourt = true
+          }
+
+          if (serviceAreasByCourt == 'High Court') {
+            req.app.locals.highCourtServiceAtCourt = true
+          }
+          
+      } // for area of law
+    } // if court 
+  } // for loop
+  console.log('req.app.locals.adoptionServiceAtCourt ' + req.app.locals.adoptionServiceAtCourt )
+  console.log('req.app.locals.bankruptcyServiceAtCourt ' + req.app.locals.bankruptcyServiceAtCourt )
+  console.log('req.app.locals.childArrangementsServiceAtCourt ' + req.app.locals.childArrangementsServiceAtCourt )
+  console.log('req.app.locals.civilPartnershipServiceAtCourt ' + req.app.locals.civilPartnershipServiceAtCourt )   
+  console.log('req.app.locals.divorceServiceAtCourt ' + req.app.locals.divorceServiceAtCourt )
+  console.log('req.app.locals.domesticAbuseServiceAtCourt ' + req.app.locals.domesticAbuseServiceAtCourt )
+  console.log('req.app.locals.employmentServiceAtCourt ' + req.app.locals.employmentServiceAtCourt )
+  console.log('req.app.locals.forcedMarriageServiceAtCourt ' + req.app.locals.forcedMarriageServiceAtCourt )
+  console.log('req.app.locals.FGMServiceAtCourt ' + req.app.locals.FGMServiceAtCourt )
+  console.log('req.app.locals.housingPossessionServiceAtCourt ' + req.app.locals.housingPossessionServiceAtCourt )
+  console.log('req.app.locals.moneyClaimsServiceAtCourt ' + req.app.locals.moneyClaimsServiceAtCourt )
+  console.log('req.app.locals.probateServiceAtCourt ' + req.app.locals.probateServiceAtCourt )
+  console.log('req.app.locals.benefitsServiceAtCourt ' + req.app.locals.benefitsServiceAtCourt )
+  console.log('req.app.locals.crimeServiceAtCourt ' + req.app.locals.crimeServiceAtCourt )
+
   res.render('individual-location-pages/generic')
 
 })

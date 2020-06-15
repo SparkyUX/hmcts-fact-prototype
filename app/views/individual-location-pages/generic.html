@@ -121,15 +121,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       </p>
     {% endif %}
-  </div>
 
-  <div class="govuk-grid-column-one-third">
-
-    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
-    <p class="govuk-body-s">{{CourtName}}</p>
-  </div>
-
-  <div class="govuk-grid-column-two-thirds">
     {% if courtUrgentInfo %}
 
       {{ govukWarningText({
@@ -310,9 +302,44 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <p class="govuk-body-m">
       Get an interpreter at a court or tribunal.
     </p>
+    
+    <h3 class="govuk-heading-s">
+      Court codes for legal professionals
+    </h3>
+
+    {%if courtCodeCounty %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
+      </p>
+    {% endif %}
+    
+    {%if courtCodeCrown %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
+      </p>
+    {% endif %}
+
+    {%if courtCodeMagistrates %}
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
+      </p>
+    {% endif %}
+
+    {% if courtDXNumber %}
+
+    <p class="govuk-body-m govuk-!-font-weight-bold">
+      DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
+    </p> 
+    {% endif %}
 
   </div>
+
   <div class="govuk-grid-column-one-third">
+
+    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
+    <p class="govuk-body-s">
+      {{courtName}}
+    </p>
     
     <h3 class="govuk-heading-s">
       This court handles:
@@ -402,36 +429,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       {% endif%}
 
     </ul>
-  </div>
-
-    <h3 class="govuk-heading-s">
-      Court codes for legal professionals
-    </h3>
-
-    {%if courtCodeCounty %}
-      <p class="govuk-body-m govuk-!-font-weight-bold">
-        County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
-      </p>
-    {% endif %}
-    
-    {%if courtCodeCrown %}
-      <p class="govuk-body-m govuk-!-font-weight-bold">
-        Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
-      </p>
-    {% endif %}
-
-    {%if courtCodeMagistrates %}
-      <p class="govuk-body-m govuk-!-font-weight-bold">
-        Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
-      </p>
-    {% endif %}
-
-    {% if courtDXNumber %}
-
-    <p class="govuk-body-m govuk-!-font-weight-bold">
-      DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
-    </p> 
-    {% endif %}
 
 
 

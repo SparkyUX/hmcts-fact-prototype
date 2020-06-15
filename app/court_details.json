@@ -1,6 +1,7 @@
 {
 	"courts": [{
 			"court_code": "readingcc",
+			"distance": "5.6",
 			"name": "Reading Crown Court",
 			"slug": "reading-crown-court",
 			"info": "",
@@ -78,6 +79,7 @@
 		},
 		{
 			"court_code": "readingccfc",
+			"distance": "5.7",
 			"name": "Reading County Court and Family Court",
 			"slug": "reading-county-court-and-family-court",
 			"info": "",
@@ -166,6 +168,7 @@
 		},
 		{
 			"court_code": "readingtrib",
+			"distance": "5.7",
 			"name": "Reading Tribunal Hearing Centre",
 			"slug": "reading-tribunal-hearing-centre",
 			"info": "",
@@ -224,6 +227,7 @@
 		},
 		{
 			"court_code": "readingmags",
+			"distance": "5.8",
 			"name": "Reading Magistrates' Court and Family Court",
 			"slug": "reading-magistrates-court-and-family-court",
 			"info": "",
@@ -309,6 +313,7 @@
 		},
 		{
 			"court_code": "wycombeccfc",
+			"distance": "13.1",
 			"name": "High Wycombe County Court and Family Court",
 			"slug": "high-wycombe-county-court-and-family-court",
 			"info": "",
@@ -374,6 +379,7 @@
 		},
 		{
 			"court_code": "wycombemags",
+			"distance": "13.3",
 			"name": "High Wycombe Magistrates' Court and Family Court",
 			"slug": "high-wycombe-magistrates-court-and-family-court",
 			"info": "",
@@ -450,6 +456,7 @@
 		},
 		{
 			"court_code": "eberksmags",
+			"distance": "14.4",
 			"name": "East Berkshire Magistrates' Court, Slough",
 			"slug": "east-berkshire-magistrates-court-slough",
 			"info": "",
@@ -545,6 +552,7 @@
 		},
 		{
 			"court_code": "sloughccfc",
+			"distance": "14.5",
 			"name": "Slough County Court and Family Court",
 			"slug": "slough-county-court-and-family-court",
 			"info": "",
@@ -616,6 +624,7 @@
 		},
 		{
 			"court_code": "stainesccfc",
+			"distance": "14.6",
 			"name": "Staines County Court and Family Court",
 			"slug": "staines-county-court-and-family-court",
 			"info": "",
@@ -712,6 +721,7 @@
 		},
 		{
 			"court_code": "stainesmags",
+			"distance": "14.6",
 			"name": "Staines Magistrates' Court and Family Court",
 			"slug": "staines-magistrates-court-and-family-court",
 			"info": "",
@@ -802,6 +812,7 @@
 		},
 		{
 			"court_code": "watfordccfc",
+			"distance": "15.0",
 			"name": "Watford County Court and Family Court",
 			"slug": "watford-county-court-and-family-court",
 			"info": "",
@@ -812,7 +823,7 @@
 			"crown_location_code": null,
 			"county_location_code": 362,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Adoption", "Children", "Divorce", "Domestic violence", "Housing possession", "Money claims"],
+			"areas_of_law": ["Adoption", "Children", "Civil partnership","Divorce", "Domestic violence", "Housing possession", "Money claims"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "enquiries.watford.countycourt@justice.gov.uk",
@@ -877,6 +888,75 @@
 			"gbs": "Y671"
 		},
 		{
+			"court_code": "harmondsworthtrib",
+			"name": "Harmondsworth Tribunal Hearing Centre", 
+			"slug": "harmondsworth-tribunal-hearing-centre", "info": "","open": true, "directions": null, 
+			"lat": 51.4846050015393, 
+			"lon": -0.483987527616932, 
+			"crown_location_code": null, 
+			"county_location_code": null, 
+			"magistrates_location_code": null, 
+			"areas_of_law": ["Immigration"], 
+			"types": ["Tribunal"], 
+			"emails": [{"address": "HWIAC@justice.gov.uk", "description": "Enquiries", "explanation": "Enquiries and bail applications"}], 
+			"contacts": [{"number": "0300 123 1711", "description": "Enquiries", "explanation": ""}, {"number": "0870 761 7721", "description": "Fax", "explanation": "IAC enquiries and bail applications"}], 
+			"opening_times": [{"description": "Tribunal open", "hours": "Monday to Friday 8:30am to 5pm"}], 
+			"facilities": [],
+			 "addresses": [{"type": "Visit us or write to us", "address": "Colnbrook Bypass\n\n\n", "town": "Harmondsworth", "postcode": "UB7 0HD"}], "gbs": null
+		},
+
+		{
+			"court_code": "birmingham",
+			"name": "Birmingham Civil and Family Justice Centre", 
+			"slug": "birmingham-civil-and-family-justice-centre", 
+			"open": true, 
+			"directions": null, 
+			"lat": 52.4816515396297, 
+			"lon": -1.89566151163058, 
+			"crown_location_code": null, 
+			"county_location_code": 127, 
+			"magistrates_location_code": null, 
+			"areas_of_law": ["Adoption", "Bankruptcy", "Children", "Civil partnership", "Divorce", "Domestic violence", "Forced marriage and FGM", "High Court District Registry", "Housing possession", "Immigration", "Money claims", "Social security"], 
+			"types": ["Family Court", "County Court"], 
+			"emails": [
+				{"address": "bailiffs.birmingham.countycourt@justice.gov.uk", "description": "Bailiffs", "explanation": null}, 
+				{"address": "enquiries.birmingham.countycourt@justice.gov.uk", "description": "Enquiries", "explanation": null}, 
+				{"address": "hearings.birmingham.countycourt@justice.gov.uk", "description": "Listing", "explanation": null}, 
+				{"address": "multi-track.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
+				{"address": "fast-track.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
+				{"address": "smallclaims.birmingham.countycourt@justice.gov.uk", "description": "Small claims", "explanation": null}, 
+				{"address": "family.birmingham.countycourt@justice.gov.uk", "description": "Family queries", "explanation": null}, 
+				{"address": "administrativecourtoffice.birmingham@hmcts.x.gsi.gov.uk", "description": "Admin court", "explanation": null}, 
+				{"address": "courtofprotection.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
+				{"address": "birmingham@thepsu.org.uk", "description": "Personal support unit", "explanation": null}, 
+				{"address": "utiac.birmingham@justice.gov.uk", "description": "", "explanation": null}, 
+				{"address": "bpc.birmingham@justice.gov.uk", "description": "Business and Property Courts", "explanation": null}, 
+				{"address": "qb.birmingham@justice.gov.uk", "description": "Queen's Bench", "explanation": null}], 
+			"contacts": [
+				{"number": "0121 250 6395", "description": "County Court", "explanation": "Court of Protection"}, 
+				{"number": "0121  681 4441", "description": "High Court", "explanation": ""}, 
+				{"number": "0300 123 5577", "description": "County Court", "explanation": "Civil and Family Contact Centre enquiry line"}, 
+				{"number": "0121 250 6777", "description": "Enforcement", "explanation": "Enforcement appointment booking line"}, 
+				{"number": "0121 250 6354", "description": "Personal Support Unit", "explanation": "An independent charity"}, 
+				{"number": "0121 681 3010", "description": "Appointments", "explanation": "Emergency  Family appointment bookings"}, 
+				{"number": "0121 250 6764", "description": "Appointments", "explanation": "Civil appointment booking line"}, 
+				{"number": "701987 Birmingham 7", "description": "DX", "explanation": ""}, 
+				{"number": "01264 785 057", "description": "Fax", "explanation": "Family fax"}, 
+				{"number": "01264 785 131", "description": "Fax", "explanation": "High Court fax"}, 
+				{"number": "0300 123 1142", "description": "Social security and child support", "explanation": null}], 
+			"opening_times": [
+				{"description": "Court counter open", "hours": "By prior appointment only (except High Court and Administrative Court 10am to 4pm)"}, 
+				{"description": "Court building open", "hours": "Monday to Friday 9am to 5pm"}, 
+				{"description": "Telephone Enquiries from", "hours": "8:30am to 5pm"}], 
+			"facilities": [],
+			"addresses": [{"type": "Visit us or write to us", 
+				"address": "Priory Courts\r\n33 Bull Street", 
+				"town": "Birmingham", 
+			"postcode": "B4 6DS"}],
+			 "gbs": "Y418"
+		},
+
+		{
 			"court_code": "ccmcc",
 			"name": "County Court Money Claims Centre (CCMCC)",
 			"slug": "county-court-money-claims-centre-ccmcc",
@@ -928,73 +1008,6 @@
 				"postcode": "M5 0BY"
 			}],
 			"gbs": null
-		},
-		{
-			"court_code": "harmondsworthtrib",
-			"name": "Harmondsworth Tribunal Hearing Centre", 
-			"slug": "harmondsworth-tribunal-hearing-centre", "info": "","open": true, "directions": null, 
-			"lat": 51.4846050015393, 
-			"lon": -0.483987527616932, 
-			"crown_location_code": null, 
-			"county_location_code": null, 
-			"magistrates_location_code": null, 
-			"areas_of_law": ["Immigration"], 
-			"types": ["Tribunal"], 
-			"emails": [{"address": "HWIAC@justice.gov.uk", "description": "Enquiries", "explanation": "Enquiries and bail applications"}], 
-			"contacts": [{"number": "0300 123 1711", "description": "Enquiries", "explanation": ""}, {"number": "0870 761 7721", "description": "Fax", "explanation": "IAC enquiries and bail applications"}], 
-			"opening_times": [{"description": "Tribunal open", "hours": "Monday to Friday 8:30am to 5pm"}], 
-			"facilities": [],
-			 "addresses": [{"type": "Visit us or write to us", "address": "Colnbrook Bypass\n\n\n", "town": "Harmondsworth", "postcode": "UB7 0HD"}], "gbs": null
-		},
-		{
-			"court_code": "birmingham",
-			"name": "Birmingham Civil and Family Justice Centre", 
-			"slug": "birmingham-civil-and-family-justice-centre", 
-			"open": true, 
-			"directions": null, 
-			"lat": 52.4816515396297, 
-			"lon": -1.89566151163058, 
-			"crown_location_code": null, 
-			"county_location_code": 127, 
-			"magistrates_location_code": null, 
-			"areas_of_law": ["Adoption", "Bankruptcy", "Children", "Civil partnership", "Divorce", "Domestic violence", "Forced marriage and FGM", "High Court District Registry", "Housing possession", "Immigration", "Money claims", "Social security"], 
-			"types": ["Family Court", "County Court"], 
-			"emails": [
-				{"address": "bailiffs.birmingham.countycourt@justice.gov.uk", "description": "Bailiffs", "explanation": null}, 
-				{"address": "enquiries.birmingham.countycourt@justice.gov.uk", "description": "Enquiries", "explanation": null}, 
-				{"address": "hearings.birmingham.countycourt@justice.gov.uk", "description": "Listing", "explanation": null}, 
-				{"address": "multi-track.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
-				{"address": "fast-track.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
-				{"address": "smallclaims.birmingham.countycourt@justice.gov.uk", "description": "Small claims", "explanation": null}, 
-				{"address": "family.birmingham.countycourt@justice.gov.uk", "description": "Family queries", "explanation": null}, 
-				{"address": "administrativecourtoffice.birmingham@hmcts.x.gsi.gov.uk", "description": "Admin court", "explanation": null}, 
-				{"address": "courtofprotection.birmingham.countycourt@justice.gov.uk", "description": "", "explanation": null}, 
-				{"address": "birmingham@thepsu.org.uk", "description": "Personal support unit", "explanation": null}, 
-				{"address": "utiac.birmingham@justice.gov.uk", "description": "", "explanation": null}, 
-				{"address": "bpc.birmingham@justice.gov.uk", "description": "Business and Property Courts", "explanation": null}, 
-				{"address": "qb.birmingham@justice.gov.uk", "description": "Queen's Bench", "explanation": null}], 
-			"contacts": [
-				{"number": "0121 250 6395", "description": "County Court", "explanation": "Court of Protection"}, 
-				{"number": "0121  681 4441", "description": "High Court", "explanation": ""}, 
-				{"number": "0300 123 5577", "description": "County Court", "explanation": "Civil and Family Contact Centre enquiry line"}, 
-				{"number": "0121 250 6777", "description": "Enforcement", "explanation": "Enforcement appointment booking line"}, 
-				{"number": "0121 250 6354", "description": "Personal Support Unit", "explanation": "An independent charity"}, 
-				{"number": "0121 681 3010", "description": "Appointments", "explanation": "Emergency  Family appointment bookings"}, 
-				{"number": "0121 250 6764", "description": "Appointments", "explanation": "Civil appointment booking line"}, 
-				{"number": "701987 Birmingham 7", "description": "DX", "explanation": ""}, 
-				{"number": "01264 785 057", "description": "Fax", "explanation": "Family fax"}, 
-				{"number": "01264 785 131", "description": "Fax", "explanation": "High Court fax"}, 
-				{"number": "0300 123 1142", "description": "Social security and child support", "explanation": null}], 
-			"opening_times": [
-				{"description": "Court counter open", "hours": "By prior appointment only (except High Court and Administrative Court 10am to 4pm)"}, 
-				{"description": "Court building open", "hours": "Monday to Friday 9am to 5pm"}, 
-				{"description": "Telephone Enquiries from", "hours": "8:30am to 5pm"}], 
-			"facilities": [],
-			"addresses": [{"type": "Visit us or write to us", 
-				"address": "Priory Courts\r\n33 Bull Street", 
-				"town": "Birmingham", 
-			"postcode": "B4 6DS"}],
-			 "gbs": "Y418"
 		},
 
 		{

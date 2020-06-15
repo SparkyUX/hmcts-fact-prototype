@@ -48,68 +48,104 @@ Search results for location - Find a Court or Tribunal - GOV.UK
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">Court or Tribunal search results</h1>
-    <p class="govuk-body-m">We found 10 courts or tribunals related to {{serviceArea}} matching your search for</p>
-    <p class="govuk-body-m">{{searchPostcode}}</p>
+    <p class="govuk-body-m">We found {{courtCount}} courts or tribunals related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
+   
+    {% if crimeService %}
 
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingcc" class="govuk-link">
       Reading Crown Court
     </a>
     <p style="float: right" class="govuk-body-m">5.6 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (adoptionService) or (bankruptcyService) or (childArrangementsService) or (domesticAbuseService) or (forcedMarriageService) or (FGMService) or (highCourtService) or (moneyClaimsService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link">
       Reading County Court and Family Court
     </a>
     <p style="float: right" class="govuk-body-m">5.6 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if employmentService  %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingtrib" class="govuk-link">
       Reading Tribunal Hearing Centre
     </a>
     <p style="float: right" class="govuk-body-m">5.6 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (childArrangementsService) or (domesticAbuseService) or (benefitsService) %}
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingtrib" class="govuk-link">
+      Reading Magistrates' Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">5.6 miles</p></h2>
+    </br>
+    {% endif %}
+
+    {% if (housingPossessionService) or (moneyClaimsService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=wycombeccfc" class="govuk-link">
       High Wycombe County Court and Family Court
     </a>
     <p style="float: right" class="govuk-body-m">13.1 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (adoptionService) or (childArrangementsService) or (domesticAbuseService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=wycombemags" class="govuk-link">
       High Wycombe Magistrates' Court
     </a>
     <p style="float: right" class="govuk-body-m">13.1 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if crimeService %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=eberksmags" class="govuk-link">
       East Berkshire Magistrates' Court
     </a>
     <p style="float: right" class="govuk-body-m">14.4 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (bankruptcyService) or (childArrangementsService) or (domesticAbuseService) or (housingPossessionService) or (moneyClaimsService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=sloughccfc" class="govuk-link">
       Slough County Court and Family Court
     </a>
     <p style="float: right" class="govuk-body-m">14.5 miles</p></h2>
     </br>    
+    {% endif %}
 
+    {% if (childArrangementsService) or (domesticAbuseService) or (housingPossessionService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=stainesccfc" class="govuk-link">
       Staines County Court and Family Court
     </a>
     <p style="float: right" class="govuk-body-m">14.6 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (childArrangementsService) or (domesticAbuseService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=stainesmags" class="govuk-link">
       Staines Magistrates' Court
     </a>
     <p style="float: right" class="govuk-body-m">14.6 miles</p></h2>
     </br>
+    {% endif %}
 
+    {% if (adoptionService) or (childArrangementsService) or (civilPartnershipService) or (domesticAbuseService) or (housingPossessionService) or (moneyClaimsService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=watfordccfc" class="govuk-link">
       Watford County Court and Family Court
     </a>
     <p style="float: right" class="govuk-body-m">15.0 miles</p></h2>
     </br>
+    {% endif %}
+
+    {% if (imigrationService) %}
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=harmondsworthtrib" class="govuk-link">
+      Harmonsdsworth Tribunal Hearing Centre
+    </a>
+    <p style="float: right" class="govuk-body-m">32.0 miles</p></h2>
+    </br>
+    {% endif %}
 
   </div>
 
