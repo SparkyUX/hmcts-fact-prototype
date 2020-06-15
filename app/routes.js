@@ -154,6 +154,7 @@ router.post('/choose-area', function (req, res) {
   let serviceArea = req.session.data['choose-service-area'] 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
   req.app.locals.serviceArea = serviceArea
+  req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
   req.app.locals.serviceCentreProbate = false
   req.app.locals.serviceCentreDivorce = false
@@ -201,6 +202,7 @@ router.post('/choose-area', function (req, res) {
 
     case 'civilpartnership':
       req.app.locals.civilPartnershipService = true
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.courtCount = 1
       break    
 
@@ -216,16 +218,19 @@ router.post('/choose-area', function (req, res) {
 
     case 'claimsagainstemployers':
       req.app.locals.employmentService = true
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.courtCount = 1
       break
 
     case 'forcedmarriage':
       req.app.locals.forcedMarriageService = true
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.courtCount = 1
       break
 
     case 'femalegenitalmutilation':
       req.app.locals.FGMService = true
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.courtCount = 1
       break
 
@@ -297,21 +302,27 @@ router.post('/service-postcode', function (req, res) {
 router.get('/individual-location-pages/generic', function(req, res) {
   let courtShortName = req.query.courtName
   console.log('courtName query string ' + courtShortName)
-//  initialise display values  
-  req.app.locals.courtAddress1 = ""
-  req.app.locals.courtAddress2 = "" 
-  req.app.locals.courtAddress3 = ""
-  req.app.locals.courtTown = ""
-  req.app.locals.courtPostcode = ""
-  req.app.locals.courtAddressVisit = ""
-  req.app.locals.courtAddressWrite = ""
-  req.app.locals.courtVisitWriteAddress = false
-  req.app.locals.courtSeparateAddress = false
+// initialise display values 
   req.app.locals.courtAdditionalInfo = ""
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""
   req.app.locals.courtOpenCounter = ""
+  req.app.locals.courtAdditionalInfo = ""
+  req.app.locals.courtUrgentInfo = ""
+  req.app.locals.courtPhoneEnquiries = ""
+  req.app.locals.courtDXNumber = ""
+  req.app.locals.courtEmailEnquiries = ""
+  req.app.locals.courtEmailListing = ""
+  req.app.locals.courtEmailBaillifs = ""
+  req.app.locals.courtEmailFamily = ""
+  req.app.locals.courtEmailCoP = ""
+
+
+
+
 // initialise flags
+  req.app.locals.courtVisitWriteAddress = false
+  req.app.locals.courtSeparateAddress = false
   req.app.locals.moneyClaimsServiceAtCourt = false
   req.app.locals.probateServiceAtCourt = false
   req.app.locals.housingPossessionServiceAtCourt = false
@@ -400,22 +411,22 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // opening times
 
       for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
-        if (courtDetails.courts[i].opening_times[j].description = "Court building open") {
+        if (courtDetails.courts[i].opening_times[j].description == "Court building open") {
           req.app.locals.courtOpenBuilding = courtDetails.courts[i].opening_times[j].hours
         }
-        if (courtDetails.courts[i].opening_times[j].description = "Court counter open") {
+        if (courtDetails.courts[i].opening_times[j].description == "Court counter open") {
           req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
 
         }
-      } // opening times
+      }
 
       // contacts phone
 
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
-        if (courtDetails.courts[i].contacts[j].description = "Enquiries") {
+        if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
           req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
         }
-        if (courtDetails.courts[i].contacts[j].description = "DX") {
+        if (courtDetails.courts[i].contacts[j].description == "DX") {
           req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
 
         }
@@ -423,19 +434,19 @@ router.get('/individual-location-pages/generic', function(req, res) {
       //  email
 
       for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
-        if (courtDetails.courts[i].emails[j].description = "Enquiries") {
+        if (courtDetails.courts[i].emails[j].description == "Enquiries") {
           req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
         }
-        if (courtDetails.courts[i].emails[j].description = "Listing") {
+        if (courtDetails.courts[i].emails[j].description == "Listing") {
           req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
         }
-        if (courtDetails.courts[i].emails[j].description = "Bailiffs") {
+        if (courtDetails.courts[i].emails[j].description == "Bailiffs") {
           req.app.locals.courtEmailBaillifs = courtDetails.courts[i].emails[j].address
         }        
-        if (courtDetails.courts[i].emails[j].description = "Family queries") {
+        if (courtDetails.courts[i].emails[j].description == "Family queries") {
           req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
         }
-        if (courtDetails.courts[i].emails[j].description = "Court of Protection") {
+        if (courtDetails.courts[i].emails[j].description == "Court of Protection") {
           req.app.locals.courtEmailCoP = courtDetails.courts[i].emails[j].address
         }   
       } // emails
