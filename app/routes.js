@@ -31,6 +31,8 @@ router.post('/search-for-location', function (req, res) {
 
   let locationSearchValue = req.session.data['location-search-value'].toLowerCase();
   req.app.locals.locationSearch = req.session.data['location-search-value']
+  req.app.locals.serviceCentre = false   
+
 
   let searchCourt = locationSearchValue.trim()
   req.app.locals.locationCCMCC = false
@@ -194,23 +196,27 @@ router.post('/choose-area', function (req, res) {
 
     case 'adoption':
       req.app.locals.adoptionService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 3
       break
 
     case 'bankruptcy':
       req.app.locals.bankruptcyService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 2
       break
 
     case 'childarrangements':
       req.app.locals.childService = true
       req.app.locals.childArrangementsService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 7
       break
 
     case 'civilpartnership':
       req.app.locals.civilPartnershipService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break    
 
@@ -221,29 +227,34 @@ router.post('/choose-area', function (req, res) {
 
     case 'domesticabuse':
       req.app.locals.domesticAbuseService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 7
       break
 
     case 'claimsagainstemployers':
       req.app.locals.employmentService = true
-      req.app.locals.courtsOrTribunals = 'court or tribunal'
+      req.app.locals.courtsOrTribunals = 'court or tribunal'        
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'forcedmarriage':
       req.app.locals.forcedMarriageService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'femalegenitalmutilation':
       req.app.locals.FGMService = true
-      req.app.locals.courtsOrTribunals = 'court or tribunal'
+      req.app.locals.courtsOrTribunals = 'court or tribunal'  
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'housingpossession':
-      req.app.locals.housingPossessionService = true
+      req.app.locals.housingPossessionService = true  
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 4
       break
 
@@ -259,16 +270,19 @@ router.post('/choose-area', function (req, res) {
 
     case 'benefits':
       req.app.locals.benefitsService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'tax':
       req.app.locals.taxService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 0
       break
 
     default:
       req.app.locals.crimeService = true
+      req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 0
 
   }
