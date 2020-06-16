@@ -292,6 +292,15 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </p>
       {% endif %}
 
+      {% if courtEmailBaillifs %}
+        <h3 class="govuk-heading-m">
+          Help with debt collection
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailBaillifs}}</a>
+        </p>  
+      {% endif %}
+
       {% if courtEmailFamily %}
         <h3 class="govuk-heading-m">
           Help with marriage or childcare
@@ -299,16 +308,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         <p class="govuk-body-m">
           <a href="mailto:">{{courtEmailFamily}}</a>
         </p>
-      {% endif %}
-
-      {% if courtEmailBaillifs %}
-
-      <h3 class="govuk-heading-m">
-        Help with debt collection
-      </h3>
-      <p class="govuk-body-m">
-        <a href="mailto:">{{courtEmailBaillifs}}</a>
-      </p>  
       {% endif %}
 
       {% if courtEmailCoP %}
@@ -320,10 +319,16 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </p>
       {% endif %}
 
-      
+      {% if (courtEmailAdmin) or (courtEmailHighCourt) or (courtEmailBusProperty) %}  
+        <h2 class="govuk-heading-l">
+          For legal professionals
+        </h2>
+      {% endif %}
+
       <h3 class="govuk-heading-m">
         Building facilities
       </h3>
+
       <p class="govuk-body-m">
         If you have a disability and need help coming to a hearing, please contact <a href="mailto:">{{courtEmailEnquiries}}</a> or {{courtPhoneEnquiries}}.
       </p>

@@ -39,6 +39,7 @@ router.post('/search-for-location', function (req, res) {
   req.app.locals.locationReading = false
   req.app.locals.locationWatford = false
   req.app.locals.locationSlough = false
+  req.app.locals.locationBirmingham = false
   console.log('searchCourt ' + searchCourt.toLowerCase())
 
   if (searchCourt.toLowerCase().includes('money')) {
@@ -64,6 +65,10 @@ router.post('/search-for-location', function (req, res) {
   else if (searchCourt.toLowerCase().includes('slough')) {
     req.app.locals.locationSlough = true
     res.redirect('/location/location-search-results-single?courtName=sloughccfc')
+  }
+  else if (searchCourt.toLowerCase().includes('birmingham')) {
+    req.app.locals.locationBirmingham = true
+    res.redirect('/location/location-search-results-single?courtName=birminghamcfjc')
   }
   else {
   res.redirect('/location/location-search-results-multiple')
@@ -307,15 +312,22 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""
   req.app.locals.courtOpenCounter = ""
+
   req.app.locals.courtAdditionalInfo = ""
   req.app.locals.courtUrgentInfo = ""
+
   req.app.locals.courtPhoneEnquiries = ""
+  req.app.locals.courtPhoneCoP = ""
+  req.app.locals.courtPhoneHighCourt = ""
   req.app.locals.courtDXNumber = ""
+
   req.app.locals.courtEmailEnquiries = ""
   req.app.locals.courtEmailListing = ""
   req.app.locals.courtEmailBaillifs = ""
   req.app.locals.courtEmailFamily = ""
   req.app.locals.courtEmailCoP = ""
+  req.app.locals.courtEmailMCOL = ""
+  req.app.locals.courtEmailCMC = ""
 
 
 
@@ -426,6 +438,12 @@ router.get('/individual-location-pages/generic', function(req, res) {
         if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
           req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
         }
+        if (courtDetails.courts[i].contacts[j].explanation == "Coiurt of Protection") {
+          req.app.locals.courtPhoneCoP = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description == "High Court") {
+          req.app.locals.courtPhoneHighCourt = courtDetails.courts[i].contacts[j].number
+        }
         if (courtDetails.courts[i].contacts[j].description == "DX") {
           req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
 
@@ -446,9 +464,19 @@ router.get('/individual-location-pages/generic', function(req, res) {
         if (courtDetails.courts[i].emails[j].description == "Family queries") {
           req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
         }
-        if (courtDetails.courts[i].emails[j].description == "Court of Protection") {
+        if (courtDetails.courts[i].emails[j].explanation == "Court of Protection") {
           req.app.locals.courtEmailCoP = courtDetails.courts[i].emails[j].address
         }   
+        if (courtDetails.courts[i].emails[j].description == "MCOL") {
+          req.app.locals.courtEmailMCOL = courtDetails.courts[i].emails[j].address
+        }         
+        if (courtDetails.courts[i].emails[j].description == "Small claims") {
+          req.app.locals.courtEmailCMC = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description == "Small claims") {
+          req.app.locals.courtEmailCMC = courtDetails.courts[i].emails[j].address
+        }
+
       } // emails
 
       //service areas to display in sidebar

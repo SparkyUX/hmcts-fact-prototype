@@ -906,7 +906,7 @@
 		},
 
 		{
-			"court_code": "birmingham",
+			"court_code": "birminghamcfjc",
 			"name": "Birmingham Civil and Family Justice Centre", 
 			"slug": "birmingham-civil-and-family-justice-centre", 
 			"open": true, 
@@ -950,7 +950,7 @@
 				{"description": "Telephone Enquiries from", "hours": "8:30am to 5pm"}], 
 			"facilities": [],
 			"addresses": [{"type": "Visit us or write to us", 
-				"address": "Priory Courts\r\n33 Bull Street", 
+				"address": "Priory Courts!33 Bull Street", 
 				"town": "Birmingham", 
 			"postcode": "B4 6DS"}],
 			 "gbs": "Y418"
