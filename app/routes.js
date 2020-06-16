@@ -82,9 +82,7 @@ router.post('/choose-action', function (req, res) {
 
   let chooseAction = req.session.data['choose-action']
     switch (chooseAction) {
-      case 'other':
-        res.redirect('../exit')
-      break
+
       case 'send-docs':
         req.app.locals.serviceActionType = "start"
         req.app.locals.continueService = false
@@ -100,6 +98,11 @@ router.post('/choose-action', function (req, res) {
         req.app.locals.continueService = true
         res.redirect('/service/service-category?action=continuehearingcentre')
       break
+      default :
+        res.redirect('/service/service-category?action=notlisted')
+      break
+
+
     }   
 
 })
