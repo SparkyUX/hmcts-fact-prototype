@@ -299,7 +299,9 @@ router.post('/choose-area', function (req, res) {
       res.redirect('/service/service-search-results-ctsc?servicearea=' + serviceAreaQuery)
     }
   }
-  res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+  else {
+    res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+  }
 
 })
 
@@ -458,6 +460,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
         if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
           req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description == "Urgent") {
+          req.app.locals.courtPhoneUrgent = courtDetails.courts[i].contacts[j].number
         }
         if (courtDetails.courts[i].contacts[j].explanation == "Coiurt of Protection") {
           req.app.locals.courtPhoneCoP = courtDetails.courts[i].contacts[j].number

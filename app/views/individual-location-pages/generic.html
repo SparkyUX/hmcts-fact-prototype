@@ -44,26 +44,26 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 {% if (moneyClaimsService) or (probateService) %}
   {% set catchmentArea = "England and Wales" %}
 {% else %}
-  {% set catchmentArea = "the south-east" %}
+  {% set catchmentArea = "the south-east of England" %}
 {% endif %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
       {{courtName}}
     </h1>
+  <div class="govuk-grid-column-two-thirds">
 
     {% if serviceCentre %}
       <p class="govuk-body-m">
-        This location services the {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
+        This location services {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
       </p>
       <h2 class="govuk-heading-l">
         Help claiming by post or online      
       </h2>
-      <h2 class="govuk-heading-l">
+      <h3 class="govuk-heading-m">
         Address
-      </h2>
+      </h3>
       <p class="govuk-body-m">
         {{courtWriteAddress1}}
         {% if courtWriteAddress2 %}
@@ -178,9 +178,9 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% if serviceCentre %}
 
-      <h3 class="govuk-heading-m">
+      <h4 class="govuk-heading-s">
         Telephone and fax
-      </h3>
+      </h4>
       <p class="govuk-body-m">
        Telephone: {{courtPhoneEnquiries}}
       </br>
@@ -205,13 +205,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </a>
       </p>    
 
-      <h3 class="govuk-heading-m">
+      <h4 class="govuk-heading-s">
         Email
-      </h3>
+      </h4>
       <p class="govuk-body-m">
-        Send us your documents: {{courtEmailEnquiries}}
+        Send us your documents: <a href="mailto:">{{courtEmailEnquiries}}</a>
         <br />
-          Get an update with your application: {{courtEmailEnquiries}}
+          Get an update with your application: <a href="mailto:">{{courtEmailEnquiries}}</a>
       </p>
     {% else %}
       {% if courtSeparateAddress %}
@@ -237,7 +237,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Make an appointment if someone’s personal safety, business or assets are at risk only.
       </p>
       <p class="govuk-body-m">
-       Telephone: {{courtPhoneEnquiries}}
+       Telephone: {{courtPhoneUrgent}}
       </br>
         Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
       </br>
@@ -429,11 +429,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
   </div>
 
   <div class="govuk-grid-column-one-third">
+    {% if not serviceCentre %}
 
     <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
     <p class="govuk-body-s">
       {{courtName}}
     </p>
+    {% endif %}
     
     <h3 class="govuk-heading-m">
       This court handles:
