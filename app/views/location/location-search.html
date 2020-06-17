@@ -48,8 +48,10 @@ Search for contact details - Find a court or tribunal - GOV.UK
   <div class="govuk-grid-column-two-thirds">
     <form action="/search-for-location" method="post" novalidate>  
 
-      <h1 class="govuk-heading-l">What is the name or address of the court or tribunal?</h1>
-
+      <h1 class="govuk-heading-l">What is the name or address of the court or tribunal?
+      <span class="govuk-hint">
+        You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS).
+      </span></h1>
 
         {{ govukInput({
         label: {
@@ -70,9 +72,7 @@ Search for contact details - Find a court or tribunal - GOV.UK
 
       </br>
       
-      <p class="govuk-hint">
-        If you have a letter, email or text from a court, tribunal or HM Courts and Tribunal Services (HMCTS), check it for contact details of the court or tribunal.
-      </p>
+
 
       <p class="govuk-body-m">
         If you work for HMCTS, you can search using the Court Location Code.

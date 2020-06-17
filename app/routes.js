@@ -481,6 +481,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
         if (courtDetails.courts[i].emails[j].description == "Enquiries") {
           req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
         }
+        if (courtDetails.courts[i].emails[j].description == "Urgent") {
+          req.app.locals.courtEmailUrgent = courtDetails.courts[i].emails[j].address
+        }
         if (courtDetails.courts[i].emails[j].description == "Listing") {
           req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
         }

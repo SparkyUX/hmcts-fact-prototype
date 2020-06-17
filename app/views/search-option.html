@@ -50,6 +50,9 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
             classes: "govuk-fieldset__legend--l"
           }
         },
+        hint: {
+          text: "You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS)."
+        },
         items: [
           {
 
@@ -68,13 +71,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
       {{ govukButton({
         text: "Continue"
       }) }}
-      <p class="govuk-hint">
-        If you have a letter, email or text from a court, tribunal or HM Courts and Tribunal Services (HMCTS), check it for contact details of the court or tribunal.
-      </p>
-      <!-- hints
-            hint: {
-              text: "e.g. You want to find an address, contact details or available facilities"
-      -->
+
 <!--
       {{ govukInsetText({
         text: "Check your HMCTS letter or correspondence for contact details of the court or tribunal."
