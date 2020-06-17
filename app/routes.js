@@ -286,8 +286,11 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.courtCount = 0
 
   }
+
   if (req.app.locals.serviceCentre == true) {
     req.app.locals.serviceCentreSearch = serviceArea
+
+
     if ((serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
       || req.app.locals.divorceService || req.app.locals.civilPartnershipService ) {
         res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
@@ -311,8 +314,9 @@ router.post('/service-postcode', function (req, res) {
   if (req.app.locals.serviceCentre == true) {     
     res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
-
+  else {
     res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
+  }
 
 })
 
