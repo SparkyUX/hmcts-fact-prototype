@@ -44,16 +44,16 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 {% if (moneyClaimsService) or (probateService) %}
   {% set catchmentArea = "England and Wales" %}
 {% else %}
-  {% set catchmentArea = "the south-east of England" %}
+  {% set catchmentArea = "the South-East of England" %}
 {% endif %}
 
 <div class="govuk-grid-row">
 
+  <div class="govuk-grid-column-two-thirds">
+
     <h1 class="govuk-heading-xl">
       {{courtName}}
     </h1>
-  <div class="govuk-grid-column-two-thirds">
-
     {% if serviceCentre %}
       <p class="govuk-body-m">
         This location services {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
@@ -521,6 +521,12 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       {% if moneyClaimsServiceAtCourt %}
       <li>
         <a class="govuk-link" href="https://www.gov.uk/make-money-claim">Money claims</a>
+      </li>
+      {% endif%}
+
+      {% if probateServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">Probate</a>
       </li>
       {% endif%}
 
