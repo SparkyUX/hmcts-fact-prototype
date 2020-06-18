@@ -45,12 +45,24 @@ router.post('/search-for-location', function (req, res) {
   console.log('searchCourt ' + searchCourt.toLowerCase())
 
   if (searchCourt.toLowerCase().includes('money')) {
+    req.app.locals.serviceCentre = true  
     req.app.locals.locationCCMCC = true
     res.redirect('/location/location-search-results-single?courtName=ccmcc')
   }
   else if (searchCourt.toLowerCase().includes('probate')) {
+    req.app.locals.serviceCentre = true   
     req.app.locals.locationProbate = true
     res.redirect('/location/location-search-results-single?courtName=probatesc')
+  }
+  else if (searchCourt.toLowerCase().includes('divorce')) {
+    req.app.locals.serviceCentre = true   
+    req.app.locals.locationProbate = true
+    res.redirect('/location/location-search-results-single?courtName=divorcesc')
+  }
+    else if (searchCourt.toLowerCase().includes('partnership')) {
+    req.app.locals.serviceCentre = true   
+    req.app.locals.locationProbate = true
+    res.redirect('/location/location-search-results-single?courtName=divorcesc')
   }
   else if (searchCourt.toLowerCase().includes('wycombe')) {
     req.app.locals.locationWycombe = true
@@ -462,13 +474,14 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // contacts phone
 
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
+        console.log('description ')
         if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
           req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
         }
         if (courtDetails.courts[i].contacts[j].description == "Urgent") {
           req.app.locals.courtPhoneUrgent = courtDetails.courts[i].contacts[j].number
         }
-        if (courtDetails.courts[i].contacts[j].explanation == "Coiurt of Protection") {
+        if (courtDetails.courts[i].contacts[j].explanation == "Court of Protection") {
           req.app.locals.courtPhoneCoP = courtDetails.courts[i].contacts[j].number
         }
         if (courtDetails.courts[i].contacts[j].description == "High Court") {
