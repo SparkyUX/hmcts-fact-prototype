@@ -442,7 +442,11 @@ router.get('/individual-location-pages/generic', function(req, res) {
       req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
       req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
 
-      
+      // long and lat
+      req.app.locals.courtGoogleMapsLocation = 'https://maps.google.com/maps?q=' + courtDetails.courts[i].lat + ',' + courtDetails.courts[i].lon
+
+      // image src
+      req.app.locals.courtImgLoc = '/public/images/' + courtShortName + '.jpg' 
       // opening times
 
       for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {

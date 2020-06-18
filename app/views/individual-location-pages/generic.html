@@ -128,7 +128,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% if not serviceCentre %}
     <p class="govuk-link">
-      <a href="https://maps.google.com/maps?q=51.4561376280813,-0.967403324249227">Get directions</a>
+      <a href="{{courtGoogleMapsLocation}}">Get directions</a>
     </p>
     <p class="govuk-link">
       <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
@@ -274,7 +274,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
        Telephone: {{courtPhoneEnquiries}}
       </br>
-        Email: <a href="mailto:">{{courtEmailEnquiries}}
+        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
       </br>
         Monday to Friday, 10am to 2pm (except public holidays)
       </br>
@@ -431,7 +431,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
   <div class="govuk-grid-column-one-third">
     {% if not serviceCentre %}
 
-    <img src="/public/images/reading-ccfc.jpeg" alt="Front view of Reading County Court and Family Court">
+    <img src="{{courtImgLoc}}" alt="Front view of {{courtName}}">
     <p class="govuk-body-s">
       {{courtName}}
     </p>
