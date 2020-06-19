@@ -80,11 +80,7 @@ router.post('/search-for-location', function (req, res) {
     req.app.locals.locationProbate = true
     res.redirect('/location/location-search-results-single?courtName=divorcesc')
   }
-    else if (searchCourt.toLowerCase().includes('partnership')) {
-    req.app.locals.serviceCentre = true   
-    req.app.locals.locationProbate = true
-    res.redirect('/location/location-search-results-single?courtName=divorcesc')
-  }
+
   else if (searchCourt.toLowerCase().includes('wycombe')) {
     req.app.locals.locationWycombe = true
     res.redirect('/location/location-search-results-single?courtName=wycombeccfc')

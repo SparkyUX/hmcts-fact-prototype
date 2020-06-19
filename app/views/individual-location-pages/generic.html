@@ -231,7 +231,21 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
         Court building Monday to Friday, 9am to 5pm
       </p>
-
+      <h3 id="court-office" class="govuk-heading-m">
+        General enquiries
+      </h3>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
+      
       <h3 class="govuk-heading-m">
         Urgent in-person application
       </h3>
@@ -270,20 +284,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Find out more about <a href="https://www.gov.uk/court-fees-what-they-are/">court fees</a>.
       </p>
 
-      <h3 id="court-office" class="govuk-heading-m">
-        General enquiries
-      </h3>
-      <p class="govuk-body-m">
-       Telephone: {{courtPhoneEnquiries}}
-      </br>
-        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
-      </br>
-        Monday to Friday, 10am to 2pm (except public holidays)
-      </br>
-      <a href="https://www.gov.uk/call-charges">
-        Find out about call charges
-      </a>
-      </p>
+
 
       {% if courtEmailListing %}
         <h3 class="govuk-heading-m">
