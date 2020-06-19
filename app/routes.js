@@ -4,10 +4,31 @@ const url = require('url')
 const app = express()
 const courtDetails =require('./court_details.json')
 
+
+
 // Add your routes here - above the module.exports line
 
 
 // 0.1 what do you want to know about the CorT?
+
+function setServicePages () {
+  console.log('setServicePages')
+  req.app.locals.adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
+  req.app.locals.bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
+  req.app.locals.childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
+  req.app.locals.divorceStartPage = 'https://www.gov.uk/divorce'
+  req.app.locals.civilPartnershipStartPage = 'https://www.gov.uk/divorce'
+  req.app.locals.domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
+  req.app.locals.employmentStartPage = 'https://www.gov.uk/employment-tribunals'
+  req.app.locals.forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
+  req.app.locals.FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
+  req.app.locals.housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
+  req.app.locals.moneyClaimsPage = 'https://www.gov.uk/make-money-claim'
+  req.app.locals.ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
+  req.app.locals.benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
+  req.app.locals.taxStartPage = 'https://www.gov.uk/tax-tribunal'
+
+}
 
 
 router.post('/search-route', function (req, res) {
@@ -201,6 +222,20 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.adoptionService = false
   req.app.locals.FGMService = false
 
+  req.app.locals.adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
+  req.app.locals.bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
+  req.app.locals.childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
+  req.app.locals.divorceStartPage = 'https://www.gov.uk/divorce'
+  req.app.locals.civilPartnershipStartPage = 'https://www.gov.uk/divorce'
+  req.app.locals.domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
+  req.app.locals.employmentStartPage = 'https://www.gov.uk/employment-tribunals'
+  req.app.locals.forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
+  req.app.locals.FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
+  req.app.locals.housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
+  req.app.locals.moneyClaimsPage = 'https://www.gov.uk/make-money-claim'
+  req.app.locals.ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
+  req.app.locals.benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
+  req.app.locals.taxStartPage = 'https://www.gov.uk/tax-tribunal'
 
   console.log('serviceAreaQuery ' + serviceAreaQuery)
 
@@ -270,6 +305,12 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.courtCount = 4
       break
 
+    case 'immigrationasylum':
+      req.app.locals.immigrationService = true  
+      req.app.locals.serviceCentre = false   
+      req.app.locals.courtCount = 1
+      break
+
     case 'moneyclaims':
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
@@ -293,6 +334,7 @@ router.post('/choose-area', function (req, res) {
       break
 
     default:
+      req.app.locals.serviceAreaStartPage = ''
       req.app.locals.crimeService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 0
@@ -325,7 +367,7 @@ router.post('/service-postcode', function (req, res) {
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-  if (req.app.locals.serviceCentre == true) {     
+  if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'continueFindHearingCentre') {     
     res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
   else {
@@ -334,12 +376,10 @@ router.post('/service-postcode', function (req, res) {
 
 })
 
-// 1.2b , 2.1.4b individual CTSC
 
+// 1.2a , 2.1.4a individual court
 
-// 1.2a , 2.1.4a individual court CTRT
-
-router.get('/individual-location-pages/generic', function(req, res) {
+router.get('/individual-location-pages/generic', function(req, res) {  
   let courtShortName = req.query.courtName
   console.log('courtName query string ' + courtShortName)
 // initialise display values 
@@ -585,6 +625,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           }
 
           if (serviceAreasByCourt == 'Adoption') {
+            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/child-adoption'
             req.app.locals.adoptionServiceAtCourt = true
           }
 

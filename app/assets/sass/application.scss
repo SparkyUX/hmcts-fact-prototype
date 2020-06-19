@@ -32,6 +32,12 @@ $govuk-assets-path: '/govuk/assets/';
 
 .fact-options-list-item a.fact-options-list-item-link:hover{background-color:#dbdad9}.modal-dialog{display:none}.modal-dialog--no-js-persistent{display:inline-block}
 
+.sidebar-line {
+	border-top-style: solid;
+	border-width: 5pc 0px 0px 0px;
+	border-color: #1d70b8	;
+}
+
 .background-box {
 	padding: 10px;
 	background-color: govuk-colour("light-grey");

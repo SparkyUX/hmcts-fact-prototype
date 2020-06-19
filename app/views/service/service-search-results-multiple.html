@@ -46,8 +46,10 @@ Search results for location - Find a Court or Tribunal - GOV.UK
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">Court or tribunal search results</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-m">We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
    
     {% if crimeService %}
@@ -139,14 +141,25 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     </br>
     {% endif %}
 
-    {% if (imigrationService) %}
+    {% if (immigrationService) %}
     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=harmondsworthtrib" class="govuk-link">
-      Harmonsdsworth Tribunal Hearing Centre
+      Harmondsworth Tribunal Hearing Centre
     </a>
     <p style="float: right" class="govuk-body-m">32.0 miles</p></h2>
     </br>
     {% endif %}
+  </div>
 
+  <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+      <h2 class="govuk-heading-m" >
+        Related content
+      </h2>
+      <p class="govuk-body-m">
+
+      Find out more about<br />
+      <a href="{{serviceAreaStartPage}}">{{serviceArea}}</a>
+    </p>
+  </div>
   </div>
 
  </div>

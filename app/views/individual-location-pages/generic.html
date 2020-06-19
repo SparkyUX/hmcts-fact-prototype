@@ -49,17 +49,19 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
 <div class="govuk-grid-row">
 
-  <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-xl">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">      
       {{courtName}}
     </h1>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
     {% if serviceCentre %}
       <p class="govuk-body-m">
         This location services {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
       </p>
       <h2 class="govuk-heading-l">
-        Help claiming by post or online      
+        Contact us      
       </h2>
       <h3 class="govuk-heading-m">
         Address
@@ -438,7 +440,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     {% endif %}
     
     <h3 class="govuk-heading-m">
-      This court handles:
+      This location handles:
     </h3>
     <ul class="govuk-list">
 

@@ -49,11 +49,16 @@ What is your postcode? - Find a court or tribunal - GOV.UK
 {% endif %}
 
 {% if childService %}
-  {% set headingHint = "We will use the postcode of your child or children’s home to show you the closest court or tribunal to them?" %}
+  {% set headingHint1 = "We will use the postcode of your children’s home to show you the closest court or tribunal that handles "%}
+  {% set headingHint2 = "to them?" %}
+
 {% elseif serviceCentre%}
-  {% set headingHint = "We will use your postcode to show you the court service centre that covers your region." %}
+  {% set headingHint1 = "We will use your postcode to show you the service centre that covers" %}
+  {% set headingHint2 = "for your region." %}
+
 {% else %}
-  {%set headingHint = "We will use your postcode to show you the closest court or tribunal to you or that covers your region." %}
+  {% set headingHint1 = "We will use your postcode to show you the closest court or tribunal that handles" %}  
+  {% set headingHint2 = "to you." %}
 {% endif %}
 
 
@@ -62,7 +67,7 @@ What is your postcode? - Find a court or tribunal - GOV.UK
     <form action="/service-postcode" method="post" novalidate>  
       <h1 class="govuk-heading-l">{{pageHeading}}</h1>
         <span id="more-detail-hint" class="govuk-hint">
-          {{headingHint}}
+          {{headingHint1}} {{serviceArea}} {{headingHint2}}
         </span>
 
         {{ govukInput({
