@@ -68,38 +68,38 @@ router.post('/search-for-location', function (req, res) {
   if (searchCourt.toLowerCase().includes('money')) {
     req.app.locals.serviceCentre = true  
     req.app.locals.locationCCMCC = true
-    res.redirect('/location/location-search-results-single?courtName=ccmcc')
+    res.redirect('/location/location-search-results-single?courtname=ccmcc')
   }
   else if (searchCourt.toLowerCase().includes('probate')) {
     req.app.locals.serviceCentre = true   
     req.app.locals.locationProbate = true
-    res.redirect('/location/location-search-results-single?courtName=probatesc')
+    res.redirect('/location/location-search-results-single?courtname=probatesc')
   }
   else if (searchCourt.toLowerCase().includes('divorce')) {
     req.app.locals.serviceCentre = true   
-    req.app.locals.locationProbate = true
-    res.redirect('/location/location-search-results-single?courtName=divorcesc')
+    req.app.locals.locationDivorce = true
+    res.redirect('/location/location-search-results-single?courtname=divorcesc')
   }
 
   else if (searchCourt.toLowerCase().includes('wycombe')) {
     req.app.locals.locationWycombe = true
-    res.redirect('/location/location-search-results-single?courtName=wycombeccfc')
+    res.redirect('/location/location-search-results-single?courtname=wycombeccfc')
   }
   else if (searchCourt.toLowerCase().includes('reading')) {
     req.app.locals.locationReading = true
-    res.redirect('/location/location-search-results-single?courtName=readingccfc')
+    res.redirect('/location/location-search-results-single?courtname=readingccfc')
   }
   else if (searchCourt.toLowerCase().includes('watford')) {
     req.app.locals.locationWatford = true
-    res.redirect('/location/location-search-results-single?courtName=watfordccfc')
+    res.redirect('/location/location-search-results-single?courtname=watfordccfc')
   }
   else if (searchCourt.toLowerCase().includes('slough')) {
     req.app.locals.locationSlough = true
-    res.redirect('/location/location-search-results-single?courtName=sloughccfc')
+    res.redirect('/location/location-search-results-single?courtname=sloughccfc')
   }
   else if (searchCourt.toLowerCase().includes('birmingham')) {
     req.app.locals.locationBirmingham = true
-    res.redirect('/location/location-search-results-single?courtName=birminghamcfjc')
+    res.redirect('/location/location-search-results-single?courtname=birminghamcfjc')
   }
   else {
   res.redirect('/location/location-search-results-multiple')
@@ -159,8 +159,9 @@ router.post('/choose-service-category', function (req, res) {
     case 'immigration-asylum':
       req.app.locals.childService = false
       req.app.locals.serviceCentre = false
-      req.app.locals.imigrationService = true
-      req.app.locals.serviceArea = "Immigration and asylum"
+      req.app.locals.immigrationService = true
+      req.app.locals.serviceArea = "immigration and asylum"
+      req.app.locals.serviceAreaCapitalised = "Immigration and asylum"
 
 
       pageServiceCategory = 'service-search-postcode?servicearea=immigration'
@@ -171,6 +172,8 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.serviceCentre = false
       req.app.locals.highCourtService = true
       req.app.locals.serviceArea = "High Courts"
+      req.app.locals.serviceAreaCapitalised = "High Courts"
+
 
 
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
@@ -191,8 +194,16 @@ router.post('/choose-service-category', function (req, res) {
 router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
+
+  serviceAreaCapitalised = serviceArea
+
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
-  req.app.locals.serviceArea = serviceArea
+  // serviceAreaLower = serviceArea.toLowerCase()
+
+  req.app.locals.serviceAreaCapitalised = serviceAreaCapitalised
+
+  req.app.locals.serviceArea = serviceAreaCapitalised.toLowerCase()
+  
   req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
   req.app.locals.serviceCentreProbate = false
@@ -233,7 +244,7 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
   req.app.locals.taxStartPage = 'https://www.gov.uk/tax-tribunal'
 
-  console.log('serviceAreaQuery ' + serviceAreaQuery)
+//  console.log('serviceAreaQuery ' + serviceAreaQuery)
 
   switch (serviceAreaQuery) {
 
@@ -313,6 +324,7 @@ router.post('/choose-area', function (req, res) {
       break   
 
     case 'probate':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/applying-for-probate'
       req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
       break
@@ -338,10 +350,10 @@ router.post('/choose-area', function (req, res) {
   }
 
   if (req.app.locals.serviceCentre == true) {
-    req.app.locals.serviceCentreSearch = serviceArea
+    req.app.locals.serviceCentreSearch = serviceArea.toLowerCase()
 
 
-    if ((serviceAreaQuery == 'moneyclaims' && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
+    if (((serviceAreaQuery == 'moneyclaims' || serviceAreaQuery == 'probate') && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
       || req.app.locals.divorceService || req.app.locals.civilPartnershipService ) {
         res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
     }
@@ -366,8 +378,8 @@ router.post('/service-postcode', function (req, res) {
    if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'continueFindHearingCentre') {     
     res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
-    else if (req.app.locals.serviceCentre == true) {
-      res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
+    else if (req.app.locals.serviceCentre == true ) {
+      res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
 
   }
     else { res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
@@ -380,8 +392,13 @@ router.post('/service-postcode', function (req, res) {
 // 1.2a , 2.1.4a individual court
 
 router.get('/individual-location-pages/generic', function(req, res) {  
-  let courtShortName = req.query.courtName
-  console.log('courtName query string ' + courtShortName)
+  let courtShortName = req.query.courtname
+  if (req.query.ctsc == "yes") {
+      req.app.locals.ctscFlag = true
+  }
+  else {
+      req.app.locals.ctscFlag = false
+  }
 // initialise display values 
   req.app.locals.courtAdditionalInfo = ""
   req.app.locals.courtUrgentInfo = ""
@@ -404,12 +421,11 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtEmailMCOL = ""
   req.app.locals.courtEmailCMC = ""
 
-
-
-
 // initialise flags
   req.app.locals.courtVisitWriteAddress = false
   req.app.locals.courtSeparateAddress = false
+  
+  req.app.locals.immigrationServiceAtCourt = false
   req.app.locals.moneyClaimsServiceAtCourt = false
   req.app.locals.probateServiceAtCourt = false
   req.app.locals.housingPossessionServiceAtCourt = false
@@ -514,7 +530,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // contacts phone
 
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
-        console.log('description ')
         if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
           req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
         }
@@ -568,16 +583,22 @@ router.get('/individual-location-pages/generic', function(req, res) {
       //service areas to display in sidebar
       
       for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
         let serviceAreasByCourt = courtDetails.courts[i].areas_of_law[j]
         
 
           if (serviceAreasByCourt == 'Money claims') {
+            if (req.app.locals.ctscFlag == true) {
+              req.app.locals.serviceArea = "money claims"
+            }
             req.app.locals.moneyClaimsServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'Probate') {
-            req.app.locals.probateServiceAtCourt = true
+            if (req.app.locals.ctscFlag == true) {
+              req.app.locals.serviceArea = "probate"
+            }
+              req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/applying-for-probate'
+              req.app.locals.probateServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'Housing possession') {
@@ -605,6 +626,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
           }
 
           if (serviceAreasByCourt == 'Divorce') {
+            if (req.app.locals.ctscFlag == true) {
+              req.app.locals.serviceArea = "divorce"
+            }
             req.app.locals.divorceServiceAtCourt = true
           }
           

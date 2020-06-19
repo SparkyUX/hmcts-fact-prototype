@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Search results for location - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+  {% else %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "../index"
+      },
+      {
+        text: "Choose a search option",
+        href: "../choose-search-option"
+      },
+      {
+        text: "Search for locations",
+        href: "search-location"
+      },
+      {
+        text: "Search results for location"
+      }
+    ]
+  }) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Court or tribunal search results</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-s">
+      We found 4 court related to divorce matching your search for 'RG10 9EA'
+    </h2>
+    <div class="background-box">
+     <p class="govuk-body-m">
+      [Statement about the service centre] 
+      <br />
+       The divorce service is handled by our regional service centre. Use this location to find the address to send your documents or ask about the progress of you application.
+    </p>
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=divorcesc" class="govuk-link">
+        Bury St Edmunds Regional Divorce Centre
+      </a></h2>
+      <p class="govuk-body-m">
+        This location provides services for the South-East.
+      </p>
+    </div>
+    <br />
+
+    <h2 class="govuk-heading-s">
+    [Statement about the local courts]
+    <br />
+    The courts below will be able to help you if you need a hearing near you. 
+    </h2>
+    <!-- <p id="more-detail-hint" class="govuk-hint">
+
+      For example if you need to deliver a will or stop a probate application.
+    </p>
+  -->
+
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=readingccfc" class="govuk-link">
+      Reading County Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">5.6 miles</p></h2>
+    </br>
+
+
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=sloughccfc" class="govuk-link">
+      Slough County Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">14.5 miles</p></h2>
+    </br> 
+
+     <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=stainesccfc" class="govuk-link">
+      Staines County Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">14.6 miles</p></h2>
+    </br>
+
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=watfordccfc" class="govuk-link">
+      Watford County Court and Family Court
+    </a>
+    <p style="float: right" class="govuk-body-m">15.0 miles</p></h2>
+    </br>
+
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+      <h2 class="govuk-heading-m" >
+        Related content
+      </h2>
+      <p class="govuk-body-m">
+
+      Find out more about starting a <a href="">Divorce</a> application
+    </p>
+  </div>
+  </div>
+
+ </div>
+{% endblock %}

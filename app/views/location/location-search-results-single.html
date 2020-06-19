@@ -51,7 +51,7 @@ Search results for location - Find a Court or Tribunal - GOV.UK
       <p class="govuk-body-m">We found 1 court or tribunal matching your search for '{{locationSearch}}'</p>
       
         {% if locationCCMCC %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=ccmcc" class="govuk-link">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=ccmcc" class="govuk-link">
             County Court Money Claims Centre (CCMCC)
             </a></h2>
           <p class="govuk-body-m">
@@ -60,7 +60,7 @@ Search results for location - Find a Court or Tribunal - GOV.UK
         {% endif %}
 
         {% if locationProbate %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=probatesc" class="govuk-link">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=probatesc" class="govuk-link">
             Probate Service Centre
             </a></h2>
           <p class="govuk-body-m">
@@ -68,8 +68,8 @@ Search results for location - Find a Court or Tribunal - GOV.UK
           </p>
         {% endif %}
 
-        {%if divorceService %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=divorcesc" class="govuk-link" name="Bury St Edmunds Regional Divorce Centre">
+        {%if locationDivorce %}
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=divorcesc" class="govuk-link" name="Bury St Edmunds Regional Divorce Centre">
             Bury St Edmunds Regional Divorce Centre
           </a></h2>
           <p class="govuk-body-m">
@@ -80,32 +80,32 @@ Search results for location - Find a Court or Tribunal - GOV.UK
 
         
         {% if locationWycombe %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=wycombeccfc" class="govuk-link">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc" class="govuk-link">
             Wycombe County Court and Family Court
             </a></h2>
         {% endif %}
 
         {% if locationReading %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=readingccfc" class="govuk-link" >
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=readingccfc" class="govuk-link" >
             Reading County Court and Family Court
           </a>
         {% endif %}
 
         {% if locationWatford %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=watfordccfc" class="govuk-link">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=watfordccfc" class="govuk-link">
             Watford County Court and Family Court
             </a></h2>
         {% endif %}
 
         {% if locationSlough %}
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=sloughccfc" class="govuk-link">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=sloughccfc" class="govuk-link">
             Slough County Court and Family Court
           </a></h2>
         {% endif %}
 
         {% if locationBirmingham %}
 
-          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtName=birminghamcfjc" class="govuk-link" name="Birmingham Civil and Family Justice Centre">
+          <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=birminghamcfjc" class="govuk-link" name="Birmingham Civil and Family Justice Centre">
             Birmingham Civil and Family Justice Centre
           </a></h2>
         {% endif %}

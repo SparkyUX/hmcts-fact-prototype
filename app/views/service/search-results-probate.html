@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Search results for location - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+  {% else %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "../index"
+      },
+      {
+        text: "Choose a search option",
+        href: "../choose-search-option"
+      },
+      {
+        text: "Search for locations",
+        href: "search-location"
+      },
+      {
+        text: "Search results for location"
+      }
+    ]
+  }) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Court or tribunal search results</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-s">
+      We found 3 courts related to probate matching your search for 'RG10 9EA'
+    </h2>
+    <div class="background-box">
+     <p class="govuk-body-m">
+      [Statement about the service centre] 
+    <br />
+      The probate service is handled by our central service centre. Use this location to find the address to send your documents or ask about the progress of you application.
+    </p>
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=probatesc" class="govuk-link">
+        Probate Service Centre
+      </a></h2>
+      <p class="govuk-body-m">
+        This location provides services for all of England and Wales.
+      </p>
+    </div>
+    <br />
+
+    <h2 class="govuk-heading-s">
+      [Statement about the local courts]
+    <br />
+      You can make an appointment to visit your local probate registry by contacting one of the courts below. 
+    </h2>
+    <p id="more-detail-hint" class="govuk-hint">
+
+      For example if you need to deliver a will or stop a probate application.
+    </p>
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=oxfordpr" class="govuk-link">
+      Oxford District Probate Registry
+    </a>
+    <p style="float: right" class="govuk-body-m">28.3 miles</p></h2>
+    </br>
+
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=londonpr" class="govuk-link">
+      London Probate Department
+    </a>
+    <p style="float: right" class="govuk-body-m">36.9 miles</p></h2>
+    </br>
+
+    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=winchesterpr" class="govuk-link">
+        Winchester District Probate Department
+      </a>
+      <p style="float: right" class="govuk-body-m">41.1 miles</p></h2>
+    </br> 
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+      <h2 class="govuk-heading-m" >
+        Related content
+      </h2>
+      <p class="govuk-body-m">
+
+      Find out more about starting a <a href="">Probate</a> application
+    </p>
+  </div>
+  </div>
+
+ </div>
+{% endblock %}
