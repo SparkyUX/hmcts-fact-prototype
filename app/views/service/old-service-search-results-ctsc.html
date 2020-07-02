@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Search results for area of law - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+<!-- Option to use Back link or Breadcrumbs using the env variable BACKLINK_REQUIRED defined in server.js -->
+{% if backLinkRequired %}
+	{{ govukBackLink({
+	  text: "Back",
+	  href: "#"
+	}) }}
+	{% else %}
+
+	{{ govukBreadcrumbs({
+	  items: [
+	    {
+	      text: "Home",
+	      href: "../index"
+	    },
+	    {
+	      text: "Choose a search option",
+	      href: "../choose-search-option"
+	    },
+	    {
+	      text: "Search for locations near you",
+	      href: "search-aol-postcode"
+	    },
+			{
+	      text: "Choose an area of law",
+	     href: "choose-aol"
+
+	    },
+	    {
+	      text: "Search results for area of law"
+	    }
+	  ]
+	}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Search results</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+  	<p class="govuk-body-m">We found 1 service centre matching '{{serviceCentreSearch}}'</p>
+
+	
+		{%if probateService %}
+			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=probatesc" class="govuk-link" name="Probate service centre">
+
+				Probate Service Centre
+			</a></h2>
+			<p class="govuk-body-m">
+				This location services England and Wales
+			</p>
+		{% endif %}
+
+		{%if moneyClaimsService %}
+			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=ccmcc" class="govuk-link" name="County Court Money Claims Centre (CCMCC)">
+				County Court Money Claims Centre (CCMCC)
+			</a></h2>
+			<p class="govuk-body-m">
+				This location services England and Wales
+			</p>
+		{% endif %}
+
+		{%if divorceService %}
+			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=divorcesc" class="govuk-link" name="Bury St Edmunds Regional Divorce Centre">
+				Bury St Edmunds Regional Divorce Centre
+			</a></h2>
+			<p class="govuk-body-m">
+				This location services the South-East of England
+			</p>
+		{% endif %}
+
+		{% if civilPartnershipService%}
+			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=divorcesc" class="govuk-link" name="Bury St Edmunds Regional Divorce Centre">
+				Bury St Edmunds Regional Divorce Centre
+			</a></h2>
+			<p class="govuk-body-m">This location services the South-East of England</p>
+		{% endif %}
+
+<!--		<hr class="govuk-section-break govuk-section-break--visible">
+		</br>
+		<p class="govuk-body-m">
+		If another court is dealing with your application then you may wish to search by <a href="../location/search-location">location</a> to find it.
+	</p>
+-->
+	</div>
+	 <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+      <h2 class="govuk-heading-m" >
+        Related content
+      </h2>
+      <p class="govuk-body-m">
+
+      Find out more about<br />
+      <a href="{{serviceAreaStartPage}}">{{serviceAreaCapitalised}}</a>
+    </p>
+    <!-- 
+    {%if probateService %}
+      <h2 class="govuk-heading-m" >
+				Webchat
+			</h2>
+			<p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
+			<ul class="govuk-list govuk-list--bullet">
+			  <li>whether or not you need probate</li>
+			  <li>what forms to fill in</li>
+			  <li>help and advice when filling the forms in</li>
+			</ul>
+		-->
+		{% endif %}
+
+
+
+  </div>
+
+
+ </div>
+{% endblock %}

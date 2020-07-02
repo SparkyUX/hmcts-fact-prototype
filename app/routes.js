@@ -11,26 +11,6 @@ const courtDetails =require('./court_details.json')
 
 // 0.1 what do you want to know about the CorT?
 
-function setServicePages () {
-  console.log('setServicePages')
-  req.app.locals.adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
-  req.app.locals.bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
-  req.app.locals.childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
-  req.app.locals.divorceStartPage = 'https://www.gov.uk/divorce'
-  req.app.locals.civilPartnershipStartPage = 'https://www.gov.uk/divorce'
-  req.app.locals.domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
-  req.app.locals.employmentStartPage = 'https://www.gov.uk/employment-tribunals'
-  req.app.locals.forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
-  req.app.locals.FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
-  req.app.locals.housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
-  req.app.locals.moneyClaimsPage = 'https://www.gov.uk/make-money-claim'
-  req.app.locals.ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
-  req.app.locals.benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
-  req.app.locals.taxStartPage = 'https://www.gov.uk/tax-tribunal'
-
-}
-
-
 router.post('/search-route', function (req, res) {
 
   let knowLocation = req.session.data['know-location']
@@ -277,6 +257,8 @@ router.post('/choose-area', function (req, res) {
     case 'divorce':
       req.app.locals.serviceCentre = true
       req.app.locals.divorceService = true
+      req.app.locals.courtCount = 5
+
       break
 
     case 'domesticabuse':
@@ -321,12 +303,14 @@ router.post('/choose-area', function (req, res) {
     case 'moneyclaims':
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
+      req.app.locals.courtCount = 2
       break   
 
     case 'probate':
       req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/applying-for-probate'
       req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
+      req.app.locals.courtCount = 3
       break
 
     case 'benefits':
@@ -352,9 +336,12 @@ router.post('/choose-area', function (req, res) {
   if (req.app.locals.serviceCentre == true) {
     req.app.locals.serviceCentreSearch = serviceArea.toLowerCase()
 
-
+/*
     if (((serviceAreaQuery == 'moneyclaims' || serviceAreaQuery == 'probate') && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
       || req.app.locals.divorceService || req.app.locals.civilPartnershipService ) {
+      console.log('serviceAreaQuery ' + serviceAreaQuery)
+      console.log('req.app.locals.divorceService ' + req.app.locals.divorceService)
+      console.log('req.app.locals.serviceActionType ' + req.app.locals.serviceActionType)
         res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
     }
     else {
@@ -362,7 +349,9 @@ router.post('/choose-area', function (req, res) {
     }
   }
   else {
-    res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+    */ 
+  res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+ 
   }
 
 })
@@ -375,16 +364,25 @@ router.post('/service-postcode', function (req, res) {
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-   if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'continueFindHearingCentre') {     
+  if (req.app.locals.serviceCentre == true) {     
     res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
-    else if (req.app.locals.serviceCentre == true ) {
+  else { 
+    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
+  }
+
+/*
+  if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'continueFindHearingCentre') {     
+    res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
+  }
+  else if (req.app.locals.serviceCentre == true ) {
       res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
 
   }
-    else { res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
+  else { 
+    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
   }
-
+*/
 
 })
 
@@ -400,6 +398,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
       req.app.locals.ctscFlag = false
   }
 // initialise display values 
+  req.app.locals.courtVisitAddress1 = ""
+  req.app.locals.courtVisitAddress2 = ""
+  req.app.locals.courtVisitAddress3 = ""
   req.app.locals.courtAdditionalInfo = ""
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""

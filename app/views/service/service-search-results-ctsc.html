@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "../macros.html" import courtSearch %}.
 
 {% block pageTitle %}
 Search results for area of law - Find a Court or Tribunal - GOV.UK
@@ -49,40 +50,113 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 {% endblock %}
 
 {% block content %}
+
+{% if (moneyClaimsService) or (probateService) %}
+  {% set catchmentArea = "all of England and Wales" %}
+{% else %}
+  {% set catchmentArea = "the South-East of England" %}
+{% endif %}
+
+{%if probateService %}
+	{% set SCstatement1 = "We manage your probate applications at our central service centre." %}
+	{% set serviceCentreName = "We manage your probate applications at our central service centre." %}
+	{% set ListStatement1 = "Contact a court listed to make an appointment, for example if you need to deliver a will or stop a probate application." %}
+{% endif %}
+
+{%if divorceService %}
+	{% set SCstatement1 = "We manage your divorce applications at our regional divorce units (RDU). This is the nearest RDU to {{serviceSearchPostcode | safe}}" %}
+	{% set ListStatement1 = "Contact a court listed to make an appointment, for example ..." %}
+{% endif %}
+
+{%if moneyClaimsService %}
+	{% set SCstatement1 = "We manage your money claims applications at our central service centre." %}
+	{% set ListStatement1 = "These are the nearest courts to you that handle money claims" %}
+{% endif %}
+
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">Search results</h1>
+    <h1 class="govuk-heading-l">Court or tribunal search results</h1>
   </div>
   <div class="govuk-grid-column-two-thirds">
-  	<p class="govuk-body-m">We found 1 service centre matching '{{serviceCentreSearch}}'</p>
-
 	
+    <div class="background-box">
+     <p class="govuk-body-m">
+			{{SCstatement1}}
+    <br />
+			Contact them to find where to send your documents or ask about your application’s progress.    
+		</p>
 		{%if probateService %}
-			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=probatesc" class="govuk-link" name="Probate service centre">
+  		{{courtSearch('Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=probatesc')}}
+      <p class="govuk-body-m">
+        This location provides services for {{catchmentArea}}.
+      </p>
+	    </div>
+	    <br />
 
-				Probate Service Centre
-			</a></h2>
+	    <h2 class="govuk-heading-s">
+	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
+			</h2>
 			<p class="govuk-body-m">
-				This location services England and Wales
-			</p>
+	      {{ListStatement1}}
+	    </p>
+
+  		{{courtSearch('Oxford District Probate Registry','../individual-location-pages/generic?ctsc=no&courtname=oxfordpr','28.3 miles')}}
+  		
+  		{{courtSearch('London Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','36.9')}}
+
+  		{{courtSearch('Winchester District Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','41.1 miles')}}
 		{% endif %}
 
+
 		{%if moneyClaimsService %}
-			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=ccmcc" class="govuk-link" name="County Court Money Claims Centre (CCMCC)">
-				County Court Money Claims Centre (CCMCC)
-			</a></h2>
+			{{courtSearch('County Court Money Claims Centre (CCMCC)','../individual-location-pages/generic?ctsc=yes&courtname=ccmcc')}}
+
+      <p class="govuk-body-m">
+        This location provides services for {{catchmentArea}}.
+      </p>
+	    </div>
+	    <br />
+
+	    <h2 class="govuk-heading-s">
+	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
+			</h2>
 			<p class="govuk-body-m">
-				This location services England and Wales
-			</p>
+	      {{ListStatement1}}
+	    </p>
+
+ 			{{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
+
+ 			{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
+
 		{% endif %}
 
 		{%if divorceService %}
-			<h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=yes&courtname=divorcesc" class="govuk-link" name="Bury St Edmunds Regional Divorce Centre">
-				Bury St Edmunds Regional Divorce Centre
-			</a></h2>
+		 	{{courtSearch('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=divorcesc')}}
+      
+      <p class="govuk-body-m">
+        This location provides services for {{catchmentArea}}.
+      </p>
+	    </div>
+	    <br />
+
+	    <h2 class="govuk-heading-s">
+	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
+			</h2>
 			<p class="govuk-body-m">
-				This location services the South-East of England
-			</p>
+	      {{ListStatement1}}
+	    </p>
+
+	    {{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
+
+	    {{courtSearch('High Wycombe County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc','13.1 miles')}}
+	    	    
+	   	{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
+
+	    {{courtSearch('Staines County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=stainesccfc','14.6 miles')}}
+
+	    {{courtSearch('Watford County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=watfordccfc','15.0 miles')}}	    
+
+
 		{% endif %}
 
 		{% if civilPartnershipService%}
@@ -106,7 +180,7 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
       <p class="govuk-body-m">
 
       Find out more about<br />
-      <a href="{{serviceAreaStartPage}}">{{serviceAreaCapitalised}}</a>
+      <a href="{{serviceAreaStartPage}}">starting a {{serviceAreaCapitalised}} application</a>
     </p>
     <!-- 
     {%if probateService %}
@@ -119,9 +193,9 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 			  <li>what forms to fill in</li>
 			  <li>help and advice when filling the forms in</li>
 			</ul>
-		-->
-		{% endif %}
 
+		{% endif %}
+		-->
 
 
   </div>
