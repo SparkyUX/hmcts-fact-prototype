@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "../macros.html" import courtSearch %}.
+{% from "../macros.html" import cortSearchResult %}.
 
 {% block pageTitle %}
 Search results for area of law - Find a Court or Tribunal - GOV.UK
@@ -70,7 +70,7 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 
 {%if moneyClaimsService %}
 	{% set SCstatement1 = "We manage your money claims applications at our central service centre." %}
-	{% set ListStatement1 = "These are the nearest courts to you that handle money claims" %}
+	{% set ListStatement1 = "These are the nearest courts to you that handle money claims. To " %}
 {% endif %}
 
 <div class="govuk-grid-row">
@@ -86,7 +86,7 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 			Contact them to find where to send your documents or ask about your application’s progress.    
 		</p>
 		{%if probateService %}
-  		{{courtSearch('Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=probatesc')}}
+  		{{cortSearchResult('Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=probatesc')}}
       <p class="govuk-body-m">
         This location provides services for {{catchmentArea}}.
       </p>
@@ -100,16 +100,16 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 	      {{ListStatement1}}
 	    </p>
 
-  		{{courtSearch('Oxford District Probate Registry','../individual-location-pages/generic?ctsc=no&courtname=oxfordpr','28.3 miles')}}
+  		{{cortSearchResult('Oxford District Probate Registry','../individual-location-pages/generic?ctsc=no&courtname=oxfordpr','28.3 miles')}}
   		
-  		{{courtSearch('London Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','36.9')}}
+  		{{cortSearchResult('London Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','36.9')}}
 
-  		{{courtSearch('Winchester District Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','41.1 miles')}}
+  		{{cortSearchResult('Winchester District Probate Department','../individual-location-pages/generic?ctsc=no&courtname=londonpr','41.1 miles')}}
 		{% endif %}
 
 
 		{%if moneyClaimsService %}
-			{{courtSearch('County Court Money Claims Centre (CCMCC)','../individual-location-pages/generic?ctsc=yes&courtname=ccmcc')}}
+			{{cortSearchResult('County Court Money Claims Centre (CCMCC)','../individual-location-pages/generic?ctsc=yes&courtname=ccmcc')}}
 
       <p class="govuk-body-m">
         This location provides services for {{catchmentArea}}.
@@ -124,14 +124,14 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 	      {{ListStatement1}}
 	    </p>
 
- 			{{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
+ 			{{cortSearchResult('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
 
- 			{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
+ 			{{cortSearchResult('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
 
 		{% endif %}
 
 		{%if divorceService %}
-		 	{{courtSearch('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=divorcesc')}}
+		 	{{cortSearchResult('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=divorcesc')}}
       
       <p class="govuk-body-m">
         This location provides services for {{catchmentArea}}.
@@ -146,15 +146,15 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 	      {{ListStatement1}}
 	    </p>
 
-	    {{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
+	    {{cortSearchResult('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
 
-	    {{courtSearch('High Wycombe County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc','13.1 miles')}}
+	    {{cortSearchResult('High Wycombe County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc','13.1 miles')}}
 	    	    
-	   	{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
+	   	{{cortSearchResult('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
 
-	    {{courtSearch('Staines County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=stainesccfc','14.6 miles')}}
+	    {{cortSearchResult('Staines County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=stainesccfc','14.6 miles')}}
 
-	    {{courtSearch('Watford County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=watfordccfc','15.0 miles')}}	    
+	    {{cortSearchResult('Watford County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=watfordccfc','15.0 miles')}}	    
 
 
 		{% endif %}
