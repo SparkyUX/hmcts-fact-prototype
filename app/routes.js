@@ -231,33 +231,37 @@ router.post('/choose-area', function (req, res) {
 
   switch (serviceAreaQuery) {
 
-    case 'adoption':
+    case 'adoption':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/child-adoption'
       req.app.locals.adoptionService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 3
       break
 
-    case 'bankruptcy':
+    case 'bankruptcy':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/bankruptcy'
       req.app.locals.bankruptcyService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 2
       break
 
-    case 'childarrangements':
+    case 'childarrangements':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/looking-after-children-divorce'
       req.app.locals.childService = true
       req.app.locals.childArrangementsService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 7
       break
 
-    case 'civilpartnership':
+    case 'civilpartnership':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/end-civil-partnership'
       req.app.locals.civilPartnershipService = true
-      req.app.locals.courtsOrTribunals = 'court or tribunal'
-      req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
+      req.app.locals.serviceCentre = true  
+      req.app.locals.courtCount = 5
       break    
 
-    case 'divorce':
+    case 'divorce':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/divorce'
       req.app.locals.serviceCentre = true
       req.app.locals.divorceService = true
       req.app.locals.courtCount = 5
@@ -265,6 +269,7 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'domesticabuse':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/injunction-domestic-violence'
       req.app.locals.domesticAbuseService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 7
@@ -278,13 +283,15 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'forcedmarriage':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/stop-forced-marriage'
       req.app.locals.forcedMarriageService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
-    case 'femalegenitalmutilation':
+    case 'femalegenitalmutilation':            
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/female-genital-mutilation-protection-order'
       req.app.locals.FGMService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'  
       req.app.locals.serviceCentre = false   
@@ -292,6 +299,7 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'housingpossession':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/evicting-tenants'
       req.app.locals.housingPossessionService = true  
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 4
@@ -304,6 +312,7 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'moneyclaims':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/make-court-claim-for-money'
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
       req.app.locals.courtCount = 2
@@ -601,18 +610,15 @@ router.get('/individual-location-pages/generic', function(req, res) {
             if (req.app.locals.ctscFlag == true) {
               req.app.locals.serviceArea = "probate"
             }
-              req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/applying-for-probate'
               req.app.locals.probateServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'Housing possession') {
             req.app.locals.housingPossessionServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/evicting-tenants'
           }
 
           if (serviceAreasByCourt == 'Bankruptcy') {
             req.app.locals.bankruptcyServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/bankruptcy'
           }
 
           if (serviceAreasByCourt == 'Social Security') {
@@ -635,39 +641,32 @@ router.get('/individual-location-pages/generic', function(req, res) {
             if (req.app.locals.ctscFlag == true) {
               req.app.locals.serviceArea = "divorce"
             }
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/divorce'
             req.app.locals.divorceServiceAtCourt = true
           }
           
           if (serviceAreasByCourt == 'Civil Partnership') {
             req.app.locals.civilPartnershipServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/end-civil-partnership'
           }
 
           if (serviceAreasByCourt == 'Domestic violence') {
             req.app.locals.domesticAbuseServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/injunction-domestic-violence'
           }
 
           if (serviceAreasByCourt == 'Forced marriage and FGM') {
             req.app.locals.forcedMarriageServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/stop-forced-marriage'
           }
 
           if (serviceAreasByCourt == 'Children') {
             req.app.locals.childArrangementsServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/looking-after-children-divorce'
 
           }
 
           if (serviceAreasByCourt == 'Adoption') {
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/child-adoption'
             req.app.locals.adoptionServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'FGM') {
             req.app.locals.FGMServiceAtCourt = true
-            req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/female-genital-mutilation-protection-order'
           }
 
           if (serviceAreasByCourt == 'High Court') {
