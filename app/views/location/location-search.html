@@ -53,27 +53,17 @@ Search for contact details - Find a court or tribunal - GOV.UK
       <span class="govuk-hint">
         You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS).
       </span></h1>
+      <div class="govuk-form-group autocomplete-wrapper govuk-body-m">
+        <label class="govuk-label" for="select-court">
+          Start typing the name or location of a court or tribunal
+        </label>
+        <select class="govuk-select" id="select-court" name="select-court">
+          {% include "includes/court-location-details.html" %}
+        </select>
+      </div>
 
-<!--      <div class="app-site-search" data-module="app-search" data-search-index="/{{ fingerprint['search-index.json'] }}">
--->
-        <label class="govuk-body-m" for="cort-search">Enter a court name, address, town or city</label>
-        <p class="govuk-hint">For example, Courts of Justice</p>
-        <div id="cort-search-container" class=""></div>
-<!--      </div>
--->
 <br />
 
-        {{ govukInput({
-        label: {
-        text: "Enter a court name, address, town or city"
-        },
-        classes: "govuk-input--width-30",
-        hint: {
-            text: "For example, Courts of Justice"
-          },
-        id: "location-search-value",
-        name: "location-search-value"
-        }) }}
 
         {{ govukButton({
           text: "Continue"
@@ -102,20 +92,11 @@ Search for contact details - Find a court or tribunal - GOV.UK
 {% block bodyEnd %}
 <script type="text/javascript" src="../public/javascripts/accessible-autocomplete.min.js"></script>
 <script type="text/javascript">
-  const countries = [
-  'Reading Crown Court, Old Shire Hall, The Forbury, Reading, RG1 3EH',
-  'Reading County Court and Family Court, Hearing Centre, 160-163 Friar Street, Reading, RG1 1HE',
-  'Reading Tribunal Hearing Centre, Watford Employment Tribunal, Radius House , 51 Clarendon Road, Watford, WD17 1HP',
-  'Reading Magistrates\' Court and Family Court, Castle Street, Reading, RG1 7TQ',
-  'High Wycombe County Court and Family Court, Administration Centre, Reading County Court, 160-163 Friar Street, Reading, RG1 1HE',
-  'High Wycombe Magistrates\' Court and Family Court, Milton Keynes Magistrates\' Court and Family Court Hearing Centre, 301 Silbury Boulevard, Witan Gate East, Central Milton Keynes, MK9 2AJ',
-  'East Berkshire Magistrates\' Court, Slough, Admin Centre, Reading Magistrates\' Court, Castle Street,  Reading, RG1 7TQ'
-  ]
-  var selectEl = document.querySelector('#cort-search-container')
-  accessibleAutocomplete({
-    element: selectEl,
-    id: 'cort-search-container', // To match it to the existing <label>.
-    source: countries
+  var selectEl = document.querySelector('#select-court')
+  accessibleAutocomplete.enhanceSelectElement({
+    autoselect: true,
+    defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
+    selectElement: selectEl
   })
 
 </script>

@@ -1,0 +1,82 @@
+{
+	"readingcc": {
+		"postCode": "RG1 3EH",
+		"locationCode": "449"
+	},
+	"readingccfc": {
+		"postCode": "RG1 1HE",
+		"locationCode": "305"
+	},
+	"readingtrib": {
+		"postCode": "WD17 1HP",
+		"locationCode": "null"
+	},
+	"readingmags": {
+		"postCode": "RG1 7TQ",
+		"locationCode": "1076"
+	},
+	"wycombeccfc": {
+		"postCode": "RG1 1HE",
+		"locationCode": "223"
+	},
+	"wycombemags": {
+		"postCode": "MK9 2AJ",
+		"locationCode": "1117"
+	},
+	"eberksmags": {
+		"postCode": "RG1 7TQ",
+		"locationCode": "1920"
+	},
+	"sloughccfc": {
+		"postCode": "RG1 1HE",
+		"locationCode": "327"
+	},
+	"stainesccfc": {
+		"postCode": "GU1 4PS",
+		"locationCode": "334"
+	},
+	"stainesmags": {
+		"postCode": "GU1 4AS",
+		"locationCode": "2849"
+	},
+	"watfordccfc": {
+		"postCode": "WD17 1EZ",
+		"locationCode": "362"
+	},
+	"harmondsworthtrib": {
+		"postCode": "UB7 0HD",
+		"locationCode": "null"
+	},
+	"birminghamcfjc": {
+		"postCode": "B4 6DS",
+		"locationCode": "127"
+	},
+	"ccmcc": {
+		"postCode": "M5 0BY",
+		"locationCode": "null"
+	},
+	"probatesc": {
+		"postCode": "CM20 9QE",
+		"locationCode": "null"
+	},
+	"divorcesc": {
+		"postCode": "IP33 1TR",
+		"locationCode": "null"
+	},
+	"oxfordpr": {
+		"postCode": "OX1 1LY",
+		"locationCode": "null"
+	},
+	"londonpr": {
+		"postCode": "WC1V 6NP",
+		"locationCode": "null"
+	},
+	"winchesterpr": {
+		"postCode": "SO23 9EL",
+		"locationCode": "null"
+	},
+	"administrativecourt": {
+		"postCode": "WC2A 2LL",
+		"locationCode": "null"
+	}
+}

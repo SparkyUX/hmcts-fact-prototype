@@ -90,7 +90,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       <h3 class="govuk-heading-m">
         Address
-      </h2>
+      </h3>
       
       <p class="govuk-body-m">
 
@@ -109,6 +109,8 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     {% endif %}
 
     {% if courtSeparateAddress %}
+    <div class="govuk-grid-column-one-half" style="padding-left: 0px">
+
       <h2 class="govuk-heading-l">
         Visit us:
       </h2>
@@ -126,18 +128,12 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </br> {{courtVisitPostcode}}
 
       </p>
-    {% endif %}
-
-    {% if not ctscFlag%}
-    <p class="govuk-link">
-      <a href="{{courtGoogleMapsLocation}}">Get directions</a>
-    </p>
-    <p class="govuk-link">
-      <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
-    </p>
+    </div>
     {% endif %}
 
     {% if courtSeparateAddress %}
+    <div class="govuk-grid-column-one-half">
+
       <h2 class="govuk-heading-l">
         Write to us:
       </h2>
@@ -155,7 +151,18 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </br> {{courtWritePostcode}}
 
       </p>
+    </div>
+    {% endif %}  
+    {% if not ctscFlag%}
+    <p class="govuk-link">
+      <a href="{{courtGoogleMapsLocation}}">Get directions</a>
+    </p>
+    <p class="govuk-link">
+      <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
+    </p>
     {% endif %}
+
+
 
     {% if courtUrgentInfo %}
 
@@ -217,7 +224,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </p>
       <h4 class="govuk-heading-s" >
         Webchat
-      </h2>
+      </h4>
       <p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>whether or not you need probate</li>
@@ -551,6 +558,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     </ul>
 
+  </div>
 </div>
-
 {% endblock %}

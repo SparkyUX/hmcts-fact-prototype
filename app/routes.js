@@ -29,8 +29,12 @@ router.post('/search-route', function (req, res) {
 // 1.0 Search
 
 router.post('/search-for-location', function (req, res) {
+  let courtCode = req.session.data['select-court']
+  res.redirect('/individual-location-pages/generic?courtname=' + courtCode) 
+})
 
 
+/*
   let locationSearchValue = req.session.data['location-search-value'].toLowerCase();
   req.app.locals.locationSearch = req.session.data['location-search-value']
   req.app.locals.serviceCentre = false   
@@ -86,6 +90,7 @@ router.post('/search-for-location', function (req, res) {
   res.redirect('/location/location-search-results-multiple')
   }
 })
+*/
 
 // 2.0 Choose action
 
