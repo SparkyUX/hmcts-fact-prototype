@@ -30,8 +30,15 @@ router.post('/search-route', function (req, res) {
 
 router.post('/search-for-location', function (req, res) {
   let courtCode = req.session.data['select-court']
-  res.redirect('/individual-location-pages/generic?courtname=' + courtCode) 
+  if (courtCode === "ccmcc" || courtCode === "probatesc" || courtCode === "divorcesc")  {
+    console.log('ctsc courtCode ' + courtCode)
+    res.redirect('/individual-location-pages/generic?ctsc=yes&courtname=' + courtCode) 
+  }
+  else {
+    res.redirect('/individual-location-pages/generic?ctsc=no&courtname=' + courtCode) 
+  }
 })
+  
 
 
 /*
