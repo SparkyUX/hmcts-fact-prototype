@@ -140,67 +140,6 @@ router.post('/choose-service-category', function (req, res) {
   let serviceCategory = req.session.data['choose-service-category']
   let pageServiceCategory = ""
 
-  switch (serviceCategory) {
-    case 'money':
-      pageServiceCategory = 'service-area-money'
-      break
-    case 'deaths-marriages-civil-partnerships':
-      pageServiceCategory = 'service-area-deaths-marriages-civil-partnerships'
-    break
-    case 'childcare-parenting':
-      pageServiceCategory = 'service-area-childcare-parenting'
-      break
-
-    case 'immigration-asylum':
-      req.app.locals.childService = false
-      req.app.locals.serviceCentre = false
-      req.app.locals.immigrationService = true
-      req.app.locals.serviceArea = "immigration and asylum"
-      req.app.locals.serviceAreaCapitalised = "Immigration and asylum"
-
-
-      pageServiceCategory = 'service-search-postcode?servicearea=immigration'
-      break
-
-    case 'high-courts':
-      req.app.locals.childService = false
-      req.app.locals.serviceCentre = false
-      req.app.locals.highCourtService = true
-      req.app.locals.serviceArea = "High Courts"
-      req.app.locals.serviceAreaCapitalised = "High Courts"
-
-
-
-      pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
-      break
-    default:
-      pageServiceCategory = 'unknown-service'
-      break
-
-  }
-
-  res.redirect('/service/' + pageServiceCategory)
-
-
-})
-
-// 2.1.a choose service area
-
-router.post('/choose-area', function (req, res) {
-
-  let serviceArea = req.session.data['choose-service-area'] 
-
-  serviceAreaCapitalised = serviceArea
-
-  serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
-  // serviceAreaLower = serviceArea.toLowerCase()
-
-  req.app.locals.serviceAreaCapitalised = serviceAreaCapitalised
-
-  req.app.locals.serviceArea = serviceAreaCapitalised.toLowerCase()
-  
-  req.app.locals.courtsOrTribunals = 'courts or tribunals'
-
   req.app.locals.serviceCentreProbate = false
   req.app.locals.serviceCentreDivorce = false
   req.app.locals.serviceCentreCivilPartnership = false
@@ -223,6 +162,66 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.childArrangementsService = false
   req.app.locals.adoptionService = false
   req.app.locals.FGMService = false
+
+  switch (serviceCategory) {
+
+    case 'money':
+      pageServiceCategory = 'service-area-money'
+      break
+
+    case 'deaths-marriages-civil-partnerships':
+      pageServiceCategory = 'service-area-deaths-marriages-civil-partnerships'
+    break
+
+    case 'childcare-parenting':
+      pageServiceCategory = 'service-area-childcare-parenting'
+      break
+
+    case 'harm-abuse':
+      pageServiceCategory = 'service-area-harm-abuse'
+      break
+
+    case 'immigration-asylum':
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+      req.app.locals.immigrationService = true
+      req.app.locals.serviceArea = "immigration and asylum"
+      pageServiceCategory = 'service-search-postcode?servicearea=immigrationasylum'
+      break
+
+    case 'high-courts':
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+      req.app.locals.highCourtService = true
+      req.app.locals.serviceArea = "High Courts"
+      pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
+      break
+
+    default:
+      pageServiceCategory = 'unknown-service'
+      break
+
+  }
+
+  res.redirect('/service/' + pageServiceCategory)
+
+
+})
+
+// 2.1.a choose service area
+
+router.post('/choose-area', function (req, res) {
+
+  let serviceArea = req.session.data['choose-service-area'] 
+
+
+  serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
+  // serviceAreaLower = serviceArea.toLowerCase()
+
+
+  req.app.locals.serviceArea = serviceArea.toLowerCase()
+  
+  req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
   req.app.locals.adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
   req.app.locals.bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
@@ -314,8 +313,8 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/evicting-tenants'
       req.app.locals.housingPossessionService = true  
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 4
-      break
+      req.app.locals.courtCount = 5
+     break
 
     case 'immigrationasylum':
       req.app.locals.immigrationService = true  
@@ -338,6 +337,7 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'benefits':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support'
       req.app.locals.benefitsService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
@@ -348,12 +348,6 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 0
       break
-
-    default:
-      req.app.locals.serviceAreaStartPage = ''
-      req.app.locals.crimeService = true
-      req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 0
 
   }
 
@@ -392,7 +386,7 @@ router.post('/service-postcode', function (req, res) {
     res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
   }
   else { 
-    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
+    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceArea)
   }
 
 /*
@@ -681,7 +675,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.FGMServiceAtCourt = true
           }
 
-          if (serviceAreasByCourt == 'High Court') {
+          if (serviceAreasByCourt == 'High Court District Registry') {
             req.app.locals.highCourtServiceAtCourt = true
           }
           

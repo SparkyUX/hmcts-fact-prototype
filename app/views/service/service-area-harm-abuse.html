@@ -1,7 +1,7 @@
-<!-- 2.xc childcare and parenting -->
+<!-- 2.xa Money and tax -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Choose an service area - childcare and parenting - Find a court or tribunal - GOV.UK
+  Choose a service area - harm and abuse - Find a court or tribunal - GOV.UK
 {% endblock %}
 {% block beforeContent %}
 
@@ -44,13 +44,12 @@
 {% endblock %}
 
 {% if continueService %}
-  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
+  {% set pageHeading = "What kind of help do you need with harm or abuse?" %}
 {% else %}
-  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
+  {% set pageHeading = "What area of harm or abuse do you need to find more about?" %}
 {% endif %}
 
 {% block content %}
-
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -67,26 +66,6 @@
           }
         },
         items: [
-          {
-            value: "Child Arrangements",
-            text: "Childcare arrangements if you separate from your partner",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Making child arrangements if you divorce or separate."
-            }
-          },
-          {
-            value: "Adoption",
-            text: "Adoption",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Support for your child adoption application."
-            }
-          },
           {
             value: "Domestic Abuse",
             text: "Domestic abuse",
@@ -105,6 +84,16 @@
             },
             hint: {
               text: "Support for legal protection for victims of female genital mutilation."
+            }
+          },
+          {
+            value: "Forced marriage",
+            text: "Forced marriage",
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "Being made to marry against your will."
             }
           }
         ]

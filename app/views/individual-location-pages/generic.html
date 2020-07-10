@@ -222,15 +222,19 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         <br />
           Get an update with your application: <a href="mailto:">{{courtEmailEnquiries}}</a>
       </p>
-      <h4 class="govuk-heading-s" >
-        Webchat
-      </h4>
-      <p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>whether or not you need probate</li>
-        <li>what forms to fill in</li>
-        <li>help and advice when filling the forms in</li>
-      </ul>
+
+      {% if probateServiceAtCourt %}
+        <h4 class="govuk-heading-s" >
+          Webchat
+        </h4>
+        <p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>whether or not you need probate</li>
+          <li>what forms to fill in</li>
+          <li>help and advice when filling the forms in</li>
+        </ul>
+      {% endif %}
+
     {% else %}
       {% if courtSeparateAddress %}
 
@@ -470,6 +474,12 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       {% if bankruptcyServiceAtCourt %}
       <li>
         <a class="govuk-link" href="https://www.gov.uk/bankruptcy">Bankruptcy</a>
+      </li>
+      {% endif%}
+
+      {% if benefitsServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/bankruptcy">Benefits</a>
       </li>
       {% endif%}
 
