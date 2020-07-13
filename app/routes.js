@@ -4,8 +4,6 @@ const url = require('url')
 const app = express()
 const courtDetails =require('./court_details.json')
 
-
-
 // Add your routes here - above the module.exports line
 
 
@@ -136,9 +134,11 @@ router.post('/choose-action', function (req, res) {
 // 2.1 choose category
 
 router.post('/choose-service-category', function (req, res) {
-
   let serviceCategory = req.session.data['choose-service-category']
   let pageServiceCategory = ""
+
+// set default to plural and change if only one court or tribunal found
+  req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
   req.app.locals.serviceCentreProbate = false
   req.app.locals.serviceCentreDivorce = false
@@ -162,6 +162,8 @@ router.post('/choose-service-category', function (req, res) {
   req.app.locals.childArrangementsService = false
   req.app.locals.adoptionService = false
   req.app.locals.FGMService = false
+  req.app.locals.crimeService = false
+  req.app.locals.immigrationAsylumService = false
 
   switch (serviceCategory) {
 
@@ -182,17 +184,33 @@ router.post('/choose-service-category', function (req, res) {
       break
 
     case 'immigration-asylum':
+      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/immigration-asylum-tribunal'
       req.app.locals.childService = false
       req.app.locals.serviceCentre = false
-      req.app.locals.immigrationService = true
+      req.app.locals.immigrationAsylumService = true
+      req.app.locals.courtCount = 1
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.serviceArea = "immigration and asylum"
       pageServiceCategory = 'service-search-postcode?servicearea=immigrationasylum'
       break
 
+    case 'crime':
+      req.app.locals.serviceAreaStartPage = ""
+      req.app.locals.childService = false
+      req.app.locals.serviceCentre = false
+      req.app.locals.crimeService = true
+      req.app.locals.courtCount = 4
+      req.app.locals.serviceArea = "crime"
+      pageServiceCategory = 'service-search-postcode?servicearea=crime'
+      break    
+
     case 'high-courts':
+      req.app.locals.serviceAreaStartPage = ""
       req.app.locals.childService = false
       req.app.locals.serviceCentre = false
       req.app.locals.highCourtService = true
+      req.app.locals.courtCount = 1
+      req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.serviceArea = "High Courts"
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
       break
@@ -220,44 +238,49 @@ router.post('/choose-area', function (req, res) {
 
 
   req.app.locals.serviceArea = serviceArea.toLowerCase()
-  
+
+  // set default to plural and change if only one court or tribunal found
   req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
-  req.app.locals.adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
-  req.app.locals.bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
-  req.app.locals.childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
-  req.app.locals.divorceStartPage = 'https://www.gov.uk/divorce'
-  req.app.locals.civilPartnershipStartPage = 'https://www.gov.uk/divorce'
-  req.app.locals.domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
-  req.app.locals.employmentStartPage = 'https://www.gov.uk/employment-tribunals'
-  req.app.locals.forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
-  req.app.locals.FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
-  req.app.locals.housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
-  req.app.locals.moneyClaimsPage = 'https://www.gov.uk/make-money-claim'
-  req.app.locals.ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
-  req.app.locals.benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
-  req.app.locals.taxStartPage = 'https://www.gov.uk/tax-tribunal'
+// allocate service start pages
+  req.app.locals.serviceAreaStartPage = ""
+
+  adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
+  bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
+  childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
+  divorceStartPage = 'https://www.gov.uk/divorce'
+  civilPartnershipStartPage = 'https://www.gov.uk/divorce'
+  domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
+  employmentStartPage = 'https://www.gov.uk/employment-tribunals'
+  forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
+  FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
+  housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
+  immigrationAsylumStartPage = 'https://www.gov.uk/immigration-asylum-tribunal'
+  moneyClaimsStartPage = 'https://www.gov.uk/make-money-claim'
+  ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
+  benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
+  taxStartPage = 'https://www.gov.uk/tax-tribunal'
 
 //  console.log('serviceAreaQuery ' + serviceAreaQuery)
 
   switch (serviceAreaQuery) {
 
     case 'adoption':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/child-adoption'
+      req.app.locals.serviceAreaStartPage = adoptionStartPage
       req.app.locals.adoptionService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 3
       break
 
     case 'bankruptcy':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/bankruptcy'
+      req.app.locals.serviceAreaStartPage = bankruptcyStartPage
       req.app.locals.bankruptcyService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 2
       break
 
     case 'childarrangements':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/looking-after-children-divorce'
+      req.app.locals.serviceAreaStartPage = childcareStartPage
       req.app.locals.childService = true
       req.app.locals.childArrangementsService = true
       req.app.locals.serviceCentre = false   
@@ -265,28 +288,29 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'civilpartnership':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/end-civil-partnership'
+      req.app.locals.serviceAreaStartPage = civilPartnershipStartPage
       req.app.locals.civilPartnershipService = true
       req.app.locals.serviceCentre = true  
       req.app.locals.courtCount = 5
       break    
 
     case 'divorce':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/divorce'
+      req.app.locals.serviceAreaStartPage = divorceStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.divorceService = true
       req.app.locals.courtCount = 5
-
       break
 
     case 'domesticabuse':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/injunction-domestic-violence'
+      req.app.locals.serviceAreaStartPage = domesticAbuseStartPage
       req.app.locals.domesticAbuseService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 7
       break
 
     case 'claimsagainstemployers':
+      req.app.locals.serviceAreaStartPage = employmentStartPage
+      req.app.locals.domesticAbuseService = true
       req.app.locals.employmentService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'        
       req.app.locals.serviceCentre = false   
@@ -294,15 +318,14 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'forcedmarriage':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/stop-forced-marriage'
-      req.app.locals.forcedMarriageService = true
+      req.app.locals.serviceAreaStartPage = forcedMarriageStartPage
       req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'femalegenitalmutilation':            
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/female-genital-mutilation-protection-order'
+      req.app.locals.serviceAreaStartPage = FGMStartPage
       req.app.locals.FGMService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'  
       req.app.locals.serviceCentre = false   
@@ -310,40 +333,42 @@ router.post('/choose-area', function (req, res) {
       break
 
     case 'housingpossession':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/evicting-tenants'
+      req.app.locals.serviceAreaStartPage = housingPossessionStartPage
       req.app.locals.housingPossessionService = true  
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 5
      break
 
-    case 'immigrationasylum':
+    case 'immigrationasylum':      
+      req.app.locals.serviceAreaStartPage = immigrationAsylumStartPage
       req.app.locals.immigrationService = true  
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'moneyclaims':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/make-court-claim-for-money'
+      req.app.locals.serviceAreaStartPage = moneyClaimsStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
       req.app.locals.courtCount = 2
       break   
 
     case 'probate':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/applying-for-probate'
+      req.app.locals.serviceAreaStartPage = ProbateStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
       req.app.locals.courtCount = 3
       break
 
     case 'benefits':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support'
+      req.app.locals.serviceAreaStartPage = benefitsStartPage
       req.app.locals.benefitsService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 1
       break
 
     case 'tax':
+      req.app.locals.serviceAreaStartPage = taxStartPage
       req.app.locals.taxService = true
       req.app.locals.serviceCentre = false   
       req.app.locals.courtCount = 0
@@ -662,9 +687,11 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.forcedMarriageServiceAtCourt = true
           }
 
+          if (serviceAreasByCourt == 'Crime') {
+            req.app.locals.crimeServiceAtCourt = true
+          }
           if (serviceAreasByCourt == 'Children') {
             req.app.locals.childArrangementsServiceAtCourt = true
-
           }
 
           if (serviceAreasByCourt == 'Adoption') {

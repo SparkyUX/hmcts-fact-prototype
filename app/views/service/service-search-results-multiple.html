@@ -58,6 +58,10 @@ Search results for location - Find a Court or Tribunal - GOV.UK
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-m">We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
 
+<!-- Reading Crowm Court' -->   
+    {% if (childArrangementsService) or (domesticAbuseService) or (benefitsService) or (crimeService) %}
+      {{courtSearch('Reading Crown Court','../individual-location-pages/generic?ctsc=no&courtname=readingcc','5.3 miles')}}
+    {% endif %}
 <!-- Reading County Court and Family Court -->
     {% if (adoptionService) or (bankruptcyService) or (childArrangementsService) or (domesticAbuseService) or (forcedMarriageService) or (FGMService) or (highCourtService) or (moneyClaimsService) or (housingPossessionService) %}
       {{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
@@ -96,19 +100,20 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     {% endif %}
 <!--  Watford County Court and Family Court -->
 
-    {% if (adoptionService) or (childArrangementsService) or (civilPartnershipService) or (domesticAbuseService) or (housingPossessionService) or (moneyClaimsService) %}
+    {% if (adoptionService) or (childArrangementsService) or (domesticAbuseService) or (housingPossessionService) or (moneyClaimsService) %}
       {{courtSearch('Watford County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=watfordccfc','15.0 miles')}}
 
     {% endif %}
 <!-- Harmondsworth Tribunal Hearing Centre -->
 
-    {% if (immigrationService) %}
+    {% if (immigrationAsylumService) %}
       {{courtSearch('Harmondsworth Tribunal Hearing Centre','../individual-location-pages/generic?ctsc=no&courtname=harmondsworthtrib','32.0 miles')}}
     {% endif %}
 
   </div>
+  {% if serviceAreaStartPage %}
 
-  <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+      <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
       <h2 class="govuk-heading-m" >
         Related content
       </h2>
@@ -118,6 +123,8 @@ Search results for location - Find a Court or Tribunal - GOV.UK
       <a href="{{serviceAreaStartPage}}">{{serviceArea}}</a>
     </p>
   </div>
+  {% endif %}
+
   </div>
 
  </div>
