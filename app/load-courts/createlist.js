@@ -1,5 +1,5 @@
 // uplaod court data to locations file from CTF
-const courtDetails = require('./court_details.json')
+const courtDetails = require('../court_details.json')
 const fs = require('fs')
 
 let courtLocationDetails = []
@@ -19,17 +19,19 @@ function main() {
     let courtLocationCode = courtDetails.courts[i].crown_location_code || courtDetails.courts[i].county_location_code || courtDetails.courts[i].magistrates_location_code
     let courtName = courtDetails.courts[i].name
     let courtCode = courtDetails.courts[i].court_code
-//    console.log('name ' + courtName)
+    console.log('name ' + courtName)
 // loop through addresses
     for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
       let searchDetails = ""
 //ignore the write to us address
-      if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" || courtDetails.courts[i].addresses[j].type == "Postal") {
+  console.log('courtDetails.courts[i].ctsc_flag ' + courtDetails.courts[i].ctsc_flag)
+      if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" || courtDetails.courts[i].addresses[j].type == "Visiting" || (courtDetails.courts[i].addresses[j].type == "Postal" && courtDetails.courts[i].ctsc_flag == "Y")) {
+          console.log('address' + courtDetails.courts[i].addresses[j].address)
           let address = courtDetails.courts[i].addresses[j].address.replace(/!/g," ")
           let townName = courtDetails.courts[i].addresses[j].town
           let postCode = courtDetails.courts[i].addresses[j].postcode
 
-          let searchDetails = [courtCode, courtName, address, townName]
+          let searchDetails = [courtCode, courtName, address, townName, postCode]
 
           let additionalSearchDetails = 
             '\n\t"' + courtCode + '": {\n' +
@@ -41,7 +43,6 @@ function main() {
       }
 // remove the last comma
       if (i === courtDetails.courts.length - 1) {
-        console.log('last court')
         courtAdditionalDetails[i] = courtAdditionalDetails[i].substring(0, courtAdditionalDetails[i].length - 1)
 
       }
@@ -53,7 +54,7 @@ function main() {
 
   for (i=0; i < courtLocationDetails.length; i++) {
     stream.write(' <option value="' + courtLocationDetails[i][0] + '">' 
-      + courtLocationDetails[i][1] +  ', ' + courtLocationDetails[i][2] + ', ' + courtLocationDetails[i][3] + '</option>\n')
+      + courtLocationDetails[i][1] +  ', ' + courtLocationDetails[i][2] + ', ' + courtLocationDetails[i][3] + ', ' + courtLocationDetails[i][4] + '</option>\n')
   }  
   stream.end();
 // write json for additional search items

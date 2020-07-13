@@ -1012,6 +1012,7 @@
 
 		{
 			"court_code": "ccmcc",
+			"ctsc_flag": "Y",
 			"name": "County Court Money Claims Centre (CCMCC)",
 			"slug": "county-court-money-claims-centre-ccmcc",
 			"info": "",
@@ -1070,6 +1071,7 @@
 
 		{
 			"court_code": "probatesc",
+			"ctsc_flag": "Y",
 			"name": "Probate Service Centre",
 			"slug": "probate-serv0ce-centre",
 			"info": "",
@@ -1122,7 +1124,8 @@
 			"gbs": null
 		},
 		{
-			"court_code": "divorcesc",
+			"court_code": "divorcesc",			
+			"ctsc_flag": "Y",
 			"name": "Bury St Edmunds Regional Divorce Centre",
 			"slug": "bury-st-edmunds-regional-divorce-centre",
 			"info": "",
