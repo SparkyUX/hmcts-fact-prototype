@@ -19,7 +19,7 @@ router.post('/search-route', function (req, res) {
     else
     {    
       req.app.locals.continueService = true
-      res.redirect('/service/service-choose-action') 
+      res.redirect('/service/service-category')
     }
  
 })
