@@ -12,14 +12,21 @@ const courtDetails =require('./court_details.json')
 router.post('/search-route', function (req, res) {
 
   let knowLocation = req.session.data['know-location']
-    
+
     if (knowLocation == 'yes') {
       res.redirect('/location/location-search')
     }
-    else
-    {    
+    else 
+    {
+      if (req.app.locals.omitPage === 'Y') { 
+        
       req.app.locals.continueService = true
       res.redirect('/service/service-category')
+      }
+      else
+      {      
+        res.redirect('/service/service-choose-action')
+      }
     }
  
 })

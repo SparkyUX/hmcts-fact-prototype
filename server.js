@@ -60,6 +60,7 @@ var useHttps = process.env.USE_HTTPS || config.useHttps
 
 //JHS add config variables for FACT
 app.locals.backLinkRequired = process.env.BACKLINK_REQUIRED
+app.locals.omitPage = process.env.OMIT_PAGE
 
 useHttps = useHttps.toLowerCase()
 
