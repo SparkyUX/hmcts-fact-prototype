@@ -1,0 +1,573 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Individual court or tribunal page - Find a court or tribunal - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it. <a href="#" class="govuk-link fact-language">Cymraeg</a>'
+  }) }}
+
+<!-- JHS added in Back Link and removed breadcrumbs -->
+{% if backLinkRequired %}
+{{ govukBackLink({
+  text: "Back",
+  href: "#"
+}) }}
+{% else %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "../index"
+    },
+    {
+      text: "Previous page",
+      href: "#"
+    },
+    {
+      text: "Court or Tribunal"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% if (moneyClaimsService) or (probateService) %}
+  {% set catchmentArea = "England and Wales" %}
+{% else %}
+  {% set catchmentArea = "the South-East" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">      
+      {{courtName}}
+    </h1>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    {% if ctscFlag %}
+      <p class="govuk-body-m">
+        This location services {{catchmentArea}} for {{serviceArea}}. We do not provide an in-person service.
+      </p>
+      <h2 class="govuk-heading-l">
+        Contact us      
+      </h2>
+      <h3 class="govuk-heading-m">
+        Address
+      </h3>
+      <p class="govuk-body-m">
+        {{courtWriteAddress1}}
+        {% if courtWriteAddress2 %}
+          </br> {{courtWriteAddress2}}
+        {% endif %}
+        {% if courtWriteAddress3 %}
+          </br> {{courtWriteAddress3}}
+        {% endif %}
+        </br> {{courtWriteTown}}
+        </br> {{courtWritePostcode}}
+
+      </p>
+
+    {% endif %}
+
+    {% if courtVisitWriteAddress %}
+
+      <h2 class="govuk-heading-l">
+        Visit or contact us:
+      </h2>
+
+
+      <h3 class="govuk-heading-m">
+        Address
+      </h3>
+      
+      <p class="govuk-body-m">
+
+        {{courtVisitAddress1}}
+        {% if courtVisitAddress2 %}
+          </br> {{courtVisitAddress2}}
+        {% endif %}
+        {% if courtVisitAddress3 %}
+          </br> {{courtVisitAddress3}}
+        {% endif %}
+        </br> {{courtVisitTown}}
+        </br> {{courtVisitPostcode}}
+        </br>
+
+      </p>
+    {% endif %}
+
+    {% if courtSeparateAddress %}
+    <div class="govuk-grid-column-one-half" style="padding-left: 0px">
+
+      <h2 class="govuk-heading-l">
+        Visit us:
+      </h2>
+
+      <p class="govuk-body-m">
+
+        {{courtVisitAddress1}}
+        {% if courtVisitAddress2 %}
+          </br> {{courtVisitAddress2}}
+        {% endif %}
+        {% if courtVisitAddress3 %}
+          </br> {{courtVisitAddress3}}
+        {% endif %}
+        </br> {{courtVisitTown}}
+        </br> {{courtVisitPostcode}}
+
+      </p>
+    </div>
+    {% endif %}
+
+    {% if courtSeparateAddress %}
+    <div class="govuk-grid-column-one-half">
+
+      <h2 class="govuk-heading-l">
+        Write to us:
+      </h2>
+
+      <p class="govuk-body-m">
+
+        {{courtWriteAddress1}}
+        {% if courtWriteAddress2 %}
+          </br> {{courtWriteAddress2}}
+        {% endif %}
+        {% if courtWriteAddress3 %}
+          </br> {{courtWriteAddress3}}
+        {% endif %}
+        </br> {{courtWriteTown}}
+        </br> {{courtWritePostcode}}
+
+      </p>
+    </div>
+    {% endif %}  
+    {% if not ctscFlag%}
+    <p class="govuk-link">
+      <a href="{{courtGoogleMapsLocation}}">Get directions</a>
+    </p>
+    <p class="govuk-link">
+      <a href="https://www.gov.uk/guidance/what-to-expect-coming-to-a-court-or-tribunal">What to expect coming to a court or tribunal</a>
+    </p>
+    {% endif %}
+
+
+
+    {% if courtUrgentInfo %}
+
+      {{ govukWarningText({
+        text: courtUrgentInfo,
+        iconFallbackText: "Warning"
+      }) }}
+
+    {% endif %}
+
+    {% if courtAdditionalInfo %}
+
+      <h3 class="govuk-heading-m">
+        Additional Information
+      </h3>
+
+      <p class="govuk-body-m">
+        {{courtAdditionalInfo}}
+      </p>
+
+    {% endif %}
+
+    {% if ctscFlag %}
+
+      <h4 class="govuk-heading-s">
+        Telephone and fax
+      </h4>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Monday to Friday, 8:30am to 5pm
+      </p>
+      <p class="govuk-body-m">
+        Welsh language: 0300 303 5174
+        <br />
+        Monday to Friday, 9am to 5pm
+      </p>
+      <p class="govuk-body-m">
+        Fax: 01264 347985
+      </p>
+      <p class="govuk-body-m">
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
+      <p class="govuk-body-m">
+      <a href="https://www.gov.uk/guidance/hmcts-civil-business-centres-performance-information">
+        Processing or reply times
+      </a>
+      </p>    
+
+      <h4 class="govuk-heading-s">
+        Email
+      </h4>
+      <p class="govuk-body-m">
+        Send us your documents: <a href="mailto:">{{courtEmailEnquiries}}</a>
+        <br />
+          Get an update with your application: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      </p>
+
+      {% if probateServiceAtCourt %}
+        <h4 class="govuk-heading-s" >
+          Webchat
+        </h4>
+        <p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>whether or not you need probate</li>
+          <li>what forms to fill in</li>
+          <li>help and advice when filling the forms in</li>
+        </ul>
+      {% endif %}
+
+    {% else %}
+      {% if courtSeparateAddress %}
+
+        <h2 class="govuk-heading-l">
+          Contact us
+        </h2>
+    {% endif %}
+
+
+      <h3 class="govuk-heading-m">
+        Opening times
+      </h3>
+
+      <p class="govuk-body-m">
+        Court building Monday to Friday, 9am to 5pm
+      </p>
+      <h3 id="court-office" class="govuk-heading-m">
+        General enquiries
+      </h3>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
+
+      <h3 class="govuk-heading-m">
+        Urgent in-person application
+      </h3>
+      <p class="govuk-body-m">
+        Make an appointment if someone’s personal safety, business or assets are at risk only.
+      </p>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailUrgent}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
+
+      <h3 class="govuk-heading-m">
+        Pay court fees
+      </h3>
+      <p class="govuk-body-m">
+        Make an appointment to pay your court fees in person.
+      </br>
+        Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
+      <p class="govuk-body-m">
+        Find out more about <a href="https://www.gov.uk/court-fees-what-they-are/">court fees</a>.
+      </p>
+
+
+
+      {% if courtEmailListing %}
+        <h3 class="govuk-heading-m">
+          Check when your hearing will take place
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailListing}}</a>
+        </p>
+      {% endif %}
+
+      {% if courtEmailBaillifs %}
+        <h3 class="govuk-heading-m">
+          Help with debt collection
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailBaillifs}}</a>
+        </p>  
+      {% endif %}
+
+      {% if courtEmailFamily %}
+        <h3 class="govuk-heading-m">
+          Help with marriage or childcare
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailFamily}}</a>
+        </p>
+      {% endif %}
+
+      {% if courtEmailCoP %}
+      <h3 class="govuk-heading-m">
+        Protection for those who don’t have the legal capacity to make their own decisions (Court of Protection)
+      </h3>
+      <p class="govuk-body-m">
+        <a href="mailto:">{{courtEmailCoP}}</a>
+      </p>
+      {% endif %}
+
+      {% if (courtEmailAdmin) or (courtEmailHighCourt) or (courtEmailBusProperty) %}  
+        <h2 class="govuk-heading-l">
+          For legal professionals
+        </h2>
+      {% endif %}
+
+      <h3 class="govuk-heading-m">
+        Building facilities
+      </h3>
+
+      <p class="govuk-body-m">
+        If you have a disability and need help coming to a hearing, please contact <a href="mailto:">{{courtEmailEnquiries}}</a> or {{courtPhoneEnquiries}}.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Parking
+      </h4>
+      <p class="govuk-body-m">
+        No parking facilities are available. The court is in the town centre near the train and bus stations.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Disabled access
+      </h4>
+      <p class="govuk-body-m">
+        This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access into courtrooms and hearing rooms.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Assistance dogs
+      </h4>
+      <p class="govuk-body-m">
+        Assistance dogs are welcome.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Disabled toilet
+      </h4>
+      <p class="govuk-body-m">
+        The disabled toilet is located on the fourth floor.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Hearing loop
+      </h4>
+      <p class="govuk-body-m">
+        The building has hearing enhancement facilities available by prior arrangement with the <a href="#court-office">Court office</a>.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Food and drink
+      </h4>
+      <p class="govuk-body-m">
+        Food and drink are available. Cafe opening times: Monday to Friday, 9am to 2pm.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Children
+      </h4>
+      <p class="govuk-body-m">
+        Baby changing facilities are available in the disabled toilets on the fourth floor.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Prayer or Quiet room
+      </h4>
+      <p class="govuk-body-m">
+        There is a prayer or quiet room available on the first floor.
+      </p>
+
+      <h4 class="govuk-heading-s">
+        Translators or Interpreters
+      </h4>
+      <p class="govuk-body-m">
+        Get an interpreter at a court or tribunal.
+      </p>
+      {% endif %}
+
+      <h2 class="govuk-heading-l">
+        Court codes for legal professionals
+      </h2>
+
+      {%if courtCodeCounty %}
+        <p class="govuk-body-m govuk-!-font-weight-bold">
+          County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
+        </p>
+      {% endif %}
+      
+      {%if courtCodeCrown %}
+        <p class="govuk-body-m govuk-!-font-weight-bold">
+          Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
+        </p>
+      {% endif %}
+
+      {%if courtCodeMagistrates %}
+        <p class="govuk-body-m govuk-!-font-weight-bold">
+          Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
+        </p>
+      {% endif %}
+
+      {% if courtDXNumber %}
+
+      <p class="govuk-body-m govuk-!-font-weight-bold">
+        DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
+      </p> 
+    {% endif %}
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    {% if not ctscFlag %}
+
+    <img src="{{courtImgLoc}}" alt="Front view of {{courtName}}">
+    <p class="govuk-body-s">
+      {{courtName}}
+    </p>
+    {% endif %}
+    
+    <h3 class="govuk-heading-m">
+      This location handles:
+    </h3>
+    <ul class="govuk-list">
+
+      {% if adoptionServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order">Adoption</a>
+      </li>
+      {% endif%}
+
+      {% if bankruptcyServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/bankruptcy">Bankruptcy</a>
+      </li>
+      {% endif%}
+
+      {% if benefitsServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support">Benefits</a>
+      </li>
+      {% endif%}
+
+      {% if childArrangementsServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/looking-after-children-divorce">Childcare arrangements if you separate from your partner</a>
+      </li>      
+      {% endif%}
+
+      {% if civilPartnershipServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">Civil partnership</a>
+      </li>   
+      {% endif%}
+
+      {% if divorceServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/divorce">Divorce</a>
+      </li>
+      {% endif%}
+
+      {% if crimeServiceAtCourt %}
+      <li>
+        <span class="govuk-body-m">
+          Crime
+        </span>
+      </li>
+      {% endif%}
+
+      {% if domesticAbuseServiceAtCourt %}
+      <li> 
+        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Domestic abuse</a>
+      </li>
+      {% endif%}
+
+      {% if employmentServiceAtCourt %}
+      <li> 
+        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Claims against employers</a>
+      </li>
+      {% endif%}
+
+      {% if FGMServiceAtCourt %}
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/government/collections/female-genital-mutilation">Female Genital Mutilation</a>
+      </li>
+      {% endif%}
+
+      {% if forcedMarriageServiceAtCourt %}
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/apply-forced-marriage-protection-order">Forced marriage</a>
+      </li>
+      {% endif%}
+
+      {% if highCourtServiceAtCourt %}
+      <li>      
+        <span class="govuk-body-m">
+          High Court
+        </span>
+      </li>
+      {% endif%} 
+
+      {% if housingPossessionServiceAtCourt %}     
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/evicting-tenants">Housing possession</a>
+      </li>       
+      {% endif%}
+
+      {% if immigrationServiceAtCourt %}     
+      <li>      
+        <a class="govuk-link" href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-immigration-and-asylum">Immigration and Asylum</a>
+      </li>       
+      {% endif%}
+
+      {% if moneyClaimsServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/make-money-claim">Money claims</a>
+      </li>
+      {% endif%}
+
+      {% if probateServiceAtCourt %}
+      <li>
+        <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">Probate</a>
+      </li>
+
+      {% endif%}
+
+    </ul>
+
+  </div>
+</div>
+{% endblock %}
