@@ -31,7 +31,7 @@ function main() {
           let townName = courtDetails.courts[i].addresses[j].town
           let postCode = courtDetails.courts[i].addresses[j].postcode
 
-          let searchDetails = [courtCode, courtName, address, townName, postCode]
+          let searchDetails = [courtName, address, townName, postCode, courtCode]
 
           let additionalSearchDetails = 
             '\n\t"' + courtCode + '": {\n' +
@@ -51,10 +51,10 @@ function main() {
 // write html macro for select element 
   var stream = fs.createWriteStream('../views/includes/court-location-details.html', {flags: 'w'});
   stream.write('<option value="" disabled selected></option>\n')
-
-  for (i=0; i < courtLocationDetails.length; i++) {
-    stream.write(' <option value="' + courtLocationDetails[i][0] + '">' 
-      + courtLocationDetails[i][1] +  ', ' + courtLocationDetails[i][2] + ', ' + courtLocationDetails[i][3] + ', ' + courtLocationDetails[i][4] + '</option>\n')
+  let courtLocationDetailsSorted = courtLocationDetails.sort()
+  for (i=0; i < courtLocationDetailsSorted.length; i++) {
+    stream.write(' <option value="' + courtLocationDetailsSorted[i][4] + '">' 
+      + courtLocationDetailsSorted[i][0] +  ', ' + courtLocationDetailsSorted[i][1] + ', ' + courtLocationDetailsSorted[i][2] + ', ' + courtLocationDetails[i][3] + '</option>\n')
   }  
   stream.end();
 // write json for additional search items
