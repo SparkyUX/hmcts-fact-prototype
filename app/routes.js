@@ -146,30 +146,9 @@ router.post('/choose-service-category', function (req, res) {
 // set default to plural and change if only one court or tribunal found
   req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
-  req.app.locals.serviceCentreProbate = false
-  req.app.locals.serviceCentreDivorce = false
-  req.app.locals.serviceCentreCivilPartnership = false
-  req.app.locals.serviceCentreMoneyClaims = false
-  req.app.locals.childService = false
-  req.app.locals.serviceCentre = false   
-  
-  req.app.locals.moneyClaimsService = false
-  req.app.locals.probateService = false
-  req.app.locals.housingPossessionService = false
-  req.app.locals.bankruptcyService = false
-  req.app.locals.benefitsService = false
-  req.app.locals.employmentService = false
-  req.app.locals.taxService = false
-  req.app.locals.divorceService = false
-  req.app.locals.civilPartnershipService = false
-  req.app.locals.domesticAbuseService = false
-  req.app.locals.forcedMarriageService = false
-  req.app.locals.childService = false
-  req.app.locals.childArrangementsService = false
-  req.app.locals.adoptionService = false
-  req.app.locals.FGMService = false
-  req.app.locals.crimeService = false
   req.app.locals.immigrationAsylumService = false
+  req.app.locals.crimeService = false
+  req.app.locals.highCourtService = false
 
   switch (serviceCategory) {
 
@@ -241,6 +220,34 @@ router.post('/choose-area', function (req, res) {
 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
   // serviceAreaLower = serviceArea.toLowerCase()
+
+  req.app.locals.serviceCentreProbate = false
+  req.app.locals.serviceCentreDivorce = false
+  req.app.locals.serviceCentreCivilPartnership = false
+  req.app.locals.serviceCentreMoneyClaims = false
+  req.app.locals.childService = false
+  req.app.locals.serviceCentre = false   
+  
+  req.app.locals.moneyClaimsService = false
+  req.app.locals.probateService = false
+  req.app.locals.housingPossessionService = false
+  req.app.locals.bankruptcyService = false
+  req.app.locals.benefitsService = false
+  req.app.locals.employmentService = false
+  req.app.locals.taxService = false
+  req.app.locals.divorceService = false
+  req.app.locals.civilPartnershipService = false
+  req.app.locals.domesticAbuseService = false
+  req.app.locals.forcedMarriageService = false
+  req.app.locals.childService = false
+  req.app.locals.childArrangementsService = false
+  req.app.locals.adoptionService = false
+  req.app.locals.FGMService = false        
+  req.app.locals.immigrationAsylumService = false
+  req.app.locals.crimeService = false
+  req.app.locals.highCourtService = false
+
+
 
 
   req.app.locals.serviceArea = serviceArea.toLowerCase()
