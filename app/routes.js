@@ -3,6 +3,7 @@ const router = express.Router()
 const url = require('url')
 const app = express()
 const courtDetails =require('./court_details.json')
+const courtSearch =require('./court_search.json')
 
 // Add your routes here - above the module.exports line
 
@@ -501,7 +502,8 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.crimeServiceAtCourt = false
 
   
-  for (let i=0; i < courtDetails.courts.length; i++) {
+  for (let i=0; i < courtDetails.courts.length; i++) {      
+
     if (courtShortName == courtDetails.courts[i].court_code) {
 
       // name
@@ -631,9 +633,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
         if (courtDetails.courts[i].emails[j].description == "Small claims") {
           req.app.locals.courtEmailCMC = courtDetails.courts[i].emails[j].address
         }
-        if (courtDetails.courts[i].emails[j].description == "Small claims") {
-          req.app.locals.courtEmailCMC = courtDetails.courts[i].emails[j].address
-        }
 
       } // emails
 
@@ -720,10 +719,45 @@ router.get('/individual-location-pages/generic', function(req, res) {
           }
           
       } // for area of law
+      res.render('individual-location-pages/generic')
+      return
     } // if court 
-  } // for loop
+    // unlisted court so use address details from courts_search list and defaults
+  }
+  console.log('started default ')
 
-  res.render('individual-location-pages/generic')
 
+  for (let i=0; i < courtSearch.courts_search.length; i++) {
+
+    if (courtShortName == courtSearch.courts_search[i].slug) {
+      req.app.locals.courtName = courtSearch.courts_search[i].name
+      // court codes
+      console.log('number ' +  courtSearch.courts_search[i].number)
+      req.app.locals.courtCodeCounty = courtSearch.courts_search[i].number
+      // addresses
+      req.app.locals.courtVisitWriteAddress = true
+      let addressSplit = courtSearch.courts_search[i].address.split('!')
+      console.log('address[0] ' +  addressSplit[0])
+            
+      req.app.locals.courtVisitAddress1 = addressSplit[0]
+
+      if (addressSplit[1]) {
+        req.app.locals.courtVisitAddress2 = addressSplit[1]
+      }
+      if (addressSplit[2]) {
+        req.app.locals.courtVisitAddress3 = addressSplit[2]
+      }
+
+      req.app.locals.courtVisitTown = courtSearch.courts_search[i].town_name 
+      req.app.locals.courtVisitPostcode = courtSearch.courts_search[i].postcode        
+
+      // long and lat
+      req.app.locals.courtGoogleMapsLocation = 'https://maps.google.com/maps?q=' + courtSearch.courts_search[i].lat + ',' + courtSearch.courts_search[i].lon
+
+      // image src
+      req.app.locals.courtImgLoc = '/public/images/court.png' 
+    }
+  }
+   res.render('individual-location-pages/generic')
 })
 module.exports = router

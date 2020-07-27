@@ -118,7 +118,6 @@ Search.prototype.init = function () {
   if (!$module) {
     return
   }
-  console.log('search called ')
 
   // The Accessible Autocomplete only works in IE9+ so we can use newer JavaScript features here
   // but need to check for browsers that do not have these features and force the fallback by returning early.
