@@ -42,12 +42,8 @@
 {% endif %}
 
 {% endblock %}
-
-{% if continueService %}
-  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
-{% else %}
-  {% set pageHeading = "What kind of help do you need with Childcare and parenting?" %}
-{% endif %}
+<!-- allow the heading to be changed for selection from What do you want to do? page -->
+{% set pageHeading = "What do you need to contact a court or tribunal about?" %}
 
 {% block content %}
 

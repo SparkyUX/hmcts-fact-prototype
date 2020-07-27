@@ -110,23 +110,23 @@ router.post('/search-for-location', function (req, res) {
 router.post('/choose-action', function (req, res) {
 
   let chooseAction = req.session.data['choose-action']
-  req.app.locals.serviceActionType = ""
-  req.app.locals.continueService = false
+//  req.app.locals.serviceActionType = ""
+//  req.app.locals.continueService = false
 
     switch (chooseAction) {
 
       case 'send-docs':
-        req.app.locals.serviceActionType = "start"
+//        req.app.locals.serviceActionType = "start"
         res.redirect('/service/service-category?action=start')
         break
       case 'case-update':
-        req.app.locals.serviceActionType = "continueUpdate"
-        req.app.locals.continueService = true
+//        req.app.locals.serviceActionType = "continueUpdate"
+//        req.app.locals.continueService = true
         res.redirect('/service/service-category?action=continueupdate')
       break
       case 'find-nearest':
-        req.app.locals.serviceActionType = "continueFindHearingCentre"
-        req.app.locals.continueService = true
+//        req.app.locals.serviceActionType = "continueFindHearingCentre"
+//        req.app.locals.continueService = true
         res.redirect('/service/service-category?action=continuehearingcentre')
       break
       default :
@@ -756,6 +756,72 @@ router.get('/individual-location-pages/generic', function(req, res) {
 
       // image src
       req.app.locals.courtImgLoc = '/public/images/court.png' 
+
+      // other fields
+
+      // contacts 
+
+          req.app.locals.courtPhoneEnquiries = '01234 567 890'
+          req.app.locals.courtPhoneUrgent = '01234 567 890'
+          req.app.locals.courtPhoneCoP = '01234 567 891'
+          req.app.locals.courtPhoneHighCourt = '01234 567 892'
+          req.app.locals.courtDXNumber = '01234 567 893'
+
+          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
+          req.app.locals.courtEmailUrgent = 'urgent.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
+          req.app.locals.courtEmailListing = 'listings.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
+          req.app.locals.courtEmailBaillifs = 'baillifs.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
+          req.app.locals.courtEmailFamily = 'family.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
+         
+
+      //service areas to display in sidebar
+    
+        if (courtShortName.includes('Civil')) {
+          req.app.locals.moneyClaimsServiceAtCourt = true
+        }
+    
+        if (courtShortName.includes('Probate')) {
+              req.app.locals.probateServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Tribunal')) {
+            req.app.locals.benefitsServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Immigration')) {
+            req.app.locals.immigrationServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Employment')) {
+            req.app.locals.employmentServiceAtCourt = true
+            req.app.locals.civilPartnershipServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Divorce')) {
+            req.app.locals.divorceServiceAtCourt = true
+            req.app.locals.civilPartnershipServiceAtCourt = true
+          }
+         
+        if (courtShortName.includes('Family')) {
+            req.app.locals.domesticAbuseServiceAtCourt = true
+            req.app.locals.forcedMarriageServiceAtCourt = true
+            req.app.locals.childArrangementsServiceAtCourt = true
+            req.app.locals.adoptionServiceAtCourt = true
+            req.app.locals.FGMServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Crown')) {
+            req.app.locals.crimeServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('Magistrate')) {
+            req.app.locals.crimeServiceAtCourt = true
+          }
+
+        if (courtShortName.includes('High Court')) {
+            req.app.locals.highCourtServiceAtCourt = true
+          }
+ 
     }
   }
    res.render('individual-location-pages/generic')

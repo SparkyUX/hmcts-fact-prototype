@@ -43,11 +43,8 @@
 
 {% endblock %}
 
-{% if continueService %}
-  {% set pageHeading = "What kind of help do you need with harm or abuse?" %}
-{% else %}
-  {% set pageHeading = "What area of harm or abuse do you need to find more about?" %}
-{% endif %}
+<!-- allow the heading to be changed for selection from What do you want to do? page -->
+{% set pageHeading = "What do you need to contact a court or tribunal about?" %}
 
 {% block content %}
 
