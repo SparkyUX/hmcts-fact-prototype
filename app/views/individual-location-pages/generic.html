@@ -458,7 +458,36 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <p class="govuk-body-s">
       {{courtName}}
     </p>
+
     {% endif %}
+
+    {% if ctscFlag %}
+
+       <h2 class="govuk-heading-m" >
+        Related content
+     </h2>
+
+      <p class="govuk-body-m">
+
+        Find out more about</br>
+        {% if moneyClaimsServiceAtCourt %}
+            <a class="govuk-link" href="https://www.gov.uk/make-money-claim">starting a money claim application</a>
+        {% endif%}
+
+        {% if (divorceServiceAtCourt) or (civilPartnershipServiceAtCourt)%}
+          <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
+          </br>
+            or
+          </br>
+          <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
+        {% endif%}
+
+        {% if probateServiceAtCourt %}
+            <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
+        {% endif%}
+
+      </p>
+    {% else %}
     
     <h3 class="govuk-heading-m">
       This location handles:
@@ -563,8 +592,8 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <li>
         <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">Probate</a>
       </li>
-
       {% endif%}
+      {% endif %}
 
     </ul>
 
