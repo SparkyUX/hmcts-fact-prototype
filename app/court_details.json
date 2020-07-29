@@ -1072,8 +1072,8 @@
 		{
 			"court_code": "probatesc",
 			"ctsc_flag": "Y",
-			"name": "Probate Service Centre",
-			"slug": "probate-serv0ce-centre",
+			"name": "Central Probate Service Centre",
+			"slug": "central-probate-service-centre",
 			"info": "",
 			"open": true,
 			"directions": null,

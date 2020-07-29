@@ -42,44 +42,28 @@ Search results for location - Find a Court or Tribunal - GOV.UK
   }) }}
 {% endif %}
 
+{% if  searchListNames.length > 1 %}
+  {%set courtPluralOrNot = 'courts or tribunals' %}
+{% else %}
+   {%set courtPluralOrNot = 'court or tribunal' %}
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
   	<h1 class="govuk-heading-l">Court or Tribunal search results</h1>
-  		<p class="govuk-body-m">We found 5 courts or tribunals matching your search for '{{locationSearch}}'</p>
+  	<p class="govuk-body-m">We found {{searchListNames.length}} {{courtsOrTribunals}} matching your search for '{{locationSearch}}'</p>
 
+    {% for details in searchListNames %}
 
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=readingccfc" class="govuk-link" name="Reading County Court and Family Court">
-      Reading County Court and Family Court
-    </a></h2>
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="Reading County Court and Family Court">
+        {{details.name}}
+      </a></h2>
 
-    </br>
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=sloughccfc" class="govuk-link" name="Slough County Court and Family Court">
-      Slough County Court and Family Court
-    </a></h2>
-
-    </br>
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc" class="govuk-link" name="High Wycombe County Court and Family Court">
-      High Wycombe County Court and Family Court
-    </a></h2>
-    </br>
-
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=eberksmags" class="govuk-link" name="East Berkshire Magistrates' Court">
-      East Berkshire Magistrates' Court
-    </a></h2>
-    </br>
-
-    <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=watfordccfc" class="govuk-link" name="Watford County Court and Family Court">
-      Watford County Court and Family Court
-    </a></h2>
-    <br />
-
-   <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname=birminghamcfjc" class="govuk-link" name="Birmingham Civil and Family Justice Centre">
-      Birmingham Civil and Family Justice Centre
-    </a></h2>
-
+    {% endfor %}
   </div>
 
  </div>

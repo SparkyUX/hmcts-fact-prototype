@@ -1,5 +1,4 @@
-{
-    "courts_search": [
+{"courts_search": [
     {
         "name": "Aberdeen Tribunal Hearing Centre",
         "slug": "Aberdeen-Tribunal-Hearing-Centre",
@@ -19,6 +18,16 @@
         "address": "Aberystwyth Justice Centre !Y Lanfa!Trefechan",
         "town_name": "Aberystwyth",
         "postcode": "SY23 1AS"
+    },
+    {
+        "name": "Administrative Court",
+        "slug": "Administrative-Court",
+        "lat": "51.51364538",
+        "lon": "-0.113546081",
+        "number": "NULL",
+        "address": "Administrative Court Office!The Royal Courts of Justice!Strand!",
+        "town_name": "London",
+        "postcode": "WC2A 2LL"
     },
     {
         "name": "Admiralty and Commercial Court",
@@ -122,7 +131,7 @@
     },
     {
         "name": "Barkingside  Magistrates' Court",
-        "slug": "Barkingside--Magistrates-Court",
+        "slug": "Barkingside-Magistrates-Court",
         "lat": "51.5877118",
         "lon": "0.08141615",
         "number": "NULL",
@@ -152,7 +161,7 @@
     },
     {
         "name": "Barnstaple Magistrates', County and Family Court",
-        "slug": "Barnstaple-Magistrates--County-and-Family-Court",
+        "slug": "Barnstaple-Magistrates-County-and-Family-Court",
         "lat": "51.08130591",
         "lon": "-4.06467121",
         "number": "NULL",
@@ -301,6 +310,16 @@
         "postcode": "CH41 5EN"
     },
     {
+        "name": "Birmingham Civil and Family Justice Centre",
+        "slug": "Birmingham-Civil-and-Family-Justice-Centre",
+        "lat": "52.48165154",
+        "lon": "-1.895661512",
+        "number": "NULL",
+        "address": "Priory Courts!33 Bull Street",
+        "town_name": "Birmingham",
+        "postcode": "B4 6DS"
+    },
+    {
         "name": "Birmingham Crown Court",
         "slug": "Birmingham-Crown-Court",
         "lat": "52.482795",
@@ -372,7 +391,7 @@
     },
     {
         "name": "Blackpool  Family Court",
-        "slug": "Blackpool--Family-Court",
+        "slug": "Blackpool-Family-Court",
         "lat": "53.81179725",
         "lon": "-3.053836329",
         "number": "NULL",
@@ -492,7 +511,7 @@
     },
     {
         "name": "Bradford  and Keighley Magistrates' Court and Family Court",
-        "slug": "Bradford--and-Keighley-Magistrates-Court-and-Family-Court",
+        "slug": "Bradford-and-Keighley-Magistrates-Court-and-Family-Court",
         "lat": "53.79176752",
         "lon": "-1.754175757",
         "number": "NULL",
@@ -671,6 +690,16 @@
         "postcode": "BB11 2BS"
     },
     {
+        "name": "Bury St Edmunds County Court and Family Court",
+        "slug": "Bury-St-Edmunds-County-Court-and-Family-Court",
+        "lat": "52.24858058",
+        "lon": "0.711012457",
+        "number": "NULL",
+        "address": "Triton House!St Andrew's Street North",
+        "town_name": "Bury St. Edmunds",
+        "postcode": "IP33 1TR"
+    },
+    {
         "name": "Bury St Edmunds Regional Divorce Centre",
         "slug": "Bury-St-Edmunds-Regional-Divorce-Centre",
         "lat": "NULL",
@@ -682,7 +711,7 @@
     },
     {
         "name": "Caernarfon  Justice Centre",
-        "slug": "Caernarfon--Justice-Centre",
+        "slug": "Caernarfon-Justice-Centre",
         "lat": "53.14072194",
         "lon": "-4.264066258",
         "number": "0",
@@ -752,7 +781,7 @@
     },
     {
         "name": "Cardiff  Magistrates' Court",
-        "slug": "Cardiff--Magistrates-Court",
+        "slug": "Cardiff-Magistrates-Court",
         "lat": "51.48210459",
         "lon": "-3.166483122",
         "number": "NULL",
@@ -889,6 +918,16 @@
         "address": "Victory House!30-34 Kingsway",
         "town_name": "London",
         "postcode": "WC2B 6EX"
+    },
+    {
+        "name": "Central Probate Service Centre",
+        "slug": "central-probate-service-centre",
+        "lat": "53.76353387",
+        "lon": "-2.702384715",
+        "number": "NULL",
+        "address": "HMCTS Probate!PO Box 12625",
+        "town_name": "Harlow",
+        "postcode": "CM20 9QE"
     },
     {
         "name": "Centralised Attachment of Earnings Payments (CAPS)",
@@ -1049,6 +1088,16 @@
         "address": "St. Katharine's House!21-27 St. Katharine's Street",
         "town_name": "Northampton",
         "postcode": "NN1 2LH"
+    },
+    {
+        "name": "County Court Money Claims Centre (CCMCC)",
+        "slug": "County-Court-Money-Claims-Centre-CCMCC",
+        "lat": "NULL",
+        "lon": "NULL",
+        "number": "NULL",
+        "address": "County Court Money Claims Centre!PO Box 527",
+        "town_name": "Salford",
+        "postcode": "M5 0BY"
     },
     {
         "name": "Court of Appeal Civil Division",
@@ -1331,6 +1380,16 @@
         "postcode": "W13 0SD"
     },
     {
+        "name": "East Berkshire Magistrates' Court, Slough",
+        "slug": "East-Berkshire-Magistrates-Court-Slough",
+        "lat": "51.50740772",
+        "lon": "-0.598103716",
+        "number": "NULL",
+        "address": "Law Courts!Chalvey Park!Off Windsor Road!",
+        "town_name": "Slough",
+        "postcode": "SL1 2HJ"
+    },
+    {
         "name": "East London Family Court",
         "slug": "East-London-Family-Court",
         "lat": "51.50633464",
@@ -1432,7 +1491,7 @@
     },
     {
         "name": "Exeter Magistrates' Court - North and East Devon",
-        "slug": "Exeter-Magistrates-Court---North-and-East-Devon",
+        "slug": "Exeter-Magistrates-Court-North-and-East-Devon",
         "lat": "50.72413023",
         "lon": "-3.517161481",
         "number": "NULL",
@@ -1532,7 +1591,7 @@
     },
     {
         "name": "Gloucester and Cheltenham County  and Family Court",
-        "slug": "Gloucester-and-Cheltenham-County--and-Family-Court",
+        "slug": "Gloucester-and-Cheltenham-County-and-Family-Court",
         "lat": "51.86340338",
         "lon": "-2.249396734",
         "number": "NULL",
@@ -1639,6 +1698,16 @@
         "address": "The Court House",
         "town_name": "Harlow",
         "postcode": "CM20 1HH"
+    },
+    {
+        "name": "Harmondsworth Tribunal Hearing Centre",
+        "slug": "Harmondsworth-Tribunal-Hearing-Centre",
+        "lat": "51.484605",
+        "lon": "-0.483987528",
+        "number": "NULL",
+        "address": "Colnbrook Bypass",
+        "town_name": "Harmondsworth",
+        "postcode": "UB7 0HD"
     },
     {
         "name": "Harrogate Justice Centre",
@@ -1779,6 +1848,26 @@
         "address": "Shire Hall!Fore Street",
         "town_name": "Hertford",
         "postcode": "SG14 1BY"
+    },
+    {
+        "name": "High Wycombe County Court and Family Court",
+        "slug": "High-Wycombe-County-Court-and-Family-Court",
+        "lat": "51.6276409",
+        "lon": "-0.746142494",
+        "number": "NULL",
+        "address": "The Law Courts!Ground Floor!Easton Street",
+        "town_name": "High Wycombe",
+        "postcode": "HP11 1LR"
+    },
+    {
+        "name": "High Wycombe Magistrates' Court and Family Court",
+        "slug": "High-Wycombe-Magistrates-Court-and-Family-Court",
+        "lat": "51.6276409",
+        "lon": "-0.746142494",
+        "number": "NULL",
+        "address": "Law Courts!Easton Street",
+        "town_name": "High Wycombe",
+        "postcode": "HP11 1LR"
     },
     {
         "name": "Highbury Corner Magistrates' Court",
@@ -1982,7 +2071,7 @@
     },
     {
         "name": "King's Lynn Crown Court",
-        "slug": "King's-Lynn-Crown-Court",
+        "slug": "King-Lynn-Crown-Court",
         "lat": "52.75171292",
         "lon": "0.393988964",
         "number": "765",
@@ -1992,7 +2081,7 @@
     },
     {
         "name": "King's Lynn Magistrates' Court and Family Court",
-        "slug": "King's-Lynn-Magistrates-Court-and-Family-Court",
+        "slug": "King-Lynn-Magistrates-Court-and-Family-Court",
         "lat": "52.7517216",
         "lon": "0.394004259",
         "number": "NULL",
@@ -2351,6 +2440,16 @@
         "postcode": "WC1A 9QD"
     },
     {
+        "name": "London Probate Department",
+        "slug": "London-Probate-Department",
+        "lat": "51.518436",
+        "lon": "-0.114515648",
+        "number": "NULL",
+        "address": "42-49 High Holborn!First Avenue House",
+        "town_name": "Holborn",
+        "postcode": "WC1V 6NP"
+    },
+    {
         "name": "Loughborough Magistrates' Court",
         "slug": "Loughborough-Magistrates-Court",
         "lat": "52.77219887",
@@ -2532,7 +2631,7 @@
     },
     {
         "name": "Mayor's and City of London Court",
-        "slug": "Mayor's-and-City-of-London-Court",
+        "slug": "Mayor-and-City-of-London-Court",
         "lat": "51.51529145",
         "lon": "-0.091340084",
         "number": "NULL",
@@ -3001,6 +3100,16 @@
         "postcode": "OX1 1TL"
     },
     {
+        "name": "Oxford District Probate Registry",
+        "slug": "Oxford-District-Probate-Registry",
+        "lat": "51.74817045",
+        "lon": "-1.257072127",
+        "number": "NULL",
+        "address": "Combined Court Building!St Aldates",
+        "town_name": "Oxford",
+        "postcode": "OX1 1LY"
+    },
+    {
         "name": "Patents Court",
         "slug": "Patents-Court",
         "lat": "51.51589485",
@@ -3152,13 +3261,53 @@
     },
     {
         "name": "Queen's Bench Division",
-        "slug": "Queen's-Bench-Division",
+        "slug": "Queen-Bench-Division",
         "lat": "51.51364538",
         "lon": "-0.113546081",
         "number": "NULL",
         "address": "Queen's Bench Division - Foreign Process!The Royal Courts of Justice!Strand!",
         "town_name": "London",
         "postcode": "WC2A 2LL"
+    },
+    {
+        "name": "Reading County Court and Family Court",
+        "slug": "Reading-County-Court-and-Family-Court",
+        "lat": "51.45657544",
+        "lon": "-0.971178806",
+        "number": "NULL",
+        "address": "Hearing Centre!160-163 Friar Street",
+        "town_name": "Reading",
+        "postcode": "RG1 1HE"
+    },
+    {
+        "name": "Reading Crown Court",
+        "slug": "Reading-Crown-Court",
+        "lat": "51.45613763",
+        "lon": "-0.967403324",
+        "number": "449",
+        "address": "Old Shire Hall!The Forbury",
+        "town_name": "Reading",
+        "postcode": "RG1 3EH"
+    },
+    {
+        "name": "Reading Magistrates' Court and Family Court",
+        "slug": "Reading-Magistrates-Court-and-Family-Court",
+        "lat": "51.45334235",
+        "lon": "-0.975741766",
+        "number": "NULL",
+        "address": "Castle Street",
+        "town_name": "Reading",
+        "postcode": "RG1 7TQ"
+    },
+    {
+        "name": "Reading Tribunal Hearing Centre",
+        "slug": "Reading-Tribunal-Hearing-Centre",
+        "lat": "51.45693316",
+        "lon": "-0.974034994",
+        "number": "NULL",
+        "address": "2nd Floor!30-31 Friar Street",
+        "town_name": "Reading",
+        "postcode": "RG1 1DX"
     },
     {
         "name": "Redditch Magistrates' Court",
@@ -3182,7 +3331,7 @@
     },
     {
         "name": "Residential Property Eastern Region - First-tier Tribunal (Property Chamber)",
-        "slug": "Residential-Property-Eastern-Region---First-tier-Tribunal-Property-Chamber",
+        "slug": "Residential-Property-Eastern-Region-First-tier-Tribunal-Property-Chamber",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3192,7 +3341,7 @@
     },
     {
         "name": "Residential Property London Region - First Tier Tribunal (Property Chamber)",
-        "slug": "Residential-Property-London-Region---First-Tier-Tribunal-Property-Chamber",
+        "slug": "Residential-Property-London-Region-First-Tier-Tribunal-Property-Chamber",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3202,7 +3351,7 @@
     },
     {
         "name": "Residential Property Midlands Region - First Tier Tribunal (Property Chamber)",
-        "slug": "Residential-Property-Midlands-Region---First-Tier-Tribunal-Property-Chamber",
+        "slug": "Residential-Property-Midlands-Region-First-Tier-Tribunal-Property-Chamber",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3212,7 +3361,7 @@
     },
     {
         "name": "Residential Property Northern Region - First Tier Tribunal (Property Chamber)",
-        "slug": "Residential-Property-Northern-Region---First-Tier-Tribunal-Property-Chamber",
+        "slug": "Residential-Property-Northern-Region-First-Tier-Tribunal-Property-Chamber",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3222,7 +3371,7 @@
     },
     {
         "name": "Residential Property Southern Region - First Tier Tribunal (Property Chamber)",
-        "slug": "Residential-Property-Southern-Region---First-Tier-Tribunal-Property-Chamber",
+        "slug": "Residential-Property-Southern-Region-First-Tier-Tribunal-Property-Chamber",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3381,6 +3530,16 @@
         "postcode": "BD23 1RH"
     },
     {
+        "name": "Slough County Court and Family Court",
+        "slug": "Slough-County-Court-and-Family-Court",
+        "lat": "51.50740772",
+        "lon": "-0.598103716",
+        "number": "NULL",
+        "address": "The Law Courts!Windsor Road",
+        "town_name": "Slough",
+        "postcode": "SL1 2HE"
+    },
+    {
         "name": "Snaresbrook Crown Court",
         "slug": "Snaresbrook-Crown-Court",
         "lat": "51.58101721",
@@ -3492,7 +3651,7 @@
     },
     {
         "name": "Special Educational Needs and Disability  (First-tier Tribunal )",
-        "slug": "Special-Educational-Needs-and-Disability--First-tier-Tribunal-",
+        "slug": "Special-Educational-Needs-and-Disability-First-tier-Tribunal-",
         "lat": "NULL",
         "lon": "NULL",
         "number": "NULL",
@@ -3549,6 +3708,26 @@
         "address": "The Court House!Bryans Lane",
         "town_name": "Rugeley",
         "postcode": "WS15 2FX"
+    },
+    {
+        "name": "Staines County Court and Family Court",
+        "slug": "Staines-County-Court-and-Family-Court",
+        "lat": "51.42909772",
+        "lon": "-0.498095603",
+        "number": "NULL",
+        "address": "The Law Courts!Knowle Green",
+        "town_name": "Staines",
+        "postcode": "TW18 1XH"
+    },
+    {
+        "name": "Staines Magistrates' Court and Family Court",
+        "slug": "Staines-Magistrates-Court-and-Family-Court",
+        "lat": "51.42909772",
+        "lon": "-0.498095603",
+        "number": "NULL",
+        "address": "The Law Courts!Knowle Green",
+        "town_name": "Staines",
+        "postcode": "TW18 1XH"
     },
     {
         "name": "Stevenage Magistrates' Court",
@@ -3932,7 +4111,7 @@
     },
     {
         "name": "Wales Enforcement  Office",
-        "slug": "Wales-Enforcement--Office",
+        "slug": "Wales-Enforcement-Office",
         "lat": "51.59181098",
         "lon": "-3.785143662",
         "number": "NULL",
@@ -4009,6 +4188,16 @@
         "address": "Warwickshire Justice Centre!Newbold Terrace",
         "town_name": "Leamington Spa",
         "postcode": "CV32 4EL"
+    },
+    {
+        "name": "Watford County Court and Family Court",
+        "slug": "Watford-County-Court-and-Family-Court",
+        "lat": "51.6636754",
+        "lon": "-0.398796389",
+        "number": "NULL",
+        "address": "3rd Floor!Cassiobury House!11-19 Station Road!",
+        "town_name": "Watford",
+        "postcode": "WD17 1EZ"
     },
     {
         "name": "Watford Tribunal Hearing Centre",
@@ -4171,6 +4360,16 @@
         "postcode": "SO23 9EL"
     },
     {
+        "name": "Winchester District Probate Registry",
+        "slug": "Winchester-District-Probate-Registry",
+        "lat": "51.06244785",
+        "lon": "-1.31898486",
+        "number": "NULL",
+        "address": "1st Floor!Southside Offices!The Law Courts!",
+        "town_name": "Winchester",
+        "postcode": "SO23 9EL"
+    },
+    {
         "name": "Wirral Magistrates' Court",
         "slug": "Wirral-Magistrates-Court",
         "lat": "53.39295878",
@@ -4262,7 +4461,7 @@
     },
     {
         "name": "Wrexham County and Family  Court",
-        "slug": "Wrexham-County-and-Family--Court",
+        "slug": "Wrexham-County-and-Family-Court",
         "lat": "53.04845954",
         "lon": "-2.989527923",
         "number": "NULL",
@@ -4282,7 +4481,7 @@
     },
     {
         "name": "Yarl's Wood Immigration and Asylum Hearing Centre",
-        "slug": "Yarl's-Wood-Immigration-and-Asylum-Hearing-Centre",
+        "slug": "Yarls-Wood-Immigration-and-Asylum-Hearing-Centre",
         "lat": "52.19658709",
         "lon": "-0.489818842",
         "number": "NULL",

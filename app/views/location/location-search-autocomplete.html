@@ -53,6 +53,42 @@ Search for contact details - Find a court or tribunal - GOV.UK
       <span class="govuk-hint">
         You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS).
       </span></h1>
+      <div class="govuk-form-group autocomplete-wrapper govuk-body-m">
+        <label class="govuk-label" for="select-court">
+          Start typing the name or location of a court or tribunal
+        </label>
+        <select class="govuk-select" id="select-court" name="select-court">
+          {% include "includes/court-location-details.html" %}
+        </select>
+      </div>
+
+      <br />
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+      </br>
+      
+
+<!--
+      <p class="govuk-body-m">
+        If you work for HMCTS, you can search using the Court Location Code.
+      </p>
+
+        {{ govukDetails({
+          summaryText: "If you need help with this tool",
+          html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
+        }) }}
+-->
+    </form>
+    <form action="/search-for-location" method="post" novalidate>  
+
+      <h1 class="govuk-heading-l">What is the name or address of the court or tribunal?
+      <span class="govuk-hint">
+        You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS).
+      </span></h1>
 
         {{ govukInput({
         label: {
