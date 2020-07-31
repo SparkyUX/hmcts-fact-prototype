@@ -50,6 +50,20 @@ $govuk-assets-path: '/govuk/assets/';
     float: right;
   }
 }
+
+.search-button {
+	background-color: govuk-colour("blue");
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	border: 0;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	padding: 5px;
+	position: relative;
+	margin: 0;
+	float: left;
+}
 // JHW accessible-autocomplete styles
 
 .autocomplete__wrapper{position:relative;}

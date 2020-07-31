@@ -42,6 +42,9 @@
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
+  {% if searchHeader %}
+    {% include "includes/search-autocomplete.html" %}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}

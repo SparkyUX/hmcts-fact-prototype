@@ -10,6 +10,3 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
 
-// Initialise search
-var $searchContainer = document.querySelector('[data-module="cort-search"]')
-new Search($searchContainer).init()

@@ -51,42 +51,39 @@ Search for contact details - Find a court or tribunal - GOV.UK
 
       <h1 class="govuk-heading-l">What is the name or address of the court or tribunal?
       <span class="govuk-hint">
-        You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunal Services (HMCTS).
+        You can find the name or address of the court or tribunal on a letter, email or text from HM Courts and Tribunals Services (HMCTS).
       </span></h1>
 
-        {{ govukInput({
-        label: {
-        text: "Enter a court name, address, town or city"
-        },
-        classes: "govuk-input--width-30",
-        hint: {
-            text: "For example, Harrow Crown Court"
-          },
-        id: "location-search-value",
-        name: "location-search-value"
-        }) }}
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-
+      <div class="govuk-form-group {{errorFormClass}}" id="form-group">
+        <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="location-search-value">
+            Enter a court name, address, town or city
+          </label>
+        <span id="no-court-entered-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> {{errorString}}
+        </span>
+        </h2>
+        <div>
+          <input class="govuk-input govuk-!-width-three-quarters {{errorInputClass}}" id="location-search-value" name="location-search-value" type="text" style="float:left">
+          <button type="submit" class="search-button" onclick="checkError()"><img src="/public/images/search-icon.png"></button>
+        </div>
+      </div>
     </form>
+    </br>
+    {% if locationSearch %}
+
+    <p class="govuk-body-m">We found {{searchListNames.length}} {{courtsOrTribunals}} matching your search for '{{locationSearch}}'</p>    
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% for details in searchListNames %}
+
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="Reading County Court and Family Court">
+        {{details.name}}
+      </a></h2>
+
+    {% endfor %}
+    {% endif %}
   </div>
 </div>
 
 
 {% endblock %}
-{% block bodyEnd %}
-<script type="text/javascript" src="../public/javascripts/accessible-autocomplete.min.js"></script>
-<script type="text/javascript">
-  var selectEl = document.querySelector('#select-court')
-  accessibleAutocomplete.enhanceSelectElement({
-    autoselect: true,
-    defaultValue: selectEl.options[selectEl.options.selectedIndex].innerHTML,
-    selectElement: selectEl
-  })
-
-</script>
-{% endblock %}
-

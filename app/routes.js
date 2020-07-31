@@ -3,13 +3,13 @@ const router = express.Router()
 const url = require('url')
 const app = express()
 const lunr = require('lunr')
+const cheerio = require('cheerio')
+const $ = cheerio.load('body')
 const fuzzySearch = require('fuzzy-search')
 const courtDetails = require('./court_details.json')
 const courtSearch = require('./court_search.json')
 let searchList = []
-
-
-
+const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // Add your routes here - above the module.exports line
 
 
@@ -20,6 +20,7 @@ router.post('/search-route', function (req, res) {
   let knowLocation = req.session.data['know-location']
 
     if (knowLocation == 'yes') {
+      req.app.locals.locationSearch = ""
       res.redirect('/location/location-search')
     }
     else 
@@ -40,118 +41,89 @@ router.post('/search-route', function (req, res) {
 // 1.0 Search
 
 router.post('/search-for-location', function (req, res) {
-  /*
-  let courtCode = req.session.data['select-court']
-  if (courtCode === "ccmcc" || courtCode === "probatesc" || courtCode === "divorcesc")  {
-    res.redirect('/individual-location-pages/generic?ctsc=yes&courtname=' + courtCode) 
-  }
-  else {
-    res.redirect('/individual-location-pages/generic?ctsc=no&courtname=' + courtCode) 
-  }
-  */
+
   let searchList = []
   let searchListNames = []
   let locationSearchValue = req.session.data['location-search-value']
   req.app.locals.locationSearch = locationSearchValue
   let documents = courtSearch.courts_search
-
-  let idx = lunr(function(){
-    this.ref('slug')
-    this.field('name')
-    this.field('address')
-    this.field('town_name')
-    this.field('postcode')
-    this.field('number')
-
-    documents.forEach(function(doc) {
-      this.add(doc)
-    }, this)
-  })
-  // if more than one term entered make them both required i.e 'and not or' search
-
-  locationSearchTerm = '+' + locationSearchValue.replace(/ /g, ' +') 
-  console.log('locationSearchTerm ' + locationSearchTerm)
-
-  searchList = idx.search(locationSearchTerm)
-  console.log('idx search ' + JSON.stringify(searchList))
-  if (searchList.length > 1) {
-    req.app.locals.courtsOrTribunals = 'courts or tribunals'
+  //error if no value entered
+  if (locationSearchValue == "") {
+    console.log('no data entered')
+    req.app.locals.errorString = "Field is blank - Enter a court name, address, town or city"
+    req.app.locals.errorFormClass = "govuk-form-group--error"  
+    req.app.locals.errorInputClass = "govuk-input--error" 
+    res.render('location/location-search')
   }
   else {
-    req.app.locals.courtsOrTribunals = 'court or tribunal'
-  }
-  for (let i=0 ; i < searchList.length; i++) {
-    for (j=0; j < documents.length; j++) {
-      if (searchList[i].ref == documents[j].slug) {
-        console.log('documents[j].name ' + documents[j].name)
-        let courtNameSlug = {
-          name: documents[j].name,
-          slug: documents[j].slug.toLowerCase()
-        }
-        searchListNames.push(courtNameSlug)
+    req.app.locals.errorString = ""
+    req.app.locals.errorFormClass = ""
+    req.app.locals.errorInputClass = "" 
 
+// create lunr index and search fields
+    let idx = lunr(function(){
+      this.ref('slug')
+      this.field('name')
+      this.field('address')
+      this.field('town_name')
+      this.field('postcode')
+      this.field('number')
+
+      documents.forEach(function(doc) {
+        this.add(doc)
+      }, this)
+    })
+    // lunr ignores certain words so remove from the search term
+    for (i = 0; i < lunrStopWords.lunrWords.length; i++) {
+      let stopWord = lunrStopWords.lunrWords[i].toLowerCase()
+      let searchValue = locationSearchValue
+      if (searchValue.includes(' ' + stopWord + ' ')) {
+        locationSearchValue = searchValue.replace(' ' + stopWord, '' )
+        console.log('locationSearchValue ' + locationSearchValue)
       }
     }
-  }
-  req.app.locals.searchListNames = searchListNames
-  console.log('search results ' + JSON.stringify(req.app.locals.searchListNames))
-  res.redirect('/location/location-search-results-multiple')
 
-/*
-  req.app.locals.locationSearch = req.session.data['location-search-value']
-  req.app.locals.serviceCentre = false   
+    // if more than one term entered make them both required i.e 'and not or' search
 
+    if (locationSearchValue !== null) {
+      locationSearchTerm = '+' + locationSearchValue.trim().replace(/ /g, ' +') 
+        console.log('locationSearchTerm ' + locationSearchTerm)
+        searchList = idx.search(locationSearchTerm)
+      if (searchList.length > 1) {
+        req.app.locals.courtsOrTribunals = 'courts or tribunals'
+      }
+      else {
+        req.app.locals.courtsOrTribunals = 'court or tribunal'
+      }
+    }
+    for (let i=0 ; i < searchList.length; i++) {
+      for (j=0; j < documents.length; j++) {
+        if (searchList[i].ref == documents[j].slug) {
+          let courtNameSlug = {
+            name: documents[j].name,
+            slug: documents[j].slug.toLowerCase()
+          }
+          searchListNames.push(courtNameSlug)
+        }
+      }
+    }
+    req.app.locals.searchListNames = searchListNames.sort(function(a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
 
-  let searchCourt = locationSearchValue.trim()
-  req.app.locals.locationCCMCC = false
-  req.app.locals.locationProbate = false
-  req.app.locals.locationWycombe = false
-  req.app.locals.locationReading = false
-  req.app.locals.locationWatford = false
-  req.app.locals.locationSlough = false
-  req.app.locals.locationBirmingham = false
-  console.log('searchCourt ' + searchCourt.toLowerCase())
+    // names must be equal
+    return 0;
+    })
 
-  if (searchCourt.toLowerCase().includes('money')) {
-    req.app.locals.serviceCentre = true  
-    req.app.locals.locationCCMCC = true
-    res.redirect('/location/location-search-results-single?courtname=ccmcc')
-  }
-  else if (searchCourt.toLowerCase().includes('probate')) {
-    req.app.locals.serviceCentre = true   
-    req.app.locals.locationProbate = true
-    res.redirect('/location/location-search-results-single?courtname=probatesc')
-  }
-  else if (searchCourt.toLowerCase().includes('divorce')) {
-    req.app.locals.serviceCentre = true   
-    req.app.locals.locationDivorce = true
-    res.redirect('/location/location-search-results-single?courtname=divorcesc')
+    res.render('location/location-search')
   }
 
-  else if (searchCourt.toLowerCase().includes('wycombe')) {
-    req.app.locals.locationWycombe = true
-    res.redirect('/location/location-search-results-single?courtname=wycombeccfc')
-  }
-  else if (searchCourt.toLowerCase().includes('reading')) {
-    req.app.locals.locationReading = true
-    res.redirect('/location/location-search-results-single?courtname=readingccfc')
-  }
-  else if (searchCourt.toLowerCase().includes('watford')) {
-    req.app.locals.locationWatford = true
-    res.redirect('/location/location-search-results-single?courtname=watfordccfc')
-  }
-  else if (searchCourt.toLowerCase().includes('slough')) {
-    req.app.locals.locationSlough = true
-    res.redirect('/location/location-search-results-single?courtname=sloughccfc')
-  }
-  else if (searchCourt.toLowerCase().includes('birmingham')) {
-    req.app.locals.locationBirmingham = true
-    res.redirect('/location/location-search-results-single?courtname=birminghamcfjc')
-  }
-  else {
-  res.redirect('/location/location-search-results-multiple')
-  }
-*/
 })
 
 
@@ -198,6 +170,21 @@ router.post('/choose-service-category', function (req, res) {
 // set default to plural and change if only one court or tribunal found
   req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
+  req.app.locals.moneyClaimsService = false
+  req.app.locals.probateService = false
+  req.app.locals.housingPossessionService = false
+  req.app.locals.bankruptcyService = false
+  req.app.locals.benefitsService = false
+  req.app.locals.employmentService = false
+  req.app.locals.taxService = false
+  req.app.locals.divorceService = false
+  req.app.locals.civilPartnershipService = false
+  req.app.locals.domesticAbuseService = false
+  req.app.locals.forcedMarriageService = false
+  req.app.locals.childService = false
+  req.app.locals.childArrangementsService = false
+  req.app.locals.adoptionService = false
+  req.app.locals.FGMService = false        
   req.app.locals.immigrationAsylumService = false
   req.app.locals.crimeService = false
   req.app.locals.highCourtService = false
@@ -279,7 +266,7 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.serviceCentreMoneyClaims = false
   req.app.locals.childService = false
   req.app.locals.serviceCentre = false   
-  
+  // need to be reset again in case only goes back one page to the service area and not the service category
   req.app.locals.moneyClaimsService = false
   req.app.locals.probateService = false
   req.app.locals.housingPossessionService = false
