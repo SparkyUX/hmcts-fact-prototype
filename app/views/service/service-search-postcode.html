@@ -54,7 +54,7 @@ What is your postcode? - Find a court or tribunal - GOV.UK
   {% set headingHint1 = "We will use the postcode of your children’s home to show you the closest court or tribunal that handles "%}
   {% set headingHint2 = "to them?" %}
 
-{% elseif serviceCentre%}
+{% elseif ctscFlag %}
   {% set headingHint1 = "We will use your postcode to show you the service centre that covers" %}
   {% set headingHint2 = "for your region." %}
 

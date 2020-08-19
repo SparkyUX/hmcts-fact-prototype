@@ -470,11 +470,11 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
 
         Find out more about</br>
-        {% if moneyClaimsServiceAtCourt %}
+        {% if moneyClaimsService %}
             <a class="govuk-link" href="https://www.gov.uk/make-money-claim">starting a money claim application</a>
         {% endif%}
 
-        {% if (divorceServiceAtCourt) or (civilPartnershipServiceAtCourt)%}
+        {% if (divorceService) or (civilPartnershipService)%}
           <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
           </br>
             or
@@ -482,7 +482,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
         {% endif%}
 
-        {% if probateServiceAtCourt %}
+        {% if probateService %}
             <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
         {% endif%}
 
