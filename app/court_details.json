@@ -94,7 +94,7 @@
 			"crown_location_code": null,
 			"county_location_code": 305,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Adoption", "Bankruptcy", "Children", "Divorce", "Domestic violence", "Forced marriage and FGM", "FGM","High Court District Registry", "Housing possession", "Money claims"],
+			"areas_of_law": ["Adoption", "Bankruptcy", "Domestic abuse", "Forced marriage", "Female Genital Mutilation", "FGM","High Court District Registry", "Housing possession", "Money claims"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "bailiffs.reading.countycourt@justice.gov.uk",
@@ -187,7 +187,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Employment"],
+			"areas_of_law": ["Claims against employers"],
 			"types": ["Tribunal"],
 			"emails": [{
 				"address": "watfordet@justice.gov.uk",
@@ -250,7 +250,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": 1076,
-			"areas_of_law": ["Children", "Crime", "Domestic violence", "Social security"],
+			"areas_of_law": ["Child arrangements", "Crime", "Domestic abuse", "Benefits"],
 			"types": ["Magistrates' Court", "Family Court"],
 			"emails": [{
 				"address": "urgent.reading.magistrates@justice.gov.uk",
@@ -410,7 +410,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": 1117,
-			"areas_of_law": ["Adoption", "Children", "Crime", "Divorce", "Domestic violence"],
+			"areas_of_law": ["Adoption", "Child arrangements", "Crime", "Domestic abuse"],
 			"types": ["Magistrates' Court"],
 			"emails": [{
 				"address": "urgent.wycombe.magistrates@justice.gov.uk",
@@ -591,7 +591,7 @@
 			"crown_location_code": null,
 			"county_location_code": 327,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Bankruptcy", "Children", "Divorce", "Domestic violence", "Housing possession", "Money claims"],
+			"areas_of_law": ["Bankruptcy", "Child arrangements", "Domestic abuse", "Housing possession", "Money claims"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "urgent.slough.countycourt@justice.gov.uk",
@@ -667,7 +667,7 @@
 			"crown_location_code": null,
 			"county_location_code": 334,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Children", "Divorce", "Domestic violence", "Housing possession"],
+			"areas_of_law": ["Child arrangements", "Domestic abuse", "Housing possession"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "urgent.staines.countycourt@justice.gov.uk",
@@ -768,7 +768,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": 2849,
-			"areas_of_law": ["Children", "Crime", "Divorce", "Domestic violence"],
+			"areas_of_law": ["Child arrangements", "Crime", "Domestic abuse"],
 			"types": ["Magistrates' Court", "Family Court"],
 			"emails": [{
 				"address": "urgent.staines.magistrates@justice.gov.uk",
@@ -863,7 +863,7 @@
 			"crown_location_code": null,
 			"county_location_code": 362,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Adoption", "Children", "Civil partnership","Divorce", "Domestic violence", "Housing possession", "Money claims"],
+			"areas_of_law": ["Adoption", "Child arrangements", "Domestic abuse", "Housing possession", "Money claims"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "urgent.watford.countycourt@justice.gov.uk",
@@ -933,6 +933,7 @@
 		},
 		{
 			"court_code": "harmondsworthtrib",
+			"distance": "15.0",
 			"name": "Harmondsworth Tribunal Hearing Centre", 
 			"slug": "harmondsworth-tribunal-hearing-centre", "info": "","open": true, "directions": null, 
 			"lat": 51.4846050015393, 
@@ -940,7 +941,7 @@
 			"crown_location_code": null, 
 			"county_location_code": null, 
 			"magistrates_location_code": null, 
-			"areas_of_law": ["Immigration"], 
+			"areas_of_law": ["Immigration and asylum"], 
 			"types": ["Tribunal"], 
 			"emails": [{
 				"address": "HWIAC@justice.gov.uk", "description": "Enquiries", "explanation": "Enquiries and bail applications"}, {
@@ -956,6 +957,8 @@
 
 		{
 			"court_code": "birminghamcfjc",
+			"distance": "108.0",
+
 			"name": "Birmingham Civil and Family Justice Centre", 
 			"slug": "birmingham-civil-and-family-justice-centre", 
 			"open": true, 
@@ -965,7 +968,7 @@
 			"crown_location_code": null, 
 			"county_location_code": 127, 
 			"magistrates_location_code": null, 
-			"areas_of_law": ["Adoption", "Bankruptcy", "Children", "Civil partnership", "Divorce", "Domestic violence", "Forced marriage and FGM", "High Court District Registry", "Housing possession", "Immigration", "Money claims", "Social security"], 
+			"areas_of_law": ["Adoption", "Bankruptcy", "Child arrangements", "Domestic abuse", "Forced marriage", "Female Genital Mutilation", "High Court District Registry", "Housing possession", "Immigration and asylum", "Money claims", "Benefits"], 
 			"types": ["Family Court", "County Court","Administrative Court"], 
 			"emails": [
 				{"address": "bailiffs.birmingham.countycourt@justice.gov.uk", "description": "Bailiffs", "explanation": null},{
@@ -1023,7 +1026,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Money claims"],
+			"areas_of_law": [],
 			"types": ["County Court"],
 			"emails": [{
 				"address": "ccmcce-filing@justice.gov.uk",
@@ -1082,7 +1085,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Probate"],
+			"areas_of_law": [],
 			"types": ["County Court"],
 			"emails": [{
 				"address": "probate-filing@justice.gov.uk",
@@ -1136,7 +1139,7 @@
 			"crown_location_code": null,
 			"county_location_code": null,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Civil partnership", "Divorce"],
+			"areas_of_law": ["Divorce"],
 			"types": ["Family Court"],
 			"emails": [{
 				"address": "divorceunitbse@justice.gov.uk",
@@ -1172,6 +1175,7 @@
 		{"court_code": "oxfordpr","name": "Oxford District Probate Registry", "slug": "oxford-district-probate-registry", "info": "", "open": true, "directions": "We are currently working on personal applications in the main around 5 to 6 weeks old and we will endeavour to take these to grant as soon as possible. We would ask at this time you only contact us if it is absolutely necessary and email us on the addresses above", "lat": 51.7481704504839, "lon": -1.25707212708068, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": ["Probate"], "types": [], "emails": [{"address": "oxforddprenquiries@justice.gov.uk", "description": "Enquiries", "explanation": "Personal Applicants enquiries"}, {"address": "oxforddprsolicitorsenquiries@justice.gov.uk", "description": "Enquiries", "explanation": "Solicitors enquiries"}], "contacts": [{"number": "0300 3030 648", "description": "Applications", "explanation": "Ongoing & Digital Applications"}, {"number": "0300 123 1072", "description": "Enquiries", "explanation": "Help to make a paper application"}, {"number": "96454 Oxford 4", "description": "DX", "explanation": ""}], "opening_times": [], "facilities": [{"description": "<p>Assistance dogs are welcome.</p>", "name": "Assistance dogs"}, {"description": "<p>Disabled access and disabled toilet</p>", "name": "Disabled access"}], "addresses": [{"type": "Visit us or write to us", "address": "Combined Court Building!St Aldates", "town": "Oxford", "postcode": "OX1 1LY"}], "gbs": "P223"},
 		{"court_code": "londonpr","name": "London Probate Department", "slug": "london-probate-department", "info": "", "open": true, "directions": "We are currently working on personal applications in the main around 5 to 6 weeks old and we will endeavour to take these to grant as soon as possible. We would ask at this time you only contact us if it is absolutely necessary and email us on the addresses above", "lat": 51.518436003829, "lon": -0.114515647919463, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": ["Probate"], "types": [], "emails": [{"address": "londonprobate@justice.gov.uk", "description": "Enquiries", "explanation": null}], "contacts": [{"number": "0300 303 0648", "description": "Applications", "explanation": "Ongoing  & Digital Applications"}, {"number": "160011 Kingsway 7", "description": "DX", "explanation": ""}, {"number": "0300 123 1072", "description": "Probate helpline", "explanation": "Help to make a paper application"}], "opening_times": [], "facilities": [{"description": "<p>Baby changing facilities are available.</p>", "name": "Baby changing facility"}, {"description": "<p>Assistance dogs&nbsp;are welcome.</p>", "name": "Assistance dogs"}, {"description": "<p>This court has four interview rooms.</p>\r\n", "name": "Interview room"}, {"description": "<p>Disabled access and disabled toilet</p>", "name": "Disabled access"}], "addresses": [{"type": "Visit us or write to us", "address": "42-49 High Holborn!First Avenue House", "town": "Holborn", "postcode": "WC1V 6NP"}], "gbs": "P225"},
 		{"court_code": "winchesterpr","name": "Winchester District Probate Registry", "slug": "winchester-district-probate-registry", "info": "", "open": true, "directions": "We are currently working on personal applications in the main around 5 to 6 weeks old and we will endeavour to take these to grant as soon as possible. We would ask at this time you only contact us if it is absolutely necessary and email us on the addresses above", "lat": 51.0624478484897, "lon": -1.31898486042345, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": ["Probate"], "types": ["Family Court"], "emails": [{"address": "winchesterdprenquiries@justice.gov.uk", "description": "Enquiries", "explanation": "Personal Applicants enquiries"}, {"address": "winchesterdprsolicitorsenquiries@justice.gov.uk", "description": "Enquiries", "explanation": "Solicitors enquiries"}], "contacts": [{"number": "0300 303 0648", "description": "Applications", "explanation": "Ongoing & Digital Applications"}, {"number": "96900 Winchester 2", "description": "DX", "explanation": ""}, {"number": "0300 123 1072", "description": "Probate helpline", "explanation": "Help to make a paper application"}], "opening_times": [], "facilities": [{"description": "<p>Three interview rooms on upper floor and four in the family suite.</p>\r\n<p>&nbsp;</p>", "name": "Interview room"}, {"description": "<p>Baby changing facilities are available at this court.</p>\r\n", "name": "Baby changing facility"}, {"description": "<p>Loop hearing facilities are available at this court.</p>\r\n", "name": "Loop Hearing"}, {"description": "<p>Parking is not available at the Court, however, the nearest car park is Tower Street/Sussex Street which is less than a five minute walk, and there is a park and ride off Junction 11 as well as two further park and rides off Junction 10 of the M3. Limited blue badge parking is available on site (please contact the venue for details)</p>\r\n", "name": "No parking"}, {"description": "<p>This court has wireless Internet access available within the building.</p>", "name": "Wireless network connection"}, {"description": "<p>Guide dogs are welcome at this court.</p>", "name": "Assistance dogs"}, {"description": "<p>This building has level access to the building entrance, and court room.</p>\r\n<p>&nbsp;</p>", "name": "Disabled access"}], "addresses": [{"type": "Visit us or write to us", "address": "1st Floor!Southside Offices!The Law Courts", "town": "Winchester", "postcode": "SO23 9EL"}], "gbs": "P230"},
-		{"court_code": "administrativecourt","name": "Administrative Court", "slug": "administrative-court", "specialist_court":"Administrative Court","link":"https://www.gov.uk/courts-tribunals/administrative-court","info": "", "open": true, "directions": null, "lat": 51.5136453784373, "lon": -0.113546081010873, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": [], "types": ["Administrative Court"], "emails": [{"address": "administrativecourtoffice.generaloffice@hmcts.x.gsi.gov.uk", "description": "Enquiries", "explanation": null}, {"address": "administrativecourtoffice.listoffice@hmcts.x.gsi.gov.uk", "description": "Listing", "explanation": null}, {"address": "administrativecourtoffice.qb&acotranscriptsrequests@hmcts.x.gsi.gov.uk", "description": "Transcripts", "explanation": null}], "contacts": [{"number": "020 7947 6802", "description": "Fax", "explanation": ""}, {"number": "020 7947 6330", "description": "Listing fax", "explanation": null}, {"number": "0121 250 6319", "description": "Birmingham office", "explanation": null}, {"number": "02920 376460", "description": "Cardiff office", "explanation": null}, {"number": "0113 306 2578", "description": "Leeds office", "explanation": null}, {"number": "0161 240 5313", "description": "Manchester office", "explanation": null}, {"number": "020 7947 6655", "description": "Enquiries", "explanation": "General and listing enquiries - 10am-2pm"}, {"number": "44457 Strand", "description": "DX", "explanation": ""}], "opening_times": [{"description": "Telephone Enquiries from", "hours": "10am to 4pm"}, {"description": "Court counter open", "hours": "10am to 4:30pm"}], "facilities": [], "addresses": [{"type": "Visit us or write to us", "address": "Administrative Court Office!The Royal Courts of Justice!Strand", "town": "London", "postcode": "WC2A 2LL"}], "gbs": null}
+		{"court_code": "administrativecourt","name": "Administrative Court", "slug": "administrative-court", "specialist_court":"Administrative Court","link":"https://www.gov.uk/courts-tribunals/administrative-court","info": "", "open": true, "directions": null, "lat": 51.5136453784373, "lon": -0.113546081010873, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": [], "types": ["Administrative Court"], "emails": [{"address": "administrativecourtoffice.generaloffice@hmcts.x.gsi.gov.uk", "description": "Enquiries", "explanation": null}, {"address": "administrativecourtoffice.listoffice@hmcts.x.gsi.gov.uk", "description": "Listing", "explanation": null}, {"address": "administrativecourtoffice.qb&acotranscriptsrequests@hmcts.x.gsi.gov.uk", "description": "Transcripts", "explanation": null}], "contacts": [{"number": "020 7947 6802", "description": "Fax", "explanation": ""}, {"number": "020 7947 6330", "description": "Listing fax", "explanation": null}, {"number": "0121 250 6319", "description": "Birmingham office", "explanation": null}, {"number": "02920 376460", "description": "Cardiff office", "explanation": null}, {"number": "0113 306 2578", "description": "Leeds office", "explanation": null}, {"number": "0161 240 5313", "description": "Manchester office", "explanation": null}, {"number": "020 7947 6655", "description": "Enquiries", "explanation": "General and listing enquiries - 10am-2pm"}, {"number": "44457 Strand", "description": "DX", "explanation": ""}], "opening_times": [{"description": "Telephone Enquiries from", "hours": "10am to 4pm"}, {"description": "Court counter open", "hours": "10am to 4:30pm"}], "facilities": [], "addresses": [{"type": "Visit us or write to us", "address": "Administrative Court Office!The Royal Courts of Justice!Strand", "town": "London", "postcode": "WC2A 2LL"}], "gbs": null},
+		{"name": "Taylor House Tribunal Hearing Centre", "slug": "taylor-house-tribunal-hearing-centre", "info": "","open": true, "directions": null, "lat": 51.5273955420962, "lon": -0.107441827965064, "crown_location_code": null, "county_location_code": null, "magistrates_location_code": null, "areas_of_law": ["Immigration and asylum", "Tax"], "types": ["Tribunal"], "emails": [{"address": "taylorhousebails@justice.gov.uk", "description": "Enquiries", "explanation": "IAC bail applications"}, {"address": "i.f.a.taylorhouse@justice.gov.uk", "description": "Tribunals", "explanation": "IAC enquiries"}], "contacts": [{"number": "0300 123 1711", "description": "Enquiries", "explanation": ""}, {"number": "0870 739 4055", "description": "Fax", "explanation": "IAC enquiries and bail applications"}], "opening_times": [], "facilities": [{"description": "<p>Assistance dogs are welcome</p>", "name": "Assistance dogs"}, {"description": "<p>Refreshments are available from vending machines on site</p>", "name": "Refreshments"}, {"description": "<p>.</p>", "name": "Loop Hearing"}, {"description": "<p>.</p>", "name": "Interview room"}, {"description": "<p>.</p>", "name": "Prayer / Quiet room"}, {"description": "<p>Are available at this Court</p>", "name": "Baby changing facility"}, {"description": "<p>This building has level access to the building entrance and all floors, lifts to all floors and level access into courtrooms.</p>", "name": "Disabled access"}], "addresses": [{"type": "Visit us or write to us", "address": "Taylor House!88 Rosebery Avenue", "town": "London", "postcode": "EC1R 4QU"}], "gbs": null}
 ]
 }

@@ -1,8 +1,5 @@
 <!-- 1.0 Organic search -->
 {% extends "layout.html" %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% block pageTitle %}
 Search for contact details - Find a court or tribunal - GOV.UK
@@ -63,25 +60,36 @@ Search for contact details - Find a court or tribunal - GOV.UK
         </span>
         </h2>
         <div>
-          <input class="govuk-input govuk-!-width-three-quarters {{errorInputClass}}" id="location-search-value" name="location-search-value" type="text" style="float:left">
+          <input class="govuk-input govuk-!-width-three-quarters {{errorInputClass}}" id="location-search-value" name="location-search-value" type="text" value="{{locationSearch}}" style="float:left">
           <button type="submit" class="search-button" onclick="checkError()"><img src="/public/images/search-icon.png"></button>
         </div>
       </div>
     </form>
     </br>
-    {% if locationSearch %}
+    {% if searchListNames.length > 0 %}
 
-    <p class="govuk-body-m">We found {{searchListNames.length}} {{courtsOrTribunals}} matching your search for '{{locationSearch}}'</p>    
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body-m">We found {{searchListNames.length}} {{courtsOrTribunals}} matching your search for '{{locationSearch}}'</p>    
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    {% for details in searchListNames %}
+      {% for details in searchListNames %}
 
-      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="Reading County Court and Family Court">
-        {{details.name}}
-      </a></h2>
+        <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="Reading County Court and Family Court">
+          {{details.name}}
+        </a></h2>
 
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+    <p class="govuk-heading-s">
+      There are no matching results.
+    </p>
+    <p class="govuk-body">Improve your search results by:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>double-checking your spelling</li>
+      <li>using fewer keywords</li>
+      <li>searching for something less specific</li>
+    </ul>
     {% endif %}
+
   </div>
 </div>
 

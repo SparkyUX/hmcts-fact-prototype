@@ -101,33 +101,15 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 			Contact them to find where to send your documents or ask about your application’s progress.    
 		</p>
 		{%if probateService %}
-			<div class="background-box">
 	    	<br />
+	  			{{courtSearch('Central Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=central-probate-service-centre')}}
+	      	<p class="govuk-body-m">
+	        	This location provides services for {{catchmentArea}}.
+	      	</p>
 
-	  		{{courtSearch('Central Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=central-probate-service-centre')}}
-	      <p class="govuk-body-m">
-	        This location provides services for {{catchmentArea}}.
-	      </p>
-	    </div>
-	    <br />
-
-	    <h2 class="govuk-heading-s">
-	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
-			</h2>
-			<p class="govuk-body-m">
-	      Contact a court listed to make an appointment, for example if you need to deliver a will or stop a probate application.
-	    </p>
-
-  		{{courtSearch('Oxford District Probate Registry','../individual-location-pages/generic?ctsc=no&courtname=oxford-district-probate-registry','28.3 miles')}}
-  		
-  		{{courtSearch('London Probate Department','../individual-location-pages/generic?ctsc=no&courtname=london-probate-department','36.9 miles')}}
-
-  		{{courtSearch('Winchester District Probate Department','../individual-location-pages/generic?ctsc=no&courtname=winchester-district-probate-registry','41.1 miles')}}
 		{% endif %}
 
-
 		{%if moneyClaimsService %}
-			<div class="background-box">
 	    	<br />
 
 				{{courtSearch('County Court Money Claims Centre (CCMCC)','../individual-location-pages/generic?ctsc=yes&courtname=county-court-money-claims-centre-ccmcc')}}
@@ -135,90 +117,39 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 	      <p class="govuk-body-m">
 	        This location provides services for {{catchmentArea}}.
 	      </p>
-	    </div>
-	    <br />
-
-	    <h2 class="govuk-heading-s">
-	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
-			</h2>
-			<p class="govuk-body-m">
-	      These are the nearest courts to you that handle money claims. If you need to find a court for a hearing to put on your N1 form use one of the courts listed.
-	    </p>
-
- 			{{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=reading-county-court-and-family-court','5.6 miles')}}
-
- 			{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=slough-county-court-and-family-court','14.5 miles')}}
 
 		{% endif %}
 
 		{%if (divorceService) or (civilPartnershipService) %}
-		 	
-		 	<div class="background-box">
-		 		<br />
+	 	
 
-				{{courtSearch('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=bury-st-edmunds-regional-divorce-centre')}}
-      
-	      <p class="govuk-body-m">
-	        This location provides services for {{catchmentArea}}.
-	      </p>
-	    </div>
-<!--	    <br />
+	 		<br />
 
-	    <h2 class="govuk-heading-s">
-	  		We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'
-			</h2>
-			<p class="govuk-body-m">
-	      Contact a court listed to make an appointment, for example ...
-	    </p>
-
-	    {{courtSearch('Reading County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=readingccfc','5.6 miles')}}
-
-	    {{courtSearch('High Wycombe County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=wycombeccfc','13.1 miles')}}
-	    	    
-	   	{{courtSearch('Slough County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=sloughccfc','14.5 miles')}}
-
-	    {{courtSearch('Staines County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=stainesccfc','14.6 miles')}}
-
-	    {{courtSearch('Watford County Court and Family Court','../individual-location-pages/generic?ctsc=no&courtname=watfordccfc','15.0 miles')}}	    
--->
+			{{courtSearch('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=bury-st-edmunds-regional-divorce-centre')}}
+  
+      		<p class="govuk-body-m">
+        		This location provides services for {{catchmentArea}}.
+      		</p>
 
 		{% endif %}
 
 
-
-<!--		<hr class="govuk-section-break govuk-section-break--visible">
-		</br>
-		<p class="govuk-body-m">
-		If another court is dealing with your application then you may wish to search by <a href="../location/search-location">location</a> to find it.
-	</p>
--->
 	</div>
-	 <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
-		 <h2 class="govuk-heading-m" >
+	<div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+		<h2 class="govuk-heading-m" >
 		    Related content
-		 </h2>
+		</h2>
 
 	  	<p class="govuk-body-m">
 
-	  		Find out more about<br />
-			
-	  	<a href="{{serviceAreaStartPage}}">{{actionType}}</a>
+	  		Find out more about:
+	  		<br />
+	
+	  		<a href="{{serviceAreaStartPage}}">{{actionType}}</a>
+	  		<br />
 
 		</p>
-    <!-- 
-    {%if probateService %}
-      <h2 class="govuk-heading-m" >
-				Webchat
-			</h2>
-			<p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
-			<ul class="govuk-list govuk-list--bullet">
-			  <li>whether or not you need probate</li>
-			  <li>what forms to fill in</li>
-			  <li>help and advice when filling the forms in</li>
-			</ul>
 
-		{% endif %}
-		-->
 
 
   </div>

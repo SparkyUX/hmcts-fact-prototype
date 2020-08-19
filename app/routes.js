@@ -10,10 +10,10 @@ const courtDetails = require('./court_details.json')
 const courtSearch = require('./court_search.json')
 let searchList = []
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
+const createCorTList = require('./createCorTList');
+
 // Add your routes here - above the module.exports line
-
-
-// 0.1 what do you want to know about the CorT?
+// 0.1 do you know the name of the CorT?
 
 router.post('/search-route', function (req, res) {
 
@@ -39,6 +39,7 @@ router.post('/search-route', function (req, res) {
 })
 
 // 1.0 Search
+// Using lunr for the search but only works for whole words, cannot make it work with wildcards '*''
 
 router.post('/search-for-location', function (req, res) {
 
@@ -73,7 +74,7 @@ router.post('/search-for-location', function (req, res) {
         this.add(doc)
       }, this)
     })
-    // lunr ignores certain words so remove from the search term
+    // lunr ignores certain words and returns no results, so remove from the search term
     for (i = 0; i < lunrStopWords.lunrWords.length; i++) {
       let stopWord = lunrStopWords.lunrWords[i].toLowerCase()
       let searchValue = locationSearchValue
@@ -83,12 +84,14 @@ router.post('/search-for-location', function (req, res) {
       }
     }
 
-    // if more than one term entered make them both required i.e 'and not or' search
+    // if more than one term entered make them both required to narrow down the search
 
     if (locationSearchValue !== null) {
-      locationSearchTerm = '+' + locationSearchValue.trim().replace(/ /g, ' +') 
-        console.log('locationSearchTerm ' + locationSearchTerm)
+      locationSearchTerm = '+' + locationSearchValue.trim().replace(/ /g, ' +')
+      console.log('locationSearchTerm ' + locationSearchTerm)
+
         searchList = idx.search(locationSearchTerm)
+
       if (searchList.length > 1) {
         req.app.locals.courtsOrTribunals = 'courts or tribunals'
       }
@@ -96,6 +99,8 @@ router.post('/search-for-location', function (req, res) {
         req.app.locals.courtsOrTribunals = 'court or tribunal'
       }
     }
+
+    // loop through search results and add the slug to the searchlistnames
     for (let i=0 ; i < searchList.length; i++) {
       for (j=0; j < documents.length; j++) {
         if (searchList[i].ref == documents[j].slug) {
@@ -107,6 +112,7 @@ router.post('/search-for-location', function (req, res) {
         }
       }
     }
+    // make the list of slugs a global variable and sort at the same time
     req.app.locals.searchListNames = searchListNames.sort(function(a, b) {
     var nameA = a.name.toUpperCase(); // ignore upper and lowercase
     var nameB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -133,37 +139,34 @@ router.post('/search-for-location', function (req, res) {
 router.post('/choose-action', function (req, res) {
 
   let chooseAction = req.session.data['choose-action']
-//  req.app.locals.serviceActionType = ""
+  req.app.locals.serviceActionType = ""
 //  req.app.locals.continueService = false
 
     switch (chooseAction) {
 
       case 'send-docs':
-//        req.app.locals.serviceActionType = "start"
-        res.redirect('/service/service-category?action=start')
+        req.app.locals.serviceActionType = "sendDocs"
         break
       case 'case-update':
-//        req.app.locals.serviceActionType = "continueUpdate"
-//        req.app.locals.continueService = true
-        res.redirect('/service/service-category?action=continueupdate')
+       req.app.locals.serviceActionType = "getUpdate"
       break
       case 'find-nearest':
-//        req.app.locals.serviceActionType = "continueFindHearingCentre"
-//        req.app.locals.continueService = true
-        res.redirect('/service/service-category?action=continuehearingcentre')
+        req.app.locals.serviceActionType = "findNearest"
       break
       default :
-        res.redirect('/service/service-category?action=notlisted')
       break
-
+        req.app.locals.serviceActionType = null
 
     }   
+        res.redirect('/service/service-category')
 
 })
 
 // 2.1 choose category
 
 router.post('/choose-service-category', function (req, res) {
+  let actionChosen = req.query.action
+
   let serviceCategory = req.session.data['choose-service-category']
   let pageServiceCategory = ""
 
@@ -189,6 +192,7 @@ router.post('/choose-service-category', function (req, res) {
   req.app.locals.crimeService = false
   req.app.locals.highCourtService = false
 
+// determine the next page
   switch (serviceCategory) {
 
     case 'money':
@@ -214,8 +218,9 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.immigrationAsylumService = true
       req.app.locals.courtCount = 1
       req.app.locals.courtsOrTribunals = 'court or tribunal'
-      req.app.locals.serviceArea = "immigration and asylum"
-      pageServiceCategory = 'service-search-postcode?servicearea=immigrationasylum'
+      req.app.locals.serviceArea = "Immigration and asylum"
+      pageServiceCategory = 'service-search-postcode?servicearea=immigrationandasylum'
+      createCorTList(req.app.locals.serviceArea)
       break
 
     case 'crime':
@@ -224,7 +229,7 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.serviceCentre = false
       req.app.locals.crimeService = true
       req.app.locals.courtCount = 4
-      req.app.locals.serviceArea = "crime"
+      req.app.locals.serviceArea = "Crime"
       pageServiceCategory = 'service-search-postcode?servicearea=crime'
       break    
 
@@ -255,17 +260,17 @@ router.post('/choose-service-category', function (req, res) {
 router.post('/choose-area', function (req, res) {
 
   let serviceArea = req.session.data['choose-service-area'] 
-
+  let searchListNames =[]
 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
-  // serviceAreaLower = serviceArea.toLowerCase()
 
   req.app.locals.serviceCentreProbate = false
   req.app.locals.serviceCentreDivorce = false
   req.app.locals.serviceCentreCivilPartnership = false
   req.app.locals.serviceCentreMoneyClaims = false
   req.app.locals.childService = false
-  req.app.locals.serviceCentre = false   
+  req.app.locals.serviceCentre = false 
+
   // need to be reset again in case only goes back one page to the service area and not the service category
   req.app.locals.moneyClaimsService = false
   req.app.locals.probateService = false
@@ -286,13 +291,9 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.crimeService = false
   req.app.locals.highCourtService = false
 
-
-
-
   req.app.locals.serviceArea = serviceArea.toLowerCase()
 
   // set default to plural and change if only one court or tribunal found
-  req.app.locals.courtsOrTribunals = 'courts or tribunals'
 
 // allocate service start pages
   req.app.locals.serviceAreaStartPage = ""
@@ -309,7 +310,7 @@ router.post('/choose-area', function (req, res) {
   housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
   immigrationAsylumStartPage = 'https://www.gov.uk/immigration-asylum-tribunal'
   moneyClaimsStartPage = 'https://www.gov.uk/make-money-claim'
-  ProbateStartPage = 'https://www.gov.uk/applying-for-probate'
+  probateStartPage = 'https://www.gov.uk/applying-for-probate'
   benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
   taxStartPage = 'https://www.gov.uk/tax-tribunal'
 
@@ -321,14 +322,12 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.serviceAreaStartPage = adoptionStartPage
       req.app.locals.adoptionService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 3
       break
 
     case 'bankruptcy':            
       req.app.locals.serviceAreaStartPage = bankruptcyStartPage
       req.app.locals.bankruptcyService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 2
       break
 
     case 'childarrangements':            
@@ -336,28 +335,24 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.childService = true
       req.app.locals.childArrangementsService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 7
       break
 
     case 'civilpartnership':            
       req.app.locals.serviceAreaStartPage = civilPartnershipStartPage
       req.app.locals.civilPartnershipService = true
       req.app.locals.serviceCentre = true  
-      req.app.locals.courtCount = 5
       break    
 
     case 'divorce':            
       req.app.locals.serviceAreaStartPage = divorceStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.divorceService = true
-      req.app.locals.courtCount = 5
       break
 
     case 'domesticabuse':
       req.app.locals.serviceAreaStartPage = domesticAbuseStartPage
       req.app.locals.domesticAbuseService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 7
       break
 
     case 'claimsagainstemployers':
@@ -366,14 +361,12 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.employmentService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'        
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
       break
 
     case 'forcedmarriage':
       req.app.locals.serviceAreaStartPage = forcedMarriageStartPage
       req.app.locals.courtsOrTribunals = 'court or tribunal'
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
       break
 
     case 'femalegenitalmutilation':            
@@ -381,73 +374,98 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.FGMService = true
       req.app.locals.courtsOrTribunals = 'court or tribunal'  
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
       break
 
     case 'housingpossession':
       req.app.locals.serviceAreaStartPage = housingPossessionStartPage
       req.app.locals.housingPossessionService = true  
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 5
      break
 
-    case 'immigrationasylum':      
+    case 'immigrationandasylum':      
       req.app.locals.serviceAreaStartPage = immigrationAsylumStartPage
       req.app.locals.immigrationService = true  
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
       break
 
     case 'moneyclaims':
       req.app.locals.serviceAreaStartPage = moneyClaimsStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
-      req.app.locals.courtCount = 2
       break   
 
     case 'probate':
-      req.app.locals.serviceAreaStartPage = ProbateStartPage
+      req.app.locals.serviceAreaStartPage = probateStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
-      req.app.locals.courtCount = 3
       break
 
     case 'benefits':
       req.app.locals.serviceAreaStartPage = benefitsStartPage
       req.app.locals.benefitsService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 1
       break
 
     case 'tax':
       req.app.locals.serviceAreaStartPage = taxStartPage
       req.app.locals.taxService = true
       req.app.locals.serviceCentre = false   
-      req.app.locals.courtCount = 0
       break
 
   }
+  if (req.app.locals.divorceService || 
+    (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest')) {
+      req.app.locals.serviceCentreSearch = serviceArea.toLowerCase()
+  }  
+  else {
+    for (let i=0; i < courtDetails.courts.length; i++) {      
+      for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
+        if (courtDetails.courts[i].areas_of_law[j] == serviceArea) {
+          let courtNameSlug = {
+            name: courtDetails.courts[i].name,
+            slug: courtDetails.courts[i].slug.toLowerCase(),
+            distance: courtDetails.courts[i].distance
+          }
+          searchListNames.push(courtNameSlug)
+        }
+      }
+    }
 
-  if (req.app.locals.serviceCentre == true) {
-    req.app.locals.serviceCentreSearch = serviceArea.toLowerCase()
-  }
+    // make the list a global variable and sort at the same time
 
-/*
-    if (((serviceAreaQuery == 'moneyclaims' || serviceAreaQuery == 'probate') && req.app.locals.serviceActionType == 'continueFindHearingCentre' )
-      || req.app.locals.divorceService || req.app.locals.civilPartnershipService ) {
-      console.log('serviceAreaQuery ' + serviceAreaQuery)
-      console.log('req.app.locals.divorceService ' + req.app.locals.divorceService)
-      console.log('req.app.locals.serviceActionType ' + req.app.locals.serviceActionType)
-        res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+    req.app.locals.searchListNames = searchListNames.sort(function(a, b) {
+    var distanceA = a.distance; 
+    var distanceB = b.distance; 
+    if (distanceA < distanceB) {
+      return 1;
+    }
+    if (distanceA > distanceB) {
+      return -1;
+    }
+    // distances must be equal
+    return 0;
+    })
+    
+
+    console.log('searchListNames.length ' + searchListNames.length)
+    req.app.locals.courtCount = searchListNames.length
+    if (searchListNames.length == 1) {
+      req.app.locals.courtsOrTribunals = 'court or tribunal' 
     }
     else {
-      res.redirect('/service/service-search-results-ctsc?servicearea=' + serviceAreaQuery)
+      req.app.locals.courtsOrTribunals = 'courts or tribunals'
     }
   }
-  else {
-    */ 
-  res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
- 
+  console.log('req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
+
+  if (req.app.locals.divorceService || 
+    (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest')) {
+    res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
+  }
+  else
+  {  
+    res.redirect('/service/service-search-postcode?servicearea=' + serviceAreaQuery)
+  }
 
 })
 
@@ -459,26 +477,8 @@ router.post('/service-postcode', function (req, res) {
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-  if (req.app.locals.serviceCentre == true) {     
-    res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
-  }
-  else { 
     res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceArea)
-  }
-
-/*
-  if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'continueFindHearingCentre') {     
-    res.redirect('/service/service-search-results-ctsc?servicearea=' + req.app.locals.serviceCentreSearch)
-  }
-  else if (req.app.locals.serviceCentre == true ) {
-      res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
-
-  }
-  else { 
-    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceCentreSearch)
-  }
-*/
-
+   
 })
 
 
@@ -486,6 +486,7 @@ router.post('/service-postcode', function (req, res) {
 
 router.get('/individual-location-pages/generic', function(req, res) {  
   let courtShortName = req.query.courtname
+  // check if it's a CTSC
   if ( courtShortName.includes('probate-service') || courtShortName.includes('divorce') || courtShortName.includes('money')) {
       req.app.locals.ctscFlag = true
   }
@@ -702,7 +703,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.bankruptcyServiceAtCourt = true
           }
 
-          if (serviceAreasByCourt == 'Social Security') {
+          if (serviceAreasByCourt == 'Benefits') {
             req.app.locals.benefitsServiceAtCourt = true
           }
 
@@ -710,7 +711,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.immigrationServiceAtCourt = true
           }
 
-          if (serviceAreasByCourt == 'Employment') {
+          if (serviceAreasByCourt == 'Claims against employers') {
             req.app.locals.employmentServiceAtCourt = true
           }
 
@@ -729,27 +730,26 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.civilPartnershipServiceAtCourt = true
           }
 
-          if (serviceAreasByCourt == 'Domestic violence') {
+          if (serviceAreasByCourt == 'Domestic abuse') {
             req.app.locals.domesticAbuseServiceAtCourt = true
           }
 
-          if (serviceAreasByCourt == 'Forced marriage and FGM') {
+          if (serviceAreasByCourt == 'Forced marriage') {
             req.app.locals.forcedMarriageServiceAtCourt = true
           }
 
+          if (serviceAreasByCourt == 'Female Genital Mutilation') {
+            req.app.locals.FGMServiceAtCourt = true
+          }
           if (serviceAreasByCourt == 'Crime') {
             req.app.locals.crimeServiceAtCourt = true
           }
-          if (serviceAreasByCourt == 'Children') {
+          if (serviceAreasByCourt == 'Child arrangements') {
             req.app.locals.childArrangementsServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'Adoption') {
             req.app.locals.adoptionServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'FGM') {
-            req.app.locals.FGMServiceAtCourt = true
           }
 
           if (serviceAreasByCourt == 'High Court District Registry') {
@@ -760,7 +760,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
       res.render('individual-location-pages/generic')
       return
     } // if court 
-    // unlisted court so use address details from courts_search list and defaults
+  // unlisted court so use address details from courts_search list and defaults
   }
   console.log('started default ')
 
@@ -770,7 +770,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
     if (courtShortName == courtSearch.courts_search[i].slug.toLowerCase()) {
       req.app.locals.courtName = courtSearch.courts_search[i].name
       // court codes
-      console.log('number ' +  courtSearch.courts_search[i].number)
       req.app.locals.courtCodeCounty = courtSearch.courts_search[i].number
       // addresses
       req.app.locals.courtVisitWriteAddress = true

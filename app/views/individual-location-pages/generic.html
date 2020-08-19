@@ -81,7 +81,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% endif %}
 
-    {% if courtVisitWriteAddress %}
+    {% if courtVisitWriteAddress and (not ctscFlag) %}
 
       <h2 class="govuk-heading-l">
         Visit or contact us:
@@ -546,7 +546,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       {% if employmentServiceAtCourt %}
       <li> 
-        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Claims against employers</a>
+        <a class="govuk-link" href="https://www.gov.uk/employment-tribunals">Claims against employers</a>
       </li>
       {% endif%}
 
@@ -593,7 +593,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">Probate</a>
       </li>
       {% endif%}
-      {% endif %}
+    {% endif %}
 
     </ul>
 
