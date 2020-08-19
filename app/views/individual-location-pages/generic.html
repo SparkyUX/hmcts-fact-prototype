@@ -284,34 +284,21 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </a>
       </p>
 
-      <h3 class="govuk-heading-m">
-        Pay court fees
-      </h3>
-      <p class="govuk-body-m">
-        Make an appointment to pay your court fees in person.
-      </br>
-        Telephone: {{courtPhoneEnquiries}}
-      </br>
-        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
-      </br>
-        Monday to Friday, 10am to 2pm (except public holidays)
-      </br>
-      <a href="https://www.gov.uk/call-charges">
-        Find out about call charges
-      </a>
-      </p>
-      <p class="govuk-body-m">
-        Find out more about <a href="https://www.gov.uk/court-fees-what-they-are/">court fees</a>.
-      </p>
-
-
-
       {% if courtEmailListing %}
         <h3 class="govuk-heading-m">
           Check when your hearing will take place
         </h3>
         <p class="govuk-body-m">
           <a href="mailto:">{{courtEmailListing}}</a>
+        </p>
+      {% endif %}
+
+      {% if courtEmailFamily %}
+        <h3 class="govuk-heading-m">
+          Help with marriage or childcare
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailFamily}}</a>
         </p>
       {% endif %}
 
@@ -324,15 +311,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </p>  
       {% endif %}
 
-      {% if courtEmailFamily %}
-        <h3 class="govuk-heading-m">
-          Help with marriage or childcare
-        </h3>
-        <p class="govuk-body-m">
-          <a href="mailto:">{{courtEmailFamily}}</a>
-        </p>
-      {% endif %}
-
       {% if courtEmailCoP %}
       <h3 class="govuk-heading-m">
         Protection for those who don’t have the legal capacity to make their own decisions (Court of Protection)
@@ -340,12 +318,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
         <a href="mailto:">{{courtEmailCoP}}</a>
       </p>
-      {% endif %}
-
-      {% if (courtEmailAdmin) or (courtEmailHighCourt) or (courtEmailBusProperty) %}  
-        <h2 class="govuk-heading-l">
-          For legal professionals
-        </h2>
       {% endif %}
 
       <h3 class="govuk-heading-m">
@@ -381,7 +353,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Disabled toilet
       </h4>
       <p class="govuk-body-m">
-        The disabled toilet is located on the fourth floor.
+        The disabled toilet is located on the first floor.
       </p>
 
       <h4 class="govuk-heading-s">
@@ -416,7 +388,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Translators or Interpreters
       </h4>
       <p class="govuk-body-m">
-        Get an interpreter at a court or tribunal.
+        <a href="https://www.gov.uk/get-interpreter-at-court-or-tribunal">Get an interpreter at a court or tribunal.</a>
       </p>
       {% endif %}
 

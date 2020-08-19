@@ -193,8 +193,8 @@ router.post('/choose-service-category', function (req, res) {
       pageServiceCategory = 'service-area-money'
       break
 
-    case 'deaths-marriages-civil-partnerships':
-      pageServiceCategory = 'service-area-deaths-marriages-civil-partnerships'
+    case 'probate-divorce-civil-partnerships':
+      pageServiceCategory = 'service-area-probate-divorce-civil-partnerships'
     break
 
     case 'childcare-parenting':
@@ -379,7 +379,6 @@ router.post('/choose-area', function (req, res) {
     }
   }
   console.log('req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
-
 
 
   if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
