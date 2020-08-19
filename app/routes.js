@@ -9,9 +9,27 @@ const fuzzySearch = require('fuzzy-search')
 const courtDetails = require('./court_details.json')
 const courtSearch = require('./court_search.json')
 let searchList = []
+
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
 const createCorTList = require('./routes_functions.js');
+const startPageUrl = [
+  {"service":"Adoption","url":"https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order"},
+  {"service":"Bankruptcy","url":"https://www.gov.uk/bankruptcy"},
+  {"service":"Benefits","url":"https://www.gov.uk/appeal-benefit-decision"},
+  {"service":"Child arrangements","url":"https://www.gov.uk/looking-after-children-divorce"},
+  {"service":"Civil partnership","url":"https://www.gov.uk/divorce"},
+  {"service":"Claims against employers","url":"https://www.gov.uk/employment-tribunals"},
+  {"service":"Divorce","url":"https://www.gov.uk/divorce"},
+  {"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence"},
+  {"service":"Forced marriage","url":"https://www.gov.uk/apply-forced-marriage-protection-order"},
+  {"service":"Female Genital Mutilation","url":"https://www.gov.uk/government/collections/female-genital-mutilation"},
+  {"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants"},
+  {"service":"Immigration and asylum","url":"https://www.gov.uk/immigration-asylum-tribunal"},
+  {"service":"Money claims","url":"https://www.gov.uk/make-money-claim"},
+  {"service":"Probate","url":"https://www.gov.uk/applying-for-probate"},
+  {"service":"Tax","url":"https://www.gov.uk/tax-tribunal"}
+  ]
 
 // Add your routes here - above the module.exports line
 // 0.1 do you know the name of the CorT?
@@ -206,7 +224,6 @@ router.post('/choose-service-category', function (req, res) {
       break
 // service areas without a sub page
     case 'immigration-asylum':
-      req.app.locals.serviceAreaStartPage = 'https://www.gov.uk/immigration-asylum-tribunal'
       req.app.locals.serviceArea = "Immigration and asylum"
       pageServiceCategory = 'service-search-postcode?servicearea=immigrationandasylum'
       req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
@@ -214,7 +231,6 @@ router.post('/choose-service-category', function (req, res) {
       break
 
     case 'crime':
-      req.app.locals.serviceAreaStartPage = ""
       req.app.locals.serviceArea = "Crime"
       pageServiceCategory = 'service-search-postcode?servicearea=crime'
       req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
@@ -222,7 +238,6 @@ router.post('/choose-service-category', function (req, res) {
       break    
 
     case 'high-courts':
-      req.app.locals.serviceAreaStartPage = ""
       req.app.locals.serviceArea = "High Court"
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
       req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
@@ -271,94 +286,32 @@ router.post('/choose-area', function (req, res) {
 // lower case for varaiables on front end pages
   req.app.locals.serviceArea = serviceArea.toLowerCase()
 
-// allocate service start pages
+// set flags
   req.app.locals.serviceAreaStartPage = ""
 
-  adoptionStartPage = 'https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order'
-  bankruptcyStartPage = 'https://www.gov.uk/bankruptcy'
-  childcareStartPage = 'https://www.gov.uk/looking-after-children-divorce'      
-  divorceStartPage = 'https://www.gov.uk/divorce'
-  civilPartnershipStartPage = 'https://www.gov.uk/divorce'
-  domesticAbuseStartPage = 'https://www.gov.uk/injunction-domestic-violence'
-  employmentStartPage = 'https://www.gov.uk/employment-tribunals'
-  forcedMarriageStartPage = 'https://www.gov.uk/apply-forced-marriage-protection-order'
-  FGMStartPage = 'https://www.gov.uk/government/collections/female-genital-mutilation'
-  housingPossessionStartPage = 'https://www.gov.uk/evicting-tenants'
-  immigrationAsylumStartPage = 'https://www.gov.uk/immigration-asylum-tribunal'
-  moneyClaimsStartPage = 'https://www.gov.uk/make-money-claim'
-  probateStartPage = 'https://www.gov.uk/applying-for-probate'
-  benefitsStartPage = 'https://www.gov.uk/appeal-benefit-decision'
-  taxStartPage = 'https://www.gov.uk/tax-tribunal'
-
   switch (serviceAreaQuery) {
-
-    case 'adoption':            
-      req.app.locals.serviceAreaStartPage = adoptionStartPage
-      break
-
-    case 'bankruptcy':            
-      req.app.locals.serviceAreaStartPage = bankruptcyStartPage
-      break
-
     case 'childarrangements':            
-      req.app.locals.serviceAreaStartPage = childcareStartPage
       req.app.locals.childService = true
       break
 
     case 'civilpartnership':            
-      req.app.locals.serviceAreaStartPage = civilPartnershipStartPage
       req.app.locals.civilPartnershipService = true
       req.app.locals.serviceCentre = true  
       break    
 
     case 'divorce':            
-      req.app.locals.serviceAreaStartPage = divorceStartPage
       req.app.locals.divorceService = true
       req.app.locals.serviceCentre = true
       break
 
-    case 'domesticabuse':
-      req.app.locals.serviceAreaStartPage = domesticAbuseStartPage
-      break
-
-    case 'claimsagainstemployers':
-      req.app.locals.serviceAreaStartPage = employmentStartPage
-      break
-
-    case 'forcedmarriage':
-      req.app.locals.serviceAreaStartPage = forcedMarriageStartPage
-      break
-
-    case 'femalegenitalmutilation':            
-      req.app.locals.serviceAreaStartPage = FGMStartPage
-      break
-
-    case 'housingpossession':
-      req.app.locals.serviceAreaStartPage = housingPossessionStartPage
-     break
-
-    case 'immigrationandasylum':      
-      req.app.locals.serviceAreaStartPage = immigrationAsylumStartPage
-      break
-
     case 'moneyclaims':
-      req.app.locals.serviceAreaStartPage = moneyClaimsStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
       break   
 
     case 'probate':
-      req.app.locals.serviceAreaStartPage = probateStartPage
       req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
-      break
-
-    case 'benefits':
-      req.app.locals.serviceAreaStartPage = benefitsStartPage
-      break
-
-    case 'tax':
-      req.app.locals.serviceAreaStartPage = taxStartPage
       break
 
   }
@@ -378,8 +331,6 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.courtsOrTribunals = 'courts or tribunals'
     }
   }
-  console.log('req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
-
 
   if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
     res.redirect('/service/service-search-postcode')
@@ -605,87 +556,33 @@ router.get('/individual-location-pages/generic', function(req, res) {
       } // emails
 
       //service areas to display in sidebar
-      
+      let serviceAreasAtCourt = []
+      let serviceUrl = []
+
       for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-        let serviceAreasByCourt = courtDetails.courts[i].areas_of_law[j]
-        
+        if (courtDetails.courts[i].areas_of_law[j] == 'Crime') {
+          req.app.locals.crimeServiceAtCourt = true
+        }
+        else if (courtDetails.courts[i].areas_of_law[j] == 'High Court') {
+          req.app.locals.highCourtServiceAtCourt = true
+        }
+        else {
+          for (let k=0; k < startPageUrl.length; k++ ) {
+             if (courtDetails.courts[i].areas_of_law[j] == startPageUrl[k].service) {              
+              if (courtDetails.courts[i].areas_of_law[j] == "Child arrangements") {
+                startPageUrl[k].service = "Childcare arrangements if you separate from your partner"  
+              }
+              serviceUrl = startPageUrl[k]
+             }
+          }
+        // add the service url to the array for the loop in 'This location hjandles:
+  
+        serviceAreasAtCourt.push(serviceUrl) 
+        }
+      } // for area of law  
 
-          if (serviceAreasByCourt == 'Money claims') {
-            if (req.app.locals.ctscFlag == true) {
-//              req.app.locals.serviceArea = "money claims"
-            }
-            req.app.locals.moneyClaimsServiceAtCourt = true
-          }
 
-          if (serviceAreasByCourt == 'Probate') {
-            if (req.app.locals.ctscFlag == true) {
-//              req.app.locals.serviceArea = "probate"
-            }
-              req.app.locals.probateServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Housing possession') {
-            req.app.locals.housingPossessionServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Bankruptcy') {
-            req.app.locals.bankruptcyServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Benefits') {
-            req.app.locals.benefitsServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Immigration and asylum') {
-            req.app.locals.immigrationServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Claims against employers') {
-            req.app.locals.employmentServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Tax') {
-            req.app.locals.taxServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Divorce') {
-            if (req.app.locals.ctscFlag == true) {
-//              req.app.locals.serviceArea = "divorce"
-            }
-            req.app.locals.divorceServiceAtCourt = true
-          }
-          
-          if (serviceAreasByCourt == 'Civil Partnership') {
-            req.app.locals.civilPartnershipServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Domestic abuse') {
-            req.app.locals.domesticAbuseServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Forced marriage') {
-            req.app.locals.forcedMarriageServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Female Genital Mutilation') {
-            req.app.locals.FGMServiceAtCourt = true
-          }
-          if (serviceAreasByCourt == 'Crime') {
-            req.app.locals.crimeServiceAtCourt = true
-          }
-          if (serviceAreasByCourt == 'Child arrangements') {
-            req.app.locals.childArrangementsServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'Adoption') {
-            req.app.locals.adoptionServiceAtCourt = true
-          }
-
-          if (serviceAreasByCourt == 'High Court') {
-            req.app.locals.highCourtServiceAtCourt = true
-          }
-          
-      } // for area of law
+      req.app.locals.serviceAreasAtCourt = serviceAreasAtCourt
       res.render('individual-location-pages/generic')
       return
     } // if court 

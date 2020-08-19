@@ -94,7 +94,7 @@
 			"crown_location_code": null,
 			"county_location_code": 305,
 			"magistrates_location_code": null,
-			"areas_of_law": ["Adoption", "Bankruptcy", "Domestic abuse", "Forced marriage", "Female Genital Mutilation", "FGM","High Court", "Housing possession", "Money claims"],
+			"areas_of_law": ["Adoption", "Bankruptcy", "Domestic abuse", "Forced marriage", "Female Genital Mutilation","High Court", "Housing possession", "Money claims"],
 			"types": ["Family Court", "County Court"],
 			"emails": [{
 				"address": "bailiffs.reading.countycourt@justice.gov.uk",

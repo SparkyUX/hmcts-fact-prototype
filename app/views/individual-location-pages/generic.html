@@ -465,110 +465,23 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       This location handles:
     </h3>
     <ul class="govuk-list">
-
-      {% if adoptionServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order">Adoption</a>
-      </li>
-      {% endif%}
-
-      {% if bankruptcyServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/bankruptcy">Bankruptcy</a>
-      </li>
-      {% endif%}
-
-      {% if benefitsServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-social-security-and-child-support">Benefits</a>
-      </li>
-      {% endif%}
-
-      {% if childArrangementsServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/looking-after-children-divorce">Childcare arrangements if you separate from your partner</a>
-      </li>      
-      {% endif%}
-
-      {% if civilPartnershipServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">Civil partnership</a>
-      </li>   
-      {% endif%}
-
-      {% if divorceServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/divorce">Divorce</a>
-      </li>
-      {% endif%}
-
+ 
+      {% for details in serviceAreasAtCourt %}
+        <li>
+          <a class="govuk-link" href={{details.url}}>{{details.service}}</a>
+        </li>
+      {% endfor %}
       {% if crimeServiceAtCourt %}
-      <li>
-        <span class="govuk-body-m">
+        <li>
           Crime
-        </span>
-      </li>
-      {% endif%}
-
-      {% if domesticAbuseServiceAtCourt %}
-      <li> 
-        <a class="govuk-link" href="https://www.gov.uk/injunction-domestic-violence">Domestic abuse</a>
-      </li>
-      {% endif%}
-
-      {% if employmentServiceAtCourt %}
-      <li> 
-        <a class="govuk-link" href="https://www.gov.uk/employment-tribunals">Claims against employers</a>
-      </li>
-      {% endif%}
-
-      {% if FGMServiceAtCourt %}
-      <li>      
-        <a class="govuk-link" href="https://www.gov.uk/government/collections/female-genital-mutilation">Female Genital Mutilation</a>
-      </li>
-      {% endif%}
-
-      {% if forcedMarriageServiceAtCourt %}
-      <li>      
-        <a class="govuk-link" href="https://www.gov.uk/apply-forced-marriage-protection-order">Forced marriage</a>
-      </li>
-      {% endif%}
-
+        </li>
+      {% endif %}
       {% if highCourtServiceAtCourt %}
-      <li>      
-        <span class="govuk-body-m">
-          High Court
-        </span>
-      </li>
-      {% endif%} 
+        High Court
+      {% endif %}
 
-      {% if housingPossessionServiceAtCourt %}     
-      <li>      
-        <a class="govuk-link" href="https://www.gov.uk/evicting-tenants">Housing possession</a>
-      </li>       
-      {% endif%}
-
-      {% if immigrationServiceAtCourt %}     
-      <li>      
-        <a class="govuk-link" href="https://www.gov.uk/courts-tribunals/first-tier-tribunal-immigration-and-asylum">Immigration and Asylum</a>
-      </li>       
-      {% endif%}
-
-      {% if moneyClaimsServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/make-money-claim">Money claims</a>
-      </li>
-      {% endif%}
-
-      {% if probateServiceAtCourt %}
-      <li>
-        <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">Probate</a>
-      </li>
-      {% endif%}
     {% endif %}
-
     </ul>
-
   </div>
 </div>
 {% endblock %}
