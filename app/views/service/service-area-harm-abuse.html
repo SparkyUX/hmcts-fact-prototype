@@ -43,9 +43,6 @@
 
 {% endblock %}
 
-<!-- allow the heading to be changed for selection from What do you want to do? page -->
-{% set pageHeading = "What kind of help do you need with harm and abuse?" %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -57,7 +54,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: pageHeading,
+            text: "What kind of help do you need with harm and abuse?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -99,13 +96,6 @@
       {{ govukButton({
         text: "Continue"
       }) }}
-
-<!--
-      {{ govukDetails({
-        summaryText: "If you need help with this tool",
-        html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
-      }) }}
--->
 
     </form>
   </div>

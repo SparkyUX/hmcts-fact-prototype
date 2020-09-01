@@ -13,22 +13,22 @@ let searchList = []
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
 const createCorTList = require('./routes_functions.js');
-const startPageUrl = [
-  {"service":"Adoption","url":"https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order"},
-  {"service":"Bankruptcy","url":"https://www.gov.uk/bankruptcy"},
-  {"service":"Benefits","url":"https://www.gov.uk/appeal-benefit-decision"},
-  {"service":"Child arrangements","url":"https://www.gov.uk/looking-after-children-divorce"},
-  {"service":"Civil partnership","url":"https://www.gov.uk/divorce"},
-  {"service":"Claims against employers","url":"https://www.gov.uk/employment-tribunals"},
-  {"service":"Divorce","url":"https://www.gov.uk/divorce"},
-  {"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence"},
-  {"service":"Forced marriage","url":"https://www.gov.uk/apply-forced-marriage-protection-order"},
-  {"service":"Female Genital Mutilation","url":"https://www.gov.uk/government/collections/female-genital-mutilation"},
-  {"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants"},
-  {"service":"Immigration and asylum","url":"https://www.gov.uk/immigration-asylum-tribunal"},
-  {"service":"Money claims","url":"https://www.gov.uk/make-money-claim"},
-  {"service":"Probate","url":"https://www.gov.uk/applying-for-probate"},
-  {"service":"Tax","url":"https://www.gov.uk/tax-tribunal"}
+const startPageDetails = [
+  {"service":"Adoption","url":"https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order","online":"","onlineText":""},
+  {"service":"Bankruptcy","url":"https://www.gov.uk/bankruptcy","online":"https://www.gov.uk/apply-for-bankruptcy","onlineText":""},
+  {"service":"Benefits","url":"https://www.gov.uk/appeal-benefit-decision","online":"https://www.gov.uk/appeal-benefit-decision/submit-appeal","onlineText":"Appeal a benefits decision online"},
+  {"service":"Child arrangements","url":"https://www.gov.uk/looking-after-children-divorce","online":"https://apply-to-court-about-child-arrangements.service.justice.gov.uk/","onlineText":""},
+  {"service":"Civil partnership","url":"https://www.gov.uk/end-civil-partnership","online":"","onlineText":"Dissolve a civil partnership online"},
+  {"service":"Claims against employers","url":"https://www.gov.uk/employment-tribunals","online":"","onlineText":""},
+  {"service":"Divorce","url":"https://www.gov.uk/divorce","online":"https://www.gov.uk/apply-for-divorce","onlineText":"Apply for a divorce online"},
+  {"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence","online":"","onlineText":""},
+  {"service":"Forced marriage","url":"https://www.gov.uk/apply-forced-marriage-protection-order","online":"","onlineText":""},
+  {"service":"Female Genital Mutilation","url":"https://www.gov.uk/government/collections/female-genital-mutilation","online":"","onlineText":""},
+  {"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants","online":"https://www.gov.uk/possession-claim-online-recover-property","onlineText":"Make or responding to a possession claim online"},
+  {"service":"Immigration and asylum","url":"https://www.gov.uk/immigration-asylum-tribunal","online":"","onlineText":""},
+  {"service":"Money claims","url":"https://www.gov.uk/make-court-claim-for-money","online":"https://www.gov.uk/make-money-claim","onlineText":"Make a money claim online"},
+  {"service":"Probate","url":"https://www.gov.uk/applying-for-probate","online":"https://www.gov.uk/applying-for-probate/apply-for-probate","onlineText":"Apply for probate online"},
+  {"service":"Tax","url":"https://www.gov.uk/tax-tribunal","online":""}
   ]
 
 // Add your routes here - above the module.exports line
@@ -247,12 +247,8 @@ router.post('/choose-service-category', function (req, res) {
     default:
       pageServiceCategory = 'unknown-service'
       break
-
   }
-
   res.redirect('/service/' + pageServiceCategory)
-
-
 })
 
 // 2.1.a choose service area
@@ -287,8 +283,19 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.serviceArea = serviceArea.toLowerCase()
 
 // set flags
-  req.app.locals.serviceAreaStartPage = ""
+  req.app.locals.onlineStartPage = ""
+  req.app.locals.onlineText = ""
 
+// set the online service url, this is used on the ctsc results page in the 
+  for (let i=0; i < startPageDetails.length; i++ ) {
+     if (serviceArea === startPageDetails[i].service) {    
+     console.log(startPageDetails[i].online)          
+      if (startPageDetails[i].online) {
+        req.app.locals.onlineStartPage = startPageDetails[i].online
+        req.app.locals.onlineText = startPageDetails[i].onlineText
+      }
+     }
+  }
   switch (serviceAreaQuery) {
     case 'childarrangements':            
       req.app.locals.childService = true
@@ -567,12 +574,12 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.highCourtServiceAtCourt = true
         }
         else {
-          for (let k=0; k < startPageUrl.length; k++ ) {
-             if (courtDetails.courts[i].areas_of_law[j] == startPageUrl[k].service) {              
+          for (let k=0; k < startPageDetails.length; k++ ) {
+             if (courtDetails.courts[i].areas_of_law[j] == startPageDetails[k].service) {              
               if (courtDetails.courts[i].areas_of_law[j] == "Child arrangements") {
-                startPageUrl[k].service = "Childcare arrangements if you separate from your partner"  
+                startPageDetails[k].service = "Childcare arrangements if you separate from your partner"  
               }
-              serviceUrl = startPageUrl[k]
+              serviceUrl = startPageDetails[k]
              }
           }
         // add the service url to the array for the loop in 'This location hjandles:

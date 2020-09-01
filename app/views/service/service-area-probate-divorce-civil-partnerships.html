@@ -43,8 +43,6 @@
 
 {% endblock %}
 
-<!-- allow the heading to be changed for selection from What do you want to do? page -->
-{% set pageHeading = "What kind of help do you need with probate, divorce or ending civil partnerships" %}
 
 {% block content %}
 
@@ -57,7 +55,7 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: pageHeading,
+            text: "What kind of help do you need with probate, divorce or ending civil partnerships",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -70,7 +68,7 @@
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Settlement and disputes over a deceased person's property, money and possessions."
+              text: "Applying for probate, storing a will, settlement and disputes over a deceased person's property, money and possessions"
             }
           },
           {
@@ -80,7 +78,7 @@
               classes: "govuk-label--s"
             },
             hint: {
-              text: "End a marriage or get a legal separation or help with money, property and children during a divorce."
+              text: "Ending a marriage, getting a legal separation or help with money, property and children during a divorce."
             }
           },
           {
@@ -109,13 +107,6 @@
       {{ govukButton({
         text: "Continue"
       }) }}
-
-<!--
-      {{ govukDetails({
-        summaryText: "If you need help with this tool",
-        html: "<p>Telephone: 0300 1234 5678</br>Email: help@gov.uk</p>"
-      }) }}
--->
 
     </form>
   </div>

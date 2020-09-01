@@ -65,24 +65,19 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 {% endif %}
 
 {%if probateService %}
-	{% set actionType = "starting a probate application" %}
 	{% set SCstatement1 = "We manage your probate applications at our central service centre." %}
 {% endif %}
 
 {% if divorceService %}
-	{% set actionType = "starting a divorce application" %}
 	{% set SCstatement1 = "We manage divorce applications at our regional divorce units (RDU). This is the nearest RDU to " %}
-	{% set ListStatement1 = "Contact a court listed to make an appointment, for example ..." %}
 {% endif %}
 
 {% if civilPartnershipService %}
-	{% set actionType = "ending a civil partnership" %}
 	{% set SCstatement1 = "We manage applications to end a civil partnership at our regional divorce units (RDU). This is the nearest RDU to " %}
 
 {% endif %}
 
 {%if moneyClaimsService %}
-	{% set actionType = "starting a money claim application" %}
 	{% set SCstatement1 = "We manage your money claims applications at our central service centre." %}
 {% endif %}
 
@@ -98,7 +93,7 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 				 '{{serviceSearchPostcode}}'
 			{% endif %}
 	    <br />
-			Contact them to find where to send your documents or ask about your application’s progress.    
+			Find where to send your documents or ask about your application’s progress.  
 		</p>
 		{%if probateService %}
 	    	<br />
@@ -135,24 +130,19 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 
 
 	</div>
+	{% if onlineText %}
+
 	<div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
 		<h2 class="govuk-heading-m" >
-		    Related content
+		    Apply online
 		</h2>
 
 	  	<p class="govuk-body-m">
-
-	  		Find out more about:
-	  		<br />
-	
-	  		<a href="{{serviceAreaStartPage}}">{{actionType}}</a>
-	  		<br />
-
+	  		<a href="{{onlineStartPage}}">{{onlineText}}</a>
 		</p>
 
-
-
-  </div>
+  	</div>
+	{% endif %}
 
 
  </div>
