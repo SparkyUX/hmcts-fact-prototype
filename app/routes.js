@@ -286,7 +286,7 @@ router.post('/choose-area', function (req, res) {
   req.app.locals.onlineStartPage = ""
   req.app.locals.onlineText = ""
 
-// set the online service url, this is used on the ctsc results page in the 
+// set the online service url, this is used on the ctsc results page
   for (let i=0; i < startPageDetails.length; i++ ) {
      if (serviceArea === startPageDetails[i].service) {    
      console.log(startPageDetails[i].online)          
@@ -371,11 +371,42 @@ router.post('/service-postcode', function (req, res) {
 
 // 1.2a , 2.1.4a individual court
 
-router.get('/individual-location-pages/generic', function(req, res) {  
+router.get('/individual-location-pages/generic', function(req, res) { 
+
   let courtShortName = req.query.courtname
-  // check if it's a CTSC
-  if ( courtShortName.includes('probate-service') || courtShortName.includes('divorce') || courtShortName.includes('money')) {
-      req.app.locals.ctscFlag = true
+  // check if it's a CTSC and set flags if come through search page
+
+  if ( courtShortName.includes('probate-service') ){
+    req.app.locals.ctscFlag = true
+    req.app.locals.probateService = true
+    req.app.locals.divorceService = false
+    req.app.locals.civilPartnershipService = false
+    req.app.locals.moneyClaimsService = false
+
+    req.app.locals.serviceArea = "probate"
+  }
+
+  else if (courtShortName.includes('divorce') ) {
+    console.log('divorce shortname')
+    req.app.locals.ctscFlag = true
+    req.app.locals.divorceService = true
+    req.app.locals.civilPartnershipService = true
+    req.app.locals.moneyClaimsService = false
+    req.app.locals.probateService = false
+
+    req.app.locals.serviceArea = "divorce"
+
+  }
+
+  else if (courtShortName.includes('money')) {
+    req.app.locals.ctscFlag = true
+    req.app.locals.moneyClaimsService = true
+    req.app.locals.probateService = false
+    req.app.locals.divorceService = false
+    req.app.locals.civilPartnershipService = false
+
+    req.app.locals.serviceArea = "money claims"
+
   }
   else {
       req.app.locals.ctscFlag = false

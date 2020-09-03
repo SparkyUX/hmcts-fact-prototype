@@ -392,34 +392,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </p>
       {% endif %}
 
-      <h2 class="govuk-heading-l">
-        Court codes for legal professionals
-      </h2>
-
-      {%if courtCodeCounty %}
-        <p class="govuk-body-m govuk-!-font-weight-bold">
-          County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
-        </p>
-      {% endif %}
-      
-      {%if courtCodeCrown %}
-        <p class="govuk-body-m govuk-!-font-weight-bold">
-          Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
-        </p>
-      {% endif %}
-
-      {%if courtCodeMagistrates %}
-        <p class="govuk-body-m govuk-!-font-weight-bold">
-          Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
-        </p>
-      {% endif %}
-
-      {% if courtDXNumber %}
-
-      <p class="govuk-body-m govuk-!-font-weight-bold">
-        DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
-      </p> 
-    {% endif %}
 
   </div>
 
@@ -445,15 +417,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         {% if moneyClaimsService %}
             <a class="govuk-link" href="https://www.gov.uk/make-court-claim-for-money">starting a money claim application</a>
         {% endif%}
-
-        {% if (divorceService) or (civilPartnershipService)%}
+        {% if divorceService %}
           <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
           </br>
-            or
-          </br>
+        {% endif%}
+        {% if civilPartnershipService %}
           <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
         {% endif%}
-
         {% if probateService %}
             <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
         {% endif%}
@@ -471,6 +441,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           <a class="govuk-link" href={{details.url}}>{{details.service}}</a>
         </li>
       {% endfor %}
+
       {% if crimeServiceAtCourt %}
         <li>
           Crime
@@ -479,9 +450,44 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       {% if highCourtServiceAtCourt %}
         High Court
       {% endif %}
-
+      </ul>
     {% endif %}
-    </ul>
+
+      <h3 class="govuk-heading-m">
+        Useful links:
+      </h3>
+      <p class="govuk-body-m">
+        <a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure">   Make a complaint</a>
+      </p>
+
+      <h3 class="govuk-heading-m">
+        Court codes for legal professionals:
+      </h3>
+
+      {%if courtCodeCounty %}
+        <p class="govuk-body-m">
+          County court Location Code:<span class="govuk-body-m"> {{courtCodeCounty}}</span>
+        </p>
+      {% endif %}
+      
+      {%if courtCodeCrown %}
+        <p class="govuk-body-m">
+          Crown court Location Code:<span class="govuk-body-m"> {{courtCodeCrown}}</span>
+        </p>
+      {% endif %}
+
+      {%if courtCodeMagistrates %}
+        <p class="govuk-body-m">
+          Magistrates' Court Location Code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
+        </p>
+      {% endif %}
+
+      {% if courtDXNumber %}
+
+        <p class="govuk-body-m">
+          DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
+        </p> 
+      {% endif %}
   </div>
 </div>
 {% endblock %}
