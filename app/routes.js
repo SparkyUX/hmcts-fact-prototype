@@ -670,7 +670,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtPhoneUrgent = '01234 567 890'
           req.app.locals.courtPhoneCoP = '01234 567 891'
           req.app.locals.courtPhoneHighCourt = '01234 567 892'
-          req.app.locals.courtDXNumber = '01234 567 893'
+          req.app.locals.courtDXNumber = '01234 ' +  courtSearch.courts_search[i].town_name + ' 4'
 
           req.app.locals.courtEmailEnquiries = 'enquiries.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
           req.app.locals.courtEmailUrgent = 'urgent.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
