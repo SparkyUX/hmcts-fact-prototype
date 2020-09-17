@@ -12,24 +12,8 @@ let searchList = []
 
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
-const createCorTList = require('./routes_functions.js');
-const startPageDetails = [
-  {"service":"Adoption","url":"https://www.gov.uk/child-adoption/applying-for-an-adoption-court-order","online":"","onlineText":""},
-  {"service":"Bankruptcy","url":"https://www.gov.uk/bankruptcy","online":"https://www.gov.uk/apply-for-bankruptcy","onlineText":""},
-  {"service":"Benefits","url":"https://www.gov.uk/appeal-benefit-decision","online":"https://www.gov.uk/appeal-benefit-decision/submit-appeal","onlineText":"Appeal a benefits decision online"},
-  {"service":"Child arrangements","url":"https://www.gov.uk/looking-after-children-divorce","online":"https://apply-to-court-about-child-arrangements.service.justice.gov.uk/","onlineText":""},
-  {"service":"Civil partnership","url":"https://www.gov.uk/end-civil-partnership","online":"","onlineText":"Dissolve a civil partnership online"},
-  {"service":"Claims against employers","url":"https://www.gov.uk/employment-tribunals","online":"","onlineText":""},
-  {"service":"Divorce","url":"https://www.gov.uk/divorce","online":"https://www.gov.uk/apply-for-divorce","onlineText":"Apply for a divorce online"},
-  {"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence","online":"","onlineText":""},
-  {"service":"Forced marriage","url":"https://www.gov.uk/apply-forced-marriage-protection-order","online":"","onlineText":""},
-  {"service":"Female Genital Mutilation","url":"https://www.gov.uk/government/collections/female-genital-mutilation","online":"","onlineText":""},
-  {"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants","online":"https://www.gov.uk/possession-claim-online-recover-property","onlineText":"Make or responding to a possession claim online"},
-  {"service":"Immigration and asylum","url":"https://www.gov.uk/immigration-asylum-tribunal","online":"","onlineText":""},
-  {"service":"Money claims","url":"https://www.gov.uk/make-court-claim-for-money","online":"https://www.gov.uk/make-money-claim","onlineText":"Make a money claim online"},
-  {"service":"Probate","url":"https://www.gov.uk/applying-for-probate","online":"https://www.gov.uk/applying-for-probate/apply-for-probate","onlineText":"Apply for probate online"},
-  {"service":"Tax","url":"https://www.gov.uk/tax-tribunal","online":""}
-  ]
+const createCorTList = require('./createCorTList.js');
+const getServiceUrls = require('./getServiceUrls.js');
 
 // Add your routes here - above the module.exports line
 // 0.1 do you know the name of the CorT?
@@ -157,7 +141,7 @@ router.post('/search-for-location', function (req, res) {
 })
 
 
-// 2.0 Choose action
+// 2.0 Choose action - don't know the name of the court
 
 
 router.post('/choose-action', function (req, res) {
@@ -166,29 +150,31 @@ router.post('/choose-action', function (req, res) {
   req.app.locals.serviceActionType = ""
 //  req.app.locals.continueService = false
 
-    switch (chooseAction) {
+  switch (chooseAction) {
 
-      case 'send-docs':
-        req.app.locals.serviceActionType = "sendDocs"
-        break
-      case 'case-update':
-       req.app.locals.serviceActionType = "getUpdate"
+    case 'send-docs':
+      req.app.locals.serviceActionType = "sendDocs"
       break
-      case 'find-nearest':
-        req.app.locals.serviceActionType = "findNearest"
-      break
-      default :
-      break
-        req.app.locals.serviceActionType = null
-
-    }   
-        res.redirect('/service/service-category')
+    case 'case-update':
+     req.app.locals.serviceActionType = "getUpdate"
+    break
+    case 'find-nearest':
+      req.app.locals.serviceActionType = "findNearest"
+    break
+    default :
+      req.app.locals.serviceActionType = null
+    break
+  }   
+  res.redirect('/service/service-category')
 
 })
 
 // 2.1 choose category
 
 router.post('/choose-service-category', function (req, res) {
+  // iniitialise the start pages
+  getServiceUrls()
+
   let actionChosen = req.query.action
 
   let serviceCategory = req.session.data['choose-service-category']
@@ -202,7 +188,13 @@ router.post('/choose-service-category', function (req, res) {
   req.app.locals.divorceService = false
   req.app.locals.civilPartnershipService = false
   req.app.locals.childService = false
+  req.app.locals.sjsService = false
+  req.app.locals.crimeService = false
   req.app.locals.serviceCentre = false
+  req.app.locals.regionalCentre = false
+
+  req.app.locals.onlineStartPage = ""
+  req.app.locals.onlineText = ""
 
 // determine the next page
   switch (serviceCategory) {
@@ -222,20 +214,26 @@ router.post('/choose-service-category', function (req, res) {
     case 'harm-abuse':
       pageServiceCategory = 'service-area-harm-abuse'
       break
-// service areas without a sub page
+
+    case 'crime':
+    console.log('req.app.locals.serviceActionType ' + req.app.locals.serviceActionType)
+      if (req.app.locals.serviceActionType === "findNearest") {
+        pageServiceCategory = 'service-search-postcode?servicearea=crime'
+      }
+      else {
+      pageServiceCategory = 'service-area-crime'
+      }
+      break
+
+    // service areas without a sub page
     case 'immigration-asylum':
       req.app.locals.serviceArea = "Immigration and asylum"
       pageServiceCategory = 'service-search-postcode?servicearea=immigrationandasylum'
       req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
       req.app.locals.courtCount = req.app.locals.searchListNames.length
+      serviceStartUrls = getServiceUrls(req.app.locals.serviceArea)
+      req.app.locals.serviceAreaStartPage = serviceStartUrls.url
       break
-
-    case 'crime':
-      req.app.locals.serviceArea = "Crime"
-      pageServiceCategory = 'service-search-postcode?servicearea=crime'
-      req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
-      req.app.locals.courtCount = req.app.locals.searchListNames.length
-      break    
 
     case 'high-courts':
       req.app.locals.serviceArea = "High Court"
@@ -260,33 +258,33 @@ router.post('/choose-area', function (req, res) {
 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
 
-  // used to determine messages
-  /*
-  req.app.locals.serviceCentreProbate = false
-  req.app.locals.serviceCentreDivorce = false
-  req.app.locals.serviceCentreCivilPartnership = false
-  req.app.locals.serviceCentreMoneyClaims = false
-*/
   // child service used for message on postcode page
   req.app.locals.childService = false
 
-  // used for display on individual court page
   req.app.locals.serviceCentre = false 
+  req.app.locals.regionalCentre = false
 
   // need to be reset again in case only goes back one page to the service area and not the service category
   req.app.locals.moneyClaimsService = false
   req.app.locals.probateService = false
   req.app.locals.divorceService = false
   req.app.locals.civilPartnershipService = false
+  req.app.locals.sjsService = false
+  req.app.locals.crimeService = false
+
 
 // lower case for varaiables on front end pages
   req.app.locals.serviceArea = serviceArea.toLowerCase()
 
-// set flags
   req.app.locals.onlineStartPage = ""
   req.app.locals.onlineText = ""
 
 // set the online service url, this is used on the ctsc results page
+  serviceStartUrls = getServiceUrls(serviceArea)
+  req.app.locals.onlineStartPage = serviceStartUrls.online
+  req.app.locals.onlineText = serviceStartUrls.onlineText
+  req.app.locals.serviceAreaStartPage = serviceStartUrls.url
+/*
   for (let i=0; i < startPageDetails.length; i++ ) {
      if (serviceArea === startPageDetails[i].service) {    
      console.log(startPageDetails[i].online)          
@@ -296,6 +294,9 @@ router.post('/choose-area', function (req, res) {
       }
      }
   }
+  */
+  console.log('serviceAreaQuery ' + serviceAreaQuery)
+  console.log('serviceArea ' + serviceArea)
   switch (serviceAreaQuery) {
     case 'childarrangements':            
       req.app.locals.childService = true
@@ -303,12 +304,12 @@ router.post('/choose-area', function (req, res) {
 
     case 'civilpartnership':            
       req.app.locals.civilPartnershipService = true
-      req.app.locals.serviceCentre = true  
+      req.app.locals.regionalCentre = true  
       break    
 
     case 'divorce':            
       req.app.locals.divorceService = true
-      req.app.locals.serviceCentre = true
+      req.app.locals.regionalCentre = true
       break
 
     case 'moneyclaims':
@@ -321,12 +322,29 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.probateService = true
       break
 
+    case 'singlejusticeprocedure':
+
+      req.app.locals.serviceCentre = true
+      req.app.locals.sjsService = true
+      break
+    
+    case 'othercrime':   
+   
+      req.app.locals.serviceCentre = true
+      req.app.locals.crimeService = true
+      break
+
   }
 
-  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService ||
+  // if a regional centre or (service centre and option send docs or get update) go to the postcode page = do nothing
+
+  if (req.app.locals.regionalCentre ||
     (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest')) {
-  }  
+    console.log('no action')
+  } 
+  // otherwise show the list
   else {
+    console.log('get list')
     req.app.locals.searchListNames = createCorTList(serviceArea)
 
     console.log('req.app.locals.searchListNames.length ' + req.app.locals.searchListNames.length)
@@ -339,7 +357,7 @@ router.post('/choose-area', function (req, res) {
     }
   }
 
-  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
+  if (req.app.locals.regionalCentre) {
     res.redirect('/service/service-search-postcode')
   }
   else if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest') {
@@ -360,7 +378,8 @@ router.post('/service-postcode', function (req, res) {
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
+//  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
+  if (req.app.locals.regional) {
     res.redirect('/service/service-search-results-ctsc')
   }
   else {
@@ -406,6 +425,19 @@ router.get('/individual-location-pages/generic', function(req, res) {
     req.app.locals.civilPartnershipService = false
 
     req.app.locals.serviceArea = "money claims"
+
+  }
+  else if (courtShortName.includes('single-justice')) {
+    req.app.locals.ctscFlag = true
+
+    req.app.locals.serviceArea = "minor crimes"
+
+  }
+
+  else if (courtShortName.includes('crime')) {
+    req.app.locals.ctscFlag = true
+
+    req.app.locals.serviceArea = "major crimes"
 
   }
   else {
@@ -605,17 +637,13 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.highCourtServiceAtCourt = true
         }
         else {
-          for (let k=0; k < startPageDetails.length; k++ ) {
-             if (courtDetails.courts[i].areas_of_law[j] == startPageDetails[k].service) {              
-              if (courtDetails.courts[i].areas_of_law[j] == "Child arrangements") {
-                startPageDetails[k].service = "Childcare arrangements if you separate from your partner"  
-              }
-              serviceUrl = startPageDetails[k]
-             }
-          }
-        // add the service url to the array for the loop in 'This location hjandles:
-  
-        serviceAreasAtCourt.push(serviceUrl) 
+            serviceStartUrls = getServiceUrls(courtDetails.courts[i].areas_of_law[j])
+            serviceUrl = serviceStartUrls      
+            if (courtDetails.courts[i].areas_of_law[j] == "Child arrangements") {
+              serviceUrl.service = "Childcare arrangements if you separate from your partner"  
+            }
+        // add the service url to the array for the loop in 'This location handles:
+          serviceAreasAtCourt.push(serviceUrl) 
         }
       } // for area of law  
 
@@ -624,8 +652,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
       res.render('individual-location-pages/generic')
       return
     } // if court 
-  // unlisted court so use address details from courts_search list and defaults
+
   }
+  // unlisted court so use address details from courts_search list and defaults
   console.log('started default ')
 
 

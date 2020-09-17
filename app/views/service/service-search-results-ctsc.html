@@ -58,27 +58,44 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 
 {% block content %}
 
-{% if (moneyClaimsService) or (probateService) %}
-  {% set catchmentArea = "all of England and Wales" %}
-{% else %}
+{% if regionalCentre %}
   {% set catchmentArea = "the South-East of England" %}
+{% else %}
+  {% set catchmentArea = "all of England and Wales" %}
 {% endif %}
 
 {%if probateService %}
 	{% set SCstatement1 = "We manage your probate applications at our central service centre." %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your application’s progress." %}
 {% endif %}
+
 
 {% if divorceService %}
 	{% set SCstatement1 = "We manage divorce applications at our regional divorce units (RDU). This is the nearest RDU to " %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your application’s progress." %}
 {% endif %}
 
 {% if civilPartnershipService %}
 	{% set SCstatement1 = "We manage applications to end a civil partnership at our regional divorce units (RDU). This is the nearest RDU to " %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your application’s progress." %}
 
 {% endif %}
 
 {%if moneyClaimsService %}
 	{% set SCstatement1 = "We manage your money claims applications at our central service centre." %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your application’s progress." %}
+{% endif %}
+
+{%if sjsService %}
+	{% set SCstatement1 = "We manage minor criminal offences at our central service centre." %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your case" %}
+
+{% endif %}
+
+{%if crimeService %}
+	{% set SCstatement1 = "We manage major criminal offences at our central service centre." %}
+	{% set SCstatement2 = "Find where to send your documents or ask about your case" %}
+
 {% endif %}
 
 <div class="govuk-grid-row">
@@ -93,9 +110,9 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 				 '{{serviceSearchPostcode}}'
 			{% endif %}
 	    <br />
-			Find where to send your documents or ask about your application’s progress.  
+	    	{{SCstatement2}}
 		</p>
-		{%if probateService %}
+		{% if probateService %}
 	    	<br />
 	  			{{courtSearch('Central Probate Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=central-probate-service-centre')}}
 	      	<p class="govuk-body-m">
@@ -104,7 +121,7 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 
 		{% endif %}
 
-		{%if moneyClaimsService %}
+		{% if moneyClaimsService %}
 	    	<br />
 
 				{{courtSearch('County Court Money Claims Centre (CCMCC)','../individual-location-pages/generic?ctsc=yes&courtname=county-court-money-claims-centre-ccmcc')}}
@@ -115,12 +132,36 @@ Search results for area of law - Find a Court or Tribunal - GOV.UK
 
 		{% endif %}
 
-		{%if (divorceService) or (civilPartnershipService) %}
+		{% if (divorceService) or (civilPartnershipService) %}
 	 	
 
 	 		<br />
 
 			{{courtSearch('Bury St Edmunds Regional Divorce Centre','../individual-location-pages/generic?ctsc=yes&courtname=bury-st-edmunds-regional-divorce-centre')}}
+  
+      		<p class="govuk-body-m">
+        		This location provides services for {{catchmentArea}}.
+      		</p>
+
+		{% endif %}
+
+		{% if sjsService %}
+	 
+	 		<br />
+
+			{{courtSearch('Single Justice Procedure Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=single-justice-procedure-service-centre')}}
+  
+      		<p class="govuk-body-m">
+        		This location provides services for {{catchmentArea}}.
+      		</p>
+
+		{% endif %}
+
+		{% if crimeService %}
+	 	
+	 		<br />
+
+			{{courtSearch('Crime Service Centre','../individual-location-pages/generic?ctsc=yes&courtname=crime-service-centre')}}
   
       		<p class="govuk-body-m">
         		This location provides services for {{catchmentArea}}.

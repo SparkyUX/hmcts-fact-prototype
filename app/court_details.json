@@ -1074,8 +1074,8 @@
 		{
 			"court_code": "probatesc",
 			"ctsc_flag": "Y",
-			"name": "Central Probate Service Centre",
-			"slug": "central-probate-service-centre",
+			"name": "Probate Service Centre",
+			"slug": "probate-service-centre",
 			"info": "",
 			"open": true,
 			"directions": null,
@@ -1122,6 +1122,113 @@
 				"address": "HMCTS Probate!PO Box 12625!!",
 				"town": "Harlow",
 				"postcode": "CM20 9QE"
+			}],
+			"gbs": null
+		},
+		{
+			"court_code": "sjssc",
+			"distance": 0,	
+			"ctsc_flag": "Y",
+			"name": "Single Justice Procedure Service Centre",
+			"slug": "single-justice-procedure-service-centre",
+			"info": "",
+			"open": true,
+			"directions": null,
+			"lat": null,
+			"lon": null,
+			"crown_location_code": null,
+			"county_location_code": null,
+			"magistrates_location_code": null,
+			"areas_of_law": ["Single justice procedure"],
+			"types": ["Crime"],
+			"emails": [{
+				"address": "single-justice-filing@justice.gov.uk",
+				"description": "Filing and records",
+				"explanation": null
+			}, {
+				"address": "urgent@justice.gov.uk",
+				"description": "Urgent",
+				"explanation": null
+			}, {
+				"address": "sjs.customerenquiries@justice.gov.uk",
+				"description": "Enquiries",
+				"explanation": null
+			}],
+			"contacts": [{
+				"number": "0300 123 1072",
+				"description": "Enquiries",
+				"explanation": "for Welsh \u2013 Speakers"
+			}, {
+				"number": " 0300 303 0648",
+				"description": "Fax",
+				"explanation": ""
+			}, {
+				"number": "702634 Stoke 5",
+				"description": "DX",
+				"explanation": ""
+			}],
+			"opening_times": [{
+				"description": "Telephone Enquiries from",
+				"hours": "Monday to Friday 8:30am to 5pm"
+			}],
+			"facilities": [],
+			"addresses": [{
+				"type": "Postal",
+				"address": "HMCTS Single Justice Procedure!PO Box 12625!!",
+				"town": "Stoke",
+				"postcode": "ST14 W34"
+			}],
+			"gbs": null
+		},
+		{
+			"court_code": "non-sjssc",
+			"distance": 0,	
+			"ctsc_flag": "Y",
+			"name": "Crime Service Centre",
+			"slug": "crime-service-centre",
+			"info": "",
+			"open": true,
+			"directions": null,
+			"lat": null,
+			"lon": null,
+			"crown_location_code": null,
+			"county_location_code": null,
+			"magistrates_location_code": null,
+			"areas_of_law": ["Other crime"],
+			"types": ["Crime"],
+			"emails": [{
+				"address": "crimeg@justice.gov.uk",
+				"description": "Filing and records",
+				"explanation": null
+			}, 
+		 	{
+				"address": "crime.customerenquiries@justice.gov.uk",
+				"description": "Enquiries",
+				"explanation": null
+			}],
+			"contacts": [{
+				"number": "0300 123 1072",
+				"description": "Enquiries",
+				"explanation": "for Welsh \u2013 Speakers"
+			}, {
+				"number": " 0300 303 0648",
+				"description": "Fax",
+				"explanation": ""
+			}, {
+				"number": "702634 Birmingham 4",
+				"description": "DX",
+				"explanation": ""
+			}],
+			"opening_times": [{
+				"description": "Telephone Enquiries from",
+				"hours": "Monday to Friday 8:30am to 5pm"
+			}],
+			"facilities": [],
+			"addresses": [{
+				"type": "Postal",
+				"address": "HMCTS Crime Service Centre!PO Box 12625!!",
+				"town": "Birmingham",
+				"postcode": "B1 WS44"
 			}],
 			"gbs": null
 		},

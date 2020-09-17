@@ -84,6 +84,19 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     </p>
   </div>
   {% endif %}
+  {% if onlineText %}
+
+  <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
+    <h2 class="govuk-heading-m" >
+        Apply online
+    </h2>
+
+      <p class="govuk-body-m">
+        <a href="{{onlineStartPage}}">{{onlineText}}</a>
+    </p>
+
+    </div>
+  {% endif %}
 
   </div>
 

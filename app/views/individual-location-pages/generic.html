@@ -63,9 +63,12 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <h2 class="govuk-heading-l">
         Contact us      
       </h2>
+
+
       <h3 class="govuk-heading-m">
-        Address
+        Write to us:
       </h3>
+
       <p class="govuk-body-m">
         {{courtWriteAddress1}}
         {% if courtWriteAddress2 %}
@@ -220,7 +223,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
         Send us your documents: <a href="mailto:">{{courtEmailEnquiries}}</a>
         <br />
+        {% if (not sjsService) or (not crimeService) %}
+
           Get an update with your application: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      
+        {% else %}
+          Get an update on your case: <a href="mailto:">{{courtEmailEnquiries}}</a>
+        {% endif %}
       </p>
 
       {% if probateServiceAtCourt %}
@@ -407,28 +416,32 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
     {% if ctscFlag %}
 
-       <h2 class="govuk-heading-m" >
-        Related content
-     </h2>
+      {% if probateService or divorceService or civilPartnershipService or moneyClaimsService %}
 
-      <p class="govuk-body-m">
+        <h2 class="govuk-heading-m" >
+          Related content
+        </h2>
 
-        Find out more about</br>
-        {% if moneyClaimsService %}
-            <a class="govuk-link" href="https://www.gov.uk/make-court-claim-for-money">starting a money claim application</a>
-        {% endif%}
-        {% if divorceService %}
-          <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
-          </br>
-        {% endif%}
-        {% if civilPartnershipService %}
-          <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
-        {% endif%}
-        {% if probateService %}
-            <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
-        {% endif%}
+        <p class="govuk-body-m">
 
-      </p>
+          Find out more about</br>
+          {% if moneyClaimsService %}
+              <a class="govuk-link" href="https://www.gov.uk/make-court-claim-for-money">starting a money claim application</a>
+          {% endif%}
+          {% if divorceService %}
+            <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
+            </br>
+          {% endif%}
+          {% if civilPartnershipService %}
+            <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
+          {% endif%}
+          {% if probateService %}
+              <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
+          {% endif%}
+
+        </p>
+      {% endif %}
+
     {% else %}
     
     <h3 class="govuk-heading-m">

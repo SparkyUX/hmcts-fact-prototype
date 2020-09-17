@@ -15,7 +15,7 @@ const createCorTList = function(serviceArea) {
     }
   }
 
-  // make the list a global variable and sort at the same time
+  //  sort and return the same time
  
   searchListNamesSorted = searchListNames.sort(function(a, b) {
     return a.distance - b.distance

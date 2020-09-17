@@ -1,7 +1,7 @@
-<!-- 2.xa harm and abuse -->
+<!-- 2.xe Crime -->
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Choose a service area - harm and abuse - Find a court or tribunal - GOV.UK
+  Choose a service area - crime - Find a court or tribunal - GOV.UK
 {% endblock %}
 {% block beforeContent %}
 
@@ -54,40 +54,30 @@
         name: "choose-service-area",
         fieldset: {
           legend: {
-            text: "What kind of help do you need with harm and abuse?",
+            text: "What kind of help do you need with crime?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         items: [
           {
-            value: "Domestic abuse",
-            text: "Domestic abuse",
+            value: "Single justice procedure",
+            text: "Minor criminal offences",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Support for an injunction if you've been the victim of domestic abuse."
+              text: "TV licence fines, speeding or parking fines."
             }
           },
           {
-            value: "Female Genital Mutilation",
-            text: "Female Genital Mutilation (FGM)",
+            value: "Other crime",
+            text: "Major criminal offences",
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: "Support for legal protection for victims of female genital mutilation."
-            }
-          },
-          {
-            value: "Forced marriage",
-            text: "Forced marriage",
-            label: {
-              classes: "govuk-label--s"
-            },
-            hint: {
-              text: "Being made to marry against your will."
+              text: "Major criminal cases at a Crown or Magistrates’ Court."
             }
           }
         ]
