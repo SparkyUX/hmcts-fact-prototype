@@ -48,13 +48,17 @@ Search for contact details - Find a court or tribunal - GOV.UK
 
       <h1 class="govuk-heading-l">What is the name or address of the court or tribunal?
       <span class="govuk-hint">
-        If you have a letter, email or text from HM Courts and Tribunal Services (HMCTS), it will tell you the name or address of the court or tribunal.
+       The name of the court or tribunal can be found on a letter, email or text from us.
       </span></h1>
 
       <div class="govuk-form-group {{errorFormClass}}" id="form-group">
         <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="location-search-value">
             Enter a court name, address, town or city
           </label>
+          <div id="event-name-hint" class="govuk-hint">
+            For example, Blackburn Family Court.
+          </div>
+
         <span id="no-court-entered-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span> {{errorString}}
         </span>
