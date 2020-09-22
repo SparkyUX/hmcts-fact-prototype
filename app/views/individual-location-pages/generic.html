@@ -41,11 +41,12 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block content %}
-{% if (moneyClaimsService) or (probateService) %}
-  {% set catchmentArea = "England and Wales" %}
+{% if regionalCentre %}
+  {% set catchmentArea = "the South-East of England" %}
 {% else %}
-  {% set catchmentArea = "the South-East" %}
+  {% set catchmentArea = "all of England and Wales" %}
 {% endif %}
+
 
 <div class="govuk-grid-row">
 
