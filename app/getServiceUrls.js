@@ -9,7 +9,7 @@ const startPageDetails = [
 	{"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence","online":"","onlineText":""},
 	{"service":"Forced marriage","url":"https://www.gov.uk/apply-forced-marriage-protection-order","online":"","onlineText":""},
 	{"service":"Female Genital Mutilation","url":"https://www.gov.uk/government/collections/female-genital-mutilation","online":"","onlineText":""},
-	{"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants","online":"https://www.gov.uk/possession-claim-online-recover-property","onlineText":"Make or responding to a possession claim online"},
+	{"service":"Housing possession","url":"https://www.gov.uk/evicting-tenants","online":"https://www.gov.uk/possession-claim-online-recover-property","onlineText":"Make or respond to a possession claim online"},
 	{"service":"Immigration and asylum","url":"https://www.gov.uk/immigration-asylum-tribunal","online":"","onlineText":""},
 	{"service":"Money claims","url":"https://www.gov.uk/make-court-claim-for-money","online":"https://www.gov.uk/make-money-claim","onlineText":"Make a money claim online"},
 	{"service":"Probate","url":"https://www.gov.uk/applying-for-probate","online":"https://www.gov.uk/applying-for-probate/apply-for-probate","onlineText":"Apply for probate online"},

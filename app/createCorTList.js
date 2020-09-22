@@ -15,7 +15,7 @@ const createCorTList = function(serviceArea) {
     }
   }
 
-  //  sort and return the same time
+  //  sort and return the results at the same time
  
   searchListNamesSorted = searchListNames.sort(function(a, b) {
     return a.distance - b.distance
