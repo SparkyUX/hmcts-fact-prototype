@@ -3,7 +3,7 @@ const startPageDetails = [
 	{"service":"Bankruptcy","url":"https://www.gov.uk/bankruptcy","online":"https://www.gov.uk/apply-for-bankruptcy","onlineText":""},
 	{"service":"Benefits","url":"https://www.gov.uk/appeal-benefit-decision","online":"https://www.gov.uk/appeal-benefit-decision/submit-appeal","onlineText":"Appeal a benefits decision online"},
 	{"service":"Child arrangements","url":"https://www.gov.uk/looking-after-children-divorce","online":"https://apply-to-court-about-child-arrangements.service.justice.gov.uk/","onlineText":""},
-	{"service":"Civil partnership","url":"https://www.gov.uk/end-civil-partnership","online":"","onlineText":"Dissolve a civil partnership online"},
+	{"service":"Civil partnership","url":"https://www.gov.uk/end-civil-partnership","online":"","onlineText":""},
 	{"service":"Claims against employers","url":"https://www.gov.uk/employment-tribunals","online":"","onlineText":""},
 	{"service":"Divorce","url":"https://www.gov.uk/divorce","online":"https://www.gov.uk/apply-for-divorce","onlineText":"Apply for a divorce online"},
 	{"service":"Domestic abuse","url":"https://www.gov.uk/injunction-domestic-violence","online":"","onlineText":""},

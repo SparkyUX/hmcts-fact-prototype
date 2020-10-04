@@ -45,7 +45,7 @@ What is your postcode? - Find a court or tribunal - GOV.UK
 {% block content %}
 
 {% if childService %}
-  {% set pageHeading = "What is the postcode where the child or children live?" %}
+  {% set pageHeading = "What is the postcode where the children live?" %}
   {% set postcodeTitle ="Enter the postcode where the children live" %}
 
 {% else %}
@@ -56,7 +56,7 @@ What is your postcode? - Find a court or tribunal - GOV.UK
 
 {% if childService %}
   {% set headingHint1 = "We will use the postcode of your children’s home to show you the closest court or tribunal that handles "%}
-  {% set headingHint2 = "to them?" %}
+  {% set headingHint2 = "to them." %}
 
 {% elseif (divorceService) or (civilPartnershipService) %}
   {% set headingHint1 = "We will use your postcode to show you the service centre that covers" %}
