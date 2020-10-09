@@ -257,130 +257,142 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <h3 class="govuk-heading-m">
         Opening times
       </h3>
+      {% for details in openingTimes %}
 
       <p class="govuk-body-m">
-        Court building Monday to Friday, 9am to 5pm
+        {{details.openingDescription}}: {{details.openingHours}}
       </p>
 
-      <h3 id="court-office" class="govuk-heading-m">
-        Email
-      </h3>
+      {% endfor %}
+      <div>
+        <h3 class="govuk-heading-m">
+          Email
+        </h3>
 
-      {% for details in emailDetails %}
+        {% for details in emailDetails %}
+          <div class="govuk-grid-row">
 
-        <div class="govuk-grid-column-one-third" style="padding-left:0">
-          <p class="govuk-body-m">
-           {{details.emailDescription}}
-          </p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m" style="word-wrap: break-word"> <a href="mailto:{{details.emailAddress}}">
-           {{details.emailAddress}}</a>
-            {% if details.phoneExplanation %}
-            </br>
-            <p class="govuk-body-m">      
-              ({{details.emailExplanation}})
-
-            {% endif %}
-            </p>
+            <div class="govuk-grid-column-one-third">
+              <p class="govuk-body-m">
+               {{details.emailDescription}}
+              </p>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+              <p class="govuk-body-m" style="word-wrap: break-word"> <a href="mailto:{{details.emailAddress}}">
+              {{details.emailAddress}}</a>
+                {% if details.phoneExplanation %}
+                </br>
+                <p class="govuk-body-m">      
+                  ({{details.emailExplanation}})
+                </p>
+                {% endif %}
+              </p>
+            </div>
           </div>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <div>
 
         <h3 id="court-office" class="govuk-heading-m">
           Telephone
         </h3>
 
-      {% for details in phoneDetails %}
+        {% for details in phoneDetails %}
+          <div class="govuk-grid-row">
 
-        <div class="govuk-grid-column-one-third" style="padding-left:0">
-          <p class="govuk-body-m">
-           {{details.phoneDescription}}
-          </p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m"><a href="tel:{{details.phoneNumber}}">
-           {{details.phoneNumber}}</a>
-          {% if details.phoneExplanation %}
-            </br>
-              ({{details.phoneExplanation}})
-            </p>
-          {% endif %}
-        </div>
+            <div class="govuk-grid-column-one-third">
+              <p class="govuk-body-m">
+               {{details.phoneDescription}}
+              </p>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+              <p class="govuk-body-m"><a href="tel:{{details.phoneNumber}}">
+               {{details.phoneNumber}}</a>
+              {% if details.phoneExplanation %}
+                </br>
+                  ({{details.phoneExplanation}})
+                </p>
+                {% endif %}
+              </p>
+            </div>
+          </div>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <div>
+        <h3 class="govuk-heading-m">
+          Building facilities
+        </h3>
 
-      <h3 class="govuk-heading-m">
-        Building facilities
-      </h3>
+        <p class="govuk-body-m">
+          If you have a disability and need help coming to a hearing, please contact <a href="mailto:">{{courtEmailEnquiries}}</a> or {{courtPhoneEnquiries}}.
+        </p>
 
-      <p class="govuk-body-m">
-        If you have a disability and need help coming to a hearing, please contact <a href="mailto:">{{courtEmailEnquiries}}</a> or {{courtPhoneEnquiries}}.
-      </p>
+        <h4 class="govuk-heading-s">
+          Parking
+        </h4>
+        <p class="govuk-body-m">
+          No parking facilities are available. The court is in the town centre near the train and bus stations.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Parking
-      </h4>
-      <p class="govuk-body-m">
-        No parking facilities are available. The court is in the town centre near the train and bus stations.
-      </p>
+        <h4 class="govuk-heading-s">
+          Disabled access
+        </h4>
+        <p class="govuk-body-m">
+          This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access into courtrooms and hearing rooms.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Disabled access
-      </h4>
-      <p class="govuk-body-m">
-        This building has a ramp to the building entrance, a lift between the ground floor and the first floor, and level access into courtrooms and hearing rooms.
-      </p>
+        <h4 class="govuk-heading-s">
+          Assistance dogs
+        </h4>
+        <p class="govuk-body-m">
+          Assistance dogs are welcome.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Assistance dogs
-      </h4>
-      <p class="govuk-body-m">
-        Assistance dogs are welcome.
-      </p>
+        <h4 class="govuk-heading-s">
+          Disabled toilet
+        </h4>
+        <p class="govuk-body-m">
+          The disabled toilet is located on the first floor.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Disabled toilet
-      </h4>
-      <p class="govuk-body-m">
-        The disabled toilet is located on the first floor.
-      </p>
+        <h4 class="govuk-heading-s">
+          Hearing loop
+        </h4>
+        <p class="govuk-body-m">
+          The building has hearing enhancement facilities available by prior arrangement with the <a href="#court-office">Court office</a>.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Hearing loop
-      </h4>
-      <p class="govuk-body-m">
-        The building has hearing enhancement facilities available by prior arrangement with the <a href="#court-office">Court office</a>.
-      </p>
+        <h4 class="govuk-heading-s">
+          Food and drink
+        </h4>
+        <p class="govuk-body-m">
+          Food and drink are available. Cafe opening times: Monday to Friday, 9am to 2pm.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Food and drink
-      </h4>
-      <p class="govuk-body-m">
-        Food and drink are available. Cafe opening times: Monday to Friday, 9am to 2pm.
-      </p>
+        <h4 class="govuk-heading-s">
+          Children
+        </h4>
+        <p class="govuk-body-m">
+          Baby changing facilities are available in the disabled toilets on the fourth floor.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Children
-      </h4>
-      <p class="govuk-body-m">
-        Baby changing facilities are available in the disabled toilets on the fourth floor.
-      </p>
+        <h4 class="govuk-heading-s">
+          Prayer or Quiet room
+        </h4>
+        <p class="govuk-body-m">
+          There is a prayer or quiet room available on the first floor.
+        </p>
 
-      <h4 class="govuk-heading-s">
-        Prayer or Quiet room
-      </h4>
-      <p class="govuk-body-m">
-        There is a prayer or quiet room available on the first floor.
-      </p>
-
-      <h4 class="govuk-heading-s">
-        Translators or Interpreters
-      </h4>
-      <p class="govuk-body-m">
-        <a href="https://www.gov.uk/get-interpreter-at-court-or-tribunal">Get an interpreter at a court or tribunal.</a>
-      </p>
-      {% endif %}
+        <h4 class="govuk-heading-s">
+          Translators or Interpreters
+        </h4>
+        <p class="govuk-body-m">
+          <a href="https://www.gov.uk/get-interpreter-at-court-or-tribunal">Get an interpreter at a court or tribunal.</a>
+        </p>
+        {% endif %}
+    </div>
 
 
   </div>
@@ -448,10 +460,11 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     {% endif %}
 
       <h3 class="govuk-heading-m">
-        Useful links:
+        Make a complaint
       </h3>
       <p class="govuk-body-m">
-        <a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure">   Make a complaint</a>
+        <a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure">   
+        Contact us to make a complaint</a>
       </p>
 
       <h3 class="govuk-heading-m">
@@ -470,7 +483,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </p>
       {% endif %}
 
-      {%if courtCodeMagistrates %}
+      {% if courtCodeMagistrates %}
         <p class="govuk-body-m">
           Magistrates' Court location code:<span class="govuk-body-m"> {{courtCodeMagistrates}}</span>
         </p>
@@ -483,26 +496,29 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </p> 
       {% endif %}
 
-      <h3 class="govuk-heading-m">
-        Professional users’ court and tribunal access scheme
-      </h3>
-      {% if PUAS %}
-        <p class="govuk-body-m">
-          This location participates in this scheme.
-        </br>
-        <p class="govuk-body-m">
-          <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
-            Register for the scheme
-          </a>
-        </p>
-      {% else %}
-        <p class="govuk-body-m">
-          This location does not participates in this scheme.
-        </br> 
-          <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
-            Learn about the scheme
-          </a>
-        </p>
+      {% if not ctscFlag %}
+        <h3 class="govuk-heading-m">
+          Professional users’ court and tribunal access scheme
+        </h3>
+
+        {% if PUAS %}
+          <p class="govuk-body-m">
+            This location participates in this scheme.
+          </br>
+          <p class="govuk-body-m">
+            <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
+              Register for the scheme
+            </a>
+          </p>
+        {% else %}
+          <p class="govuk-body-m">
+            This location does not participates in this scheme.
+          </br> 
+            <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
+              Learn about the scheme
+            </a>
+          </p>
+        {% endif %}   
       {% endif %}   
   </div>
 </div>

@@ -476,8 +476,11 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.highCourtServiceAtCourt = false
   req.app.locals.crimeServiceAtCourt = false
 
+  req.app.locals.courtPhoneEnquiries = '01234 567 890'
   
-  for (let i=0; i < courtDetails.courts.length; i++) {      
+  for (let i=0; i < courtDetails.courts.length; i++) {  
+
+    
 
     if (courtShortName == courtDetails.courts[i].slug) {
 
@@ -507,6 +510,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             }
 
             req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
             req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
           }
 
@@ -522,6 +526,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             }
 
             req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
+            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
             req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
 
           }
@@ -536,10 +541,13 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.courtWriteAddress3 = addressSplit[2]
           }
           req.app.locals.courtWriteTown = courtDetails.courts[i].addresses[j].town 
+          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
+
           req.app.locals.courtWritePostcode = courtDetails.courts[i].addresses[j].postcode
 
         }
       }
+
       // text fields
       req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info
       req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
@@ -550,16 +558,15 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // image src
       req.app.locals.courtImgLoc = '/public/images/' + courtShortName + '.jpg' 
       // opening times
+      let openingTimesDetails = []
 
       for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
-        if (courtDetails.courts[i].opening_times[j].description == "Court building open") {
-          req.app.locals.courtOpenBuilding = courtDetails.courts[i].opening_times[j].hours
-        }
-        if (courtDetails.courts[i].opening_times[j].description == "Court counter open") {
-          req.app.locals.courtOpenCounter = courtDetails.courts[i].opening_times[j].hours
-
-        }
+        let openingDescription = courtDetails.courts[i].opening_times[j].description
+        let openingHours =   courtDetails.courts[i].opening_times[j].hours
+        let openingDetails = {openingDescription,openingHours}
+        openingTimesDetails.push(openingDetails) 
       }
+      req.app.locals.openingTimes = openingTimesDetails
 
       // contacts phone
       let contactPhoneDetails = []
@@ -574,12 +581,12 @@ router.get('/individual-location-pages/generic', function(req, res) {
           let phoneNumber = courtDetails.courts[i].contacts[j].number
           let phoneExplanation = courtDetails.courts[i].contacts[j].explanation
           let phoneDetails = {phoneDescription,phoneNumber,phoneExplanation}
-          console.log('phoneDetails ' + JSON.stringify(phoneDetails))
           contactPhoneDetails.push(phoneDetails) 
         }
-        console.log('phoneDetails ' + JSON.stringify(contactPhoneDetails))
-        req.app.locals.phoneDetails = contactPhoneDetails
-      } 
+      }         
+      console.log('phoneDetails ' + JSON.stringify(contactPhoneDetails))
+      req.app.locals.phoneDetails = contactPhoneDetails
+      console.log('req.app.locals.phoneDetails ' + JSON.stringify(req.app.locals.phoneDetails))
       // contacts
       //  email
       let contactEmailDetails = []
