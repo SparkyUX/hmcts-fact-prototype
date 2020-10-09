@@ -562,39 +562,54 @@ router.get('/individual-location-pages/generic', function(req, res) {
       }
 
       // contacts phone
-      let contactPhoneDetails = []
 
       for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
-
+        if (courtDetails.courts[i].contacts[j].description == "Enquiries") {
+          req.app.locals.courtPhoneEnquiries = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description == "Urgent") {
+          req.app.locals.courtPhoneUrgent = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].explanation == "Court of Protection") {
+          req.app.locals.courtPhoneCoP = courtDetails.courts[i].contacts[j].number
+        }
+        if (courtDetails.courts[i].contacts[j].description == "High Court") {
+          req.app.locals.courtPhoneHighCourt = courtDetails.courts[i].contacts[j].number
+        }
         if (courtDetails.courts[i].contacts[j].description == "DX") {
           req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
+
         }
-        else {
-          let phoneDescription = courtDetails.courts[i].contacts[j].description
-          let phoneNumber = courtDetails.courts[i].contacts[j].number
-          let phoneExplanation = courtDetails.courts[i].contacts[j].explanation
-          let phoneDetails = {phoneDescription,phoneNumber,phoneExplanation}
-          console.log('phoneDetails ' + JSON.stringify(phoneDetails))
-          contactPhoneDetails.push(phoneDetails) 
-        }
-        console.log('phoneDetails ' + JSON.stringify(contactPhoneDetails))
-        req.app.locals.phoneDetails = contactPhoneDetails
-      } 
-      // contacts
+      } // contacts
       //  email
-      let contactEmailDetails = []
 
       for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
-
-          let emailDescription = courtDetails.courts[i].emails[j].description
-          let emailAddress = courtDetails.courts[i].emails[j].address
-          let emailExplanation = courtDetails.courts[i].emails[j].explanation
-          let emailDetails = {emailDescription,emailAddress,emailExplanation}
-          console.log('emailDetails ' + JSON.stringify(emailDetails))
-          contactEmailDetails.push(emailDetails) 
+        if (courtDetails.courts[i].emails[j].description == "Enquiries") {
+          req.app.locals.courtEmailEnquiries = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description == "Urgent") {
+          req.app.locals.courtEmailUrgent = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description == "Listing") {
+          req.app.locals.courtEmailListing = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].description == "Bailiffs") {
+          req.app.locals.courtEmailBaillifs = courtDetails.courts[i].emails[j].address
+        }        
+        if (courtDetails.courts[i].emails[j].description == "Family queries") {
+          req.app.locals.courtEmailFamily = courtDetails.courts[i].emails[j].address
+        }
+        if (courtDetails.courts[i].emails[j].explanation == "Court of Protection") {
+          req.app.locals.courtEmailCoP = courtDetails.courts[i].emails[j].address
+        }   
+        if (courtDetails.courts[i].emails[j].description == "MCOL") {
+          req.app.locals.courtEmailMCOL = courtDetails.courts[i].emails[j].address
+        }         
+        if (courtDetails.courts[i].emails[j].description == "Small claims") {
+          req.app.locals.courtEmailCMC = courtDetails.courts[i].emails[j].address
+        }
 
       } // emails
-      req.app.locals.emailDetails = contactEmailDetails
 
       //service areas to display in sidebar
       let serviceAreasAtCourt = []

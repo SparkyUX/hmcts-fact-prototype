@@ -261,54 +261,74 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       <p class="govuk-body-m">
         Court building Monday to Friday, 9am to 5pm
       </p>
-
       <h3 id="court-office" class="govuk-heading-m">
-        Email
+        General enquiries
       </h3>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailEnquiries}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
 
-      {% for details in emailDetails %}
+      <h3 class="govuk-heading-m">
+        Urgent in-person application
+      </h3>
+      <p class="govuk-body-m">
+        Make an appointment if someone’s personal safety, business or assets are at risk only.
+      </p>
+      <p class="govuk-body-m">
+       Telephone: {{courtPhoneEnquiries}}
+      </br>
+        Email: <a href="mailto:">{{courtEmailUrgent}}</a>
+      </br>
+        Monday to Friday, 10am to 2pm (except public holidays)
+      </br>
+      <a href="https://www.gov.uk/call-charges">
+        Find out about call charges
+      </a>
+      </p>
 
-        <div class="govuk-grid-column-one-third" style="padding-left:0">
-          <p class="govuk-body-m">
-           {{details.emailDescription}}
-          </p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m" style="word-wrap: break-word"> <a href="mailto:{{details.emailAddress}}">
-           {{details.emailAddress}}</a>
-            {% if details.phoneExplanation %}
-            </br>
-            <p class="govuk-body-m">      
-              ({{details.emailExplanation}})
-
-            {% endif %}
-            </p>
-          </div>
-
-      {% endfor %}
-
-        <h3 id="court-office" class="govuk-heading-m">
-          Telephone
+      {% if courtEmailListing %}
+        <h3 class="govuk-heading-m">
+          Check when your hearing will take place
         </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailListing}}</a>
+        </p>
+      {% endif %}
 
-      {% for details in phoneDetails %}
+      {% if courtEmailFamily %}
+        <h3 class="govuk-heading-m">
+          Help with marriage or childcare
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailFamily}}</a>
+        </p>
+      {% endif %}
 
-        <div class="govuk-grid-column-one-third" style="padding-left:0">
-          <p class="govuk-body-m">
-           {{details.phoneDescription}}
-          </p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-m"><a href="tel:{{details.phoneNumber}}">
-           {{details.phoneNumber}}</a>
-          {% if details.phoneExplanation %}
-            </br>
-              ({{details.phoneExplanation}})
-            </p>
-          {% endif %}
-        </div>
+      {% if courtEmailBaillifs %}
+        <h3 class="govuk-heading-m">
+          Help with debt collection
+        </h3>
+        <p class="govuk-body-m">
+          <a href="mailto:">{{courtEmailBaillifs}}</a>
+        </p>  
+      {% endif %}
 
-      {% endfor %}
+      {% if courtEmailCoP %}
+      <h3 class="govuk-heading-m">
+        Protection for those who don’t have the legal capacity to make their own decisions (Court of Protection)
+      </h3>
+      <p class="govuk-body-m">
+        <a href="mailto:">{{courtEmailCoP}}</a>
+      </p>
+      {% endif %}
 
       <h3 class="govuk-heading-m">
         Building facilities
@@ -482,28 +502,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           DX:<span class="govuk-body-m"> {{courtDXNumber}}</span>
         </p> 
       {% endif %}
-
-      <h3 class="govuk-heading-m">
-        Professional users’ court and tribunal access scheme
-      </h3>
-      {% if PUAS %}
-        <p class="govuk-body-m">
-          This location participates in this scheme.
-        </br>
-        <p class="govuk-body-m">
-          <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
-            Register for the scheme
-          </a>
-        </p>
-      {% else %}
-        <p class="govuk-body-m">
-          This location does not participates in this scheme.
-        </br> 
-          <a href="https://www.gov.uk/guidance/professional-users-court-and-tribunal-access-scheme">
-            Learn about the scheme
-          </a>
-        </p>
-      {% endif %}   
   </div>
 </div>
 {% endblock %}
