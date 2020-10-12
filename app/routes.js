@@ -72,7 +72,7 @@ router.post('/search-for-location', function (req, res) {
     let idx = lunr(function(){
       this.ref('slug')
       this.field('name')
-      this.field('address')
+//      this.field('address')
       this.field('town_name')
       this.field('postcode')
       this.field('number')
