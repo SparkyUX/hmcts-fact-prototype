@@ -584,9 +584,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           contactPhoneDetails.push(phoneDetails) 
         }
       }         
-      console.log('phoneDetails ' + JSON.stringify(contactPhoneDetails))
       req.app.locals.phoneDetails = contactPhoneDetails
-      console.log('req.app.locals.phoneDetails ' + JSON.stringify(req.app.locals.phoneDetails))
       // contacts
       //  email
       let contactEmailDetails = []
@@ -597,7 +595,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
           let emailAddress = courtDetails.courts[i].emails[j].address
           let emailExplanation = courtDetails.courts[i].emails[j].explanation
           let emailDetails = {emailDescription,emailAddress,emailExplanation}
-          console.log('emailDetails ' + JSON.stringify(emailDetails))
           contactEmailDetails.push(emailDetails) 
 
       } // emails

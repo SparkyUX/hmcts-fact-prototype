@@ -25,7 +25,6 @@ const getServiceUrls = function(serviceArea) {
 	  for (let i=0; i < startPageDetails.length; i++ ) {
 	    if (serviceArea === startPageDetails[i].service) {
 
-	      console.log('fn startPageDetails[i].service ' + startPageDetails[i].service)          
 	      startPageRecord = startPageDetails[i]
 	    }
 	  }

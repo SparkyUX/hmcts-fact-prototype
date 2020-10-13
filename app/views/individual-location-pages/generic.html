@@ -133,9 +133,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 
       </p>
     </div>
-    {% endif %}
 
-    {% if courtSeparateAddress %}
     <div class="govuk-grid-column-one-half" style="padding-left: 0px">
 
       <h2 class="govuk-heading-l">
@@ -244,14 +242,14 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           <li>help and advice when filling the forms in</li>
         </ul>
       {% endif %}
-
+    </div>
     {% else %}
       {% if courtSeparateAddress %}
 
         <h2 class="govuk-heading-l">
           Contact us
         </h2>
-    {% endif %}
+      {% endif %}
 
 
       <h3 class="govuk-heading-m">
@@ -391,11 +389,11 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         <p class="govuk-body-m">
           <a href="https://www.gov.uk/get-interpreter-at-court-or-tribunal">Get an interpreter at a court or tribunal.</a>
         </p>
-        {% endif %}
-    </div>
+      </div>
+     </div>
+   {% endif %}
 
 
-  </div>
 
   <div class="govuk-grid-column-one-third">
     {% if not ctscFlag %}
