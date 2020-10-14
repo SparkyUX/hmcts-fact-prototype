@@ -441,22 +441,18 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <ul class="govuk-list">
  
       {% for details in serviceAreasAtCourt %}
+        {% if details.url %}
         <li>
-          <a class="govuk-link" href={{details.url}}>{{details.service}}</a>
+          <a class="govuk-link" href={{details.url}}>{{details.text}}</a>
         </li>
+        {% else %}
+        <li>
+          <a class="govuk-link">{{details.text}}</a>
+        </li>
+        {% endif %}
       {% endfor %}
-
-      {% if crimeServiceAtCourt %}
-        <li>
-          Crime
-        </li>
-      {% endif %}
-      {% if highCourtServiceAtCourt %}
-        High Court
-      {% endif %}
-      </ul>
     {% endif %}
-
+      <br />
       <h3 class="govuk-heading-m">
         Make a complaint
       </h3>
@@ -499,7 +495,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           Professional users’ court and tribunal access scheme
         </h3>
 
-        {% if PUAS %}
+        {% if puasFlag %}
           <p class="govuk-body-m">
             This location participates in this scheme.
           </br>
