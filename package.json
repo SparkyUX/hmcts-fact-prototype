@@ -43,7 +43,7 @@
     "hmrc-frontend": "^1.7.0",
     "keypather": "^3.0.0",
     "lunr": "^2.3.8",
-    "marked": "^0.4.0",
+    "marked": "^1.1.1",
     "metalsmith": "^2.3.0",
     "metalsmith-lunr-index": "^0.2.0",
     "notifications-node-client": "^4.1.0",
