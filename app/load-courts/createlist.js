@@ -1,4 +1,5 @@
-// uplaod court data to locations file from CTF
+// create the search list for I know the name search
+
 const courtDetails = require('../court_details.json')
 const courtsSearch = require('../court_search.json')
 const fs = require('fs')
@@ -24,7 +25,7 @@ function main() {
     for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
       let searchDetails = ""
 //ignore the write to us address
-      if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" || courtDetails.courts[i].addresses[j].type == "Visiting" || (courtDetails.courts[i].addresses[j].type == "Postal" && courtDetails.courts[i].ctsc_flag == "Y")) {
+      if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" || courtDetails.courts[i].addresses[j].type == "Visiting" || (courtDetails.courts[i].addresses[j].type == "Postal" && courtDetails.courts[i].ctsc)) {
           let address = courtDetails.courts[i].addresses[j].address.replace(/!/g," ")
           let townName = courtDetails.courts[i].addresses[j].town
           let postCode = courtDetails.courts[i].addresses[j].postcode

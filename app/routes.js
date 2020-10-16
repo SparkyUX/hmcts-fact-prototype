@@ -174,11 +174,7 @@ router.post('/choose-action', function (req, res) {
 // 2.1 choose category
 
 router.post('/choose-service-category', function (req, res) {
-  // iniitialise the start pages
-//  getServiceUrls()
   
-  // let actionChosen = req.query.action
-
   let serviceCategory = req.session.data['choose-service-category']
   let pageServiceCategory = ""
 
@@ -219,7 +215,7 @@ router.post('/choose-service-category', function (req, res) {
       break
 
     case 'crime':
-      if (req.app.locals.serviceActionType === "findNearest") {
+/*      if (req.app.locals.serviceActionType === "findNearest") {
         req.app.locals.serviceArea = "Crime"
         req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
         req.app.locals.courtCount = req.app.locals.searchListNames.length
@@ -228,8 +224,9 @@ router.post('/choose-service-category', function (req, res) {
         pageServiceCategory = 'service-search-postcode?servicearea=crime'
       }
       else {
+        */
         pageServiceCategory = 'service-area-crime'
-      }
+//      }
       break
 
     // service areas without a sub page
@@ -281,7 +278,10 @@ router.post('/choose-area', function (req, res) {
 
 
 // lower case for varaiables on front end pages
+
+
   req.app.locals.serviceArea = serviceArea.toLowerCase()
+  console.log('req.app.locals.serviceArea service area ' + req.app.locals.serviceArea)
 
   req.app.locals.onlineStartPage = ""
   req.app.locals.onlineText = ""
@@ -328,7 +328,7 @@ router.post('/choose-area', function (req, res) {
       break
 
   }
-
+/*
   // if a regional centre or (service centre and option send docs or get update) go to the postcode page = do nothing
   if (req.app.locals.regionalCentre ||
     (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest')) {
@@ -345,7 +345,7 @@ router.post('/choose-area', function (req, res) {
       req.app.locals.courtsOrTribunals = 'courts or tribunals'
     }
   }
-
+*/
   if (req.app.locals.regionalCentre) {
     res.redirect('/service/service-search-postcode')
   }
@@ -366,6 +366,17 @@ router.post('/service-postcode', function (req, res) {
 
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
+  console.log('req.app.locals.serviceArea ' + req.app.locals.serviceArea)
+
+  req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea, serviceSearchPostcode, req.app.locals.regionalCentre)
+
+  req.app.locals.courtCount = req.app.locals.searchListNames.length
+  if (req.app.locals.searchListNames.length == 1) {
+    req.app.locals.courtsOrTribunals = 'court or tribunal' 
+  }
+  else {
+    req.app.locals.courtsOrTribunals = 'courts or tribunals'
+  }
 
 //  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
   if (req.app.locals.regionalCentre) {

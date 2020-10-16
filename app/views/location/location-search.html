@@ -76,7 +76,7 @@ Search for contact details - Find a court or tribunal - GOV.UK
 
       {% for details in searchListNames %}
 
-        <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="Reading County Court and Family Court">
+        <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link" name="{{details.name}}">
           {{details.name}}
         </a></h2>
 

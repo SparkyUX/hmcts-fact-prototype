@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Admin update JSON test data - Find a Court or Tribunal - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Court or tribunal search results</h1>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/admin-list-location" method="post" novalidate>  
+
+    <input class="govuk-input govuk-!-width-three-quarters" id="location-search-value" name="location-search-value" type="text" value="{{locationSearch}}">
+    
+    <button type="submit" class="govuk-button">Search</button>
+
+    <p class="govuk-body-m">We found {{adminCourtCount}} {{adminCourtsOrTribunals}}</p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% for details in searchLocationNames %}
+
+      <h2 class="govuk-heading-m"><a href="../individual-court-page?courtname={{details.slug}}" class="govuk-link">
+        {{details.name}}
+      </a></h2>
+
+    {% endfor %} 
+
+  </div>
+ </div>
+{% endblock %}
