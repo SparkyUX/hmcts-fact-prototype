@@ -441,9 +441,9 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     <ul class="govuk-list">
  
       {% for details in serviceAreasAtCourt %}
-        {% if details.url %}
+        {% if details.service_url %}
         <li>
-          <a class="govuk-link" href={{details.url}}>{{details.text}}</a>
+          <a class="govuk-link" href={{details.service_url}}>{{details.link_text}}</a>
         </li>
         {% else %}
         <li>

@@ -25,42 +25,47 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     text: "Back",
     href: "#"
   }) }}
-  {% else %}
-
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "../index"
-      },
-      {
-        text: "Choose a search option",
-        href: "../choose-search-option"
-      },
-      {
-        text: "Search for locations",
-        href: "search-location"
-      },
-      {
-        text: "Search results for location"
-      }
-    ]
-  }) }}
 {% endif %}
 
 {% endblock %}
 
 {% block content %}
+<!--
+{% if hasRegionalCentre %}
+  {% set catchmentArea = "the South-East of England" %}
+{% else %}
+  {% set catchmentArea = "all of England and Wales" %}
+{% endif %}
+-->
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">Court or tribunal search results</h1>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body-m">We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
+    {% if ctscFlag %}
+      <p class="govuk-body-m">
+
+        {{serviceDetails.SCstatement1}} 
+        {% if regionalCentre %} '{{serviceSearchPostcode}}' {% endif %}
+      <br />
+        {{serviceDetails.SCstatement2}}
+      </p>
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{searchListNames.slug}}">
+          {{searchListNames.name}}
+        </a>
+      </h2>
+
+      <p class="govuk-body-m">
+        This location provides services for {{searchListNames.catchment_area}}.
+      </p>
+
+    {% else %}
+      <p class="govuk-body-m">We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
 
     {% for details in searchListNames %}
 
-      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?ctsc=no&courtname={{details.slug}}" class="govuk-link">
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{details.slug}}" class="govuk-link">
          {{details.name}}
       </a>
 
@@ -69,10 +74,10 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     </br>
 
     {% endfor %}
-
+    {% endif %}
   </div>
 
-  {% if onlineText %}
+  {% if serviceDetails.onlineText %}
 
   <div class="govuk-grid-column-one-third" id="sidebar-line" style="padding-left: 25px">
     <h2 class="govuk-heading-m" >
@@ -80,7 +85,7 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     </h2>
 
       <p class="govuk-body-m">
-        <a href="{{onlineStartPage}}">{{onlineText}}</a>
+        <a href="{{serviceDetails.onlineUrl}}">{{serviceDetails.onlineText}}</a>
     </p>
 
     </div>

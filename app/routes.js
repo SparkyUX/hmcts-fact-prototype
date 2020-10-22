@@ -4,19 +4,21 @@ const url = require('url')
 const app = express()
 const lunr = require('lunr')
 const fs = require('fs')
+// const serviceDetails = require('./service_details.json')
 
 // const cheerio = require('cheerio')
 // const $ = cheerio.load('body')
 // const fuzzySearch = require('fuzzy-search')
-const courtDetails = require('./courtDetailsPlus.json')
+const courtDetailsAll = require('./courtDetailsPlus.json')
+const courtDetails = require('./court_details.json')
 // const courtSearch = require('./court_search.json')
 let searchList = []
-const re = /(<([^>]+)>)/ig
+// const re = /(<([^>]+)>)/ig
 
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
 const createCorTList = require('./createCorTList.js');
-const getServiceUrls = require('./getServiceUrls.js');
+const getServiceDetails = require('./getServiceDetails.js');
 
 // Add your routes here - above the module.exports line
 // 0.1 do you know the name of the CorT?
@@ -58,7 +60,7 @@ router.post('/search-for-location', function (req, res) {
   let searchListNames = []
   let locationSearchValue = req.session.data['location-search-value']
   req.app.locals.locationSearch = locationSearchValue
-  let documents = courtDetails.courts
+  let documents = courtDetailsAll.courts
   //error if no value entered
   if (locationSearchValue == "") {
     req.app.locals.errorString = "Field is blank - Enter a court name, address, town or city"
@@ -150,21 +152,23 @@ router.post('/choose-action', function (req, res) {
 
   let chooseAction = req.session.data['choose-action']
   req.app.locals.serviceActionType = ""
+  req.app.locals.level = 2
 //  req.app.locals.continueService = false
 
   switch (chooseAction) {
 
+    case 'find-nearest':
+      req.app.locals.serviceActionType = "findNearest"
+    break    
     case 'send-docs':
       req.app.locals.serviceActionType = "sendDocs"
       break
     case 'case-update':
      req.app.locals.serviceActionType = "getUpdate"
     break
-    case 'find-nearest':
-      req.app.locals.serviceActionType = "findNearest"
-    break
+
     default :
-      req.app.locals.serviceActionType = null
+      req.app.locals.serviceActionType = "notListed"
     break
   }   
   res.redirect('/service/service-category')
@@ -175,10 +179,7 @@ router.post('/choose-action', function (req, res) {
 
 router.post('/choose-service-category', function (req, res) {
   // iniitialise the start pages
-//  getServiceUrls()
   
-  // let actionChosen = req.query.action
-
   let serviceCategory = req.session.data['choose-service-category']
   let pageServiceCategory = ""
 
@@ -192,12 +193,17 @@ router.post('/choose-service-category', function (req, res) {
   req.app.locals.childService = false
   req.app.locals.sjsService = false
   req.app.locals.crimeService = false
-  req.app.locals.serviceCentre = false
-  req.app.locals.regionalCentre = false
+  req.app.locals.hasNationalCentre = false
+  req.app.locals.hasRegionalCentre = false
   req.app.locals.serviceArea = false
+  req.app.locals.catchmentArea = ""
+  req.app.locals.searchListNames = []
 
-  req.app.locals.onlineStartPage = ""
-  req.app.locals.onlineText = ""
+  req.app.locals.ctscFlag = false
+
+
+//  req.app.locals.onlineStartPage = ""
+//  req.app.locals.onlineText = ""
 
 // determine the next page
   switch (serviceCategory) {
@@ -218,35 +224,61 @@ router.post('/choose-service-category', function (req, res) {
       pageServiceCategory = 'service-area-harm-abuse'
       break
 
-    case 'crime':
-      if (req.app.locals.serviceActionType === "findNearest") {
-        req.app.locals.serviceArea = "Crime"
-        req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
-        req.app.locals.courtCount = req.app.locals.searchListNames.length
-//        serviceStartUrls = getServiceUrls(req.app.locals.serviceArea)
-//        req.app.locals.serviceCentre = true
-        pageServiceCategory = 'service-search-postcode?servicearea=crime'
-      }
-      else {
-        pageServiceCategory = 'service-area-crime'
-      }
+    case 'crime':       
+      pageServiceCategory = 'service-area-crime'
       break
 
     // service areas without a sub page
     case 'immigration-asylum':
       req.app.locals.serviceArea = "Immigration and asylum"
       pageServiceCategory = 'service-search-postcode?servicearea=immigrationandasylum'
-      req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
+      req.app.locals.serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
+      console.log('req.app.locals.serviceDetails.catchment_type ' + req.app.locals.serviceDetails.catchment_type)
+      if (req.app.locals.serviceDetails.catchment_area) {
+
+        req.app.locals.catchmentArea = req.app.locals.serviceDetails.catchment_area
+      }
+
+      if (req.app.locals.serviceDetails.catchment_type.indexOf('regional') > -1) {
+       req.app.locals.catchment = 'regional' 
+      }
+      else if (req.app.locals.serviceDetails.catchment_type.indexOf('national') > -1) {
+        req.app.locals.catchment_type = 'national'
+      }
+      else {
+        req.app.locals.catchment_type = 'local'
+      }
+      if (req.app.locals.hasNationalCentre || req.app.locals.hasRegionalCentre) {
+        req.app.locals.ctscFlag = true
+      }
+
+      req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea,true)
+
       req.app.locals.courtCount = req.app.locals.searchListNames.length
-      serviceStartUrls = getServiceUrls(req.app.locals.serviceArea)
-      req.app.locals.serviceAreaStartPage = serviceStartUrls.url
       break
 
     case 'high-courts':
-      req.app.locals.serviceArea = "High Court"
+      req.app.locals.serviceArea = "High Court district registry"
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
-      req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea)
+      serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
+      console.log('req.app.locals.serviceDetails.catchment_type High Courts' + req.app.locals.serviceDetails.catchment_type)
+
+      if (req.app.locals.serviceDetails.catchment_type.indexOf('regional') > -1) {
+       req.app.locals.catchment_type = 'regional' 
+      }
+      else if (req.app.locals.serviceDetails.catchment_type.indexOf('national') > -1) {
+        req.app.locals.catchment_type = 'national'
+      }
+      else {
+        req.app.locals.catchment_type = 'local'
+      }
+      if (req.app.locals.hasNationalCentre || req.app.locals.hasRegionalCentre) {
+        req.app.locals.ctscFlag = true
+      }
+
+      req.app.locals.searchListNames = createCorTList(req.app.locals.serviceArea,false)
       req.app.locals.courtCount = req.app.locals.searchListNames.length
+
       break
 
     default:
@@ -264,12 +296,13 @@ router.post('/choose-area', function (req, res) {
   let searchListNames =[]
 
   serviceAreaQuery = serviceArea.replace(/ /g,"").toLowerCase()
+  req.app.locals.ctscFlag = false
 
   // child service used for message on postcode page
-  req.app.locals.childService = false
 
-  req.app.locals.serviceCentre = false 
-  req.app.locals.regionalCentre = false
+  req.app.locals.childService = false
+  req.app.locals.hasNationalCentre = false 
+  req.app.locals.hasRegionalCentre = false
 
   // need to be reset again in case only goes back one page to the service area and not the service category
   req.app.locals.moneyClaimsService = false
@@ -283,15 +316,26 @@ router.post('/choose-area', function (req, res) {
 // lower case for varaiables on front end pages
   req.app.locals.serviceArea = serviceArea.toLowerCase()
 
-  req.app.locals.onlineStartPage = ""
-  req.app.locals.onlineText = ""
+// get the service information
+  req.app.locals.serviceDetails = getServiceDetails(serviceArea,null)
+  console.log('req.app.locals.serviceDetails.onlineText ' + req.app.locals.serviceDetails.onlineText)
 
-// set the online service url, this is used on the ctsc results page
-  serviceStartUrls = getServiceUrls(serviceArea)
-  req.app.locals.onlineStartPage = serviceStartUrls.online
-  req.app.locals.onlineText = serviceStartUrls.onlineText
-  req.app.locals.serviceAreaStartPage = serviceStartUrls.url
+  // set the catchment flags for the service and display strings
 
+  console.log('req.app.locals.serviceDetails.catchment_type ' + req.app.locals.serviceDetails.catchment_type)
+  if (req.app.locals.serviceDetails.catchment_type.indexOf('national') > -1) {
+    req.app.locals.hasNationalCentre = true
+  }  
+  if (req.app.locals.serviceDetails.catchment_type.indexOf('regional') > -1) {
+   req.app.locals.hasRegionalCentre = true 
+  }
+  if (!req.app.locals.hasNationalCentre && !req.app.locals.hasRegionalCentre) {
+    req.app.locals.localCourtOnly = true
+  }
+  if (req.app.locals.hasNationalCentre || req.app.locals.hasRegionalCentre) {
+    req.app.locals.ctscFlag = true
+  }
+  console.log('national ' + req.app.locals.hasNationalCentre + ' regional ' + req.app.locals.hasRegionalCentre)
   switch (serviceAreaQuery) {
     case 'childarrangements':            
       req.app.locals.childService = true
@@ -299,62 +343,105 @@ router.post('/choose-area', function (req, res) {
 
     case 'civilpartnership':            
       req.app.locals.civilPartnershipService = true
-      req.app.locals.regionalCentre = true  
       break    
 
     case 'divorce':            
       req.app.locals.divorceService = true
-      req.app.locals.regionalCentre = true
       break
 
     case 'moneyclaims':
-      req.app.locals.serviceCentre = true
       req.app.locals.moneyClaimsService = true
       break   
 
     case 'probate':
-      req.app.locals.serviceCentre = true
       req.app.locals.probateService = true
       break
 
     case 'singlejusticeprocedure':
-      req.app.locals.serviceCentre = true
       req.app.locals.sjsService = true
       break
     
     case 'othercrime':     
-      req.app.locals.serviceCentre = true
       req.app.locals.crimeService = true
       break
-
   }
+  
+  // if action find nearest or not listed go to postcode
 
-  // if a regional centre or (service centre and option send docs or get update) go to the postcode page = do nothing
-  if (req.app.locals.regionalCentre ||
-    (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest')) {
-  } 
-  // otherwise show the list
-  else {
-    req.app.locals.searchListNames = createCorTList(serviceArea)
+  let postcodePage = true
+  console.log('req.app.locals.serviceActionType ' + req.app.locals.serviceActionType)
 
-    req.app.locals.courtCount = req.app.locals.searchListNames.length
-    if (req.app.locals.searchListNames.length == 1) {
-      req.app.locals.courtsOrTribunals = 'court or tribunal' 
+  if (req.app.locals.serviceActionType == 'notListed' || req.app.locals.serviceActionType == 'findNearest') {
+    let listNames = createCorTList(req.app.locals.serviceDetails.aol,false)
+    console.log('ListNames ' +JSON.stringify(listNames))
+
+    if (req.app.locals.hasRegionalCentre) {
+      for (i=0; i < listNames.length; i++) {
+        if (listNames[i].catchment_type === 'regional') {
+          req.app.locals.searchListNames = listNames[i]
+          break
+        }
+      }
     }
     else {
-      req.app.locals.courtsOrTribunals = 'courts or tribunals'
+      req.app.locals.searchListNames = listNames
     }
+    console.log('searchListNames ' +JSON.stringify(req.app.locals.searchListNames))
+    postcodePage = true
   }
 
-  if (req.app.locals.regionalCentre) {
-    res.redirect('/service/service-search-postcode')
+  // if action send docs or get update 
+  else {
+    if (req.app.locals.hasNationalCentre == false) {
+        console.log('*** NOT CTSC ***')
+
+        postcodePage = true
+        req.app.locals.searchListNames = createCorTList(req.app.locals.serviceDetails.aol,false)
+    }
+    else {
+      if (req.app.locals.serviceActionType == 'getUpdate') {
+        console.log('*** IS get update and IS national centre ***')
+
+        postcodePage = false
+        let listNames = createCorTList(req.app.locals.serviceDetails.aol,true)
+        console.log('listnames ' + JSON.stringify(req.app.locals.searchListNames))
+
+        for (i=0; i<listNames.length; i++ ) {
+          if (listNames[i].catchment_type === "national") {
+            req.app.locals.searchListNames = listNames[i]
+          }
+        }
+      }
+      else if (req.app.locals.hasRegionalCentre) {
+        console.log('*** send docs IS regional centre ***')
+        postcodePage = true
+        let listNames = createCorTList(req.app.locals.serviceDetails.aol,true)
+        
+        req.app.locals.searchListNames = listNames[0]
+      }
+      else {
+        console.log('*** send docs IS national centre and NOT regional centre ***')
+        postcodePage = false
+        let listNames = createCorTList(req.app.locals.serviceDetails.aol,true)
+        console.log('listnames ' + JSON.stringify(req.app.locals.searchListNames))
+
+        for (i=0; i<listNames.length; i++ ) {
+          if (listNames[i].catchment_type === "regional") {
+            req.app.locals.searchListNames = listNames[i]
+          }
+        }
+      }
+    }
   }
-  else if (req.app.locals.serviceCentre == true && req.app.locals.serviceActionType !== 'findNearest') {
-    res.redirect('/service/service-search-results-ctsc')
+  if (postcodePage) {
+    res.redirect('/service/service-search-postcode?servicearea=' + req.app.locals.serviceDetails.aol)
   }
-  else
-  {  
-    res.redirect('/service/service-search-postcode')
+  else {
+    //select the court to display on the results page
+    console.log('hasNationalCentre ' + req.app.locals.hasNationalCentre)
+    console.log('hasRegionalCentre ' + req.app.locals.hasRegionalCentre)  
+
+    res.redirect('/service/service-search-results')
   }
 
 })
@@ -367,13 +454,15 @@ router.post('/service-postcode', function (req, res) {
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase();
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
 
-//  if (req.app.locals.divorceService || req.app.locals.civilPartnershipService) {
-  if (req.app.locals.regionalCentre) {
-    res.redirect('/service/service-search-results-ctsc')
+  req.app.locals.courtCount = req.app.locals.searchListNames.length
+  if (req.app.locals.searchListNames.length == 1) {
+    req.app.locals.courtsOrTribunals = 'court or tribunal' 
   }
   else {
-    res.redirect('/service/service-search-results-multiple?servicearea=' + req.app.locals.serviceArea)
-  } 
+    req.app.locals.courtsOrTribunals = 'courts or tribunals'
+  }
+  res.redirect('/service/service-search-results')
+
 })
 
 
@@ -382,54 +471,6 @@ router.post('/service-postcode', function (req, res) {
 router.get('/individual-location-pages/generic', function(req, res) { 
 
   let courtShortName = req.query.courtname
-  // check if it's a CTSC and set flags if come through search page
-
-
-  if ( courtShortName.includes('probate-service') ){
-//    req.app.locals.ctscFlag = true
-    req.app.locals.probateService = true
-    req.app.locals.divorceService = false
-    req.app.locals.civilPartnershipService = false
-    req.app.locals.moneyClaimsService = false
-
-    req.app.locals.serviceArea = "probate"
-  }
-
-  else if (courtShortName.includes('divorce') ) {
-//    req.app.locals.ctscFlag = true
-    req.app.locals.divorceService = true
-    req.app.locals.civilPartnershipService = true
-    req.app.locals.moneyClaimsService = false
-    req.app.locals.probateService = false
-
-    req.app.locals.serviceArea = "divorce"
-
-  }
-
-  else if (courtShortName.includes('money')) {
-//    req.app.locals.ctscFlag = true
-    req.app.locals.moneyClaimsService = true
-    req.app.locals.probateService = false
-    req.app.locals.divorceService = false
-    req.app.locals.civilPartnershipService = false
-
-    req.app.locals.serviceArea = "money claims"
-
-  }
-  else if (courtShortName.includes('single-justice')) {
-//    req.app.locals.ctscFlag = true
-
-    req.app.locals.serviceArea = "minor crimes"
-
-  }
-
-  else if (courtShortName.includes('crime')) {
-//    req.app.locals.ctscFlag = true
-
-    req.app.locals.serviceArea = "major crimes"
-
-  }
-
 // initialise display values 
   req.app.locals.courtVisitAddress1 = ""
   req.app.locals.courtVisitAddress2 = ""
@@ -477,15 +518,24 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.highCourtServiceAtCourt = false
   req.app.locals.crimeServiceAtCourt = false
 
+  req.app.locals.ctscFlag = false
+
+
   req.app.locals.courtPhoneEnquiries = '01234 567 890'
 
 
   for (let i=0; i < courtDetails.courts.length; i++) {  
 
-
     if (courtShortName == courtDetails.courts[i].slug) {
+      console.log('courtDetails.courts[i].slug ' + courtDetails.courts[i].slug)
+      console.log('courtDetails.courts[i] ' + courtDetails.courts[i])
+      console.log('req.app.locals.hasNationalCentre ' + req.app.locals.hasNationalCentre )
+      console.log('req.app.locals.hasRegionalCentre ' + req.app.locals.hasRegionalCentre )
 
-      req.app.locals.ctscFlag = courtDetails.courts[i].ctsc
+      if ( req.app.locals.hasNationalCentre || req.app.locals.hasRegionalCentre) {
+
+        req.app.locals.ctscFlag = true
+      }
       // professional user access scheme
       req.app.locals.puasFlag = courtDetails.courts[i].puas
 
@@ -621,146 +671,15 @@ router.get('/individual-location-pages/generic', function(req, res) {
 
       //service areas to display in sidebar
       let serviceAreasAtCourt = []
-      let serviceUrl = []
 
       for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-        console.log('aol ' + JSON.stringify(courtDetails.courts[i].areas_of_law))
-/*
-        if (courtDetails.courts[i].areas_of_law[j] == 'Crime') {
-          req.app.locals.crimeServiceAtCourt = true
-        }
-        else if (courtDetails.courts[i].areas_of_law[j] == 'High Court') {
-          req.app.locals.highCourtServiceAtCourt = true
-        }
-        else 
-
-          {*/
-          serviceStartUrls = getServiceUrls(courtDetails.courts[i].areas_of_law[j])
-          serviceUrl = serviceStartUrls      
-          if (courtDetails.courts[i].areas_of_law[j] == "Child arrangements") {
-            serviceUrl.service = "Childcare arrangements if you separate from your partner"  
-          }
-        // add the service url to the array for the loop in 'This location handles:
-          console.log('serviceUrl ' + JSON.stringify(serviceUrl))
-          serviceAreasAtCourt.push(serviceUrl) 
-      //  }
-      } // for area of law  
-
+        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
+        serviceStartDetails = getServiceDetails(null,courtDetails.courts[i].areas_of_law[j])
+        serviceAreasAtCourt.push(serviceStartDetails) 
+      }
 
       req.app.locals.serviceAreasAtCourt = serviceAreasAtCourt
-      res.render('individual-location-pages/generic')
-      return
     } // if court 
-
-  }
-  // unlisted court so use address details from courts_search list and defaults
-  console.log('started default ')
-
-
-  for (let i=0; i < courtSearch.courts_search.length; i++) {
-
-    if (courtShortName == courtSearch.courts_search[i].slug.toLowerCase()) {
-      req.app.locals.courtName = courtSearch.courts_search[i].name
-      // court codes
-      req.app.locals.courtCodeCounty = courtSearch.courts_search[i].number
-      // addresses
-      req.app.locals.courtVisitWriteAddress = true
-     let addressSplit = courtSearch.courts_search[i].address.split('\n')
-            
-      req.app.locals.courtVisitAddress1 = addressSplit[0]
-
-      if (addressSplit[1]) {
-        req.app.locals.courtVisitAddress2 = addressSplit[1]
-      }
-      if (addressSplit[2]) {
-        req.app.locals.courtVisitAddress3 = addressSplit[2]
-      }
-
-      req.app.locals.courtVisitTown = courtSearch.courts_search[i].town_name 
-      req.app.locals.courtVisitPostcode = courtSearch.courts_search[i].postcode        
-
-      // long and lat
-      req.app.locals.courtGoogleMapsLocation = 'https://maps.google.com/maps?q=' + courtSearch.courts_search[i].lat + ',' + courtSearch.courts_search[i].lon
-
-      // image src
-      req.app.locals.courtImgLoc = '/public/images/court.png' 
-
-      // other fields
-
-      // contacts 
-
-          req.app.locals.courtPhoneEnquiries = '01234 567 890'
-          req.app.locals.courtPhoneUrgent = '01234 567 890'
-          req.app.locals.courtPhoneCoP = '01234 567 891'
-          req.app.locals.courtPhoneHighCourt = '01234 567 892'
-          req.app.locals.courtDXNumber = '01234 ' +  courtSearch.courts_search[i].town_name + ' 4'
-
-          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
-          req.app.locals.courtEmailUrgent = 'urgent.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
-          req.app.locals.courtEmailListing = 'listings.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
-          req.app.locals.courtEmailBaillifs = 'baillifs.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
-          req.app.locals.courtEmailFamily = 'family.' + courtSearch.courts_search[i].town_name.toLowerCase() + '@justice.gov.uk'
-         
-
-      //service areas to display in sidebar
-    
-        if (courtShortName.includes('civil')) {
-          req.app.locals.moneyClaimsServiceAtCourt = true
-        }
-    
-        if (courtShortName.includes('probate')) {
-              req.app.locals.probateServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('tribunal')) {
-            req.app.locals.benefitsServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('immigration')) {
-            req.app.locals.immigrationServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('employment')) {
-            req.app.locals.employmentServiceAtCourt = true
-            req.app.locals.civilPartnershipServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('divorce')) {
-            req.app.locals.divorceServiceAtCourt = true
-            req.app.locals.civilPartnershipServiceAtCourt = true
-          }
-         
-        if (courtShortName.includes('family')) {
-            req.app.locals.domesticAbuseServiceAtCourt = true
-            req.app.locals.forcedMarriageServiceAtCourt = true
-            req.app.locals.childArrangementsServiceAtCourt = true
-            req.app.locals.adoptionServiceAtCourt = true
-            req.app.locals.FGMServiceAtCourt = true
-          }
-
-          if (courtShortName.includes('justice-centre')) {
-            req.app.locals.domesticAbuseServiceAtCourt = true
-            req.app.locals.forcedMarriageServiceAtCourt = true
-            req.app.locals.childArrangementsServiceAtCourt = true
-            req.app.locals.adoptionServiceAtCourt = true
-            req.app.locals.FGMServiceAtCourt = true
-            req.app.locals.moneyClaimsServiceAtCourt = true
-            req.app.locals.crimeServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('crown')) {
-            req.app.locals.crimeServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('magistrate')) {
-            req.app.locals.crimeServiceAtCourt = true
-          }
-
-        if (courtShortName.includes('high-court')) {
-            req.app.locals.highCourtServiceAtCourt = true
-          }
- 
-    }
   }
    res.render('individual-location-pages/generic')
 })
