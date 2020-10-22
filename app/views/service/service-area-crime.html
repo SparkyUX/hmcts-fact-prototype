@@ -18,27 +18,7 @@
   text: "Back",
   href: "#"
 }) }}
-{% else %}
 
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "../index"
-    },
-    {
-      text: "Choose a search option",
-      href: "../choose-search-option"
-    },
-    {
-      text: "Search for locations near you",
-      href: "search-aol-postcode"
-    },
-    {
-      text: "What is your application or hearing about?"
-    }
-  ]
-}) }}
 {% endif %}
 
 {% endblock %}

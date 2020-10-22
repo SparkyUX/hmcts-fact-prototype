@@ -21,23 +21,7 @@ What is your postcode? - Find a court or tribunal - GOV.UK
   text: "Back",
   href: "#"
 }) }}
-{% else %}
 
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "../index"
-    },
-    {
-      text: "Choose a search option",
-      href: "../choose-search-option"
-    },
-    {
-      text: "Search for locations near you"
-    }
-  ]
-}) }}
 {% endif %}
 
 {% endblock %}

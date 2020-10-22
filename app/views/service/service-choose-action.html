@@ -18,23 +18,7 @@ What do you want to do? - Find a court or tribunal - GOV.UK{% endblock %}
   text: "Back",
   href: "#"
 }) }}
-{% else %}
 
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "index"
-    },
-    {
-      text: "What do you want to do?",
-      href: "../what-do-you-want-to-do"
-    },
-    {
-      text: "Do you want to start or continue a service?"
-    }
-  ]
-}) }}
 {% endif %}
 
 {% endblock %}
