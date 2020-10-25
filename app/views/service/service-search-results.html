@@ -31,7 +31,7 @@ Search results for location - Find a Court or Tribunal - GOV.UK
 
 {% block content %}
 <!--
-{% if hasRegionalCentre %}
+{% if regionalDisplayFlag %}
   {% set catchmentArea = "the South-East of England" %}
 {% else %}
   {% set catchmentArea = "all of England and Wales" %}
@@ -43,37 +43,65 @@ Search results for location - Find a Court or Tribunal - GOV.UK
     <h1 class="govuk-heading-l">Court or tribunal search results</h1>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    {% if ctscFlag %}
+    {% if nationalDisplayFlag %}
       <p class="govuk-body-m">
 
         {{serviceDetails.SCstatement1}} 
-        {% if regionalCentre %} '{{serviceSearchPostcode}}' {% endif %}
       <br />
         {{serviceDetails.SCstatement2}}
       </p>
-      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{searchListNames.slug}}">
-          {{searchListNames.name}}
+      {% for details in searchListNames %}
+      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{details.slug}}">
+          {{details.name}}
         </a>
       </h2>
-
       <p class="govuk-body-m">
-        This location provides services for {{searchListNames.catchment_area}}.
+        This location provides services for {{details.catchment_area}}.
       </p>
+      {% endfor %}
 
     {% else %}
+
+      {% if regionalDisplayFlag %} 
+        <p class="govuk-body-m">
+
+          {{serviceDetails.SCstatement3}} '{{serviceSearchPostcode}}'
+        <br />
+          {{serviceDetails.SCstatement2}}
+        </p>
+        {% for details in searchListNames %}
+        <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{details.slug}}">
+            {{details.name}}
+          </a>
+        </h2>
+
+        <p class="govuk-body-m">
+          This location provides services for {{details.catchment_area}}.
+        </p>
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+
+    {% if (not nationalDisplayFlag) and (not regionalDisplayFlag) %}
       <p class="govuk-body-m">We found {{courtCount}} {{courtsOrTribunals}} related to {{serviceArea}} matching your search for '{{serviceSearchPostcode}}'</p>
 
     {% for details in searchListNames %}
+    <div class="govuk-grid-row">
 
-      <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{details.slug}}" class="govuk-link">
-         {{details.name}}
-      </a>
+      <div class="govuk-grid-column-three-quarters"> 
+        <h2 class="govuk-heading-m"><a href="../individual-location-pages/generic?courtname={{details.slug}}" class="govuk-link">
+           {{details.name}}
+        </a>
+        </h2>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
 
-      <p style="float: right" class="govuk-body-m">{{details.distance}} miles</p></h2>
+        <p style="float: right" class="govuk-body-m">{{details.distance}} miles</p>
 
+      </div>
+    </div>
     </br>
-
-    {% endfor %}
+      {% endfor %}
     {% endif %}
   </div>
 

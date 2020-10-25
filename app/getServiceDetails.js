@@ -3,7 +3,7 @@ const getServiceDetails = function(serviceArea,areaOfLaw) {
 let serviceRecord = []
 	// initialise 
   	if (serviceArea === null) {
-  		console.log('**** areofLaw **** ' + areaOfLaw)
+  		console.log('**** getServiceDetails areofLaw **** ' + areaOfLaw)
   		for (let i=0; i < serviceDetails.length; i++ ) {
 		    if (areaOfLaw === serviceDetails[i].aol) {
 		      serviceRecord = serviceDetails[i]
@@ -11,7 +11,7 @@ let serviceRecord = []
 	  	}
 	}
 	else {
-  		console.log('**** service **** ' + serviceArea)
+  		console.log('**** getServiceDetails service **** ' + serviceArea)
 
 	  	for (let i=0; i < serviceDetails.length; i++ ) {
 		    if (serviceArea === serviceDetails[i].service) {

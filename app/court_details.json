@@ -16,7 +16,7 @@
       "Bankruptcy",
       "Children",
       "Divorce",
-      "Domestic abuse",
+      "Domestic violence",
       "Forced marriage and FGM",
       "High Court District Registry",
       "Housing possession",
@@ -248,7 +248,7 @@
       "Children",
       "Crime",
       "Minor crime",
-      "Domestic abuse",
+      "Domestic violence",
       "Social security"
     ],
     "types": [
@@ -541,7 +541,7 @@
       "Crime",
       "Minor crime",
       "Divorce",
-      "Domestic abuse"
+      "Domestic violence"
     ],
     "types": [
       "Magistrates' Court"
@@ -647,7 +647,7 @@
       "Bankruptcy",
       "Children",
       "Divorce",
-      "Domestic abuse",
+      "Domestic violence",
       "Housing possession",
       "Money claims"
     ],
@@ -873,7 +873,7 @@
     "areas_of_law": [
       "Children",
       "Divorce",
-      "Domestic abuse",
+      "Domestic violence",
       "Housing possession"
     ],
     "types": [
@@ -1008,7 +1008,7 @@
       "Crime",
       "Minor crime",
       "Divorce",
-      "Domestic abuse"
+      "Domestic violence"
     ],
     "types": [
       "Magistrates' Court",
@@ -1133,7 +1133,7 @@
       "Adoption",
       "Children",
       "Divorce",
-      "Domestic abuse",
+      "Domestic violence",
       "Housing possession",
       "Money claims"
     ],
@@ -1333,7 +1333,7 @@
     "county_location_code": null,
     "magistrates_location_code": null,
     "areas_of_law": [
-      "Immigration and asylum"
+      "Immigration"
     ],
     "types": [
       "Tribunal"
@@ -1420,11 +1420,11 @@
       "Children",
       "Civil partnership",
       "Divorce",
-      "Domestic abuse",
+      "Domestic violence",
       "Forced marriage and FGM",
       "High Court District Registry",
       "Housing possession",
-      "Immigration and asylum",
+      "Immigration",
       "Money claims",
       "Social security"
     ],
@@ -1941,8 +1941,8 @@
       "crown_location_code": null,
       "county_location_code": null,
       "magistrates_location_code": null,
-      "areas_of_law": ["Single justice procedure"],
-      "types": ["Crime","Minor crime"],
+      "areas_of_law": ["Minor crime"],
+      "types": ["Crime"],
       "emails": [{
         "address": "single-justice-filing@justice.gov.uk",
         "description": "Filing and records",

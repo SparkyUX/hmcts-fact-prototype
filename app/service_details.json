@@ -48,15 +48,15 @@
 		"service": "Civil partnership",
 		"aol": "Civil partnership",
 		"link_text": "Civil partnership",
-		"catchment_type": ["local","regional","national"],
+		"catchment_type": ["local","regional"],
 		"catchment_method": "proximity",
 		"service_url": "https://www.gov.uk/end-civil-partnership",
 		"onlineUrl": "",
 		"onlineText": "",
 		"level":2,
-		"SCstatement1": "We manage divorce applications at our central service centre.",
+		"SCstatement1": "We manage applications to dissolve a civil partnership at our central service centre.",
 		"SCstatement2": "Find where to send your documents or ask about your application’s progress.",
-		"SCstatement3": "We manage divorce applications at our regional divorce units (RDU). This is the nearest RDU to "
+		"SCstatement3": "We manage applications to dissolve a civil partnership at our regional divorce units (RDU). This is the nearest RDU to "
 	},
 	{
 		"service": "Claims against employers",
@@ -79,7 +79,7 @@
 		"onlineText": "",
 		"level":2,
 		"SCstatement1": "We manage major criminal offences at our central service centre.",
-		"SCstatement2": "Find where to send your documents or ask about your case"
+		"SCstatement2": "Find where to send your documents or ask about your case."
 	},
 	{
 		"service": "Minor criminal offences",
@@ -91,7 +91,7 @@
 		"onlineText": "",
 		"level":2,
 		"SCstatement1":"We manage minor criminal offences at our central service centre.",
-		"SCstatement2": "Find where to send your documents or ask about your case"
+		"SCstatement2": "Find where to send your documents or ask about your case."
 	},
 	{
 		"service": "Divorce",
@@ -153,7 +153,7 @@
 	},
 	{
 		"service": "High Court district registry",
-		"aol": "High Court district registry",
+		"aol": "High Court District Registry",
 		"link_text": "High Court cases – serious or high profile criminal or civil law cases",
 		"catchment_type": ["local"],
 		"catchment_method": "proximity",		
@@ -168,8 +168,8 @@
 		"catchment_type": ["local","national"],
 		"catchment_method": "proximity",
 		"service_url": "https://www.gov.uk/immigration-asylum-tribunal",
-		"onlineUrl": "",
-		"onlineText": "",
+		"onlineUrl": "https://www.gov.uk/immigration-asylum-tribunal",
+		"onlineText": "Appeal against a visa or immigration decision",
 		"level":1,
 		"SCstatement1": "We manage your immigration and asylum applications at our central service centre.",
 		"SCstatement2": "Find where to send your documents or ask about your application’s progress." 
