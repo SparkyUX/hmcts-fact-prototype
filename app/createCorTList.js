@@ -1,7 +1,7 @@
 const courtDetails = require('./court_details.json')
 const createCorTList = function(serviceArea, singleLocation, centreType) { 
-  console.log('createCorTList serviceArea ' + serviceArea)
-  console.log('createCorTList singleLocation ' + singleLocation)
+//  console.log('createCorTList serviceArea ' + serviceArea)
+//  console.log('createCorTList singleLocation ' + singleLocation)
   let searchListNames = []
 
   if (singleLocation) {
@@ -11,7 +11,7 @@ const createCorTList = function(serviceArea, singleLocation, centreType) {
         for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
         // does the court handle the service area 
           if (courtDetails.courts[i].areas_of_law[j] == serviceArea) {    
-            console.log('createCorTList details ' + JSON.stringify(courtDetails.courts[i].name))
+//            console.log('createCorTList details ' + JSON.stringify(courtDetails.courts[i].name))
             let locationDetails = {
               name: courtDetails.courts[i].name,
               slug: courtDetails.courts[i].slug.toLowerCase(),
@@ -19,7 +19,7 @@ const createCorTList = function(serviceArea, singleLocation, centreType) {
               catchment_area : courtDetails.courts[i].catchment_area,
               catchment_type : courtDetails.courts[i].catchment_type
             }
-            console.log('*** single Location *** ' + JSON.stringify(locationDetails)) 
+//            console.log('*** single Location *** ' + JSON.stringify(locationDetails)) 
             
             searchListNames.push(locationDetails)
           }
@@ -48,7 +48,7 @@ const createCorTList = function(serviceArea, singleLocation, centreType) {
   searchListNamesSorted = searchListNames.sort(function(a, b) {
     return a.distance - b.distance
   });
-  console.log('searchListNamesSorted ' + JSON.stringify(searchListNamesSorted))
+//  console.log('searchListNamesSorted ' + JSON.stringify(searchListNamesSorted))
   return searchListNamesSorted;
 
 };

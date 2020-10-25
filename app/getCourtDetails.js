@@ -1,6 +1,6 @@
 // use the service area to determine the courts to display
 const createCorTList = require('./createCorTList.js')
-const getCourtList = function(serviceDetails, serviceActionType) {
+const getCourtDetails = function(serviceDetails, serviceActionType) {
   
   let postcodePage = true
   let nationalDisplayFlag = false
@@ -12,7 +12,6 @@ const getCourtList = function(serviceDetails, serviceActionType) {
   let listNames = []
 
   
-  console.log('serviceDetails ' + JSON.stringify(serviceDetails)) 
   if (serviceDetails.catchment_type.indexOf('national') > -1) {
     nationalDisplayFlag = true
   }  
@@ -25,13 +24,13 @@ const getCourtList = function(serviceDetails, serviceActionType) {
   if (nationalDisplayFlag || regionalDisplayFlag) {
     ctscFlag = true
   }
-  console.log('national ' + nationalDisplayFlag + ' regional ' + regionalDisplayFlag + ' local ' + hasLocalOnly)
+//  console.log('national ' + nationalDisplayFlag + ' regional ' + regionalDisplayFlag + ' local ' + hasLocalOnly)
 
-  console.log('serviceActionType ' + serviceActionType)
+//  console.log('serviceActionType ' + serviceActionType)
 // get the list of courts in distance order from the postcode
 // prototype only logic - distance is held on the court record
 
-  if (serviceActionType == 'notListed' || serviceActionType == 'findNearest') {
+  if (serviceActionType == 'findNearest') {
     console.log('*** not listed or find nearest ***')
   // don't display the ctsc in the list of courts in the results 
   // prototype only logic
@@ -105,9 +104,6 @@ const getCourtList = function(serviceDetails, serviceActionType) {
       }
     }
   }
-  console.log('getCourtList searchListNames ' + JSON.stringify(searchListNames))
-  console.log('getCourtList postcodePage ' + JSON.stringify(postcodePage))
-  console.log('getCourtList nationalDisplayFlag ' + JSON.stringify(nationalDisplayFlag))
   return {
     "searchListNames": searchListNames, 
     "postcodePage": postcodePage, 
@@ -115,4 +111,4 @@ const getCourtList = function(serviceDetails, serviceActionType) {
     "regionalDisplayFlag": regionalDisplayFlag
   }
 }
-module.exports = getCourtList;
+module.exports = getCourtDetails;

@@ -19,7 +19,7 @@ const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
 const createCorTList = require('./createCorTList.js')
 const getServiceDetails = require('./getServiceDetails.js')
-const getCourtList = require('./getCourtList.js')
+const getCourtDetails = require('./getCourtDetails.js')
 
 // Add your routes here - above the module.exports line
 // 0.1 do you know the name of the CorT?
@@ -233,7 +233,7 @@ router.post('/choose-service-category', function (req, res) {
       pageServiceCategory = 'service-search-postcode?servicearea=immigrationandasylum'
       req.app.locals.serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
 
-      courtList = getCourtList(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
+      courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
       req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
       req.app.locals.regionalDisplayFlag = courtList.regionalDisplayFlag
       req.app.locals.searchListNames = courtList.searchListNames
@@ -251,7 +251,7 @@ router.post('/choose-service-category', function (req, res) {
       pageServiceCategory = 'service-search-postcode?servicearea=highcourts'
       req.app.locals.serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
 
-      courtList = getCourtList(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
+      courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
       req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
       req.app.locals.regionalDisplayFlag = courtList.regionalDisplayFlag
       req.app.locals.searchListNames = courtList.searchListNames
@@ -302,7 +302,7 @@ router.post('/choose-area', function (req, res) {
 
     req.app.locals.serviceDetails = getServiceDetails(serviceArea,null)
 
-    courtList = getCourtList(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
+    courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
     console.log('courtList ' + JSON.stringify(courtList))
 
     req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
@@ -361,8 +361,8 @@ router.post('/service-postcode', function (req, res) {
 
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase()
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
-  console.log('postcode req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
-  console.log('postcode req.app.locals.searchListNames.length ' + JSON.stringify(req.app.locals.searchListNames.length))
+//  console.log('postcode req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
+//  console.log('postcode req.app.locals.searchListNames.length ' + JSON.stringify(req.app.locals.searchListNames.length))
 
   req.app.locals.courtCount = req.app.locals.searchListNames.length
   if (req.app.locals.searchListNames.length === 1) {
@@ -437,10 +437,10 @@ router.get('/individual-location-pages/generic', function(req, res) {
   for (let i=0; i < courtDetails.courts.length; i++) {  
 
     if (courtShortName == courtDetails.courts[i].slug) {
-      console.log('courtDetails.courts[i].slug ' + courtDetails.courts[i].slug)
-      console.log('courtDetails.courts[i] ' + courtDetails.courts[i])
-      console.log('req.app.locals.nationalDisplayFlag ' + req.app.locals.nationalDisplayFlag )
-      console.log('req.app.locals.regionalDisplayFlag ' + req.app.locals.regionalDisplayFlag )
+//      console.log('courtDetails.courts[i].slug ' + courtDetails.courts[i].slug)
+//      console.log('courtDetails.courts[i] ' + courtDetails.courts[i])
+//      console.log('req.app.locals.nationalDisplayFlag ' + req.app.locals.nationalDisplayFlag )
+//      console.log('req.app.locals.regionalDisplayFlag ' + req.app.locals.regionalDisplayFlag )
 
       if ( req.app.locals.nationalDisplayFlag || req.app.locals.regionalDisplayFlag) {
 
@@ -583,7 +583,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
       let serviceAreasAtCourt = []
 
       for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
+//        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
         serviceStartDetails = getServiceDetails(null,courtDetails.courts[i].areas_of_law[j])
         serviceAreasAtCourt.push(serviceStartDetails) 
       }
