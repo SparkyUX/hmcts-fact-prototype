@@ -4,6 +4,9 @@ let serviceRecord = []
 	// initialise 
   	if (serviceArea === null) {
 //  		console.log('**** getServiceDetails areofLaw **** ' + areaOfLaw)
+console.log('areaOfLaw ' + areaOfLaw)
+console.log('serviceArea ' + serviceArea)
+
   		for (let i=0; i < serviceDetails.length; i++ ) {
 		    if (areaOfLaw === serviceDetails[i].aol) {
 		      serviceRecord = serviceDetails[i]

@@ -1,4 +1,4 @@
-const courtDetails = require('./court_details.json')
+const courtDetails = require('./courtDetailsAll.json')
 const createCorTList = function(serviceArea, singleLocation, centreType) { 
 //  console.log('createCorTList serviceArea ' + serviceArea)
 //  console.log('createCorTList singleLocation ' + singleLocation)

@@ -9,7 +9,7 @@ const fs = require('fs')
 // const cheerio = require('cheerio')
 // const $ = cheerio.load('body')
 // const fuzzySearch = require('fuzzy-search')
-const courtDetailsAll = require('./courtDetailsPlus.json')
+const courtDetailsAll = require('./courtDetailsAll.json')
 const courtDetails = require('./court_details.json')
 // const courtSearch = require('./court_search.json')
 let searchList = []
@@ -17,7 +17,7 @@ let searchList = []
 
 const lunrStopWords = require('./views/includes/lunr-stop-words.json')
 // function to generate the list of courts based on the serviceArea
-const createCorTList = require('./createCorTList.js')
+// const createCorTList = require('./createCorTList.js')
 const getServiceDetails = require('./getServiceDetails.js')
 const getCourtDetails = require('./getCourtDetails.js')
 
@@ -343,7 +343,7 @@ router.post('/choose-area', function (req, res) {
         break
     }
     
-    console.log('courtDetails.postcodePage ' + courtList.postcodePage)
+    console.log('courtList.postcodePage ' + courtList.postcodePage)
 
     if (courtList.postcodePage) {
       res.redirect('/service/service-search-postcode?servicearea=' + req.app.locals.serviceDetails.aol)
@@ -434,41 +434,41 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtPhoneEnquiries = '01234 567 890'
 
 
-  for (let i=0; i < courtDetails.courts.length; i++) {  
+  for (let i=0; i < courtDetailsAll.courts.length; i++) {  
 
-    if (courtShortName == courtDetails.courts[i].slug) {
-//      console.log('courtDetails.courts[i].slug ' + courtDetails.courts[i].slug)
-//      console.log('courtDetails.courts[i] ' + courtDetails.courts[i])
+    if (courtShortName == courtDetailsAll.courts[i].slug) {
+//      console.log('courtDetailsAll.courts[i].slug ' + courtDetailsAll.courts[i].slug)
+//      console.log('courtDetailsAll.courts[i] ' + courtDetailsAll.courts[i])
 //      console.log('req.app.locals.nationalDisplayFlag ' + req.app.locals.nationalDisplayFlag )
-//      console.log('req.app.locals.regionalDisplayFlag ' + req.app.locals.regionalDisplayFlag )
+     console.log('courtDetailsAll ' + JSON.stringify(courtDetailsAll.courts[i]))
 
-      if ( req.app.locals.nationalDisplayFlag || req.app.locals.regionalDisplayFlag) {
-
+      if ( courtDetailsAll.courts[i].catchment_type === "national" || courtDetailsAll.courts[i].catchment_type === "regional") {
         req.app.locals.ctscFlag = true
+        req.app.locals.catchmentArea = courtDetailsAll.courts[i].catchment_area
       }
       // professional user access scheme
-      req.app.locals.puasFlag = courtDetails.courts[i].puas
+      req.app.locals.puasFlag = courtDetailsAll.courts[i].puas
 
 
       // name
-      req.app.locals.courtName = courtDetails.courts[i].name
+      req.app.locals.courtName = courtDetailsAll.courts[i].name
       // court codes
-      req.app.locals.courtCodeCounty = courtDetails.courts[i].county_location_code
-      req.app.locals.courtCodeCrown = courtDetails.courts[i].crown_location_code
-      req.app.locals.courtCodeMagistrates = courtDetails.courts[i].magistrates_location_code
+      req.app.locals.courtCodeCounty = courtDetailsAll.courts[i].county_location_code
+      req.app.locals.courtCodeCrown = courtDetailsAll.courts[i].crown_location_code
+      req.app.locals.courtCodeMagistrates = courtDetailsAll.courts[i].magistrates_location_code
 
       // addresses
 
-      for (let j=0; j < courtDetails.courts[i].addresses.length; j++) {
+      for (let j=0; j < courtDetailsAll.courts[i].addresses.length; j++) {
 
-        let addressSplit = courtDetails.courts[i].addresses[j].address.split('\n')
+
+        let addressSplit = courtDetailsAll.courts[i].addresses[j].address.split('\n')
         if (req.app.locals.ctscFlag == false) {
 
-          if (courtDetails.courts[i].addresses[j].type == "Visit us or write to us" ) {
+          if (courtDetailsAll.courts[i].addresses[j].type == "Visit us or write to us" ) {
             req.app.locals.courtVisitWriteAddress = true
             
             req.app.locals.courtVisitAddress1 = addressSplit[0]
-//            req.app.locals.courtVisitAddress1 = courtDetails.courts[i].addresses[j].address
 
             if (addressSplit[1]) {
               req.app.locals.courtVisitAddress2 = addressSplit[1]
@@ -477,15 +477,14 @@ router.get('/individual-location-pages/generic', function(req, res) {
               req.app.locals.courtVisitAddress3 = addressSplit[2]
             }
 
-            req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
-            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
-            req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+            req.app.locals.courtVisitTown = courtDetailsAll.courts[i].addresses[j].town 
+            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
+            req.app.locals.courtVisitPostcode = courtDetailsAll.courts[i].addresses[j].postcode
           }
 
-          if (courtDetails.courts[i].addresses[j].type == "Visiting") {
+          if (courtDetailsAll.courts[i].addresses[j].type == "Visiting") {
             req.app.locals.courtSeparateAddress = true
             req.app.locals.courtVisitAddress1 = addressSplit[0]
-//            req.app.locals.courtVisitAddress1 = courtDetails.courts[i].addresses[j].address
 
             if (addressSplit[1]) {
               req.app.locals.courtVisitAddress2 = addressSplit[1]
@@ -494,15 +493,14 @@ router.get('/individual-location-pages/generic', function(req, res) {
               req.app.locals.courtVisitAddress3 = addressSplit[2]
             }
 
-            req.app.locals.courtVisitTown = courtDetails.courts[i].addresses[j].town 
-            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
-            req.app.locals.courtVisitPostcode = courtDetails.courts[i].addresses[j].postcode
+            req.app.locals.courtVisitTown = courtDetailsAll.courts[i].addresses[j].town 
+            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
+            req.app.locals.courtVisitPostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
           }
         }
-        if (courtDetails.courts[i].addresses[j].type == "Postal" ) {
+        if (courtDetailsAll.courts[i].addresses[j].type == "Postal" ) {
           req.app.locals.courtWriteAddress1 = addressSplit[0]
-//          req.app.locals.courtWriteAddress1 = courtDetails.courts[i].addresses[j].address
           if (addressSplit[1]) {
             req.app.locals.courtWriteAddress2 = addressSplit[1]
           }
@@ -510,20 +508,20 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.courtWriteAddress3 = addressSplit[2]
           }
 
-          req.app.locals.courtWriteTown = courtDetails.courts[i].addresses[j].town 
-          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetails.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
+          req.app.locals.courtWriteTown = courtDetailsAll.courts[i].addresses[j].town 
+          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
 
-          req.app.locals.courtWritePostcode = courtDetails.courts[i].addresses[j].postcode
+          req.app.locals.courtWritePostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
         }
       }
 
       // text fields
-      req.app.locals.courtAdditionalInfo = courtDetails.courts[i].info.replace(/(<([^>]+)>)/ig,"").replace("&nbsp;","").replace("&rsquo;","\'")
-      req.app.locals.courtUrgentInfo = courtDetails.courts[i].urgent
+      req.app.locals.courtAdditionalInfo = courtDetailsAll.courts[i].info.replace(/(<([^>]+)>)/ig,"").replace("&nbsp;","").replace("&rsquo;","\'")
+      req.app.locals.courtUrgentInfo = courtDetailsAll.courts[i].urgent
 
       // long and lat
-      req.app.locals.courtGoogleMapsLocation = 'https://maps.google.com/maps?q=' + courtDetails.courts[i].lat + ',' + courtDetails.courts[i].lon
+      req.app.locals.courtGoogleMapsLocation = 'https://maps.google.com/maps?q=' + courtDetailsAll.courts[i].lat + ',' + courtDetailsAll.courts[i].lon
 
       // image src
 
@@ -539,9 +537,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // opening times
       let openingTimesDetails = []
 
-      for (let j=0; j < courtDetails.courts[i].opening_times.length; j++) {
-        let openingDescription = courtDetails.courts[i].opening_times[j].description
-        let openingHours =   courtDetails.courts[i].opening_times[j].hours
+      for (let j=0; j < courtDetailsAll.courts[i].opening_times.length; j++) {
+        let openingDescription = courtDetailsAll.courts[i].opening_times[j].description
+        let openingHours =   courtDetailsAll.courts[i].opening_times[j].hours
         let openingDetails = {openingDescription,openingHours}
         openingTimesDetails.push(openingDetails) 
       }
@@ -550,15 +548,15 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // contacts phone
       let contactPhoneDetails = []
 
-      for (let j=0; j < courtDetails.courts[i].contacts.length; j++) {
+      for (let j=0; j < courtDetailsAll.courts[i].contacts.length; j++) {
 
-        if (courtDetails.courts[i].contacts[j].description == "DX") {
-          req.app.locals.courtDXNumber = courtDetails.courts[i].contacts[j].number
+        if (courtDetailsAll.courts[i].contacts[j].description == "DX") {
+          req.app.locals.courtDXNumber = courtDetailsAll.courts[i].contacts[j].number
         }
         else {
-          let phoneDescription = courtDetails.courts[i].contacts[j].description
-          let phoneNumber = courtDetails.courts[i].contacts[j].number
-          let phoneExplanation = courtDetails.courts[i].contacts[j].explanation
+          let phoneDescription = courtDetailsAll.courts[i].contacts[j].description
+          let phoneNumber = courtDetailsAll.courts[i].contacts[j].number
+          let phoneExplanation = courtDetailsAll.courts[i].contacts[j].explanation
           let phoneDetails = {phoneDescription,phoneNumber,phoneExplanation}
           contactPhoneDetails.push(phoneDetails) 
         }
@@ -568,11 +566,11 @@ router.get('/individual-location-pages/generic', function(req, res) {
       //  email
       let contactEmailDetails = []
 
-      for (let j=0; j < courtDetails.courts[i].emails.length; j++) {
+      for (let j=0; j < courtDetailsAll.courts[i].emails.length; j++) {
 
-          let emailDescription = courtDetails.courts[i].emails[j].description
-          let emailAddress = courtDetails.courts[i].emails[j].address
-          let emailExplanation = courtDetails.courts[i].emails[j].explanation
+          let emailDescription = courtDetailsAll.courts[i].emails[j].description
+          let emailAddress = courtDetailsAll.courts[i].emails[j].address
+          let emailExplanation = courtDetailsAll.courts[i].emails[j].explanation
           let emailDetails = {emailDescription,emailAddress,emailExplanation}
           contactEmailDetails.push(emailDetails) 
 
@@ -582,13 +580,19 @@ router.get('/individual-location-pages/generic', function(req, res) {
       //service areas to display in sidebar
       let serviceAreasAtCourt = []
 
-      for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-//        console.log('courtDetails.courts[i].areas_of_law[j] ' + courtDetails.courts[i].areas_of_law[j])
-        serviceStartDetails = getServiceDetails(null,courtDetails.courts[i].areas_of_law[j])
-        serviceAreasAtCourt.push(serviceStartDetails) 
+      for (let j=0; j < courtDetailsAll.courts[i].areas_of_law.length; j++) {
+//        console.log('courtDetailsAll.courts[i].areas_of_law[j] ' + courtDetailsAll.courts[i].areas_of_law[j])
+        serviceDetails = getServiceDetails(null,courtDetailsAll.courts[i].areas_of_law[j])
+        console.log('serviceStartDetails ' + JSON.stringify(serviceDetails ))
+        if (req.app.locals.ctscFlag) {
+          req.app.locals.serviceArea = serviceDetails.service
+        }
+        serviceAreasAtCourt.push(serviceDetails) 
       }
 
       req.app.locals.serviceAreasAtCourt = serviceAreasAtCourt
+      console.log('serviceAreasAtCourt ' + JSON.stringify(serviceAreasAtCourt ))
+
     } // if court 
   }
    res.render('individual-location-pages/generic')

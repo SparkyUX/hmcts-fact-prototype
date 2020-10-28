@@ -1,6 +1,8 @@
-{"courts": [  {
-    "name": "County Court Money Claims Centre (CCMCC)",
-    "slug": "county-court-money-claims-centre-ccmcc",
+{
+  "courts":[
+  {
+    "name": "Money Claims Service Centre",
+    "slug": "money-claims-service-centre",
     "info": "",
     "open": true,
     "directions": null,
@@ -65,7 +67,326 @@
       }
     ],
     "gbs": null,
-    "ctsc": true
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Probate Service Centre",
+    "slug": "probate-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Probate"],
+    "emails": [{
+      "address": "probate-filing@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, {
+      "address": "urgent.reading.crowncourt@justice.gov.uk",
+      "description": "Urgent",
+      "explanation": null
+    }, {
+      "address": "probatecustomerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Harlow 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Probate!PO Box 12625!!",
+      "town": "Harlow",
+      "postcode": "CM20 9QE"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+    {
+    "name": "Divorce Service Centre",
+    "slug": "divorce-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Divorce"],
+    "emails": [{
+      "address": "probate-filing@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, {
+      "address": "urgent.reading.crowncourt@justice.gov.uk",
+      "description": "Urgent",
+      "explanation": null
+    }, {
+      "address": "probatecustomerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Harlow 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Probate!PO Box 12625!!",
+      "town": "Harlow",
+      "postcode": "CM20 9QE"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Immigration and Asylum Appeals Service Centre",
+    "slug": "immigration-and-asylum-appeals-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Immigration"],
+    "emails": [{
+      "address": "probate-filing@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, {
+      "address": "urgent.reading.crowncourt@justice.gov.uk",
+      "description": "Urgent",
+      "explanation": null
+    }, {
+      "address": "probatecustomerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Harlow 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Social Security and Child Support Appeals Service Centre",
+    "slug": "social-security-and-child-support-appeals-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Social security"],
+    "emails": [{
+      "address": "probate-filing@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, {
+      "address": "urgent.reading.crowncourt@justice.gov.uk",
+      "description": "Urgent",
+      "explanation": null
+    }, {
+      "address": "probatecustomerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Harlow 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Probate!PO Box 12625!!",
+      "town": "Harlow",
+      "postcode": "CM20 9QE"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Minor Criminal Offences Service Centre",
+    "slug": "minor-criminal-offences-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Minor crime"],
+    "types": ["Crime"],
+    "emails": [{
+      "address": "single-justice-filing@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, {
+      "address": "urgent@justice.gov.uk",
+      "description": "Urgent",
+      "explanation": null
+    }, {
+      "address": "sjs.customerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Stoke 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Single Justice Procedure!PO Box 12625!!",
+      "town": "Stoke",
+      "postcode": "ST14 W34"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Crime Service Centre",
+    "slug": "crime-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Crime"],
+    "emails": [{
+      "address": "crimeg@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, 
+    {
+      "address": "crime.customerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "for Welsh \u2013 Speakers"
+    }, {
+      "number": " 0300 303 0648",
+      "description": "Fax",
+      "explanation": ""
+    }, {
+      "number": "702634 Birmingham 4",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8:30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Crime Service Centre!PO Box 12625!!",
+      "town": "Birmingham",
+      "postcode": "B1 WS44"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
   },
   {
     "name": "Aberdeen Tribunal Hearing Centre",
@@ -158,7 +479,9 @@
         "postcode": " AB10 1SH"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Aberystwyth Justice Centre",
@@ -312,7 +635,9 @@
         "postcode": "SY23 1AS"
       }
     ],
-    "gbs": "Y403"
+    "gbs": "Y403",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Administrative Court",
@@ -405,7 +730,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Admiralty and Commercial Court",
@@ -506,7 +833,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Agricultural Land and Drainage - First-tier Tribunal (Property Chamber)",
@@ -557,7 +886,9 @@
         "postcode": "M1 4AH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Aldershot Justice Centre",
@@ -695,7 +1026,9 @@
         "postcode": "GU11 1NY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Amersham Law Courts",
@@ -776,7 +1109,9 @@
         "postcode": "HP6 5AJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ashford Tribunal Hearing Centre",
@@ -854,7 +1189,9 @@
         "postcode": "TN23 1YB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Avon and Somerset Enforcement Department",
@@ -908,7 +1245,9 @@
         "postcode": "BS23 9BE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Aylesbury Crown Court",
@@ -1009,7 +1348,9 @@
         "postcode": "HP21 7FT"
       }
     ],
-    "gbs": "W840"
+    "gbs": "W840",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ayr Social Security and Child Support Tribunal",
@@ -1099,7 +1440,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bankruptcy Court (High Court)",
@@ -1200,7 +1543,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barkingside  Magistrates' Court",
@@ -1312,7 +1657,9 @@
         "postcode": "E3 4DJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barnet Civil and Family Courts Centre",
@@ -1425,7 +1772,9 @@
         "postcode": "N3 1BQ"
       }
     ],
-    "gbs": "Y410"
+    "gbs": "Y410",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barnsley Law Courts",
@@ -1576,7 +1925,9 @@
         "postcode": "S70 2DW"
       }
     ],
-    "gbs": "Y411"
+    "gbs": "Y411",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barnstaple Magistrates', County and Family Court",
@@ -1744,7 +2095,9 @@
         "postcode": "EX31 1DU"
       }
     ],
-    "gbs": "Y412"
+    "gbs": "Y412",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barrow-in-Furness County Court and Family Court",
@@ -1867,7 +2220,9 @@
         "postcode": "LA14 5QX"
       }
     ],
-    "gbs": "Y413"
+    "gbs": "Y413",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Barrow-in-Furness Magistrates' Court",
@@ -1981,7 +2336,9 @@
         "postcode": "LA14 5QX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Basildon Combined Court",
@@ -2100,7 +2457,9 @@
         "postcode": "SS14 2EW"
       }
     ],
-    "gbs": "Y252"
+    "gbs": "Y252",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Basildon Magistrates' Court and Family Court",
@@ -2229,7 +2588,9 @@
         "postcode": "CM1 9PZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Basingstoke County Court and Family Court",
@@ -2338,7 +2699,9 @@
         "postcode": "RG21 4AB"
       }
     ],
-    "gbs": "Y414"
+    "gbs": "Y414",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Basingstoke Magistrates' Court",
@@ -2446,7 +2809,9 @@
         "postcode": "RG21 4AB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bath Law Courts (Civil, Family and Magistrates)",
@@ -2613,7 +2978,9 @@
         "postcode": "BA1 5AF"
       }
     ],
-    "gbs": "Y415"
+    "gbs": "Y415",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bedford County Court and Family Court",
@@ -2730,7 +3097,9 @@
         "postcode": "MK40 1SQ"
       }
     ],
-    "gbs": "Y416"
+    "gbs": "Y416",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Belmarsh Magistrates' Court",
@@ -2793,7 +3162,9 @@
         "postcode": "BR1 1RA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Berwick upon Tweed Magistrates' Court",
@@ -2918,7 +3289,9 @@
         "postcode": "NE99 1AU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Beverley Magistrates' Court and Hearing Centre",
@@ -3015,7 +3388,9 @@
         "postcode": "HU17 9EJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bexley Magistrates' Court",
@@ -3125,7 +3500,9 @@
         "postcode": "BR1 1RA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bexleyheath Social Security and Child Support Tribunal",
@@ -3201,7 +3578,9 @@
         "postcode": "SM1 1DA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birkenhead County Court",
@@ -3341,7 +3720,9 @@
         "postcode": "CH41 5EN"
       }
     ],
-    "gbs": "Y417"
+    "gbs": "Y417",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Civil and Family Justice Centre",
@@ -3572,7 +3953,9 @@
         "postcode": "B4 6DS"
       }
     ],
-    "gbs": "Y418"
+    "gbs": "Y418",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Crown Court",
@@ -3665,7 +4048,9 @@
         "postcode": "B4 7NA"
       }
     ],
-    "gbs": "W841"
+    "gbs": "W841",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Immigration and Asylum Chamber (First Tier Tribunal)",
@@ -3767,7 +4152,9 @@
         "postcode": "B4 6DS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Magistrates' Court",
@@ -3889,7 +4276,9 @@
         "postcode": "B4 6QA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Social Security and Child Support Tribunal",
@@ -3937,7 +4326,9 @@
         "postcode": "B16 6FR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Birmingham Youth Court",
@@ -4008,7 +4399,9 @@
         "postcode": "B4 6QA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Blackburn Family Court",
@@ -4140,7 +4533,9 @@
         "postcode": "BB1 6DJ"
       }
     ],
-    "gbs": "Y420"
+    "gbs": "Y420",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Blackburn Magistrates' Court",
@@ -4264,7 +4659,9 @@
         "postcode": "BB2 1AA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Blackpool  Family Court",
@@ -4394,7 +4791,9 @@
         "postcode": "FY1 5RJ"
       }
     ],
-    "gbs": "Y421"
+    "gbs": "Y421",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Blackpool Magistrates' and Civil Court",
@@ -4531,7 +4930,9 @@
         "postcode": "FY1 5DQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Blackwood Civil and Family Court",
@@ -4631,7 +5032,9 @@
         "postcode": "NP12 1NY"
       }
     ],
-    "gbs": "Y422"
+    "gbs": "Y422",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bodmin Law Courts",
@@ -4793,7 +5196,9 @@
         "postcode": "PL31 2AL"
       }
     ],
-    "gbs": "Y423"
+    "gbs": "Y423",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bolton Crown Court",
@@ -4920,7 +5325,9 @@
         "postcode": "BL1 1SU"
       }
     ],
-    "gbs": "W803"
+    "gbs": "W803",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bolton Magistrates' Court",
@@ -5013,7 +5420,9 @@
         "postcode": "BL1 1SU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bolton Social Security and Child Support Tribunal",
@@ -5084,7 +5493,9 @@
         "postcode": "L2 5UZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Boston County Court and Family Court",
@@ -5186,7 +5597,9 @@
         "postcode": "PE21 6PE"
       }
     ],
-    "gbs": "Y424"
+    "gbs": "Y424",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Boston Magistrates' Court",
@@ -5300,7 +5713,9 @@
         "postcode": "LN5 7QA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bournemouth",
@@ -5436,7 +5851,9 @@
         "postcode": "PL31 2AL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bournemouth Combined Court",
@@ -5632,7 +6049,9 @@
         "postcode": "BH7 7DS"
       }
     ],
-    "gbs": "Y254"
+    "gbs": "Y254",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bournemouth Crown Court",
@@ -5755,7 +6174,9 @@
         "postcode": "BH7 7DS"
       }
     ],
-    "gbs": "W804"
+    "gbs": "W804",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bradford Combined Court Centre",
@@ -5923,7 +6344,9 @@
         "postcode": "BD1 1JA"
       }
     ],
-    "gbs": "Y255"
+    "gbs": "Y255",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bradford Tribunal Hearing Centre",
@@ -6031,7 +6454,9 @@
         "postcode": "BD3 7BH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bradford and Keighley Magistrates' Court and Family Court",
@@ -6126,7 +6551,9 @@
         "postcode": "BD1 1LA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brentford County and Family Court",
@@ -6213,7 +6640,9 @@
         "postcode": "TW8 0JJ"
       }
     ],
-    "gbs": "Y427"
+    "gbs": "Y427",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bridlington Magistrates' Court and Hearing Centre",
@@ -6310,7 +6739,9 @@
         "postcode": "YO16 4EJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brighton County Court",
@@ -6449,7 +6880,9 @@
         "postcode": "BN2 0RF"
       }
     ],
-    "gbs": "Y429"
+    "gbs": "Y429",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brighton District Probate Registry",
@@ -6510,7 +6943,9 @@
         "postcode": "BN2 0RF"
       }
     ],
-    "gbs": "P205"
+    "gbs": "P205",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brighton Magistrates' Court",
@@ -6631,7 +7066,9 @@
         "postcode": "BN2 0LG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brighton Tribunal Hearing Centre",
@@ -6707,7 +7144,9 @@
         "postcode": "BN3 1TL"
       }
     ],
-    "gbs": "Y688"
+    "gbs": "Y688",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Brighton-Hearing Centre",
@@ -6813,7 +7252,9 @@
         "postcode": "BN2 0RF"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bristol Civil and Family Justice Centre",
@@ -7063,7 +7504,9 @@
         "postcode": "BS1 6GR"
       }
     ],
-    "gbs": "Y430"
+    "gbs": "Y430",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bristol Crown Court",
@@ -7220,7 +7663,9 @@
         "postcode": "BS1 1DA"
       }
     ],
-    "gbs": "W843"
+    "gbs": "W843",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bristol District Probate Registry",
@@ -7305,7 +7750,9 @@
         "postcode": "CF24 0RZ"
       }
     ],
-    "gbs": "P206"
+    "gbs": "P206",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bristol Magistrates' Court and Tribunals Hearing Centre",
@@ -7468,7 +7915,9 @@
         "postcode": "BS1 3NU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bromley County Court and Family Court",
@@ -7580,7 +8029,9 @@
         "postcode": "BR1 3PX"
       }
     ],
-    "gbs": "Y431"
+    "gbs": "Y431",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bromley Magistrates' Court",
@@ -7701,7 +8152,9 @@
         "postcode": "BR1 1RA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Burnley Combined Court Centre",
@@ -7825,7 +8278,9 @@
         "postcode": "BB11 1XD"
       }
     ],
-    "gbs": "Y256"
+    "gbs": "Y256",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Burnley Magistrates' Court",
@@ -7958,7 +8413,9 @@
         "postcode": "BB2 1AA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bury St Edmunds County Court and Family Court",
@@ -8082,7 +8539,9 @@
         "postcode": "IP33 1TR"
       }
     ],
-    "gbs": "Y436"
+    "gbs": "Y436",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Bury St Edmunds Regional Divorce Centre",
@@ -8136,7 +8595,9 @@
         "postcode": "IP33 1TR"
       }
     ],
-    "gbs": "Y693"
+    "gbs": "Y693",
+    "catchment_type": "regional",
+    "catchment_area": "The South-East of England"
   },
   {
     "name": "Caernarfon  Justice Centre",
@@ -8286,7 +8747,9 @@
         "postcode": "LL55 2DF"
       }
     ],
-    "gbs": "Y438"
+    "gbs": "Y438",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cambridge County Court and Family Court",
@@ -8413,7 +8876,9 @@
         "postcode": "CB1 1BA"
       }
     ],
-    "gbs": "Y439"
+    "gbs": "Y439",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cambridge Crown Court",
@@ -8522,7 +8987,9 @@
         "postcode": "CB1 1BT"
       }
     ],
-    "gbs": "W844"
+    "gbs": "W844",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cambridge Magistrates' Court",
@@ -8627,7 +9094,9 @@
         "postcode": "PE1 1ED"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cannock Magistrates' Court",
@@ -8724,7 +9193,9 @@
         "postcode": "ST16 2QQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Canterbury Combined Court Centre",
@@ -8856,7 +9327,9 @@
         "postcode": "CT1 1ZA"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Canterbury Magistrates' Court",
@@ -8948,7 +9421,9 @@
         "postcode": "CT1 2UE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cardiff  Magistrates' Court",
@@ -9085,7 +9560,9 @@
         "postcode": "CF24 0RZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cardiff Civil and Family Justice Centre",
@@ -9268,7 +9745,9 @@
         "postcode": "CF10 1ET"
       }
     ],
-    "gbs": "Y440"
+    "gbs": "Y440",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cardiff Crown Court",
@@ -9390,7 +9869,9 @@
         "postcode": "CF10 3PG"
       }
     ],
-    "gbs": "W845"
+    "gbs": "W845",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cardiff Probate Registry of Wales",
@@ -9460,7 +9941,9 @@
         "postcode": "CF24 0RZ"
       }
     ],
-    "gbs": "P226"
+    "gbs": "P226",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cardiff Social Security and Child Support Tribunal",
@@ -9559,7 +10042,9 @@
         "postcode": "CF24 0AB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Care Standards Tribunal",
@@ -9604,7 +10089,9 @@
         "postcode": "DL1 1RU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Carlisle Combined Court",
@@ -9769,7 +10256,9 @@
         "postcode": "CA1 1DJ"
       }
     ],
-    "gbs": "Y258"
+    "gbs": "Y258",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Carlisle Magistrates' Court",
@@ -9892,7 +10381,9 @@
         "postcode": "CA3 8QH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Carmarthen County Court and Family Court",
@@ -10013,7 +10504,9 @@
         "postcode": "SA31 3BT"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Central Criminal Court",
@@ -10128,7 +10621,9 @@
         "postcode": "EC4M 7EH"
       }
     ],
-    "gbs": "W870"
+    "gbs": "W870",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Central Family Court",
@@ -10263,7 +10758,9 @@
         "postcode": "WC1V 6NP"
       }
     ],
-    "gbs": "P631"
+    "gbs": "P631",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Central London County Court",
@@ -10360,7 +10857,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": "Y442"
+    "gbs": "Y442",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Central London County Court (Bankruptcy)",
@@ -10437,7 +10936,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Central London Employment Tribunal",
@@ -10524,7 +11025,9 @@
         "postcode": "WC2B 6EX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Centralised Attachment of Earnings Payments (CAPS)",
@@ -10596,7 +11099,9 @@
         "postcode": "NN1 2LH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chancery Division",
@@ -10714,7 +11219,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chelmsford Crown Court",
@@ -10803,7 +11310,9 @@
         "postcode": "CM1 1EL"
       }
     ],
-    "gbs": "W846"
+    "gbs": "W846",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chelmsford Justice Centre",
@@ -10916,7 +11425,9 @@
         "postcode": "CM2 0PP"
       }
     ],
-    "gbs": "Y443"
+    "gbs": "Y443",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chelmsford Magistrates' Court and Family Court",
@@ -11030,7 +11541,9 @@
         "postcode": "CM1 1NT"
       }
     ],
-    "gbs": "Y443"
+    "gbs": "Y443",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cheltenham Magistrates' Court",
@@ -11170,7 +11683,9 @@
         "postcode": "GL1 2XG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cheshire and Merseyside Central Payment and Enforcement Centre",
@@ -11229,7 +11744,9 @@
         "postcode": "WA7 9DU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chester Civil and Family Justice Centre",
@@ -11378,7 +11895,9 @@
         "postcode": "CH1 1SN"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chester Crown Court",
@@ -11504,7 +12023,9 @@
         "postcode": "CH1 2AN"
       }
     ],
-    "gbs": "W847"
+    "gbs": "W847",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chester Magistrates' Court",
@@ -11661,7 +12182,9 @@
         "postcode": "CH1 2XA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Chesterfield County Court",
@@ -11814,7 +12337,9 @@
         "postcode": "S41 7TW"
       }
     ],
-    "gbs": "Y446"
+    "gbs": "Y446",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "City of London Magistrates' Court",
@@ -11935,7 +12460,9 @@
         "postcode": "NW1 5BR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Clerkenwell and Shoreditch County Court and Family Court",
@@ -12054,7 +12581,9 @@
         "postcode": "EC1V 3RE"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cleveland, Durham, Northumbria and North Yorkshire Central Enforcement Unit",
@@ -12103,7 +12632,9 @@
         "postcode": "NE29 1DZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Colchester Magistrates' Court and Family Court",
@@ -12221,7 +12752,9 @@
         "postcode": "CM1 9PZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "County Court Business Centre (CCBC)",
@@ -12315,9 +12848,10 @@
         "postcode": "NN1 2LH"
       }
     ],
-    "gbs": "Y432"
+    "gbs": "Y432",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
-
   {
     "name": "Court of Appeal Civil Division",
     "slug": "court-of-appeal-civil-division",
@@ -12443,7 +12977,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Court of Appeal Criminal Division",
@@ -12520,7 +13056,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Court of Protection",
@@ -12618,7 +13156,9 @@
         "postcode": "WC1A 9JA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Coventry Combined Court Centre",
@@ -12771,7 +13311,9 @@
         "postcode": "CV1 2SN"
       }
     ],
-    "gbs": "Y260"
+    "gbs": "Y260",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Coventry Magistrates' Court",
@@ -12912,7 +13454,9 @@
         "postcode": "CV1 2SQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Crawley Magistrates' Court",
@@ -13035,7 +13579,9 @@
         "postcode": "BN2 0LG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Crewe (South Cheshire) Magistrates' Court",
@@ -13194,7 +13740,9 @@
         "postcode": "CW1 2DT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Crewe County Court and Family Court",
@@ -13333,7 +13881,9 @@
         "postcode": "CW1 2DP"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Croydon County Court and Family Court",
@@ -13452,7 +14002,9 @@
         "postcode": "CR9 5AB"
       }
     ],
-    "gbs": "Y453"
+    "gbs": "Y453",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Croydon Crown Court",
@@ -13552,7 +14104,9 @@
         "postcode": "CR9 5AB"
       }
     ],
-    "gbs": "W849"
+    "gbs": "W849",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Croydon Employment Tribunal",
@@ -13631,7 +14185,9 @@
         "postcode": "CR0 2RF"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Croydon Magistrates' Court",
@@ -13745,7 +14301,9 @@
         "postcode": "BR1 1RA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Cwmbran Magistrates' Court",
@@ -13878,7 +14436,9 @@
         "postcode": "NP20 4PR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Darlington County Court and Family Court",
@@ -13983,7 +14543,9 @@
         "postcode": "DL3 7RL"
       }
     ],
-    "gbs": "Y454"
+    "gbs": "Y454",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Darlington Magistrates' Court and Family Court",
@@ -14114,7 +14676,9 @@
         "postcode": "DL5 5RT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Dartford County Court and Family Court",
@@ -14207,7 +14771,9 @@
         "postcode": "DA1 1DX"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Derby Combined Court Centre",
@@ -14371,7 +14937,9 @@
         "postcode": "DE1 2XE"
       }
     ],
-    "gbs": "Y456"
+    "gbs": "Y456",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Derby Magistrates' Court",
@@ -14474,7 +15042,9 @@
         "postcode": "DE1 3JR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Derby Social Security and Child Support Tribunal",
@@ -14557,7 +15127,9 @@
         "postcode": "B16 6FR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Devon and Cornwall Central Finance Unit",
@@ -14601,7 +15173,9 @@
         "postcode": "PL1 2DP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Doncaster Justice Centre North",
@@ -14731,7 +15305,9 @@
         "postcode": "DN1 3HT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Doncaster Justice Centre South",
@@ -14861,7 +15437,9 @@
         "postcode": "S3 8PH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Dudley County Court and Family Court",
@@ -14943,7 +15521,9 @@
         "postcode": "DY1 1RY"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Dudley Magistrates' Court",
@@ -15040,7 +15620,9 @@
         "postcode": "DY1 1RY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Dundee Tribunal Hearing Centre",
@@ -15150,7 +15732,9 @@
         "postcode": "DD1 4QB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Durham County Court and Family Court",
@@ -15262,7 +15846,9 @@
         "postcode": "DH1 3RG"
       }
     ],
-    "gbs": "Y460"
+    "gbs": "Y460",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Durham Crown Court",
@@ -15360,7 +15946,9 @@
         "postcode": "DH1 3HW"
       }
     ],
-    "gbs": "W852"
+    "gbs": "W852",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ealing Magistrates' Court",
@@ -15488,7 +16076,9 @@
         "postcode": "W13 0SD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "East Berkshire Magistrates' Court, Slough",
@@ -15607,7 +16197,9 @@
         "postcode": "RG1 7TQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "East London Family Court",
@@ -15700,7 +16292,9 @@
         "postcode": "E14 4HD"
       }
     ],
-    "gbs": "Y690"
+    "gbs": "Y690",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "East London Tribunal Hearing Centre",
@@ -15809,7 +16403,9 @@
         "postcode": "E14 2BE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Edinburgh Employment Appeal Tribunal",
@@ -15905,7 +16501,9 @@
         "postcode": "EH2 4HH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Edinburgh Employment Tribunal",
@@ -16002,7 +16600,9 @@
         "postcode": "EH3 7HF"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Edinburgh Social Security and Child Support Tribunal",
@@ -16111,7 +16711,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Edinburgh Upper Tribunal (Administrative Appeals Chamber)",
@@ -16189,7 +16791,9 @@
         "postcode": "EH2 4HH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Edmonton County Court and Family Court",
@@ -16283,7 +16887,9 @@
         "postcode": "N18 2TN"
       }
     ],
-    "gbs": "Y462"
+    "gbs": "Y462",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Employment Appeal Tribunal (England and Wales)",
@@ -16339,7 +16945,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Enfield Social Security and Child Support Tribunal",
@@ -16392,7 +17000,9 @@
         "postcode": "SM1 1DA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Enforcement (Crime) Contact Centre - Wales, South West & London",
@@ -16451,7 +17061,9 @@
         "postcode": "SA13 1SB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Exeter Law Courts",
@@ -16699,7 +17311,9 @@
         "postcode": "EX1 1UH"
       }
     ],
-    "gbs": "Y261"
+    "gbs": "Y261",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Family Division",
@@ -16766,7 +17380,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Field House Tribunal Hearing Centre",
@@ -16855,7 +17471,9 @@
         "postcode": "EC4A 1DZ"
       }
     ],
-    "gbs": "T243"
+    "gbs": "T243",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Folkestone Magistrates' Court",
@@ -16952,7 +17570,9 @@
         "postcode": "CT20 2DH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Gangmaster Licensing Appeals (England, Wales and Scotland)",
@@ -17029,7 +17649,9 @@
         "postcode": "M3 2JA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Gateshead County Court and Family Court",
@@ -17123,7 +17745,9 @@
         "postcode": "NE8 1DT"
       }
     ],
-    "gbs": "Y465"
+    "gbs": "Y465",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Gateshead Magistrates' Court and Family Court",
@@ -17234,7 +17858,9 @@
         "postcode": "NE8 1DT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "General Regulatory Chamber",
@@ -17285,7 +17911,9 @@
         "postcode": "LE1 8DJ"
       }
     ],
-    "gbs": "T244"
+    "gbs": "T244",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Glasgow Employment and Immigration Tribunals (Eagle Building)",
@@ -17392,7 +18020,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Glasgow Tribunals Centre",
@@ -17541,7 +18171,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Gloucester Crown Court",
@@ -17675,7 +18307,9 @@
         "postcode": "GL1 2TS"
       }
     ],
-    "gbs": "W854"
+    "gbs": "W854",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Gloucester and Cheltenham County  and Family Court",
@@ -17818,7 +18452,9 @@
         "postcode": "GL1 2DE"
       }
     ],
-    "gbs": "Y466"
+    "gbs": "Y466",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Great Grimsby Combined Court Centre",
@@ -17933,7 +18569,9 @@
         "postcode": "DN31 1HX"
       }
     ],
-    "gbs": "Y262"
+    "gbs": "Y262",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Great Yarmouth Magistrates' Court and Family Court",
@@ -18041,7 +18679,9 @@
         "postcode": "NR30 1PW"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Greater Manchester Central Accounts and Enforcement Unit",
@@ -18111,7 +18751,9 @@
         "postcode": "M60 1PR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Grimsby Magistrates' Court and Family Court",
@@ -18251,7 +18893,9 @@
         "postcode": "DN31 1NH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Guildford County Court and Family Court",
@@ -18377,7 +19021,9 @@
         "postcode": "GU1 4PS"
       }
     ],
-    "gbs": "Y468"
+    "gbs": "Y468",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Guildford Crown Court",
@@ -18466,7 +19112,9 @@
         "postcode": "GU1 4ST"
       }
     ],
-    "gbs": "W855"
+    "gbs": "W855",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Guildford Magistrates' Court and Family Court",
@@ -18572,7 +19220,9 @@
         "postcode": "GU1 4PS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hamilton Social Security and Child Support Tribunal",
@@ -18686,7 +19336,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Harlow Social Security and Child Support Tribunal",
@@ -18749,7 +19401,9 @@
         "postcode": "B16 6FR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Harmondsworth Tribunal Hearing Centre",
@@ -18827,7 +19481,9 @@
         "postcode": "UB7 0HD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Harrogate Justice Centre",
@@ -18961,7 +19617,9 @@
         "postcode": "HG1 1EL"
       }
     ],
-    "gbs": "Y471"
+    "gbs": "Y471",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Harrow Crown Court",
@@ -19086,7 +19744,9 @@
         "postcode": "HA1 4TU"
       }
     ],
-    "gbs": "W856"
+    "gbs": "W856",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hastings County Court and Family Court",
@@ -19195,7 +19855,9 @@
         "postcode": "TN34 1QX"
       }
     ],
-    "gbs": "Y473"
+    "gbs": "Y473",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hastings Magistrates' Court",
@@ -19302,7 +19964,9 @@
         "postcode": "BN2 OLG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hatfield Magistrates' Court",
@@ -19383,7 +20047,9 @@
         "postcode": "AL10 9SJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hatton Cross Tribunal Hearing Centre",
@@ -19498,7 +20164,9 @@
         "postcode": "TW14 0LS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Havant Justice Centre",
@@ -19589,7 +20257,9 @@
         "postcode": "PO9 2AL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Haverfordwest County Court and Family Court",
@@ -19688,7 +20358,9 @@
         "postcode": "SA61 2AX"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Haverfordwest Magistrates' Court",
@@ -19791,7 +20463,9 @@
         "postcode": "SA61 2AX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hendon Magistrates' Court",
@@ -19902,7 +20576,9 @@
         "postcode": "NW9 7BY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hereford County Court and Family Court",
@@ -20037,7 +20713,9 @@
         "postcode": "HR1 2HE"
       }
     ],
-    "gbs": "Y476"
+    "gbs": "Y476",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hereford Crown Court",
@@ -20112,7 +20790,9 @@
         "postcode": "HR1 2HY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hereford Justice Centre",
@@ -20250,7 +20930,9 @@
         "postcode": "HR1 2HE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hertford County Court and Family Court",
@@ -20366,7 +21048,9 @@
         "postcode": "SG13 9HT"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "High Wycombe County Court and Family Court",
@@ -20453,7 +21137,9 @@
         "postcode": "RG1 1HE"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "High Wycombe Magistrates' Court and Family Court",
@@ -20556,7 +21242,9 @@
         "postcode": "MK9 2AJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Highbury Corner Magistrates' Court",
@@ -20674,7 +21362,9 @@
         "postcode": "N7 1AF"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Horsham County Court and Family Court",
@@ -20779,7 +21469,9 @@
         "postcode": "RH12 2ET"
       }
     ],
-    "gbs": "Y480"
+    "gbs": "Y480",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Horsham Magistrates' Court",
@@ -20889,7 +21581,9 @@
         "postcode": "BN2 0LG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hove Trial Centre",
@@ -21004,7 +21698,9 @@
         "postcode": "BN7 1YB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Huddersfield County Court and Family Court",
@@ -21122,7 +21818,9 @@
         "postcode": "HD1 2RR"
       }
     ],
-    "gbs": "Y481"
+    "gbs": "Y481",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hull Tribunal Hearing Centre",
@@ -21219,7 +21917,9 @@
         "postcode": "HU1 1UY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Hull and Holderness Magistrates' Court and Hearing Centre",
@@ -21324,7 +22024,9 @@
         "postcode": "HU1 1RD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Huntingdon Law Courts",
@@ -21472,7 +22174,9 @@
         "postcode": "PE1 1ED"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Inner London Crown Court",
@@ -21577,7 +22281,9 @@
         "postcode": "SE1 6AZ"
       }
     ],
-    "gbs": "W866"
+    "gbs": "W866",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Inverness Employment Tribunal",
@@ -21627,7 +22333,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Inverness Social Security and Child Support Tribunal",
@@ -21705,7 +22413,9 @@
         "postcode": "IV1 1AH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ipswich County Court and Family Hearing Centre",
@@ -21809,7 +22519,9 @@
         "postcode": "IP1 1EJ"
       }
     ],
-    "gbs": "Y484"
+    "gbs": "Y484",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ipswich Crown Court",
@@ -21910,7 +22622,9 @@
         "postcode": "IP1 2AG"
       }
     ],
-    "gbs": "W857"
+    "gbs": "W857",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ipswich District Probate Registry",
@@ -21986,7 +22700,9 @@
         "postcode": "NE1 4DR"
       }
     ],
-    "gbs": "P212"
+    "gbs": "P212",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Ipswich Magistrates' Court",
@@ -22101,7 +22817,9 @@
         "postcode": "IP1 2AP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Isle of Wight Combined Court",
@@ -22257,7 +22975,9 @@
         "postcode": "PO30 5YT"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Isleworth Crown Court",
@@ -22368,7 +23088,9 @@
         "postcode": "TW7 5LP"
       }
     ],
-    "gbs": "W858"
+    "gbs": "W858",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kent, Surrey and Sussex Enforcement Business Centre",
@@ -22424,7 +23146,9 @@
         "postcode": "ME14 9PG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kidderminster Magistrates' Court",
@@ -22559,7 +23283,9 @@
         "postcode": "DY10 1QQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "King's Lynn Crown Court",
@@ -22639,7 +23365,9 @@
         "postcode": "PE30 1PQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "King's Lynn Magistrates' Court and Family Court",
@@ -22792,7 +23520,9 @@
         "postcode": "PE30 1PQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kingston upon Thames County Court and Family Court",
@@ -22870,7 +23600,9 @@
         "postcode": "KT1 2AD"
       }
     ],
-    "gbs": "Y490"
+    "gbs": "Y490",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kingston upon Thames Crown Court",
@@ -22976,7 +23708,9 @@
         "postcode": "KT1 2BB"
       }
     ],
-    "gbs": "W859"
+    "gbs": "W859",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kingston-upon-Hull Combined Court Centre",
@@ -23155,7 +23889,9 @@
         "postcode": "HU1 2EZ"
       }
     ],
-    "gbs": "Y263"
+    "gbs": "Y263",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Kirklees (Huddersfield) Magistrates' Court and Family Court",
@@ -23296,7 +24032,9 @@
         "postcode": "HD1 2NH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lancaster Courthouse",
@@ -23469,7 +24207,9 @@
         "postcode": "LA1 1XZ"
       }
     ],
-    "gbs": "Y492"
+    "gbs": "Y492",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lancaster Crown Court",
@@ -23558,7 +24298,9 @@
         "postcode": "PR1 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Land Registration",
@@ -23599,7 +24341,9 @@
         "postcode": "WC1E 7LR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lavender Hill Magistrates' Court",
@@ -23711,7 +24455,9 @@
         "postcode": "SW11 1JU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leamington Spa Magistrates' Court",
@@ -23827,7 +24573,9 @@
         "postcode": "CV32 4EL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leeds Combined Court Centre",
@@ -24087,7 +24835,9 @@
         "postcode": "LS1 3BG"
       }
     ],
-    "gbs": "Y264"
+    "gbs": "Y264",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leeds District Probate Registry",
@@ -24154,7 +24904,9 @@
         "postcode": "LS1 2ED"
       }
     ],
-    "gbs": "P214"
+    "gbs": "P214",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leeds Employment Tribunal",
@@ -24244,7 +24996,9 @@
         "postcode": "LS1 5ES"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leeds Magistrates' Court and Family Court",
@@ -24357,7 +25111,9 @@
         "postcode": "LS1 3JP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leeds Social Security and Child Support Tribunal",
@@ -24443,7 +25199,9 @@
         "postcode": "LS1 2ED"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leicester County Court and Family Court",
@@ -24572,7 +25330,9 @@
         "postcode": "LE1 6HG"
       }
     ],
-    "gbs": "Y493"
+    "gbs": "Y493",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leicester Crown Court",
@@ -24691,7 +25451,9 @@
         "postcode": "LE1 6HG"
       }
     ],
-    "gbs": "W860"
+    "gbs": "W860",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leicester Magistrates' Court",
@@ -24799,7 +25561,9 @@
         "postcode": "LE1 6BT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leicester Tribunal Hearing Centre",
@@ -24876,7 +25640,9 @@
         "postcode": "LE1 6TE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lewes Combined Court Centre",
@@ -25016,7 +25782,9 @@
         "postcode": "BN2 0RF"
       }
     ],
-    "gbs": "Y265"
+    "gbs": "Y265",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Leyland Family Hearing Centre",
@@ -25152,7 +25920,9 @@
         "postcode": "PR1 2PD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lincoln County Court and Family Court",
@@ -25252,7 +26022,9 @@
         "postcode": "LN5 7PS"
       }
     ],
-    "gbs": "Y495"
+    "gbs": "Y495",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lincoln Crown Court",
@@ -25353,7 +26125,9 @@
         "postcode": "LN1 3GA"
       }
     ],
-    "gbs": "W848"
+    "gbs": "W848",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Lincoln Magistrates' Court",
@@ -25463,7 +26237,9 @@
         "postcode": "LN5 7QA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool & Knowsley Magistrates' Court",
@@ -25600,7 +26376,9 @@
         "postcode": "L2 1XA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool Civil and Family Court",
@@ -25830,7 +26608,9 @@
         "postcode": "L2 2BX"
       }
     ],
-    "gbs": "Y496"
+    "gbs": "Y496",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool Crown Court",
@@ -25985,7 +26765,9 @@
         "postcode": "L2 1XA"
       }
     ],
-    "gbs": "W861"
+    "gbs": "W861",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool District Probate Registry",
@@ -26055,7 +26837,9 @@
         "postcode": "L2 1XA"
       }
     ],
-    "gbs": "P217"
+    "gbs": "P217",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool Social Security and Child Support Tribunal",
@@ -26121,7 +26905,9 @@
         "postcode": "L2 5UZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Liverpool Youth Court",
@@ -26204,7 +26990,9 @@
         "postcode": "L2 1XA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Llandrindod Wells Magistrates' and Family Court",
@@ -26333,7 +27121,9 @@
         "postcode": "CF47 8BH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Llandudno Magistrates' Court",
@@ -26449,7 +27239,9 @@
         "postcode": "LL30 1GA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Llanelli Law Courts",
@@ -26594,7 +27386,9 @@
         "postcode": "SA15 3AW"
       }
     ],
-    "gbs": "Y497"
+    "gbs": "Y497",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "London (South) Employment Tribunal",
@@ -26645,7 +27439,9 @@
         "postcode": "CR0 2RF "
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "London Circuit Commercial Court",
@@ -26738,7 +27534,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "London Collection and Compliance Centre",
@@ -26787,7 +27585,9 @@
         "postcode": "WC1A 9QD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "London Probate Department",
@@ -26855,7 +27655,9 @@
         "postcode": "WC1V 6NP"
       }
     ],
-    "gbs": "P225"
+    "gbs": "P225",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Loughborough Magistrates' Court",
@@ -26982,7 +27784,9 @@
         "postcode": "LE1 6BT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Luton Crown Court",
@@ -27092,7 +27896,9 @@
         "postcode": "LU1 2AA"
       }
     ],
-    "gbs": "W862"
+    "gbs": "W862",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Luton Justice Centre",
@@ -27252,7 +28058,9 @@
         "postcode": "LU1 2LJ"
       }
     ],
-    "gbs": "Y603"
+    "gbs": "Y603",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Luton and South Bedfordshire Magistrates' Court and Family Court",
@@ -27364,7 +28172,9 @@
         "postcode": "LU1 5BL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Maidstone Combined Court Centre",
@@ -27510,7 +28320,9 @@
         "postcode": "ME16 8EQ"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Maidstone Magistrates' Court",
@@ -27599,7 +28411,9 @@
         "postcode": "ME4 4JZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Maintenance Enforcement Business Centre (England)",
@@ -27632,7 +28446,9 @@
         "postcode": "IP33 1TR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Maintenance Enforcement Business Centre (Wales)",
@@ -27728,7 +28544,9 @@
         "postcode": "SA13 1SB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Maintenance Enforcement Centre (London)",
@@ -27792,7 +28610,9 @@
         "postcode": "WC1V 6NP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Civil Justice Centre (Civil and Family Courts)",
@@ -28049,7 +28869,9 @@
         "postcode": "M60 9DJ"
       }
     ],
-    "gbs": "Y605"
+    "gbs": "Y605",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Crown Court (Crown Square)",
@@ -28194,7 +29016,9 @@
         "postcode": "M3 3FL"
       }
     ],
-    "gbs": "W863"
+    "gbs": "W863",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Crown Court (Minshull St)",
@@ -28332,7 +29156,9 @@
         "postcode": "M1 3FS"
       }
     ],
-    "gbs": "W865"
+    "gbs": "W865",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester District Probate Registry",
@@ -28397,7 +29223,9 @@
         "postcode": "M60 9DJ"
       }
     ],
-    "gbs": "P219"
+    "gbs": "P219",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Employment Tribunal",
@@ -28521,7 +29349,9 @@
         "postcode": "M3 2JA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Magistrates' Court",
@@ -28629,7 +29459,9 @@
         "postcode": "M60 1PR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Manchester Tribunal Hearing Centre",
@@ -28762,7 +29594,9 @@
         "postcode": "M1 4AH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Mansfield Magistrates' and County Court",
@@ -28885,7 +29719,9 @@
         "postcode": "NG19 6EE"
       }
     ],
-    "gbs": "Y606"
+    "gbs": "Y606",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Margate Magistrates' Court",
@@ -28990,7 +29826,9 @@
         "postcode": "CT20 2DH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Mayor's and City of London Court",
@@ -29088,7 +29926,9 @@
         "postcode": "EC2V 5AR"
       }
     ],
-    "gbs": "Y607"
+    "gbs": "Y607",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Medway County Court and Family Court",
@@ -29197,7 +30037,9 @@
         "postcode": "ME4 4DW"
       }
     ],
-    "gbs": "Y608"
+    "gbs": "Y608",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Medway Magistrates' Court and Family Court",
@@ -29300,7 +30142,9 @@
         "postcode": "ME4 4JZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Mental Health Tribunal",
@@ -29341,7 +30185,9 @@
         "postcode": "LE1 8BN "
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Merthyr Tydfil Combined Court Centre",
@@ -29508,7 +30354,9 @@
         "postcode": "CF47 8BH"
       }
     ],
-    "gbs": "Y267"
+    "gbs": "Y267",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Mid and South East Northumberland Law Courts",
@@ -29632,7 +30480,9 @@
         "postcode": "NE22 7LX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Middlesbrough County Court at Teesside Combined Court",
@@ -29756,7 +30606,9 @@
         "postcode": "TS1 2AE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Midlands (East)Employment Tribunal",
@@ -29834,7 +30686,9 @@
         "postcode": "NG2 1EE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Midlands (West) Employment Tribunal",
@@ -29929,7 +30783,9 @@
         "postcode": "B5 4UU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Midlands and Wales Regional Fixed Penalty Office",
@@ -29980,7 +30836,9 @@
         "postcode": "LE11 9HB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Milton Keynes County Court and Family Court",
@@ -30111,7 +30969,9 @@
         "postcode": "MK9 2DT"
       }
     ],
-    "gbs": "Y610"
+    "gbs": "Y610",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Milton Keynes Magistrates' Court and Family Court",
@@ -30223,7 +31083,9 @@
         "postcode": "MK9 2AJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Mold Justice Centre",
@@ -30408,7 +31270,9 @@
         "postcode": "CH7 1AE"
       }
     ],
-    "gbs": "Y611"
+    "gbs": "Y611",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Money Claim Online (MCOL)",
@@ -30485,7 +31349,9 @@
         "postcode": "NN1 2LH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newcastle Civil & Family Courts and Tribunals Centre",
@@ -30680,7 +31546,9 @@
         "postcode": "NE1 8QF"
       }
     ],
-    "gbs": "Y268"
+    "gbs": "Y268",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newcastle District Probate Registry",
@@ -30745,7 +31613,9 @@
         "postcode": "NE1 4DR"
       }
     ],
-    "gbs": "P220"
+    "gbs": "P220",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newcastle Moot Hall",
@@ -30861,7 +31731,9 @@
         "postcode": "NE1 3LA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newcastle upon Tyne Combined Court Centre",
@@ -30980,7 +31852,9 @@
         "postcode": "NE1 3LA"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newcastle upon Tyne Magistrates' Court",
@@ -31094,7 +31968,9 @@
         "postcode": "NE99 1AU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newport (South Wales) County Court and Family Court",
@@ -31254,7 +32130,9 @@
         "postcode": "NP19 7AA"
       }
     ],
-    "gbs": "Y617"
+    "gbs": "Y617",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newport (South Wales) Crown Court",
@@ -31374,7 +32252,9 @@
         "postcode": "NP20 4PR"
       }
     ],
-    "gbs": "W867"
+    "gbs": "W867",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newport (South Wales) Immigration and Asylum Tribunal",
@@ -31482,7 +32362,9 @@
         "postcode": "NP18 2LX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newport (South Wales) Magistrates' Court",
@@ -31628,7 +32510,9 @@
         "postcode": "NP20 2GE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newport (South Wales) Regional Divorce Centre",
@@ -31677,7 +32561,9 @@
         "postcode": "NP19 7AA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "regional",
+    "catchment_area": "Wales"
   },
   {
     "name": "Newton Abbot Magistrates' Court",
@@ -31821,7 +32707,9 @@
         "postcode": "TQ2 7AZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Newton Aycliffe Magistrates' Court",
@@ -31932,7 +32820,9 @@
         "postcode": "DL5 5RT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Regional Fixed Penalty Office",
@@ -31981,7 +32871,9 @@
         "postcode": "LS27 1DN"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Shields County Court and Family Court",
@@ -32085,7 +32977,9 @@
         "postcode": "NE29 6AR"
       }
     ],
-    "gbs": "Y618"
+    "gbs": "Y618",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Somerset Magistrates' Court",
@@ -32227,7 +33121,9 @@
         "postcode": "BS22 7BB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Staffordshire Justice Centre",
@@ -32312,7 +33208,9 @@
         "postcode": "ST5 2AA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Tyneside Magistrates' Court",
@@ -32453,7 +33351,9 @@
         "postcode": "NE30 1AG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North West Regional Divorce Centre",
@@ -32494,7 +33394,9 @@
         "postcode": "L2 2BX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "North Yorkshire Magistrates' Courts Central Finance Unit",
@@ -32545,7 +33447,9 @@
         "postcode": "NE29 1DZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "regional",
+    "catchment_area": "The North-West of England"
   },
   {
     "name": "Northampton Crown, County and Family Court",
@@ -32669,7 +33573,9 @@
         "postcode": "NN1 3HQ"
       }
     ],
-    "gbs": "Y619"
+    "gbs": "Y619",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Northampton Magistrates' Court",
@@ -32777,7 +33683,9 @@
         "postcode": "NN3 6AS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Northampton Social Security and Child Support Tribunal",
@@ -32845,7 +33753,9 @@
         "postcode": "B16 6FR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Norwich Combined Court Centre",
@@ -33008,7 +33918,9 @@
         "postcode": "NR3 1UR"
       }
     ],
-    "gbs": "Y270"
+    "gbs": "Y270",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Norwich Magistrates' Court and Family Court",
@@ -33126,7 +34038,9 @@
         "postcode": "NR3 1UP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Norwich Social Security and Child Support Tribunal",
@@ -33182,7 +34096,9 @@
         "postcode": "NR1 3PL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nottingham County Court and Family Court",
@@ -33339,7 +34255,9 @@
         "postcode": "NG1 7EJ"
       }
     ],
-    "gbs": "Y621"
+    "gbs": "Y621",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nottingham Crown Court",
@@ -33463,7 +34381,9 @@
         "postcode": "NG1 7EL"
       }
     ],
-    "gbs": "W869"
+    "gbs": "W869",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nottingham Magistrates' Court",
@@ -33592,7 +34512,9 @@
         "postcode": "NG2 1EE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nottingham Social Security and Child Support Tribunal",
@@ -33659,7 +34581,9 @@
         "postcode": "NG1 7FG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nuneaton County Court",
@@ -33767,7 +34691,9 @@
         "postcode": "CV11 4JU"
       }
     ],
-    "gbs": "Y622"
+    "gbs": "Y622",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Nuneaton Magistrates' Court",
@@ -33872,7 +34798,9 @@
         "postcode": "CV11 4JU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Oxford Combined Court Centre",
@@ -34021,7 +34949,9 @@
         "postcode": "OX1 1TL"
       }
     ],
-    "gbs": "Y271"
+    "gbs": "Y271",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Oxford District Probate Registry",
@@ -34086,7 +35016,9 @@
         "postcode": "OX1 1LY"
       }
     ],
-    "gbs": "P223"
+    "gbs": "P223",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Oxford and Southern Oxfordshire Magistrates' Court",
@@ -34196,7 +35128,9 @@
         "postcode": "OX1 1RZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Patents Court",
@@ -34260,7 +35194,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Peterborough Combined Court Centre",
@@ -34402,7 +35338,9 @@
         "postcode": "PE1 1EJ"
       }
     ],
-    "gbs": "Y272"
+    "gbs": "Y272",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Peterborough Magistrates' Court",
@@ -34498,7 +35436,9 @@
         "postcode": "PE1 1ED"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Peterlee Magistrates' Court",
@@ -34611,7 +35551,9 @@
         "postcode": "DL5 5RT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Plymouth Combined Court",
@@ -34794,7 +35736,9 @@
         "postcode": "PL1 2ER"
       }
     ],
-    "gbs": "Y273"
+    "gbs": "Y273",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Plymouth Magistrates' Court",
@@ -34926,7 +35870,9 @@
         "postcode": "PL1 2DP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Pontypridd County Court and Family Court",
@@ -35038,7 +35984,9 @@
         "postcode": "CF37 1JR"
       }
     ],
-    "gbs": "Y629"
+    "gbs": "Y629",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Poole Magistrates' Court",
@@ -35158,7 +36106,9 @@
         "postcode": "BH7 7DS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Port Talbot Justice Centre",
@@ -35283,7 +36233,9 @@
         "postcode": "SA13 1SB"
       }
     ],
-    "gbs": "Y613"
+    "gbs": "Y613",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Portsmouth Combined Court Centre",
@@ -35462,7 +36414,9 @@
         "postcode": "PO1 2EB"
       }
     ],
-    "gbs": "Y274"
+    "gbs": "Y274",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Portsmouth Magistrates' Court",
@@ -35588,7 +36542,9 @@
         "postcode": "PO1 2DQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Prestatyn Justice Centre",
@@ -35706,7 +36662,9 @@
         "postcode": "LL19 7TE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Preston Combined Court Centre",
@@ -35849,7 +36807,9 @@
         "postcode": "PR1 2LL"
       }
     ],
-    "gbs": "Y275"
+    "gbs": "Y275",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Preston Crown Court and Family Court (Sessions House)",
@@ -35987,7 +36947,9 @@
         "postcode": "PR1 2PD"
       }
     ],
-    "gbs": "Y692"
+    "gbs": "Y692",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Preston Magistrates' Court",
@@ -36120,7 +37082,9 @@
         "postcode": "PR1 2QT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Queen's Bench Division",
@@ -36204,7 +37168,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Reading County Court and Family Court",
@@ -36328,7 +37294,9 @@
         "postcode": "RG1 1HE"
       }
     ],
-    "gbs": "Y633"
+    "gbs": "Y633",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Reading Crown Court",
@@ -36429,7 +37397,9 @@
         "postcode": "RG1 3EH"
       }
     ],
-    "gbs": "W871"
+    "gbs": "W871",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Reading Magistrates' Court and Family Court",
@@ -36544,7 +37514,9 @@
         "postcode": "RG1 7TQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Reading Tribunal Hearing Centre",
@@ -36620,7 +37592,9 @@
         "postcode": "RG1 1DX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Redditch Magistrates' Court",
@@ -36753,7 +37727,9 @@
         "postcode": "B98 8DB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Reedley Family Hearing Centre",
@@ -36893,7 +37869,9 @@
         "postcode": "BB10 2LJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Residential Property Eastern Region - First-tier Tribunal (Property Chamber)",
@@ -36954,7 +37932,9 @@
         "postcode": "CB1 1BA"
       }
     ],
-    "gbs": "T240"
+    "gbs": "T240",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Residential Property London Region - First Tier Tribunal (Property Chamber)",
@@ -37005,7 +37985,9 @@
         "postcode": "WC1E 7LR"
       }
     ],
-    "gbs": "T236"
+    "gbs": "T236",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Residential Property Midlands Region - First Tier Tribunal (Property Chamber)",
@@ -37089,7 +38071,9 @@
         "postcode": "B5 4UU "
       }
     ],
-    "gbs": "T238"
+    "gbs": "T238",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Residential Property Northern Region - First Tier Tribunal (Property Chamber)",
@@ -37135,7 +38119,9 @@
         "postcode": "M1 4AH "
       }
     ],
-    "gbs": "T237"
+    "gbs": "T237",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Residential Property Southern Region - First Tier Tribunal (Property Chamber)",
@@ -37211,7 +38197,9 @@
         "postcode": "PO9 2AL"
       }
     ],
-    "gbs": "T239"
+    "gbs": "T239",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Rolls Building, Business and Property Courts of England & Wales",
@@ -37349,7 +38337,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": "R233"
+    "gbs": "R233",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Romford County Court and Family Court",
@@ -37460,7 +38450,9 @@
         "postcode": "RM1 4DP"
       }
     ],
-    "gbs": "Y637"
+    "gbs": "Y637",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Romford Magistrates' Court (formerly Havering Magistrates' Court)",
@@ -37583,7 +38575,9 @@
         "postcode": "E3 4DJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Royal Courts of Justice",
@@ -37739,7 +38733,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": "R227"
+    "gbs": "R227",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Salisbury Law Courts",
@@ -37881,7 +38877,9 @@
         "postcode": "SP2 7EP"
       }
     ],
-    "gbs": "Y276"
+    "gbs": "Y276",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Scarborough Justice Centre",
@@ -38031,7 +39029,9 @@
         "postcode": "YO12 7AE"
       }
     ],
-    "gbs": "Y642"
+    "gbs": "Y642",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sefton Magistrates' Court",
@@ -38152,7 +39152,9 @@
         "postcode": "L20 3XX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Senior Courts Costs Office",
@@ -38266,7 +39268,9 @@
         "postcode": "WC2A 2LL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sevenoaks Magistrates' Court and Family Court",
@@ -38365,7 +39369,9 @@
         "postcode": "ME4 4JZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sheffield Combined Court Centre",
@@ -38513,7 +39519,9 @@
         "postcode": "S3 8PH"
       }
     ],
-    "gbs": "Y277"
+    "gbs": "Y277",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sheffield Designated Family Court",
@@ -38609,7 +39617,9 @@
         "postcode": "S3 8PH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sheffield Magistrates' Court",
@@ -38721,7 +39731,9 @@
         "postcode": "S3 8LU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Shrewsbury Crown Court",
@@ -38832,7 +39844,9 @@
         "postcode": "SY2 5NX"
       }
     ],
-    "gbs": "W872"
+    "gbs": "W872",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Skipton County Court and Family Court",
@@ -38925,7 +39939,9 @@
         "postcode": "BD23 1RH"
       }
     ],
-    "gbs": "Y646"
+    "gbs": "Y646",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Skipton Magistrates' Court",
@@ -39047,7 +40063,9 @@
         "postcode": "BD23 1RH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Slough County Court and Family Court",
@@ -39146,7 +40164,9 @@
         "postcode": "SL1 2HE"
       }
     ],
-    "gbs": "Y647"
+    "gbs": "Y647",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Snaresbrook Crown Court",
@@ -39289,7 +40309,9 @@
         "postcode": "E11 1QW"
       }
     ],
-    "gbs": "W873"
+    "gbs": "W873",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "South Regional Fixed Penalty Office",
@@ -39338,7 +40360,9 @@
         "postcode": "SS2 6EU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "South Tyneside County Court and Family Court",
@@ -39452,7 +40476,9 @@
         "postcode": "NE33 1RG"
       }
     ],
-    "gbs": "Y648"
+    "gbs": "Y648",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "South Tyneside Magistrates' Court",
@@ -39578,7 +40604,9 @@
         "postcode": "NE33 1RG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "South West Regional Divorce Centre",
@@ -39642,7 +40670,9 @@
         "postcode": "SO15 9GG"
       }
     ],
-    "gbs": "Y694"
+    "gbs": "Y694",
+    "catchment_type": "regional",
+    "catchment_area": "The South-West of England"
   },
   {
     "name": "South Worcestershire Magistrates' Court",
@@ -39694,7 +40724,9 @@
         "postcode": "WR1 3QZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Southampton Combined Court Centre",
@@ -39867,7 +40899,9 @@
         "postcode": "SO15 2XQ"
       }
     ],
-    "gbs": "Y278"
+    "gbs": "Y278",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Southend County Court and Family Court",
@@ -39964,7 +40998,9 @@
         "postcode": "SS2 6EU"
       }
     ],
-    "gbs": "Y649"
+    "gbs": "Y649",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Southend Crown Court",
@@ -40052,7 +41088,9 @@
         "postcode": "SS14 2EW"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Southend Magistrates' Court",
@@ -40176,7 +41214,9 @@
         "postcode": "SS2 6EU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Southwark Crown Court",
@@ -40282,7 +41322,9 @@
         "postcode": "SE1 2HU"
       }
     ],
-    "gbs": "W874"
+    "gbs": "W874",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Special Educational Needs and Disability  (First-tier Tribunal )",
@@ -40327,7 +41369,9 @@
         "postcode": "DL1 1ZD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "St Albans Crown Court",
@@ -40435,7 +41479,9 @@
         "postcode": "LU1 2AA"
       }
     ],
-    "gbs": "W875"
+    "gbs": "W875",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "St Albans Magistrates' Court",
@@ -40558,7 +41604,9 @@
         "postcode": "AL1 3LB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "St Helens County Court and Family Court",
@@ -40698,7 +41746,9 @@
         "postcode": "WA10 1SZ"
       }
     ],
-    "gbs": "Y652"
+    "gbs": "Y652",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stafford Combined Court Centre",
@@ -40851,7 +41901,9 @@
         "postcode": "ST16 2QQ"
       }
     ],
-    "gbs": "Y279"
+    "gbs": "Y279",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Staffordshire Central Finance and Enforcement Unit",
@@ -40912,7 +41964,9 @@
         "postcode": "WS15 2FX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Staines County Court and Family Court",
@@ -41041,7 +42095,9 @@
         "postcode": "GU1 4PS"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Staines Magistrates' Court and Family Court",
@@ -41162,7 +42218,9 @@
         "postcode": "TW18 1XH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stevenage Magistrates' Court",
@@ -41266,7 +42324,9 @@
         "postcode": "SG1 1XH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stirling Tribunal Hearing Centre",
@@ -41347,7 +42407,9 @@
         "postcode": "G2 8GT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stockport County Court and Family Court",
@@ -41505,7 +42567,9 @@
         "postcode": "SK1 3NF"
       }
     ],
-    "gbs": "Y654"
+    "gbs": "Y654",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stockport Magistrates' Court",
@@ -41636,7 +42700,9 @@
         "postcode": "SK1 3NF"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stoke-on-Trent Combined Court",
@@ -41789,7 +42855,9 @@
         "postcode": "ST1 3BP"
       }
     ],
-    "gbs": "Y280"
+    "gbs": "Y280",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stratford Housing Centre",
@@ -41863,7 +42931,9 @@
         "postcode": "E15 4SB"
       }
     ],
-    "gbs": "Y425"
+    "gbs": "Y425",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Stratford Magistrates' Court",
@@ -41978,7 +43048,9 @@
         "postcode": "E3 4DJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sunderland County, Family, Magistrates’ and Tribunal Hearings",
@@ -42115,7 +43187,9 @@
         "postcode": "SR1 3AP"
       }
     ],
-    "gbs": "Y657"
+    "gbs": "Y657",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Sutton Social Security and Child Support Tribunal",
@@ -42183,7 +43257,9 @@
         "postcode": "SM1 1DA"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Swansea Civil Justice Centre",
@@ -42301,7 +43377,9 @@
         "postcode": "SA1 1SP"
       }
     ],
-    "gbs": "Y658"
+    "gbs": "Y658",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Swansea Crown Court",
@@ -42419,7 +43497,9 @@
         "postcode": "SA1 4PF"
       }
     ],
-    "gbs": "W876"
+    "gbs": "W876",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Swansea Magistrates' Court",
@@ -42535,7 +43615,9 @@
         "postcode": "SA1 5DB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Swindon Combined Court",
@@ -42662,7 +43744,9 @@
         "postcode": "SN1 2HG"
       }
     ],
-    "gbs": "Y281"
+    "gbs": "Y281",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Swindon Magistrates' Court",
@@ -42775,7 +43859,9 @@
         "postcode": "SN1 2HG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Tameside Magistrates' Court",
@@ -42893,7 +43979,9 @@
         "postcode": "OL6 7TP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Taunton Crown, County and Family Court",
@@ -43049,7 +44137,9 @@
         "postcode": "TA1 4EU"
       }
     ],
-    "gbs": "Y282"
+    "gbs": "Y282",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Taunton Magistrates' Court, Tribunals and Family Hearing Centre",
@@ -43193,7 +44283,9 @@
         "postcode": "TA1 4AX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Tax Chamber (First-tier Tribunal)",
@@ -43239,7 +44331,9 @@
         "postcode": "B16 6TZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Taylor House Tribunal Hearing Centre",
@@ -43322,7 +44416,9 @@
         "postcode": "EC1R 4QU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Technology & Construction Court",
@@ -43420,7 +44516,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Teesside Combined Court Centre",
@@ -43595,7 +44693,9 @@
         "postcode": "TS1 2AE"
       }
     ],
-    "gbs": "Y283"
+    "gbs": "Y283",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Teesside Magistrates' Court",
@@ -43725,7 +44825,9 @@
         "postcode": "TS1 2AS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Telford County Court and Family Court",
@@ -43846,7 +44948,9 @@
         "postcode": "TF3 4HX"
       }
     ],
-    "gbs": "Y661"
+    "gbs": "Y661",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Telford Magistrates' Court",
@@ -43951,7 +45055,9 @@
         "postcode": "ST16 2QQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Thames Magistrates' Court",
@@ -44059,7 +45165,9 @@
         "postcode": "E3 4DJ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Thanet County Court and Family Court",
@@ -44151,7 +45259,9 @@
         "postcode": "CT1 1ZA"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Torquay and Newton Abbot County and Family Court",
@@ -44285,7 +45395,9 @@
         "postcode": "TQ2 7AZ"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Traffic Enforcement Centre (TEC)",
@@ -44357,7 +45469,9 @@
         "postcode": "NN1 2LH"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Truro Combined Court",
@@ -44527,7 +45641,9 @@
         "postcode": "TR1 2PB"
       }
     ],
-    "gbs": "Y284"
+    "gbs": "Y284",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Truro Crown Court",
@@ -44660,7 +45776,9 @@
         "postcode": "TR1 2PB"
       }
     ],
-    "gbs": "W834"
+    "gbs": "W834",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Truro Magistrates' Court",
@@ -44793,7 +45911,9 @@
         "postcode": "PL31 2AL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Upper Tribunal (Administrative Appeals Chamber)",
@@ -44849,7 +45969,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Upper Tribunal (Lands Chamber)",
@@ -44930,7 +46052,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": "T235"
+    "gbs": "T235",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Upper Tribunal (Tax and Chancery Chamber)",
@@ -44986,7 +46110,9 @@
         "postcode": "EC4A 1NL"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Uxbridge County Court and Family Court",
@@ -45074,7 +46200,9 @@
         "postcode": "UB4 8HL"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Uxbridge Magistrates' Court",
@@ -45178,7 +46306,9 @@
         "postcode": "UB8 1PQ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wakefield Civil and Family Justice Centre",
@@ -45327,7 +46457,9 @@
         "postcode": "WF1 2QN"
       }
     ],
-    "gbs": "Y667"
+    "gbs": "Y667",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wales Employment Tribunal",
@@ -45423,7 +46555,9 @@
         "postcode": "CF24 0RZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wales Enforcement  Office",
@@ -45477,7 +46611,9 @@
         "postcode": "SA13 1SB"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Walsall County and Family Court",
@@ -45602,7 +46738,9 @@
         "postcode": "WS1 1JQ"
       }
     ],
-    "gbs": "Y668"
+    "gbs": "Y668",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Walsall Magistrates' Court",
@@ -45708,7 +46846,9 @@
         "postcode": "DY1 1RY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wandsworth County Court and Family Court",
@@ -45814,7 +46954,9 @@
         "postcode": "SW15 2SU"
       }
     ],
-    "gbs": "Y669"
+    "gbs": "Y669",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "War Pensions & Armed Forces Compensation Chamber",
@@ -45860,7 +47002,9 @@
         "postcode": "EC1N 7RS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Warrington Crown Court",
@@ -45952,7 +47096,9 @@
         "postcode": "WA1 1UR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Warrington Magistrates' Court",
@@ -46103,7 +47249,9 @@
         "postcode": "WA1 1UR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Warwick Combined Court",
@@ -46286,7 +47434,9 @@
         "postcode": "CV32 4EL"
       }
     ],
-    "gbs": "Y285"
+    "gbs": "Y285",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Watford County Court and Family Court",
@@ -46392,7 +47542,9 @@
         "postcode": "WD17 1EZ"
       }
     ],
-    "gbs": "Y671"
+    "gbs": "Y671",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Watford Tribunal Hearing Centre",
@@ -46481,7 +47633,9 @@
         "postcode": "WD17 1HP"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wellingborough Magistrates' Court",
@@ -46583,7 +47737,9 @@
         "postcode": "NN3 6AS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Welshpool Magistrates' Court",
@@ -46733,7 +47889,9 @@
         "postcode": "SY21 7UX"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "West Cumbria Courthouse",
@@ -46872,7 +48030,9 @@
         "postcode": "CA14 4AS"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "West Hampshire Magistrates' Court",
@@ -46981,7 +48141,9 @@
         "postcode": "SO17 1EY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "West London Family Court",
@@ -47068,7 +48230,9 @@
         "postcode": "TW14 0LR"
       }
     ],
-    "gbs": "Y691"
+    "gbs": "Y691",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "West Yorkshire Enforcement Office",
@@ -47101,7 +48265,9 @@
         "postcode": "LS27 7ZT"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Westminster Magistrates' Court",
@@ -47221,7 +48387,9 @@
         "postcode": "NW1 5BR"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Weston-Super-Mare County Court and Family Court",
@@ -47355,7 +48523,9 @@
         "postcode": "BS22 7BB"
       }
     ],
-    "gbs": "Y675"
+    "gbs": "Y675",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Weymouth Combined Court",
@@ -47492,7 +48662,9 @@
         "postcode": "DT4 8BS"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wigan County Court and Family Court",
@@ -47637,7 +48809,9 @@
         "postcode": "WN1 1DW"
       }
     ],
-    "gbs": "Y677"
+    "gbs": "Y677",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wigan and Leigh Magistrates' Court",
@@ -47769,7 +48943,9 @@
         "postcode": "WN1 1DW"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Willesden County Court and Family Court",
@@ -47882,7 +49058,9 @@
         "postcode": "NW10 8SB"
       }
     ],
-    "gbs": "Y678"
+    "gbs": "Y678",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Willesden Magistrates' Court",
@@ -48007,7 +49185,9 @@
         "postcode": "NW10 2DZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wimbledon Magistrates' Court",
@@ -48120,7 +49300,9 @@
         "postcode": "SW 11 1JU"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Winchester Combined Court Centre",
@@ -48241,7 +49423,9 @@
         "postcode": "SO23 9EL"
       }
     ],
-    "gbs": "Y287"
+    "gbs": "Y287",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Winchester District Probate Registry",
@@ -48328,7 +49512,9 @@
         "postcode": "SO23 9EL"
       }
     ],
-    "gbs": "P230"
+    "gbs": "P230",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wirral Magistrates' Court",
@@ -48463,7 +49649,9 @@
         "postcode": "CH41 5HW"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wolverhampton Combined Court Centre",
@@ -48600,7 +49788,9 @@
         "postcode": "WV1 3LQ"
       }
     ],
-    "gbs": "Y288"
+    "gbs": "Y288",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wolverhampton Magistrates' Court",
@@ -48720,7 +49910,9 @@
         "postcode": "DY1 1RY"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wood Green Crown Court",
@@ -48839,7 +50031,9 @@
         "postcode": "N22 5LF"
       }
     ],
-    "gbs": "W878"
+    "gbs": "W878",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Woolwich Crown Court",
@@ -48940,7 +50134,9 @@
         "postcode": "SE28 0EY"
       }
     ],
-    "gbs": "W879"
+    "gbs": "W879",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Worcester Combined Court",
@@ -49110,7 +50306,9 @@
         "postcode": "WR1 1EQ"
       }
     ],
-    "gbs": "Y289"
+    "gbs": "Y289",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Worcester Justice Centre",
@@ -49216,7 +50414,9 @@
         "postcode": "WR1 3QZ"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Worthing County Court and Family Court",
@@ -49311,7 +50511,9 @@
         "postcode": "BN11 1JD"
       }
     ],
-    "gbs": "Y681"
+    "gbs": "Y681",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Worthing Magistrates' Court",
@@ -49434,7 +50636,9 @@
         "postcode": "BN2 0LG"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wrexham County and Family  Court",
@@ -49562,7 +50766,9 @@
         "postcode": "LL12 7BP"
       }
     ],
-    "gbs": "Y682"
+    "gbs": "Y682",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Wrexham Magistrates' Court",
@@ -49670,7 +50876,9 @@
         "postcode": "CH7 1AE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Yarl's Wood Immigration and Asylum Hearing Centre",
@@ -49750,7 +50958,9 @@
         "postcode": "MK44 1FD"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "Yeovil County, Family and Magistrates' Court",
@@ -49925,7 +51135,9 @@
         "postcode": "BA20 1SW"
       }
     ],
-    "gbs": ""
+    "gbs": "",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "York County Court and Family Court",
@@ -50057,7 +51269,9 @@
         "postcode": "YO1 9WL"
       }
     ],
-    "gbs": "Y684"
+    "gbs": "Y684",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "York Crown Court",
@@ -50180,7 +51394,9 @@
         "postcode": "YO1 9WZ"
       }
     ],
-    "gbs": "W880"
+    "gbs": "W880",
+    "catchment_type": "local",
+    "catchment_area": ""
   },
   {
     "name": "York Magistrates' Court and Family Court",
@@ -50309,6 +51525,9 @@
         "postcode": "YO1 9RE"
       }
     ],
-    "gbs": null
+    "gbs": null,
+    "catchment_type": "local",
+    "catchment_area": ""
   }
-]}
+]
+}

@@ -26,7 +26,8 @@ const getCourtDetails = function(serviceDetails, serviceActionType) {
   }
 //  console.log('national ' + nationalDisplayFlag + ' regional ' + regionalDisplayFlag + ' local ' + hasLocalOnly)
 
-//  console.log('serviceActionType ' + serviceActionType)
+//
+  console.log('serviceActionType ' + serviceActionType)
 // get the list of courts in distance order from the postcode
 // prototype only logic - distance is held on the court record
 

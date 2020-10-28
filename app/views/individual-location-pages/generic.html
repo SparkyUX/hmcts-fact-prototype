@@ -24,12 +24,6 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
 {% endblock %}
 
 {% block content %}
-{% if regionalCentre %}
-  {% set catchmentArea = "the South-East of England" %}
-{% else %}
-  {% set catchmentArea = "all of England and Wales" %}
-{% endif %}
-
 
 <div class="govuk-grid-row">
 
@@ -48,24 +42,26 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Contact us      
       </h2>
 
+      {% if courtWriteAddress1 %}
 
-      <h3 class="govuk-heading-m">
-        Write to us:
-      </h3>
+        <h3 class="govuk-heading-m">
+          Write to us:
+        </h3>
 
-      <p class="govuk-body-m">
-        {{courtWriteAddress1}}
-        {% if courtWriteAddress2 %}
-          </br> {{courtWriteAddress2}}
-        {% endif %}
-        {% if courtWriteAddress3 %}
-          </br> {{courtWriteAddress3}}
-        {% endif %}
-        </br> {{courtWriteTown}}
-        </br> {{courtWritePostcode}}
+        <p class="govuk-body-m">
+          {{courtWriteAddress1}}
+          {% if courtWriteAddress2 %}
+            </br> {{courtWriteAddress2}}
+          {% endif %}
+          {% if courtWriteAddress3 %}
+            </br> {{courtWriteAddress3}}
+          {% endif %}
+          </br> {{courtWriteTown}}
+          </br> {{courtWritePostcode}}
 
-      </p>
+        </p>
 
+      {% endif %}
     {% endif %}
 
     {% if courtVisitWriteAddress and (not ctscFlag) %}
@@ -389,38 +385,35 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
     {% endif %}
 
     {% if ctscFlag %}
+      {% set url_link = false %}
 
-      {% if probateService or divorceService or civilPartnershipService or moneyClaimsService %}
+      {% for details in serviceAreasAtCourt %}
+        {% if details.service_url %}
+          {% set url_link = true %}
+        {% else %}
+          {% set url_link = false %}
+        {% endif %}
+      {% endfor %}
 
+      {% if url_link %}
         <h2 class="govuk-heading-m" >
           Related content
         </h2>
 
         <p class="govuk-body-m">
 
-          Find out more about</br>
-          {% if moneyClaimsService %}
-              <a class="govuk-link" href="https://www.gov.uk/make-court-claim-for-money">starting a money claim application</a>
-          {% endif%}
-          {% if divorceService %}
-            <a class="govuk-link" href="https://www.gov.uk/divorce">starting a divorce application</a>
-            </br>
-          {% endif%}
-          {% if civilPartnershipService %}
-            <a class="govuk-link" href="https://www.gov.uk/end-civil-partnership">ending a civil partnership</a>  
-          {% endif%}
-          {% if probateService %}
-              <a class="govuk-link" href="https://www.gov.uk/applying-for-probate">starting a probate application</a>
-          {% endif%}
-
+          Find out more about
         </p>
       {% endif %}
 
     {% else %}
     
-    <h3 class="govuk-heading-m">
-      This location handles:
-    </h3>
+      <h3 class="govuk-heading-m">
+        This location handles:
+      </h3>
+
+    {% endif %}
+
     <ul class="govuk-list">
  
       {% for details in serviceAreasAtCourt %}
@@ -429,12 +422,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           <a class="govuk-link" href={{details.service_url}}>{{details.link_text}}</a>
         </li>
         {% else %}
-        <li>
-          <a class="govuk-link">{{details.text}}</a>
-        </li>
+          {% if not ctscFlag %}
+          <li class="govuk-body-m">      
+              {{details.link_text}}
+          </li>
+          {% endif %}
         {% endif %}
       {% endfor %}
-    {% endif %}
       <br />
       <h3 class="govuk-heading-m">
         Make a complaint
