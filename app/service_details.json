@@ -43,7 +43,7 @@
 	{
 		"service": "Civil partnership",
 		"aol": "Civil partnership",
-		"catchment_type": ["local","regional"],
+		"catchment_type": ["local","regional","national"],
 		"catchment_method": "local authority",
 		"link_text": "Civil partnership",
 		"service_url": "https://www.gov.uk/end-civil-partnership",

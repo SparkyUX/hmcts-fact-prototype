@@ -445,6 +445,8 @@ router.get('/individual-location-pages/generic', function(req, res) {
       if ( courtDetailsAll.courts[i].catchment_type === "national" || courtDetailsAll.courts[i].catchment_type === "regional") {
         req.app.locals.ctscFlag = true
         req.app.locals.catchmentArea = courtDetailsAll.courts[i].catchment_area
+        req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].slug.toLowerCase() + '@justice.gov.uk'
+
       }
       // professional user access scheme
       req.app.locals.puasFlag = courtDetailsAll.courts[i].puas

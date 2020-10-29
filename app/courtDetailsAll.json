@@ -136,7 +136,7 @@
     "crown_location_code": null,
     "county_location_code": null,
     "magistrates_location_code": null,
-    "areas_of_law": ["Divorce"],
+    "areas_of_law": ["Divorce","Civil partnership"],
     "emails": [{
       "address": "probate-filing@justice.gov.uk",
       "description": "Filing and records",
