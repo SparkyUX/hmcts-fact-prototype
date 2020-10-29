@@ -261,14 +261,7 @@
       }
     ],
     "facilities": [],
-    "addresses": [
-      {
-        "type": "Postal",
-        "address": "HMCTS Probate!PO Box 12625!!",
-        "town": "Harlow",
-        "postcode": "CM20 9QE"
-      }
-    ],
+    "addresses": [],
     "gbs": null,
     "catchment_type": "local",
     "catchment_area": "",
