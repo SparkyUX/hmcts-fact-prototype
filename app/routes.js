@@ -385,6 +385,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtVisitAddress1 = ""
   req.app.locals.courtVisitAddress2 = ""
   req.app.locals.courtVisitAddress3 = ""
+  req.app.locals.courtWriteAddress1 = ""
+  req.app.locals.courtWriteAddress2 = ""
+  req.app.locals.courtWriteAddress3 = ""
   req.app.locals.courtAdditionalInfo = ""
   req.app.locals.courtUrgentInfo = ""
   req.app.locals.courtOpenBuilding = ""
@@ -462,7 +465,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
       // addresses
 
       for (let j=0; j < courtDetailsAll.courts[i].addresses.length; j++) {
-
 
         let addressSplit = courtDetailsAll.courts[i].addresses[j].address.split('\n')
         if (req.app.locals.ctscFlag == false) {
