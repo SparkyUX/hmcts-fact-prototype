@@ -513,7 +513,8 @@ router.get('/individual-location-pages/generic', function(req, res) {
           }
 
           req.app.locals.courtWriteTown = courtDetailsAll.courts[i].addresses[j].town 
-          req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
+          let enq_name = courtDetailsAll.courts[i].slug.substring(0, courtDetailsAll.courts[i].slug.indexOf('-'))
+          req.app.locals.courtEmailEnquiries = 'enquiries.' + enq_name + '@justice.gov.uk'
 
           req.app.locals.courtWritePostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
