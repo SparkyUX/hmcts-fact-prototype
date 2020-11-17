@@ -19,14 +19,14 @@
     ],
     "emails": [
       {
-        "address": "ccmcce-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
+        "address": "contactocmc@justice.gov.uk",
+        "description": "Enquiries",
+        "explanation": "For claims less than £10,000"
       },
       {
-        "address": "ccmcccustomerenquiries@justice.gov.uk",
+        "address": "ccbc@justice.gov.uk",
         "description": "Enquiries",
-        "explanation": null
+        "explanation": "For claims between £10,000 and £100,000"
       }
     ],
     "contacts": [
@@ -36,14 +36,14 @@
         "explanation": "for Welsh – Speakers"
       },
       {
-        "number": "0300  123 1372",
+        "number": "0300  123 7050",
         "description": "Enquiries",
-        "explanation": ""
+        "explanation": "For claims less than £10,000"
       },
       {
-        "number": "01264 347985",
-        "description": "Fax",
-        "explanation": ""
+        "number": "0300  123 1057",
+        "description": "Enquiries",
+        "explanation": "For claims between £10,000 and £100,000"
       },
       {
         "number": "702634 Salford 5",
@@ -34992,7 +34992,7 @@
     ],
     "gbs": "P223",
     "catchment_type": "local",
-    "catchment_area": "the South Midlands"
+    "catchment_area": ""
   },
   {
     "name": "Oxford and Southern Oxfordshire Magistrates' Court",

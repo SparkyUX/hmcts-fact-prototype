@@ -1,60 +1,102 @@
 const courtDetails = require('./court_details.json')
-const createCorTList = function(serviceArea, singleLocation, centreType) { 
-//  console.log('createCorTList serviceArea ' + serviceArea)
-//  console.log('createCorTList singleLocation ' + singleLocation)
+const actionOrder = [
+    {"action": "findNearest", "order": ["local","regional","national"]},
+    {"action": "sendDocs", "order": ["regional","national","local"]},
+    {"action": "getUpdate", "order": ["national","regional","local"]},
+    {"action": "notListed", "order": ["national","regional","local"]}
+  ]
+const createCorTList = function(serviceArea, searchOrder, actionType) { 
+  console.log('createCorTList serviceArea ' + serviceArea)
+  console.log('searchOrder ' + JSON.stringify(searchOrder))
   let searchListNames = []
-
-  if (singleLocation) {
-    for (let i=0; i < courtDetails.courts.length; i++) {
-    //   
-      if (courtDetails.courts[i].catchment_type === centreType ) { 
-
-        for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-        // does the court handle the service area 
-          if (courtDetails.courts[i].areas_of_law[j] == serviceArea) {    
-//            console.log('createCorTList details ' + JSON.stringify(courtDetails.courts[i].name))
-            let locationDetails = {
-              name: courtDetails.courts[i].name,
-              slug: courtDetails.courts[i].slug.toLowerCase(),
-              distance: 0,
-              catchment_area : courtDetails.courts[i].catchment_area,
-              catchment_type : courtDetails.courts[i].catchment_type
-            }
-//            console.log('*** single Location *** ' + JSON.stringify(locationDetails)) 
-            
-            searchListNames.push(locationDetails)
-          }
-        }
+  let distance = 0
+  let searchOrderFound = false
+  let regionalFlag =false
+  let nationalFlag = false
+  let searchResults = []
+  let searchOrderAction = []
+  // loop through the searchOrder
+  console.log('actionOrder[0].action ' + JSON.stringify(actionOrder[0].action))
+  for (let i=0; i < actionOrder.length; i++) {
+    if (actionOrder[i].action == actionType) {
+      console.log('actionType ' + actionType)
+      for (let j=0; j < actionOrder[i].order.length; j++) {
+        for (let k=0; k < searchOrder.length; k++) {
+          if (actionOrder[i].order[j] == searchOrder[k]) {
+            console.log('searchOrder[j] ' + searchOrder[k])
+            searchOrderAction.push(searchOrder[k])
+          }     
+        }       
       }
     }
   }
-  else {
-    for (let i=0; i < courtDetails.courts.length; i++) {   
-      for (let j=0; j < courtDetails.courts[i].areas_of_law.length; j++) {
-      // does the court handle the service area 
-        if (courtDetails.courts[i].areas_of_law[j] === serviceArea) { 
-        // exclude ctsc that have a distance of 0 
-          if (courtDetails.courts[i].distance !== 0) {
-            let locationDetails = {
-              name: courtDetails.courts[i].name,
-              slug: courtDetails.courts[i].slug.toLowerCase(),
-              distance: courtDetails.courts[i].distance.toFixed(1),
-              catchment_area : courtDetails.courts[i].catchment_area,
-              catchment_type : courtDetails.courts[i].catchment_type
+  console.log('searchOrderAction ' + JSON.stringify(searchOrderAction))
+  for (i = 0; i < searchOrderAction.length; i++) {
+    console.log('searchOrder[i] ' + searchOrderAction[i])
+    // loop through the courts and match the searchOrder catchment type to the court catchment type
+    // if not found exit and try the next searchOption
+    // if null skip it and try the next searchOption
+    if (searchOrderAction[i] !== null) {
+      // loop through courts
+      for (let j=0; j < courtDetails.courts.length; j++) {
+        // find courts with the same catchment type
+        console.log('courtDetails.courts[j].catchment_type ' + courtDetails.courts[j].catchment_type)
+        if (courtDetails.courts[j].catchment_type == searchOrderAction[i] ) { 
+          if (typeof courtDetails.courts[j].distance == 'undefined') {
+            distance = 0
+          }
+          else {
+            distance = courtDetails.courts[j].distance
+          }
+          // does the court handle the service area 
+          for (let k=0; k < courtDetails.courts[j].areas_of_law.length; k++) {
+
+            if (courtDetails.courts[j].areas_of_law[k] == serviceArea) {    
+              searchOrderFound = true
+              let locationDetails = {
+                name: courtDetails.courts[j].name,
+                slug: courtDetails.courts[j].slug,
+                distance: distance.toFixed(1),
+                catchment_area : courtDetails.courts[j].catchment_area,
+                catchment_type : courtDetails.courts[j].catchment_type
+              }
+              // if a regional or national we only want the first one
+              searchListNames.push(locationDetails)
             }
-            searchListNames.push(locationDetails)
           }
         }
-      }      
+
+        // if the searchOrder has courts then stop - we only want the first type
+        
+      }
+    }        
+    if (searchOrderFound) {
+      break
     }
   }
-  //  sort and return the results at the same time
-  searchListNamesSorted = searchListNames.sort(function(a, b) {
+  //  sort and return the results
+  let searchListNamesSorted = searchListNames.sort(function(a, b) {
     return a.distance - b.distance
-  });
-//  console.log('searchListNamesSorted ' + JSON.stringify(searchListNamesSorted))
-  return searchListNamesSorted;
-
-};
+  })      
+  if (searchListNamesSorted[0].catchment_type == "regional") {
+     regionalFlag = true
+  }
+  if (searchListNamesSorted[0].catchment_type == "national") {
+    nationalFlag = true
+  }
+  if (nationalFlag || regionalFlag) {
+    searchResults = [searchListNamesSorted[0]]
+  }
+  else {
+    searchResults = searchListNamesSorted
+  }
+  console.log('searchListNames ' + JSON.stringify(searchListNames ))
+  console.log('searchListNamesSorted ' + JSON.stringify(searchListNamesSorted ))
+  return {  
+    "list": searchResults, 
+    "regionalFlag": regionalFlag,
+    "nationalFlag": nationalFlag
+  }
+} 
 
 module.exports = createCorTList;

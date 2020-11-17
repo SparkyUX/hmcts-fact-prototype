@@ -174,7 +174,7 @@
 	{
 		"service": "Probate",
 		"aol": "Probate",
-		"catchment_type": ["regional","national"],
+		"catchment_type": ["national"],
 		"catchment_method": "proximity",		
 		"link_text": "Probate",
 		"service_url": "https://www.gov.uk/applying-for-probate",
