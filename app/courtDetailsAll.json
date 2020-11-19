@@ -21,34 +21,19 @@
       {
         "address": "contactocmc@justice.gov.uk",
         "description": "Enquiries",
-        "explanation": "For claims less than £10,000"
-      },
-      {
-        "address": "ccbc@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": "For claims between £10,000 and £100,000"
+        "explanation": ""
       }
     ],
     "contacts": [
       {
-        "number": "0300 303 5174",
-        "description": "Enquiries",
-        "explanation": "for Welsh – Speakers"
+        "number": "0300 303 5174", 
+        "description": "Enquiries Welsh language", 
+        "explanation": null
       },
       {
         "number": "0300  123 7050",
         "description": "Enquiries",
-        "explanation": "For claims less than £10,000"
-      },
-      {
-        "number": "0300  123 1057",
-        "description": "Enquiries",
-        "explanation": "For claims between £10,000 and £100,000"
-      },
-      {
-      "number": "0300 303 5174", 
-      "description": "Enquiries Welsh language", 
-      "explanation": null
+        "explanation": "Monday to Thursday, 8.30am to 5pm and Friday, 8.30am to 4pm"
       }
     ],
     "opening_times": [

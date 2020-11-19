@@ -475,7 +475,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
             }
 
             req.app.locals.courtVisitTown = courtDetailsAll.courts[i].addresses[j].town 
-            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
             req.app.locals.courtVisitPostcode = courtDetailsAll.courts[i].addresses[j].postcode
           }
 
@@ -491,7 +490,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
             }
 
             req.app.locals.courtVisitTown = courtDetailsAll.courts[i].addresses[j].town 
-            req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].addresses[j].town.toLowerCase() + '@justice.gov.uk'
             req.app.locals.courtVisitPostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
           }
@@ -507,7 +505,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
 
           req.app.locals.courtWriteTown = courtDetailsAll.courts[i].addresses[j].town 
           let enq_name = courtDetailsAll.courts[i].slug.substring(0, courtDetailsAll.courts[i].slug.indexOf('-'))
-          req.app.locals.courtEmailEnquiries = 'enquiries.' + enq_name + '@justice.gov.uk'
 
           req.app.locals.courtWritePostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
@@ -551,12 +548,22 @@ router.get('/individual-location-pages/generic', function(req, res) {
           console.log('DX code ' + courtDetailsAll.courts[i].contacts[j].number)
           req.app.locals.courtDXNumber = courtDetailsAll.courts[i].contacts[j].number
         }
+
         else {
           let phoneDescription = courtDetailsAll.courts[i].contacts[j].description
           let phoneNumber = courtDetailsAll.courts[i].contacts[j].number
           let phoneExplanation = courtDetailsAll.courts[i].contacts[j].explanation
           let phoneDetails = {phoneDescription,phoneNumber,phoneExplanation}
           contactPhoneDetails.push(phoneDetails) 
+        }        
+
+        if (courtDetailsAll.courts[i].contacts[j].description  == 'Enquiries') {
+          req.app.locals.courtPhoneEnquiries = courtDetailsAll.courts[i].contacts[j].number
+          req.app.locals.courtPhoneEnquiriesExplanation = courtDetailsAll.courts[i].contacts[j].explanation
+        }
+        if (courtDetailsAll.courts[i].contacts[j].description  == 'Enquiries Welsh language') {
+          req.app.locals.courtWelshPhone = courtDetailsAll.courts[i].contacts[j].number
+          req.app.locals.courtWelshPhoneExplanation = courtDetailsAll.courts[i].contacts[j].explanation
         }
       }         
       req.app.locals.phoneDetails = contactPhoneDetails
@@ -565,10 +572,10 @@ router.get('/individual-location-pages/generic', function(req, res) {
       let contactEmailDetails = []
 
       for (let j=0; j < courtDetailsAll.courts[i].emails.length; j++) {
+        console.log('routes courtDetailsAll.courts[i].emails[j].description ' + courtDetailsAll.courts[i].emails[j].description)
         if (courtDetailsAll.courts[i].emails[j].description == 'Enquiries') {
           req.app.locals.courtEmailEnquiries = courtDetailsAll.courts[i].emails[j].address
         }
-
         let emailDescription = courtDetailsAll.courts[i].emails[j].description
         let emailAddress = courtDetailsAll.courts[i].emails[j].address
         let emailExplanation = courtDetailsAll.courts[i].emails[j].explanation
