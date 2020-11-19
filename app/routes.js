@@ -188,8 +188,6 @@ router.post('/choose-service-category', function (req, res) {
 // set default to plural and change if only one court or tribunal found
   req.app.locals.courtsOrTribunals = 'courts or tribunals' 
 
-  req.app.locals.moneyClaimsService = false
-  req.app.locals.probateService = false
   req.app.locals.divorceService = false
   req.app.locals.civilPartnershipService = false
   req.app.locals.childService = false
@@ -234,8 +232,8 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
 
       courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
-      req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
-      req.app.locals.regionalDisplayFlag = courtList.regionalDisplayFlag
+      req.app.locals.nationalDisplayFlag = courtList.nationalFlag
+      req.app.locals.regionalDisplayFlag = courtList.regionalFlag
       req.app.locals.searchListNames = courtList.searchListNames
 
       if (courtList.postcodePage) {
@@ -252,8 +250,8 @@ router.post('/choose-service-category', function (req, res) {
       req.app.locals.serviceDetails = getServiceDetails(req.app.locals.serviceArea,null)
 
       courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
-      req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
-      req.app.locals.regionalDisplayFlag = courtList.regionalDisplayFlag
+      req.app.locals.nationalDisplayFlag = courtList.nationalFlag
+      req.app.locals.regionalDisplayFlag = courtList.regionalFlag
       req.app.locals.searchListNames = courtList.searchListNames
       break
 
@@ -287,8 +285,6 @@ router.post('/choose-area', function (req, res) {
     req.app.locals.regionalDisplayFlag = false
 
     // need to be reset again in case only goes back one page to the service area and not the service category
-    req.app.locals.moneyClaimsService = false
-    req.app.locals.probateService = false
     req.app.locals.divorceService = false
     req.app.locals.civilPartnershipService = false
     req.app.locals.sjsService = false
@@ -303,14 +299,16 @@ router.post('/choose-area', function (req, res) {
     req.app.locals.serviceDetails = getServiceDetails(serviceArea,null)
 
     courtList = getCourtDetails(req.app.locals.serviceDetails, req.app.locals.serviceActionType)
-    console.log('courtList ' + JSON.stringify(courtList))
+    console.log('routes courtList ' + JSON.stringify(courtList))
 
-    req.app.locals.nationalDisplayFlag = courtList.nationalDisplayFlag
+    console.log('courtList.regionalFlag ' + courtList.regionalFlag)
+    req.app.locals.regionalDisplayFlag = courtList.regionalFlag
+    req.app.locals.nationalDisplayFlag = courtList.nationalFlag
     req.app.locals.searchListNames = courtList.searchListNames
     req.app.locals.postcodePage = courtList.postcodePage
-    req.app.locals.regionalDisplayFlag = courtList.regionalDisplayFlag
 
     console.log('choose area req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
+    console.log('choose area req.app.locals.regionalDisplayFlag ' + JSON.stringify(req.app.locals.regionalDisplayFlag))
 
     
     switch (serviceAreaQuery) {
@@ -324,15 +322,7 @@ router.post('/choose-area', function (req, res) {
 
       case 'divorce':            
         req.app.locals.divorceService = true
-        break
-
-      case 'moneyclaims':
-        req.app.locals.moneyClaimsService = true
-        break   
-
-      case 'probate':
-        req.app.locals.probateService = true
-        break
+        break 
 
       case 'singlejusticeprocedure':
         req.app.locals.sjsService = true
@@ -361,7 +351,7 @@ router.post('/service-postcode', function (req, res) {
 
   let serviceSearchPostcode = req.session.data['service-search-postcode'].toUpperCase()
   req.app.locals.serviceSearchPostcode = serviceSearchPostcode
-//  console.log('postcode req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
+  console.log('postcode req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
 //  console.log('postcode req.app.locals.searchListNames.length ' + JSON.stringify(req.app.locals.searchListNames.length))
 
   req.app.locals.courtCount = req.app.locals.searchListNames.length
@@ -375,6 +365,10 @@ router.post('/service-postcode', function (req, res) {
 
 })
 
+router.get('/service/service-search-results', function(req, res) { 
+  console.log('req.app.locals.searchListNames ' + JSON.stringify(req.app.locals.searchListNames))
+  res.render('service/service-search-results')
+})
 
 // 1.2a , 2.1.4a individual court
 
@@ -414,7 +408,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtSeparateAddress = false
   
   req.app.locals.immigrationServiceAtCourt = false
-  req.app.locals.moneyClaimsServiceAtCourt = false
   req.app.locals.probateServiceAtCourt = false
   req.app.locals.housingPossessionServiceAtCourt = false
   req.app.locals.bankruptcyServiceAtCourt = false

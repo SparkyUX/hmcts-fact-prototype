@@ -5,111 +5,90 @@ const getCourtDetails = function(serviceDetails, serviceActionType) {
   let postcodePage = true
   let nationalDisplayFlag = false
   let regionalDisplayFlag = false
-  let hasLocalOnly = false
   let ctscFlag = false
   let courtList = []
   let searchListNames = []
   let listNames = []
+  let catchmentWeighting = 0
+  let singleCourtDisplay = false
+  let searchOrder =[]
 
-  
   if (serviceDetails.catchment_type.indexOf('national') > -1) {
     nationalDisplayFlag = true
+    catchmentWeighting = catchmentWeighting + 4
   }  
   if (serviceDetails.catchment_type.indexOf('regional') > -1) {
-   regionalDisplayFlag = true 
+    regionalDisplayFlag = true 
+    catchmentWeighting = catchmentWeighting + 2
+
   }
-  if (!nationalDisplayFlag && !regionalDisplayFlag) {
-    hasLocalOnly = true
+  if (serviceDetails.catchment_type.indexOf('local') > -1) {
+    localDisplayFlag = true 
+    catchmentWeighting = catchmentWeighting + 1
+
   }
+
+  // this is the in-person type of court and will be held against the court in the DB
   if (nationalDisplayFlag || regionalDisplayFlag) {
     ctscFlag = true
   }
-//  console.log('national ' + nationalDisplayFlag + ' regional ' + regionalDisplayFlag + ' local ' + hasLocalOnly)
 
-//
-  console.log('serviceActionType ' + serviceActionType)
-// get the list of courts in distance order from the postcode
-// prototype only logic - distance is held on the court record
+  console.log ('catchmentWeighting' + catchmentWeighting)
 
-  if (serviceActionType == 'findNearest') {
-    console.log('*** not listed or find nearest ***')
-  // don't display the ctsc in the list of courts in the results 
-  // prototype only logic
-    nationalDisplayFlag = false
-    listNames = createCorTList(serviceDetails.aol,false,null)
 
-  //if regional centre return the first found
-  // prototype only logic
-    if (regionalDisplayFlag) {
-      for (i=0; i < listNames.length; i++) {
-        if (listNames[i].catchment_type === 'regional') {
-          courtList.push(listNames[i])
-          searchListNames = courtList
-          regionalDisplayFlag = true
-          break
-        }
-      }
-    }
-    // exclude the national service centre (ctsc)
-    else if (nationalDisplayFlag) {
-      for (i=0; i < listNames.length; i++) {
-        if (listNames[i].catchment_type === 'national') {
-        }
-        else {
-          courtList.push(listNames[i])
-        }
-        searchListNames = courtList
-      }
-    }
-    else {
-      searchListNames = listNames
-    }
-    postcodePage = true
+
+  switch(catchmentWeighting) {
+    case 1:
+    searchOrder = ["local",null,null]
+    break
+    case 2:
+    searchOrder = [null,"regional",null]
+    break
+    case 3:
+    searchOrder = ["local","regional",null]
+    break
+    case 4:
+    searchOrder = ["national",null,null]
+    break      
+    case 5:
+    searchOrder = ["local",null,"national"]
+    break
+    case 6:
+    searchOrder = [null,"regional","national"]
+    break
+    case 7:
+    searchOrder = ["local","regional","national"]
+    break
+    default:
+    console.log('error: invalid catchment combination')
   }
 
-  // if action send docs or get update 
-  else {
-    if (nationalDisplayFlag == false) {
-      console.log('*** NOT CTSC ***')
-
-      postcodePage = true
-      if (regionalDisplayFlag) {
-        console.log('*** NOT National but Regional Centre ***')
-        listNames = createCorTList(serviceDetails.aol,true,"regional")
-        searchListNames.push(listNames[0])
-      }
-      else {
-      searchListNames = createCorTList(serviceDetails.aol,false,null)
-      }
-    }
-    else {
-      if (serviceActionType == 'getUpdate') {
-        console.log('*** IS get update and IS national centre ***')
-        nationalDisplayFlag = true
+  switch(serviceActionType) {
+    case 'findNearest':
+      if (catchmentWeighting == 4) {
         postcodePage = false
-        searchListNames = createCorTList(serviceDetails.aol,true,"national")
       }
-      else if (regionalDisplayFlag) {
-        console.log('*** send docs IS regional centre ***')
-        postcodePage = true
-        listNames = createCorTList(serviceDetails.aol,true,"regional")
-        // use the first one found
-        searchListNames.push(listNames[0])
-      }
-      else {
-        console.log('*** send docs IS national centre and NOT regional centre ***')
-        nationalDisplayFlag = true
+      break
+    case 'sendDocs':
+      if (catchmentWeighting == 4 || catchmentWeighting == 5) {
         postcodePage = false
-        searchListNames = createCorTList(serviceDetails.aol,true,"national")
-
       }
-    }
+      break
+    default:
+      if (catchmentWeighting > 3 ) {
+        postcodePage = false
+      }
+      break
   }
+
+  searchListNames = createCorTList(serviceDetails.aol,searchOrder,serviceActionType)
+console.log('searchListNames.nationalFlag ' + searchListNames.nationalFlag)
+console.log('regionalDisplayFlag' + searchListNames.regionalFlag)
   return {
-    "searchListNames": searchListNames, 
+    "searchListNames": searchListNames.list, 
     "postcodePage": postcodePage, 
-    "nationalDisplayFlag": nationalDisplayFlag, 
-    "regionalDisplayFlag": regionalDisplayFlag
+    "nationalFlag": searchListNames.nationalFlag, 
+    "regionalFlag": searchListNames.regionalFlag
   }
 }
-module.exports = getCourtDetails;
+module.exports = getCourtDetails
