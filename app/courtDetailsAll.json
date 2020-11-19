@@ -19,36 +19,21 @@
     ],
     "emails": [
       {
-        "address": "ccmcce-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
-      },
-      {
-        "address": "ccmcccustomerenquiries@justice.gov.uk",
-        "description": "Enquiries",
+        "address": "contactocmc@justice.gov.uk", 
+        "description": "Enquiries", 
         "explanation": null
       }
     ],
     "contacts": [
       {
-        "number": "0300 303 5174",
-        "description": "Enquiries",
-        "explanation": "for Welsh – Speakers"
-      },
+      "number": "0300 123 7050", 
+      "description": "Enquiries", 
+      "explanation": "Monday to Thursday, 8.30am to 5pm and Friday, 8.30am to 4pm"
+      }, 
       {
-        "number": "0300  123 1372",
-        "description": "Enquiries",
-        "explanation": ""
-      },
-      {
-        "number": "01264 347985",
-        "description": "Fax",
-        "explanation": ""
-      },
-      {
-        "number": "702634 Salford 5",
-        "description": "DX",
-        "explanation": ""
+      "number": "0300 303 5174", 
+      "description": "Enquiries Welsh language", 
+      "explanation": null
       }
     ],
     "opening_times": [
@@ -58,310 +43,258 @@
       }
     ],
     "facilities": [],
+    "addresses": [],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+{
+    "name": "Probate Service Centre", 
+    "slug": "probate-service-centre", 
+    "info": null, 
+    "open": false, 
+    "directions": null, 
+    "lat": null, 
+    "lon": null, 
+    "crown_location_code": null, 
+    "county_location_code": null, 
+    "magistrates_location_code": null, 
+    "areas_of_law": ["Probate"], 
+    "types": [], 
+    "emails": [
+    {
+      "address": "contactprobate@justice.gov.uk", 
+      "description": "Enquiries", 
+      "explanation": null
+    }], 
+    "contacts": [{
+      "number": "0300 123 1072", 
+      "description": "Enquiries", 
+      "explanation": null
+    }], 
+    "opening_times": [], 
+    "facilities": [], 
     "addresses": [
-      {
-        "type": "Postal",
-        "address": "County Court Money Claims Centre\nPO Box 527\n\n",
-        "town": "Salford",
-        "postcode": "M5 0BY"
-      }
-    ],
+    {
+      "type": "Postal", 
+      "address": "HMCTS Probate\r\nPO Box 12625", 
+      "town": "Harlow", 
+      "postcode": "CM20 9QF"
+    }], 
+
     "gbs": null,
     "catchment_type": "national",
     "catchment_area": "all of England and Wales",
     "puas": false
   },
   {
-      "name": "Probate Service Centre",
-      "slug": "probate-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Probate"],
-      "emails": [{
-        "address": "probate-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
-      }, {
-        "address": "urgent.reading.crowncourt@justice.gov.uk",
-        "description": "Urgent",
-        "explanation": null
-      }, {
-        "address": "probatecustomerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Harlow 5",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [{
-        "type": "Postal",
-        "address": "HMCTS Probate\nPO Box 12625\n",
-        "town": "Harlow",
-        "postcode": "CM20 9QE"
-      }],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
-    },
+    "name": "Divorce Service Centre", 
+    "slug": "divorce-service-centre",     
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Civil partnership","Divorce"],
+    "emails": [
+    {
+      "address": "contactdivorce@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 303 0642",
+      "description": "Enquiries",
+      "explanation": "Monday to Thursday, 8am to 5pm and Friday, 8am to 4pm"
+    }, 
+    {
+      "number": "702634 Harlow 5",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Thursday, 8am to 5pm and Friday, 8am to 4pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Divorce\nPO Box 12625\n",
+      "town": "Harlow",
+      "postcode": "CM20 9QE"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Immigration and Asylum Appeals Service Centre",
+    "slug": "immigration-and-asylum-appeals-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Immigration"],
+    "emails": [
       {
-      "name": "Divorce Service Centre",
-      "slug": "divorce-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Divorce"],
-      "emails": [{
-        "address": "divorce-filing@justice.gov.uk",
-        "description": "Filing and records",
+        "address": "customer.service@justice.gov.uk", 
+        "description": 
+        "Enquiries", 
         "explanation": null
-      }, {
-        "address": "divorcecustomerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Harlow 5",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [{
-        "type": "Postal",
-        "address": "HMCTS Divorce\nPO Box 12625\n",
-        "town": "Harlow",
-        "postcode": "CM20 9QE"
-      }],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
-    },
-    {
-      "name": "Immigration and Asylum Appeals Service Centre",
-      "slug": "immigration-and-asylum-appeals-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Immigration"],
-      "emails": [{
-        "address": "immigration-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
-      },  {
-        "address": "immigrationcustomerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Harlow 5",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
-    },
-    {
-      "name": "Social Security and Child Support Appeals Service Centre",
-      "slug": "social-security-and-child-support-appeals-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Social security"],
-      "emails": [{
-        "address": "sscs-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
-      }, {
-        "address": "sscscustomerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Harlow 5",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
-    },
-    {
-      "name": "Minor Criminal Offences Service Centre",
-      "slug": "minor-criminal-offences-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Minor crime"],
-      "types": ["Crime"],
-      "emails": [{
-        "address": "single-justice-filing@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
-      }, {
-        "address": "sjs.customerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Stoke 5",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
-    },
-    {
-      "name": "Crime Service Centre",
-      "slug": "crime-service-centre",
-      "info": "",
-      "open": true,
-      "directions": null,
-      "lat": null,
-      "lon": null,
-      "crown_location_code": null,
-      "county_location_code": null,
-      "magistrates_location_code": null,
-      "areas_of_law": ["Crime"],
-      "emails": [{
-        "address": "crimeg@justice.gov.uk",
-        "description": "Filing and records",
-        "explanation": null
+      }
+    ], 
+    "contacts": [
+      {
+        "number": "0300 123 1711", 
+        "description": "Enquiries", 
+        "explanation": "Monday to Friday, 8.30am to 5pm"}],   
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8.30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Benefits Service Centre",
+    "slug": "benefits-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Social security"],
+    "emails": [
+      {
+      "address": "SSCSA-Glasgow@justice.gov.uk", 
+      "description": "Enquiries", 
+      "explanation": "Scottish enquiries"
       }, 
       {
-        "address": "crime.customerenquiries@justice.gov.uk",
-        "description": "Enquiries",
-        "explanation": null
-      }],
-      "contacts": [{
-        "number": "0300 123 1072",
-        "description": "Enquiries",
-        "explanation": "for Welsh \u2013 Speakers"
-      }, {
-        "number": " 0300 303 0648",
-        "description": "Fax",
-        "explanation": ""
-      }, {
-        "number": "702634 Birmingham 4",
-        "description": "DX",
-        "explanation": ""
-      }],
-      "opening_times": [{
-        "description": "Telephone Enquiries from",
-        "hours": "Monday to Friday 8:30am to 5pm"
-      }],
-      "facilities": [],
-      "addresses": [{
-        "type": "Postal",
-        "address": "HMCTS Crime Service Centre\nPO Box 12625\n",
-        "town": "Birmingham",
-        "postcode": "B1 WS44"
-      }],
-      "gbs": null,
-      "catchment_type": "national",
-      "catchment_area": "all of England and Wales",
-      "puas": false
+      "address": "contactsscs@justice.gov.uk", 
+      "description": "Enquiries", 
+      "explanation": "Monday to Thursday, 8am to 5pm and Friday, 8am to 4pm"
+    }], 
+    "contacts": [
+      {
+      "number": "0300 123 1142", 
+      "description": "Enquiries", 
+      "explanation": "Monday to Thursday, 8am to 5pm and Friday, 8am to 4pm"
+    }, 
+    {
+      "number": "0300 303 5170", 
+      "description": "Enquiries", 
+      "explanation": "Welsh language enquiries"
+    }], 
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 8.30am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Minor Criminal Offences Service Centre",
+    "slug": "minor-criminal-offences-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Minor crime"],
+    "types": ["Crime"],
+    "emails": [{
+      "address": "contactSJS@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0303 063 2140",
+      "description": "Enquiries",
+      "explanation": "Monday to Thursday, 9am to 5pm and Friday, 9am to 4pm"
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 9am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
+  {
+    "name": "Crime Service Centre",
+    "slug": "crime-service-centre",
+    "info": "",
+    "open": true,
+    "directions": null,
+    "lat": null,
+    "lon": null,
+    "crown_location_code": null,
+    "county_location_code": null,
+    "magistrates_location_code": null,
+    "areas_of_law": ["Crime"],
+    "emails": [{
+      "address": "crimeg@justice.gov.uk",
+      "description": "Filing and records",
+      "explanation": null
+    }, 
+    {
+      "address": "crime.customerenquiries@justice.gov.uk",
+      "description": "Enquiries",
+      "explanation": null
+    }],
+    "contacts": [{
+      "number": "0300 123 1072",
+      "description": "Enquiries",
+      "explanation": "Monday to Thursday, 8am to 5pm and Friday, 8am to 4pm"
     },
+    {
+      "number": "702634 Birmingham 4",
+      "description": "DX",
+      "explanation": ""
+    }],
+    "opening_times": [{
+      "description": "Telephone Enquiries from",
+      "hours": "Monday to Friday 9am to 5pm"
+    }],
+    "facilities": [],
+    "addresses": [{
+      "type": "Postal",
+      "address": "HMCTS Crime Service Centre\nPO Box 12625\n",
+      "town": "Birmingham",
+      "postcode": "B1 WS44"
+    }],
+    "gbs": null,
+    "catchment_type": "national",
+    "catchment_area": "all of England and Wales",
+    "puas": false
+  },
   {
     "name": "Aberdeen Tribunal Hearing Centre",
     "slug": "aberdeen-tribunal-hearing-centre",
@@ -8538,14 +8471,14 @@
     "emails": [
       {
         "address": "divorceunitbse@justice.gov.uk",
-        "description": "Divorce",
+        "description": "Enquiries",
         "explanation": null
       }
     ],
     "contacts": [
       {
         "number": "0300 303 0642",
-        "description": "Divorce",
+        "description": "Enquiries",
         "explanation": ""
       },
       {
@@ -8571,7 +8504,7 @@
     ],
     "gbs": "Y693",
     "catchment_type": "regional",
-    "catchment_area": "The South-East of England"
+    "catchment_area": "the South-East of England"
   },
   {
     "name": "Caernarfon  Justice Centre",
@@ -33370,7 +33303,7 @@
     ],
     "gbs": null,
     "catchment_type": "local",
-    "catchment_area": ""
+    "catchment_area": "the North-West of England"
   },
   {
     "name": "North Yorkshire Magistrates' Courts Central Finance Unit",
@@ -40646,7 +40579,7 @@
     ],
     "gbs": "Y694",
     "catchment_type": "regional",
-    "catchment_area": "The South-West of England"
+    "catchment_area": "the South-West of England"
   },
   {
     "name": "South Worcestershire Magistrates' Court",
