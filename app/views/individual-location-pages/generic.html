@@ -62,7 +62,7 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         </p>
 
       {% endif %}
-    {% endif %}
+    {% endif %} 
 
     {% if courtVisitWriteAddress and (not ctscFlag) %}
 
@@ -165,25 +165,35 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       </p>
 
     {% endif %}
-
+    <!-- national or regional court -->
     {% if ctscFlag %}
 
       <h4 class="govuk-heading-s">
         Telephone and fax
       </h4>
-      <p class="govuk-body-m">
-       Telephone: {{courtPhoneEnquiries}}
-      </br>
-        Monday to Friday, 8:30am to 5pm
-      </p>
-      <p class="govuk-body-m">
-        Welsh language: 0300 303 5174
-        <br />
-        Monday to Friday, 9am to 5pm
-      </p>
-      <p class="govuk-body-m">
-        Fax: 01264 347 985
-      </p>
+
+      {% for details in phoneDetails %}
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body-m">
+             {{details.phoneDescription}}
+            </p>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body-m"><a href="tel:{{details.phoneNumber}}">
+             {{details.phoneNumber}}</a>
+            {% if details.phoneExplanation %}
+              </br>
+                ({{details.phoneExplanation}})
+              </p>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+
+      {% endfor %}
+ 
       <p class="govuk-body-m">
       <a href="https://www.gov.uk/call-charges">
         Find out about call charges
@@ -199,8 +209,10 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Email
       </h4>
       <p class="govuk-body-m">
-        Send us your documents: <a href="mailto:">{{courtEmailEnquiries}}</a>
-        <br />
+        {% if courtEmailSendDocs %}
+          Send us your documents: <a href="mailto:">{{courtEmailEnquiries}}</a>
+          <br />
+        {% endif %}
         {% if (not sjsService) or (not crimeService) %}
 
           Get an update with your application: <a href="mailto:">{{courtEmailEnquiries}}</a>
@@ -210,18 +222,8 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         {% endif %}
       </p>
 
-      {% if probateServiceAtCourt %}
-        <h4 class="govuk-heading-s" >
-          Webchat
-        </h4>
-        <p class="govuk-body"><a href="https://www.tax.service.gov.uk/ask-hmrc/webchat/probate">Speak to an adviser online</a> about:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>whether or not you need probate</li>
-          <li>what forms to fill in</li>
-          <li>help and advice when filling the forms in</li>
-        </ul>
-      {% endif %}
     </div>
+    <!-- not national or regional court -->
     {% else %}
       {% if courtSeparateAddress %}
 
@@ -438,9 +440,13 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
         Contact us to make a complaint</a>
       </p>
 
-      <h3 class="govuk-heading-m">
-        Court codes for legal professionals:
-      </h3>
+      {% if not courtDXNumber and not courtCodeCounty and not courtCodeCrown and not courtCodeMagistrates %}
+      {% else %}
+
+        <h3 class="govuk-heading-m">
+          Court codes for legal professionals:
+        </h3>
+      {% endif %}
 
       {%if courtCodeCounty %}
         <p class="govuk-body-m">

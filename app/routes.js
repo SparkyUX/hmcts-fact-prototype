@@ -495,7 +495,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
             req.app.locals.courtVisitPostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
           }
-        }
+        } // end not ctsc
         if (courtDetailsAll.courts[i].addresses[j].type == "Postal" ) {
           req.app.locals.courtWriteAddress1 = addressSplit[0]
           if (addressSplit[1]) {
@@ -512,7 +512,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
           req.app.locals.courtWritePostcode = courtDetailsAll.courts[i].addresses[j].postcode
 
         }
-      }
+      } // end addresses
 
       // text fields
       req.app.locals.courtAdditionalInfo = courtDetailsAll.courts[i].info.replace(/(<([^>]+)>)/ig,"").replace("&nbsp;","").replace("&rsquo;","\'")
@@ -547,8 +547,8 @@ router.get('/individual-location-pages/generic', function(req, res) {
       let contactPhoneDetails = []
 
       for (let j=0; j < courtDetailsAll.courts[i].contacts.length; j++) {
-
         if (courtDetailsAll.courts[i].contacts[j].description == "DX") {
+          console.log('DX code ' + courtDetailsAll.courts[i].contacts[j].number)
           req.app.locals.courtDXNumber = courtDetailsAll.courts[i].contacts[j].number
         }
         else {
@@ -565,12 +565,15 @@ router.get('/individual-location-pages/generic', function(req, res) {
       let contactEmailDetails = []
 
       for (let j=0; j < courtDetailsAll.courts[i].emails.length; j++) {
+        if (courtDetailsAll.courts[i].emails[j].description == 'Enquiries') {
+          req.app.locals.courtEmailEnquiries = courtDetailsAll.courts[i].emails[j].address
+        }
 
-          let emailDescription = courtDetailsAll.courts[i].emails[j].description
-          let emailAddress = courtDetailsAll.courts[i].emails[j].address
-          let emailExplanation = courtDetailsAll.courts[i].emails[j].explanation
-          let emailDetails = {emailDescription,emailAddress,emailExplanation}
-          contactEmailDetails.push(emailDetails) 
+        let emailDescription = courtDetailsAll.courts[i].emails[j].description
+        let emailAddress = courtDetailsAll.courts[i].emails[j].address
+        let emailExplanation = courtDetailsAll.courts[i].emails[j].explanation
+        let emailDetails = {emailDescription,emailAddress,emailExplanation}
+        contactEmailDetails.push(emailDetails) 
 
       } // emails
       req.app.locals.emailDetails = contactEmailDetails
@@ -593,6 +596,7 @@ router.get('/individual-location-pages/generic', function(req, res) {
 
     } // if court 
   }
-   res.render('individual-location-pages/generic')
+  console.log('DX code ' + req.app.locals.courtDXNumber)
+  res.render('individual-location-pages/generic')
 })
 module.exports = router

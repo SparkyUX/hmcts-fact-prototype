@@ -114,9 +114,7 @@
 		"catchment_type": ["local"],
 		"catchment_method": "proximity",
 		"link_text": "Forced marriage",
-		"service_url": "https://www.gov.uk/apply-forced-marriage-protection-order",
-		"onlineUrl": "",
-		"onlineText": ""
+		"service_url": "https://www.gov.uk/apply-forced-marriage-protection-order"
 	},
 	{
 		"service": "Female Genital Mutilation",
@@ -124,9 +122,7 @@
 		"catchment_type": ["local"],
 		"catchment_method": "proximity",
 		"link_text": "Female Genital Mutilation",
-		"service_url": "https://www.gov.uk/government/collections/female-genital-mutilation",
-		"onlineUrl": "",
-		"onlineText": ""
+		"service_url": "https://www.gov.uk/government/collections/female-genital-mutilation"
 	},
 	{
 		"service": "Housing",
@@ -154,8 +150,6 @@
 		"catchment_method": "proximity",
 		"link_text": "Immigration and asylum",
 		"service_url": "https://www.gov.uk/immigration-asylum-tribunal",
-		"onlineUrl": "https://www.gov.uk/immigration-asylum-tribunal",
-		"onlineText": "Appeal against a visa or immigration decision",
 		"SCstatement1": "We manage your immigration and asylum applications at our central service centre.",
 		"SCstatement2": "Find where to send your documents or ask about your application’s progress." 
 	},
