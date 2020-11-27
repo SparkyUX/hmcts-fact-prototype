@@ -1788,7 +1788,7 @@
       "crown_location_code": null, 
       "county_location_code": null, 
       "magistrates_location_code": null, 
-      "areas_of_law": ["Crime"], 
+      "areas_of_law": ["Minor crime"], 
       "types": [], "emails": [{"address": "sjs@justice.gov.uk", "description": "Enquiries", "explanation": null}], 
       "contacts": [{"number": "0300 303 0656", "description": "Enquiries", "explanation": "Monday to Thursday, 8am to 5pm and Friday, 9am to 5pm"}, {"number": "0300 303 5172", "description": "Enquiries Welsh language", "explanation": null}], 
       "opening_times": [], 

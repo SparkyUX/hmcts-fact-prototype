@@ -64,7 +64,7 @@
 		"onlineText": ""
 	},
 	{
-		"service": "Major criminal offences",
+		"service": "Criminal offences",
 		"aol": "Crime",
 		"catchment_type": ["local","national"],
 		"catchment_method": "proximity",
@@ -77,7 +77,7 @@
 	{
 		"service": "Minor criminal offences",
 		"aol" : "Minor crime",
-		"catchment_type": ["local","national"],
+		"catchment_type": ["national"],
 		"catchment_method": "proximity",
 		"link_text": "Minor crime",
 		"service_url": "",
