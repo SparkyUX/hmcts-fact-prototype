@@ -391,11 +391,16 @@ router.get('/individual-location-pages/generic', function(req, res) {
   req.app.locals.courtUrgentInfo = ""
 
   req.app.locals.courtPhoneEnquiries = ""
+  req.app.locals.courtWelshPhone = ""
+  req.app.locals.courtWelshPhoneExplanation =""
+  req.app.locals.courtScottishPhone = ""
+  req.app.locals.courtScottishPhoneExplanation =""
   req.app.locals.courtPhoneCoP = ""
   req.app.locals.courtPhoneHighCourt = ""
   req.app.locals.courtDXNumber = ""
 
   req.app.locals.courtEmailEnquiries = ""
+  req.app.locals.courtScottishEmailEnquiries = ""
   req.app.locals.courtEmailListing = ""
   req.app.locals.courtEmailBaillifs = ""
   req.app.locals.courtEmailFamily = ""
@@ -441,8 +446,6 @@ router.get('/individual-location-pages/generic', function(req, res) {
       if ( courtDetailsAll.courts[i].catchment_type === "national" || courtDetailsAll.courts[i].catchment_type === "regional") {
         req.app.locals.ctscFlag = true
         req.app.locals.catchmentArea = courtDetailsAll.courts[i].catchment_area
-        req.app.locals.courtEmailEnquiries = 'enquiries.' + courtDetailsAll.courts[i].slug.toLowerCase() + '@justice.gov.uk'
-
       }
       // professional user access scheme
       req.app.locals.puasFlag = courtDetailsAll.courts[i].puas
@@ -556,10 +559,17 @@ router.get('/individual-location-pages/generic', function(req, res) {
           let phoneDetails = {phoneDescription,phoneNumber,phoneExplanation}
           contactPhoneDetails.push(phoneDetails) 
         }        
-
+        if (courtDetailsAll.courts[i].contacts[j].description  == 'Fax') {
+          req.app.locals.courtFax = courtDetailsAll.courts[i].contacts[j].number
+          req.app.locals.courtFaxExplanation = courtDetailsAll.courts[i].contacts[j].explanation
+        }
         if (courtDetailsAll.courts[i].contacts[j].description  == 'Enquiries') {
           req.app.locals.courtPhoneEnquiries = courtDetailsAll.courts[i].contacts[j].number
           req.app.locals.courtPhoneEnquiriesExplanation = courtDetailsAll.courts[i].contacts[j].explanation
+        }
+        if (courtDetailsAll.courts[i].contacts[j].description == 'Enquiries Scotland') {
+          req.app.locals.courtScottishPhone = courtDetailsAll.courts[i].contacts[j].number
+          req.app.locals.courtScottishPhoneExplanation = courtDetailsAll.courts[i].contacts[j].explanation
         }
         if (courtDetailsAll.courts[i].contacts[j].description  == 'Enquiries Welsh language') {
           req.app.locals.courtWelshPhone = courtDetailsAll.courts[i].contacts[j].number
@@ -575,6 +585,9 @@ router.get('/individual-location-pages/generic', function(req, res) {
         console.log('routes courtDetailsAll.courts[i].emails[j].description ' + courtDetailsAll.courts[i].emails[j].description)
         if (courtDetailsAll.courts[i].emails[j].description == 'Enquiries') {
           req.app.locals.courtEmailEnquiries = courtDetailsAll.courts[i].emails[j].address
+        }
+        if (courtDetailsAll.courts[i].emails[j].description == 'Enquiries Scotland') {
+          req.app.locals.courtScottishEmailEnquiries = courtDetailsAll.courts[i].emails[j].address
         }
         let emailDescription = courtDetailsAll.courts[i].emails[j].description
         let emailAddress = courtDetailsAll.courts[i].emails[j].address

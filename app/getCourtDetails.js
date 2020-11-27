@@ -33,10 +33,6 @@ const getCourtDetails = function(serviceDetails, serviceActionType) {
     ctscFlag = true
   }
 
-  console.log ('catchmentWeighting' + catchmentWeighting)
-
-
-
   switch(catchmentWeighting) {
     case 1:
     searchOrder = ["local",null,null]
@@ -82,8 +78,6 @@ const getCourtDetails = function(serviceDetails, serviceActionType) {
   }
 
   searchListNames = createCorTList(serviceDetails.aol,searchOrder,serviceActionType)
-console.log('searchListNames.nationalFlag ' + searchListNames.nationalFlag)
-console.log('regionalDisplayFlag' + searchListNames.regionalFlag)
   return {
     "searchListNames": searchListNames.list, 
     "postcodePage": postcodePage, 

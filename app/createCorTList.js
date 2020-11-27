@@ -6,8 +6,6 @@ const actionOrder = [
     {"action": "notListed", "order": ["national","regional","local"]}
   ]
 const createCorTList = function(serviceArea, searchOrder, actionType) { 
-  console.log('createCorTList serviceArea ' + serviceArea)
-  console.log('searchOrder ' + JSON.stringify(searchOrder))
   let searchListNames = []
   let distance = 0
   let searchOrderFound = false
@@ -16,14 +14,11 @@ const createCorTList = function(serviceArea, searchOrder, actionType) {
   let searchResults = []
   let searchOrderAction = []
   // loop through the searchOrder
-  console.log('actionOrder[0].action ' + JSON.stringify(actionOrder[0].action))
   for (let i=0; i < actionOrder.length; i++) {
     if (actionOrder[i].action == actionType) {
-      console.log('actionType ' + actionType)
       for (let j=0; j < actionOrder[i].order.length; j++) {
         for (let k=0; k < searchOrder.length; k++) {
           if (actionOrder[i].order[j] == searchOrder[k]) {
-            console.log('searchOrder[j] ' + searchOrder[k])
             searchOrderAction.push(searchOrder[k])
           }     
         }       
@@ -32,7 +27,6 @@ const createCorTList = function(serviceArea, searchOrder, actionType) {
   }
   console.log('searchOrderAction ' + JSON.stringify(searchOrderAction))
   for (i = 0; i < searchOrderAction.length; i++) {
-    console.log('searchOrder[i] ' + searchOrderAction[i])
     // loop through the courts and match the searchOrder catchment type to the court catchment type
     // if not found exit and try the next searchOption
     // if null skip it and try the next searchOption
@@ -40,7 +34,6 @@ const createCorTList = function(serviceArea, searchOrder, actionType) {
       // loop through courts
       for (let j=0; j < courtDetails.courts.length; j++) {
         // find courts with the same catchment type
-        console.log('courtDetails.courts[j].catchment_type ' + courtDetails.courts[j].catchment_type)
         if (courtDetails.courts[j].catchment_type == searchOrderAction[i] ) { 
           if (typeof courtDetails.courts[j].distance == 'undefined') {
             distance = 0
@@ -90,8 +83,6 @@ const createCorTList = function(serviceArea, searchOrder, actionType) {
   else {
     searchResults = searchListNamesSorted
   }
-  console.log('searchListNames ' + JSON.stringify(searchListNames ))
-  console.log('searchListNamesSorted ' + JSON.stringify(searchListNamesSorted ))
   return {  
     "list": searchResults, 
     "regionalFlag": regionalFlag,

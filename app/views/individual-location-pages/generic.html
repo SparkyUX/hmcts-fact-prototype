@@ -183,9 +183,21 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
           {{courtWelshPhoneExplanation}}
         </p>
       {% endif %}
-      <p class="govuk-body-m">
-        Fax: 01264 347 985
-      </p>
+      {% if courtScottishPhone %}
+        <p class="govuk-body-m">
+          Telephone Scotland: {{courtScottishPhone}}
+          <br />
+          {{courtScottishPhoneExplanation}}
+        </p>
+      {% endif %}
+      {% if courtFax %}
+        <p class="govuk-body-m">
+          Fax: {{courtFax}}
+          <br />
+          {{courtFaxExplanation}}
+        </p>
+      {% endif %}
+
       <p class="govuk-body-m">
       <a href="https://www.gov.uk/call-charges">
         Find out about call charges
@@ -210,6 +222,10 @@ Individual court or tribunal page - Find a court or tribunal - GOV.UK
       
         {% else %}
           Get an update on your case: <a href="mailto:">{{courtEmailEnquiries}}</a>
+        {% endif %}
+        {% if courtScottishEmailEnquiries %}
+          <br />
+            For applications in Scotland : <a href="mailto:">{{courtScottishEmailEnquiries}}</a>
         {% endif %}
       </p>
 

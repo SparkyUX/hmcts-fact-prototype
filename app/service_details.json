@@ -90,7 +90,7 @@
 		"aol": "Divorce",
 		"catchment_type": ["regional","national"],
 		"catchment_method": "local authority",
-		"link_text": "Divorce",
+		"link_text": "Divorce hearings",
 		"service_url": "https://www.gov.uk/divorce",
 		"onlineUrl": "https://www.gov.uk/apply-for-divorce",
 		"onlineText": "Apply for a divorce online",
@@ -175,6 +175,7 @@
 		"onlineUrl": "https://www.gov.uk/applying-for-probate/apply-for-probate",
 		"onlineText": "Apply for probate online",
 		"SCstatement1": "We manage your probate applications at our central service centre.",
+		"SCstatement2": "Find where to send your documents or ask about your application’s progress.", 
 		"SCstatement3": "You can deliver a will or stop a probate application at our regional probate registries. This is the nearest probate registry office to "
 
 	},
